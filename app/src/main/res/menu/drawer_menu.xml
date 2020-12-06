@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/content_main"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/dove_lo_butto"
+            android:icon="@drawable/ic_trash"
+            android:title="@string/dove_lo_butto" />
+        <item
+            android:id="@+id/pericolosi"
+            android:icon="@drawable/ic_nuclear2"
+            android:title="@string/rifiuti_pericolosi" />
+        <item
+            android:id="@+id/spedizioni"
+            android:icon="@drawable/ic_spedizioni"
+            android:title="@string/spedizioni" />
+        <item
+            android:id="@+id/impostazioni"
+            android:icon="@drawable/ic__gear"
+            android:title="@string/impostazioni" />
+        <item
+            android:id="@+id/contatti"
+            android:icon="@drawable/ic__letter"
+            android:title="@string/contatti" />
+    </group>
+
+</menu>
