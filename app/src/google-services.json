@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "725687914679",
+    "project_id": "genovagreen-e27e2",
+    "storage_bucket": "genovagreen-e27e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725687914679:android:048dc59d3e8bf51a8ebd32",
+        "android_client_info": {
+          "package_name": "com.example.genovagreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725687914679-masrta7h9p4g97ri31ocb2neite0fqeu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq-Hweeym1oC9sVLMNFDGdrGV93mRskos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725687914679-masrta7h9p4g97ri31ocb2neite0fqeu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

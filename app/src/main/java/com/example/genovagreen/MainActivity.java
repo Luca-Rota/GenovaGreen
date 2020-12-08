@@ -26,12 +26,6 @@ import java.sql.Statement;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static Connection conn;
-    public static String ip="192.168.1.7";
-    public static String user="Angelo Morro";
-    public static String password="barcollomanonMorro";
-    public static String port="1433";
-    public static String database="GenovaGreen";
-    public static String ConnURL="jdbc:jtds:sqlserver://"+ip+":"+port+"/"+database;
     private DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,20 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.content_main);
         }
     }
-
-   public static Connection StabilireConnessione(){
-       StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
-       StrictMode.setThreadPolicy(policy);
-       try{
-           Class.forName("net.sourceforge.jtds.jdbc.Driver");
-           conn= DriverManager.getConnection(ConnURL, user, password);
-           Log.e("ASK","Connection Called");
-       }
-       catch(Exception e){
-           Log.e("ASK","EXCEPTION "+e.getMessage());
-       }
-       return null;
-   }
 
 
     @Override

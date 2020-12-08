@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import java.sql.Connection;
 
 public class Butto2Fragment extends Fragment {
-    Connection conn=MainActivity.StabilireConnessione();
+
     SearchView trova=ButtoFragment.ricerca;
     Button cerca;
     View.OnClickListener buttonListener = new View.OnClickListener() {
