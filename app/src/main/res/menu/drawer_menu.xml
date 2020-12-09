@@ -7,19 +7,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/content_main"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/ic_menu_home"
             android:title="@string/home" />
         <item
             android:id="@+id/dove_lo_butto"
-            android:icon="@drawable/ic_trash"
+            android:icon="@drawable/ic_menu_butto"
             android:title="@string/dove_lo_butto" />
         <item
             android:id="@+id/pericolosi"
-            android:icon="@drawable/ic_nuclear2"
+            android:icon="@drawable/ic_menu_pericolosi"
             android:title="@string/rifiuti_pericolosi" />
         <item
             android:id="@+id/spedizioni"
-            android:icon="@drawable/ic_spedizioni"
+            android:icon="@drawable/ic_menu_spedizioni"
             android:title="@string/spedizioni" />
         <item
             android:id="@+id/impostazioni"
