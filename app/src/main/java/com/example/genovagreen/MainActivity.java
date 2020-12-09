@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -49,6 +51,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new ContentFragment()).commit();
             navigationView.setCheckedItem(R.id.content_main);
         }
+        findViewById(R.id.constraintLayout5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ButtoFragment()).commit();
+            }
+        });
+        findViewById(R.id.constraintLayout1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PericolosiFragment()).commit();
+            }
+        });
+        findViewById(R.id.constraintLayout2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SpedizioniFragment()).commit();
+            }
+        });
     }
 
 
@@ -71,6 +91,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SpedizioniFragment()).commit();
                 break;
+            case R.id.fb:
+                clickedSocial("https://fb.com/GenovaGreen");
+                break;
+            case R.id.insta:
+                clickedSocial("https://instagram.com/GenovaGreen");
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -84,5 +110,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void clickedSocial(String url){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 }
