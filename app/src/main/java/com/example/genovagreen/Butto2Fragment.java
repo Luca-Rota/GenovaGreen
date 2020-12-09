@@ -13,13 +13,13 @@ import java.sql.Connection;
 
 public class Butto2Fragment extends Fragment {
 
-    SearchView trova=ButtoFragment.ricerca;
+
     Button cerca;
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //getSupportFragmentManager mi da errore
-            ButtoFragment.ricerca=trova;
+
             getFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new Butto2Fragment()).commit();
         }
@@ -30,8 +30,6 @@ public class Butto2Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
           View view=inflater.inflate(R.layout.fragment_butto2, container,  false);
-          cerca=(Button) view.findViewById(R.id.button);
-          trova=(SearchView view.findViewById(R.id.searchView);
 
         return view;
     }

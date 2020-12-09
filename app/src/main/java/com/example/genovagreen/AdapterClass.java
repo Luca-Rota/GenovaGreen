@@ -8,11 +8,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.ArrayList;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder> {
-    ArrayList<Deal> list;
-    public AdapterClass(ArrayList<Deal> list){
+    ArrayList<Oggetto> list;
+
+    class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView rifiuto, cassonetto;
+
+        public MyViewHolder(@NonNull View itemView){
+            super(itemView);
+            rifiuto=itemView.findViewById(R.id.rifiutoId);
+            cassonetto=itemView.findViewById(R.id.cassonettoId);
+        }
+    }
+
+    public AdapterClass(ArrayList<Oggetto> list){
         this.list=list;
     }
         @NonNull
@@ -23,7 +35,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         }
 
         @Override
-        public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+        public void onBindViewHolder( MyViewHolder myViewHolder, int i) {
             myViewHolder.rifiuto.setText(list.get(i).getRifiuto());
             myViewHolder.cassonetto.setText(list.get(i).getCassonetto());
         }
@@ -32,13 +44,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         public int getItemCount() {
             return list.size();
         }
-        class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView rifiuto, cassonetto;
-            public MyViewHolder(@NonNull View itemView){
-                super(itemView);
-                rifiuto=itemView.findViewById(R.id.rifiutoId);
-                cassonetto=itemView.findViewById(R.id.cassonettoId);
-            }
-        }
+
+
     }
 
