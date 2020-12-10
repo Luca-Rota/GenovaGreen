@@ -25,6 +25,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
+        android:onClick="goToDoveLoButto"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="20dp"
@@ -106,6 +107,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout1"
+        android:onClick="goToPericolosi"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="20dp"
@@ -187,6 +189,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
+        android:onClick="goToSpedizioni"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="20dp"

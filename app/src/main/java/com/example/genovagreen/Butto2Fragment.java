@@ -14,7 +14,7 @@ import java.sql.Connection;
 public class Butto2Fragment extends Fragment {
 
 
-    Button cerca;
+
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
