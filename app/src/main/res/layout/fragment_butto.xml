@@ -53,4 +53,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000"
+        tools:layout_editor_absoluteX="-25dp"
+        tools:layout_editor_absoluteY="502dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

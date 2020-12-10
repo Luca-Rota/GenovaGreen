@@ -46,13 +46,14 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_baseline_delete_24"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_butto"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -129,7 +130,7 @@
                 android:id="@+id/imageView6"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/ic_baseline_delete_forever_24"
+                android:src="@drawable/ic_pericolosi"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -208,9 +209,9 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/ic_baseline_image_search_24"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:src="@drawable/ic_spedizioni"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

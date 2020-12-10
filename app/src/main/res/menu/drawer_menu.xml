@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
@@ -7,28 +8,41 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/content_main"
-            android:icon="@drawable/ic_menu_home"
-            android:title="@string/home" />
+            android:icon="@drawable/ic_menu_home3"
+            android:title="@string/home"
+            android:visible="true" />
         <item
             android:id="@+id/dove_lo_butto"
-            android:icon="@drawable/ic_menu_butto"
+            android:icon="@drawable/ic_menu_butto2"
             android:title="@string/dove_lo_butto" />
         <item
             android:id="@+id/pericolosi"
-            android:icon="@drawable/ic_menu_pericolosi"
+            android:icon="@drawable/ic_menu_pericolosi3"
             android:title="@string/rifiuti_pericolosi" />
         <item
             android:id="@+id/spedizioni"
-            android:icon="@drawable/ic_menu_spedizioni"
+            android:icon="@drawable/ic_menu_spedizioni3"
             android:title="@string/spedizioni" />
+
+
+
+
+
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="#000"
+    tools:layout_editor_absoluteX="-25dp"
+    tools:layout_editor_absoluteY="502dp" />
+
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/impostazioni"
-            android:icon="@drawable/ic__gear"
+            android:icon="@drawable/ic_menu_impostazioni2"
             android:title="@string/impostazioni" />
         <item
             android:id="@+id/contatti"
-            android:icon="@drawable/ic__letter"
+            android:icon="@drawable/ic_menu_contatti3"
             android:title="@string/contatti" />
     </group>
-
 </menu>
