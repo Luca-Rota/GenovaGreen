@@ -18,7 +18,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?actionBarSize"
             android:background="#25d366"
             android:id="@+id/toolbar"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -33,7 +33,7 @@
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:id="@+id/nav_view"

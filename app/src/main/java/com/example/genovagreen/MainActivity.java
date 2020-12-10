@@ -40,10 +40,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        con1=findViewById(R.id.constraintLayout5);
-        con2=findViewById(R.id.constraintLayout1);
-        con3=findViewById(R.id.constraintLayout2);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -98,12 +94,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    public void onBackPressed(){
-        if (drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+
+    public void ClickLogo(View view){
+        closeDrawer(drawer);
+    }
+
+    public static void closeDrawer(DrawerLayout dl) {
+        if(dl.isDrawerOpen(GravityCompat.START)) {
+            dl.closeDrawer(GravityCompat.START);
         }
     }
 
@@ -112,5 +110,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
+    public void goToDoveLoButto(View v){
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ButtoFragment()).commit();
+            }
+
+    public void goToPericolosi(View v){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new PericolosiFragment()).commit();
+    }
+
+    public void goToSpedizioni(View v){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new SpedizioniFragment()).commit();
+    }
+
+
 
 }
