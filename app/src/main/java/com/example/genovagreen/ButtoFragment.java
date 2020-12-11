@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -33,10 +35,18 @@ public class ButtoFragment extends Fragment {
         ref= FirebaseDatabase.getInstance().getReference().child("genovagreen-e27e2-default-rtdb").child("DoveLoButto");
         View view=inflater.inflate(R.layout.fragment_butto, container,  false);
         recyclerView=view.findViewById(R.id.rv);
+        recyclerView.hasFixedSize();
         searchView=view.findViewById(R.id.searchView);
     return view;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        recyclerView = view.findViewById(R.id.rv);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        list = new ArrayList<Oggetto>();
+        recyclerView.setAdapter(new AdapterClass(list));
+    }
 
     @Override
     public void onStart() {
@@ -46,7 +56,7 @@ public class ButtoFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
-                        list=new ArrayList<>();
+                        list=new ArrayList<Oggetto>();
                         for(DataSnapshot ds: snapshot.getChildren()){
                             list.add(ds.getValue(Oggetto.class));
                         }
@@ -58,7 +68,7 @@ public class ButtoFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                  //Toast non funziona nei fragment
+                    Toast.makeText(getContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -78,7 +88,7 @@ public class ButtoFragment extends Fragment {
         }
     }
     private void search(String str){
-        ArrayList<Oggetto> myList= new ArrayList<>();
+        ArrayList<Oggetto> myList= new ArrayList<Oggetto>();
         for(Oggetto object:list){
             if(object.getRifiuto().toLowerCase().contains(str.toLowerCase())){
                 myList.add(object);
@@ -87,4 +97,5 @@ public class ButtoFragment extends Fragment {
         AdapterClass adapterClass=new AdapterClass(myList);
         recyclerView.setAdapter(adapterClass);
     }
+
 }

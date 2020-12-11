@@ -1,7 +1,8 @@
 package com.example.genovagreen;
 
 public class Oggetto {
-    public String rifiuto, cassonetto;
+    public String rifiuto;
+    public String cassonetto;
 
     public Oggetto(){}
 

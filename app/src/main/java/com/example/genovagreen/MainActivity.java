@@ -8,8 +8,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -19,6 +23,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -27,14 +32,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ConstraintLayout con1, con2, con3;
     private DrawerLayout drawer;
+    int checkedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale();
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -54,10 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new ContentFragment()).commit();
             navigationView.setCheckedItem(R.id.content_main);
         }
-
-
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
@@ -126,6 +131,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 new SpedizioniFragment()).commit();
     }
 
+    public void showChangeLanguageDialog(View v) {
+        final String[] listItems={"Italiano", "English"};
+        AlertDialog.Builder mBuilder= new AlertDialog.Builder(MainActivity.this);
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                if(i==0){
+                    setLocale("values");
+                    int id=getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new ImpostazioniFragment()).commit();
+                    ImpostazioniFragment impostazioniFragment = (ImpostazioniFragment)
+                            getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
+                    final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.detach(impostazioniFragment);
+                    fragmentTransaction.attach(impostazioniFragment);
+                    recreate();
+                    fragmentTransaction.commit();
+                }
+                if(i==1){
+                    setLocale("en");
+                    int id=getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new ImpostazioniFragment()).commit();
+                    ImpostazioniFragment impostazioniFragment = (ImpostazioniFragment)
+                            getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                    final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.detach(impostazioniFragment);
+                    fragmentTransaction.attach(impostazioniFragment);
+                    recreate();
+                    fragmentTransaction.commit();
+                }
+                dialog.dismiss();
+            }
+        });
+        AlertDialog mDialog=mBuilder.create();
+        mDialog.show();
+    }
 
+    private void setLocale(String lang) {
+        Locale locale= new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config=new Configuration();
+        config.locale=locale;
+        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+        SharedPreferences.Editor editor= getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
+        editor.putString("My_Lang",lang);
+        editor.apply();
+    }
+
+    public void loadLocale(){
+        SharedPreferences prefs=getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        String language=prefs.getString("My_Lang","");
+        setLocale(language);
+    }
 }
