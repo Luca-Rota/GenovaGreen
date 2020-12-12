@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">GenovaGreen</string>
-    <string name="slogan">Help us to keep Genova greener</string>
+    <string name="slogan">Help us to make Genova greener</string>
     <string name="e_questo">Where do I throw this?</string>
     <string name="lo_sapevi_che">Did you know that separate collection varies according to the municipality in which you are located? Search for a product and find out in which bin it should be disposed of.</string>
     <string name="dove_lo_butto">Where do I throw this?</string>
-    <string name="scopri">DISCOVER</string>
+    <string name="scopri">SHOW</string>
     <string name="rifiuti_pericolosi">Dangerous waste</string>
     <string name="spedizioni">Expeditions</string>
     <string name="versione">Alpha version 1.0</string>
@@ -14,7 +14,7 @@
     <string name="contatti">Contacts</string>
     <string name="lingua">Language</string>
     <string name="notifiche">Notifications</string>
-    <string name="esci">Exit</string>
+    <string name="logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="button">Button</string>
 </resources>

@@ -121,25 +121,29 @@
 
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/fb"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="30dp"
+            android:onClick="clickedFb"
+            android:clickable="true"
             android:src="@drawable/ic_facebook"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintEnd_toStartOf="@+id/insta"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/insta"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginEnd="30dp"
+            android:onClick="clickedInsta"
+            android:clickable="true"
             android:src="@drawable/ic_instagram__1_"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/fb"
             app:layout_constraintTop_toTopOf="parent" />
 
 

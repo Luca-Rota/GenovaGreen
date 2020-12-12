@@ -26,6 +26,8 @@ public class ContattiFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.fragment_contatti, container,  false);
+        View fb = view.findViewById(R.id.fb);
+        View insta= view.findViewById(R.id.insta);
         return view;
     }
 

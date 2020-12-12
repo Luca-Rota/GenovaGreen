@@ -37,9 +37,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         @Override
         public void onBindViewHolder( MyViewHolder myViewHolder, int i) {
             myViewHolder.rifiuto.setText(list.get(i).getRifiuto());
-            notifyDataSetChanged();
             myViewHolder.cassonetto.setText(list.get(i).getCassonetto());
-            notifyDataSetChanged();
+
 
         }
 

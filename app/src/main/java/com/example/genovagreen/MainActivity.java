@@ -35,9 +35,7 @@ import java.sql.Statement;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ConstraintLayout con1, con2, con3;
     private DrawerLayout drawer;
-    int checkedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,12 +85,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ImpostazioniFragment()).commit();
                 break;
-            //case R.id.fb:
-              //  clickedSocial("https://fb.com/GenovaGreen");
-                //break;
-            //case R.id.insta:
-              //  clickedSocial("https://instagram.com/GenovaGreen");
-               // break;
+            case R.id.contatti:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ContattiFragment()).commit();
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -110,11 +105,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void clickedSocial(String url){
+    public void clickedFb(View view){
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://fb.com/GenovaGreen"));
+            startActivity(intent);
+        }
+
+    public void clickedInsta(View view){
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url));
+        intent.setData(Uri.parse("https://instagram.com/GenovaGreen"));
         startActivity(intent);
     }
+
 
     public void goToDoveLoButto(View v){
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
