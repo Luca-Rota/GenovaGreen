@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="esempio"
-            android:textSize="50sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginLeft="20dp" />
         <TextView
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="esempio"
-            android:textSize="0sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:layout_marginLeft="20dp" />
     </LinearLayout>
