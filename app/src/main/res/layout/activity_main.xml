@@ -16,17 +16,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ToolbarTheme"
-            app:titleTextAppearance="@style/Toolbar.TitleText"
+            android:layout_height="75dp"
+            android:background="#25d366"
+            android:id="@+id/toolbar"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            />
-        
+            android:elevation="4dp"/>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
