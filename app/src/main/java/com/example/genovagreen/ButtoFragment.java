@@ -38,25 +38,27 @@ public class ButtoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_butto, container,  false);
+        ref=FirebaseDatabase.getInstance().getReference("genovagreen-e27e2-default-rtdb/DoveLoButto");
         fillList();
     return view;
     }
 
     private void fillList() {
-        for(int i=0;i<100000;i++) {
-            String rif="rifiuto"+i;
-            String cas="cassonetto"+i;
-            Oggetto ogg = new Oggetto(rif, cas);
+        for(int i=0;i<100;i++) {
+            String rif="Rifuto"+i;
+            String cass="Cassonetto"+i;
+            Oggetto ogg=new Oggetto();
+            ogg.setRifiuto(rif);
+            ogg.setCassonetto(cass);
             list.add(ogg);
         }
-        RecyclerView recyclerView = view.findViewById(R.id.rv);
+        RecyclerView recyclerView=view.findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        adapter = new AdapterClass(list);
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext());
+        adapter=new AdapterClass(list);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        ref=FirebaseDatabase.getInstance().getReference().child("genovagreen-e27e2-default-rtdb/DoveLoButto");
         ref.addValueEventListener(new ValueEventListener() {
             //Non entra qua
             @Override
