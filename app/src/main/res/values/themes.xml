@@ -3,6 +3,7 @@
     <style name="Theme.GenovaGreen" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#25d366</item>
+        <item name="colorPrimaryDark">#11887a</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -20,10 +21,11 @@
     </style>
 
     <style name="Theme.GenovaGreen.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+
     </style>
 
 
-    <style name="Theme.GenovaGreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.GenovaGreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="ToolBarStyle" parent="">
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
