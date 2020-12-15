@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
@@ -42,6 +43,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private FirebaseAuth auth;
+    private TextView emailUtente;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +53,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switchFragment();
         setContentView(R.layout.activity_main);
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_main);
@@ -69,10 +70,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseUser user=auth.getCurrentUser();
         if(user==null){
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ContentFragment()).commit();
+                        new LoginFragment()).commit();
         }else {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new LoginFragment()).commit();
+                        new ContentFragment()).commit();
         }
     }
 
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.pericolosi:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new RegistrazioneFragment()).commit();
+                        new PericolosiFragment()).commit();
                 break;
             case R.id.spedizioni:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -165,26 +166,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(DialogInterface dialog, int i) {
                 if(i==0){
                     setLocale("values");
-                    int id=getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new ImpostazioniFragment()).commit();
-                    ImpostazioniFragment impostazioniFragment = (ImpostazioniFragment)
-                            getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-
-                    final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.detach(impostazioniFragment);
-                    fragmentTransaction.attach(impostazioniFragment);
+                    navigationView.setCheckedItem(R.id.content_main);
                     recreate();
-                    fragmentTransaction.commit();
                 }
                 if(i==1){
                     setLocale("en");
-                    int id=getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new ImpostazioniFragment()).commit();
-                    ImpostazioniFragment impostazioniFragment = (ImpostazioniFragment)
-                            getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-                    final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.detach(impostazioniFragment);
-                    fragmentTransaction.attach(impostazioniFragment);
+                    navigationView.setCheckedItem(R.id.content_main);
                     recreate();
-                    fragmentTransaction.commit();
                 }
                 dialog.dismiss();
             }
@@ -209,4 +197,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String language=prefs.getString("My_Lang","");
         setLocale(language);
     }
+
+    public void Logout(View view){
+        auth=FirebaseAuth.getInstance();
+        auth.signOut();
+        navigationView.setCheckedItem(R.id.content_main);
+        recreate();
+
+    }
+
 }

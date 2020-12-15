@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.Locale;
 
 public class ImpostazioniFragment extends Fragment {
-    private int checkedItem=0;
+    private TextView logout;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
