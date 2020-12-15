@@ -32,13 +32,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/emailUtente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Looca_Rota"
+        android:text="Ciccio Pollo"
         android:textColor="#000"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,12 +81,14 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout11">
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/Logout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="30dp"
             android:fontFamily="monospace"
             android:gravity="start|center"
+            android:clickable="true"
+            android:onClick="Logout"
             android:text="@string/logout"
             android:textColor="#000000"
             android:textSize="25sp"
