@@ -29,6 +29,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,12 +41,15 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale();
+        switchFragment();
         setContentView(R.layout.activity_main);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,11 +62,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ContentFragment()).commit();
-            navigationView.setCheckedItem(R.id.content_main);
+        navigationView.setCheckedItem(R.id.content_main);
+    }
+    public void switchFragment(){
+        auth=FirebaseAuth.getInstance();
+        FirebaseUser user=auth.getCurrentUser();
+        if(user==null){
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ContentFragment()).commit();
+        }else {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new LoginFragment()).commit();
         }
     }
 
@@ -77,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.pericolosi:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new PericolosiFragment()).commit();
+                        new RegistrazioneFragment()).commit();
                 break;
             case R.id.spedizioni:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -133,6 +145,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void goToSpedizioni(View v){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new SpedizioniFragment()).commit();
+    }
+
+    public void goToRegistrati(View v){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new RegistrazioneFragment()).commit();
+    }
+
+    public void goToLogin(View v){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new LoginFragment()).commit();
     }
 
     public void showChangeLanguageDialog(View v) {

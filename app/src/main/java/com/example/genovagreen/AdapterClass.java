@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder> implements Filterable {
-    private List<Oggetto> list;
-    private List<Oggetto> listFull;
+    public List<Oggetto> list;
+    public List<Oggetto> listFull;
 
     @Override
     public Filter getFilter() {
@@ -24,7 +24,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView rifiuto, cassonetto;
+        public TextView rifiuto, cassonetto;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,7 +58,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             return list.size();
         }
 
-        private Filter filter=new Filter() {
+        public Filter filter=new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 List<Oggetto> filterList = new ArrayList<>();

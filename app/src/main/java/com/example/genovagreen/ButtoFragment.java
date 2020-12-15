@@ -21,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -28,8 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ButtoFragment extends Fragment {
-    private AdapterClass adapter;
-    private List<Oggetto> list = new ArrayList<>();
+    public AdapterClass adapter;
+    public List<Oggetto> list = new ArrayList<>();
     DatabaseReference ref;
     View view=null;
 
@@ -38,37 +39,23 @@ public class ButtoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_butto, container,  false);
-        ref=FirebaseDatabase.getInstance().getReference("genovagreen-e27e2-default-rtdb/DoveLoButto");
+        ref=FirebaseDatabase.getInstance().getReference("/DoveLoButto");
         fillList();
     return view;
     }
 
-    private void fillList() {
-        for(int i=0;i<100;i++) {
-            String rif="Rifuto"+i;
-            String cass="Cassonetto"+i;
-            Oggetto ogg=new Oggetto();
-            ogg.setRifiuto(rif);
-            ogg.setCassonetto(cass);
-            list.add(ogg);
-        }
-        RecyclerView recyclerView=view.findViewById(R.id.rv);
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext());
-        adapter=new AdapterClass(list);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-
-        ref.addValueEventListener(new ValueEventListener() {
+    public void fillList() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             //Non entra qua
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Toast.makeText(getContext(),"fillList",Toast.LENGTH_LONG).show();
                 for(DataSnapshot ds: snapshot.getChildren()){
                     String rifiuto=ds.child("rifiuto").getValue().toString();
                     String cassonetto=ds.child("cassonetto").getValue().toString();
                     Oggetto ogg=new Oggetto(rifiuto, cassonetto);
                     list.add(ogg);
-                    Toast.makeText(getContext(),"fillList",Toast.LENGTH_LONG).show();
+
                 }
                 RecyclerView recyclerView=view.findViewById(R.id.rv);
                 recyclerView.setHasFixedSize(true);
