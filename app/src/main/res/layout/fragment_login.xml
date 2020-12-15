@@ -5,32 +5,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".LoginFragment"
+    android:background="@drawable/back">
 
-
-    <EditText
-        android:id="@+id/EmailAddress1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:src="@mipmap/logo2_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/EmailAddress1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:drawableLeft="@drawable/ic_email"
+        android:ems="12"
+        android:hint="   Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
         android:id="@+id/Password1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:hint="Password"
+        android:layout_marginTop="60dp"
+        android:ems="12"
+        android:hint="   Password"
+        android:drawableLeft="@drawable/ic_password"
+        android:textColor="#000"
+        android:textSize="16sp"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,11 +52,10 @@
 
     <Button
         android:id="@+id/accedi"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="91dp"
-        android:layout_marginEnd="161dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_button"
         android:text="Accedi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
