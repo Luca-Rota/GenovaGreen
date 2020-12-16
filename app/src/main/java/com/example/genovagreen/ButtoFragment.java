@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -21,7 +22,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -29,30 +29,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ButtoFragment extends Fragment {
-    public AdapterClass adapter;
-    public List<Oggetto> list = new ArrayList<>();
-    DatabaseReference ref;
-    View view=null;
+    private AdapterClass adapter;
+    private List<Oggetto> list = new ArrayList<>();
+    private DatabaseReference ref;
+    private View view=null;
+    Button button;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_butto, container,  false);
-        ref=FirebaseDatabase.getInstance().getReference("/DoveLoButto");
+        button=view.findViewById(R.id.prova);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ref=FirebaseDatabase.getInstance().getReference("Prova");
+                ref.push().setValue("prova");
+                Toast.makeText(getContext(),"ok",Toast.LENGTH_LONG).show();
+            }
+        });
         fillList();
     return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        fillList();
+    }
+
     public void fillList() {
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref=FirebaseDatabase.getInstance().getReference("DoveLoButto");
+        ValueEventListener eventListener=new ValueEventListener() {
             //Non entra qua
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Toast.makeText(getContext(),"fillList",Toast.LENGTH_LONG).show();
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    String rifiuto=ds.child("rifiuto").getValue().toString();
-                    String cassonetto=ds.child("cassonetto").getValue().toString();
+                    String rifiuto=ds.child("rifiuto").getValue(String.class);
+                    String cassonetto=ds.child("cassonetto").getValue(String.class);
                     Oggetto ogg=new Oggetto(rifiuto, cassonetto);
                     list.add(ogg);
 
@@ -70,7 +86,8 @@ public class ButtoFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getContext(),"errore db",Toast.LENGTH_LONG).show();
             }
-        });
+        };
+        ref.addListenerForSingleValueEvent(eventListener);
     }
 
     @Override

@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.Connection;
@@ -43,8 +46,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private FirebaseAuth auth;
-    private TextView emailUtente;
-    NavigationView navigationView;
+    private NavigationView navigationView;
+    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_main);
+
     }
     public void switchFragment(){
         auth=FirebaseAuth.getInstance();
@@ -157,6 +161,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new LoginFragment()).commit();
     }
+    public void goToCambioPassword(View v){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new PasswordFragment()).commit();
+    }
 
     public void showChangeLanguageDialog(View v) {
         final String[] listItems={"Italiano", "English"};
@@ -205,5 +213,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recreate();
 
     }
+
+    public void Carica(View v){
+        Oggetto2 ogg=new Oggetto2("vetro","vetro","Andrebbe sciacqauato prima di essere gettato", 0);
+        ref = FirebaseDatabase.getInstance().getReference();
+        ref.push().setValue(ogg, new
+                DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference
+                            databaseReference) {
+                        Toast.makeText(MainActivity.this, "Ogg added.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+
 
 }

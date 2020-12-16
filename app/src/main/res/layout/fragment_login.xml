@@ -60,11 +60,14 @@
         android:layout_marginTop="3dp"
         android:textSize="12sp"
         android:text="Password dimenticata?"
+        android:clickable="true"
+        android:onClick="goToCambioPassword"
         android:textStyle="bold"
         android:fontFamily="monospace"
         android:textColor="#ff0000"
         app:layout_constraintEnd_toEndOf="@+id/Password1"
-        app:layout_constraintTop_toBottomOf="@+id/Password1" />
+        app:layout_constraintTop_toBottomOf="@+id/Password1"
+        tools:ignore="OnClick" />
 
     <Button
         android:id="@+id/accedi"

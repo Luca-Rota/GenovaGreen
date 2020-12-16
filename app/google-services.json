@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "725687914679",
-    "project_id": "genovagreen-e27e2",
-    "storage_bucket": "genovagreen-e27e2.appspot.com"
+    "project_number": "519438534040",
+    "project_id": "genovagreen-3af45",
+    "storage_bucket": "genovagreen-3af45.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:725687914679:android:048dc59d3e8bf51a8ebd32",
+        "mobilesdk_app_id": "1:519438534040:android:3b42835a23d970240b17ed",
         "android_client_info": {
           "package_name": "com.example.genovagreen"
         }
       },
       "oauth_client": [
         {
-          "client_id": "725687914679-masrta7h9p4g97ri31ocb2neite0fqeu.apps.googleusercontent.com",
+          "client_id": "519438534040-hqfeomofj6edjdc3ahc3htes5hggjk62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.genovagreen",
+            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          }
+        },
+        {
+          "client_id": "519438534040-a1eoejec6pbje1s9rkfgi4meljmq58cm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAq-Hweeym1oC9sVLMNFDGdrGV93mRskos"
+          "current_key": "AIzaSyArhv0oW0uY04oEZTHIBhl9JPYGFdA56To"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "725687914679-masrta7h9p4g97ri31ocb2neite0fqeu.apps.googleusercontent.com",
+              "client_id": "519438534040-a1eoejec6pbje1s9rkfgi4meljmq58cm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
