@@ -60,34 +60,34 @@ public class ButtoFragment extends Fragment {
     }
 
     public void fillList() {
-        ref=FirebaseDatabase.getInstance().getReference("DoveLoButto");
-        ValueEventListener eventListener=new ValueEventListener() {
+        FirebaseDatabase db=FirebaseDatabase.getInstance();
+        ref=db.getReference("DoveLoButto");
+        ref.addValueEventListener(new ValueEventListener() {
             //Non entra qua
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(getContext(),"fillList",Toast.LENGTH_LONG).show();
-                for(DataSnapshot ds: snapshot.getChildren()){
-                    String rifiuto=ds.child("rifiuto").getValue(String.class);
-                    String cassonetto=ds.child("cassonetto").getValue(String.class);
-                    Oggetto ogg=new Oggetto(rifiuto, cassonetto);
+                Toast.makeText(getContext(), "fillList", Toast.LENGTH_LONG).show();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String rifiuto = ds.child("rifiuto").getValue(String.class);
+                    String cassonetto = ds.child("cassonetto").getValue(String.class);
+                    Oggetto ogg = new Oggetto(rifiuto, cassonetto);
                     list.add(ogg);
 
                 }
-                RecyclerView recyclerView=view.findViewById(R.id.rv);
+                RecyclerView recyclerView = view.findViewById(R.id.rv);
                 recyclerView.setHasFixedSize(true);
-                RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext());
-                adapter=new AdapterClass(list);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                adapter = new AdapterClass(list);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
-                Toast.makeText(getContext(),"adapter settato",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "adapter settato", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(),"errore db",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "errore db", Toast.LENGTH_LONG).show();
             }
-        };
-        ref.addListenerForSingleValueEvent(eventListener);
+        });
     }
 
     @Override

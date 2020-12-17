@@ -214,19 +214,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void Carica(View v){
-        Oggetto2 ogg=new Oggetto2("vetro","vetro","Andrebbe sciacqauato prima di essere gettato", 0);
-        ref = FirebaseDatabase.getInstance().getReference();
-        ref.push().setValue(ogg, new
-                DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference
-                            databaseReference) {
-                        Toast.makeText(MainActivity.this, "Ogg added.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-    }
 
 
 }
