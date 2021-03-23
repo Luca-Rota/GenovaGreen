@@ -113,4 +113,10 @@ public class ButtoFragment extends Fragment {
         return true;
     }
 
+
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("message");
+
+
 }

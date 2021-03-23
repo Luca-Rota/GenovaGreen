@@ -17,8 +17,31 @@
     <string name="lingua">Lingua</string>
     <string name="notifiche">Notifiche</string>
     <string name="logout">Esci</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="button">Button</string>
+    <string name="rif_pericolisi_descrizione" translatable="false">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
+
+    &#8226; Accumulatori al piombo (batterie per auto e moto)
+    Antiparassitari
+    Antitarlo
+    Antiruggine
+    Apparecchi elettrici ed elettronici di grandi dimensioni
+    Barattoli di vernici, solventi, coloranti, colla
+    Battericidi
+    Bombole del gas vuote
+    Bombolette spray etichettate come pericolose
+    Farmaci
+    Insetticidi
+    Lampadine a fluorescenza
+    Neon
+    Oli minerali esausti (olio motore)
+    Pesticidi
+    Pile (batterie) a bottone, stilo, torcia e piatte
+    Smacchiatori e solventi
+    Termometro al mercurio"
+
+
+    <string name="rec_pass">Inserisci qui la tua email \n\n e riceverai il codice di sicurezza per poter creare una nuova nuova password</string>
+    <string name="log">Non hai ancora un account?</string>
 
 </resources>
