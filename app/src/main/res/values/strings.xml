@@ -19,29 +19,43 @@
     <string name="logout">Esci</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="button">Button</string>
-    <string name="rif_pericolisi_descrizione" translatable="false">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
 
-    &#8226; Accumulatori al piombo (batterie per auto e moto)
-    Antiparassitari
-    Antitarlo
-    Antiruggine
-    Apparecchi elettrici ed elettronici di grandi dimensioni
-    Barattoli di vernici, solventi, coloranti, colla
-    Battericidi
-    Bombole del gas vuote
-    Bombolette spray etichettate come pericolose
-    Farmaci
-    Insetticidi
-    Lampadine a fluorescenza
-    Neon
-    Oli minerali esausti (olio motore)
-    Pesticidi
-    Pile (batterie) a bottone, stilo, torcia e piatte
-    Smacchiatori e solventi
-    Termometro al mercurio"
-
-
-    <string name="rec_pass">Inserisci qui la tua email \n\n e riceverai il codice di sicurezza per poter creare una nuova nuova password</string>
+    <string name="RUP_tit">Rifiuti Urbani Pericolosi \n e Rifiuti Ingombranti</string>
+    <string name="rif_pericolisi_descrizione">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
+    <string name="RUP_desc">Tutti i rifiuti urbani pericolosi devono essere conferiti presso i centri di raccolta cittadini.</string>
+    <string name="RUP_desc_2">Ecco un breve elenco dei RUP:</string>
+    <string name="RUP_desc_3">&#8226; Barattoli di colore, vernici, colle, solventi \n
+    <br>&#8226; Pile esauste (stilo, a bottone) \n</br>
+    <br>&#8226; Batterie auto esauste \n</br>
+    <br>&#8226; Farmaci scaduti e contenitori con residui di medicinali \n</br>
+    <br>&#8226; Cartucce d’inchiostro e toner \n</br>
+    <br>&#8226; Bombolette spray \n</br>
+    <br>&#8226; Solventi chimici di uso domestico \n</br>
+    <br>&#8226; Antiparassitari, insetticidi, topicidi di uso domestico \n</br>
+    <br>&#8226; Olio esausto da cucina \n</br>
+    <br>&#8226; Olio esausto da motori \n</br>
+    <br>&#8226; Filtri olio \n</br>
+    &#8226; Apparecchi elettronici alimentati a batteria di piccole dimensioni </string>
+    <string name="RUP_desc4">Sono invece rifiuti ingombranti:</string>
+    <string name="RUP_desc_5">&#8226; Elettrodomestici (lavatrici, microonde, frigoriferi, ecc.)
+    <br>&#8226; Mobili (armadi, librerie, letti, ecc.) \n</br>
+    <br>&#8226; Altri oggetti voluminosi (es. biciclette) \n</br></string>
+    <string name="RUP_but">TROVA IL CENTRO DI RACCOLTA
+        <br> PI&#217; VICINO A TE </br></string>
+    <string name="rec_pass">Inserisci qui la tua email e riceverai il codice di sicurezza per poter creare una nuova password</string>
     <string name="log">Non hai ancora un account?</string>
+
+    Cerosillo Rag. Dario
+    Ricupoil Srl
+    Area Ecologica di Bogliasco
+    A.o.c. srl
+    https://www.liguroil.com/
+    http://www.alsosrl.it/it/
+    aimiu
+    centro raccolta
+    isola ecologica
+    discarica
+
+
 
 </resources>
