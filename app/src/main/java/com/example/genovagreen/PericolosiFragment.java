@@ -1,9 +1,11 @@
 package com.example.genovagreen;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,28 +18,51 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
 public class PericolosiFragment extends Fragment {
 
-    private Button but;
+    private static final String TAG = "Pericolosi2";
+    private static final int ERROR_DIALOG_REQUEST = 9001;
+
+    public PericolosiFragment(){ }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pericolosi, container, false);
-        but = view.findViewById(R.id.button3);
-        but.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
-                gotoUrl("https://goo.gl/maps/Xapa92hQ32sktxBQ9");
-            }
-        });
+        if(isServicesOk()){
+            Button btnMap = (Button) view.findViewById(R.id.button3);
+            btnMap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PericolosiFragment.this, Pericolosi2.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
         return view;
     }
 
-    
 
-    private void gotoUrl(String s){
-        Uri uri = Uri.parse(s);
-        startActivity(new Intent(Intent.ACTION_VIEW.uri));
+
+    public boolean isServicesOk(){
+        Log.d(TAG, "isServicesOK: cecking google services version");
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(PericolosiFragment.this);
+        if (available == ConnectionResult.SUCCESS){
+            Log.d(TAG, "isServicesOK: Google Play Services is working");
+            return true;
+        }
+        else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            Log.d(TAG,"isServicesOK: an error occured but we can fix it");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(PericolosiFragment.this, available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+        }
+        else{
+            Toast.makeText(this, "You can't make map request", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
+
 }
