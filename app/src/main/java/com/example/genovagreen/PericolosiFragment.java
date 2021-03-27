@@ -23,46 +23,22 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 public class PericolosiFragment extends Fragment {
 
-    private static final String TAG = "Pericolosi2";
-    private static final int ERROR_DIALOG_REQUEST = 9001;
-
-    public PericolosiFragment(){ }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pericolosi, container, false);
-        if(isServicesOk()){
-            Button btnMap = (Button) view.findViewById(R.id.button3);
-            btnMap.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(PericolosiFragment.this, Pericolosi2.class);
-                    startActivity(intent);
-                }
-            });
-        }
-
+        Button but = (Button) view.findViewById(R.id.button3);
+        but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), Pericolosi2.class);
+                startActivity(in);
+            }
+        });
         return view;
     }
 
 
 
-    public boolean isServicesOk(){
-        Log.d(TAG, "isServicesOK: cecking google services version");
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(PericolosiFragment.this);
-        if (available == ConnectionResult.SUCCESS){
-            Log.d(TAG, "isServicesOK: Google Play Services is working");
-            return true;
-        }
-        else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-            Log.d(TAG,"isServicesOK: an error occured but we can fix it");
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(PericolosiFragment.this, available, ERROR_DIALOG_REQUEST);
-            dialog.show();
-        }
-        else{
-            Toast.makeText(this, "You can't make map request", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
+
 
 }

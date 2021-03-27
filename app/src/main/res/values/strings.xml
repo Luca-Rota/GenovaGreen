@@ -24,11 +24,12 @@
     <string name="rif_pericolisi_descrizione">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
     <string name="RUP_desc">Tutti i rifiuti urbani pericolosi devono essere conferiti presso i centri di raccolta cittadini.</string>
     <string name="RUP_desc_2">Ecco un breve elenco dei RUP:</string>
-    <string name="RUP_desc_3">&#8226; Barattoli di colore, vernici, colle, solventi \n
+
+    <string name="RUP_desc_3" translatable="false"> &#8226; Barattoli di colore, vernici, colle, solventi \n
     <br>&#8226; Pile esauste (stilo, a bottone) \n</br>
     <br>&#8226; Batterie auto esauste \n</br>
     <br>&#8226; Farmaci scaduti e contenitori con residui di medicinali \n</br>
-    <br>&#8226; Cartucce d’inchiostro e toner \n</br>
+    <br>&#8226; Cartucce d\'inchiostro e toner \n</br>
     <br>&#8226; Bombolette spray \n</br>
     <br>&#8226; Solventi chimici di uso domestico \n</br>
     <br>&#8226; Antiparassitari, insetticidi, topicidi di uso domestico \n</br>
@@ -87,6 +88,8 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_porcoddio">porcoddio</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
 
 
