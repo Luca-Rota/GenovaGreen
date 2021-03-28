@@ -48,16 +48,11 @@
 
     Cerosillo Rag. Dario
     Ricupoil Srl
-    Area Ecologica di Bogliasco
     A.o.c. srl
     https://www.liguroil.com/
     http://www.alsosrl.it/it/
-    aimiu
     centro raccolta
-    isola ecologica
-    discarica
 
-    https://goo.gl/maps/Xapa92hQ32sktxBQ9
 
     but = view.findViewById(R.id.button3);
     but.setOnClickListener(new View.OnClickListener() {

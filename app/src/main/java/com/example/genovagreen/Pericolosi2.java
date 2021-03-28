@@ -49,21 +49,18 @@ public class Pericolosi2 extends AppCompatActivity {
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Pericolosi2.this, MapsActivity.class);
+                Intent intent = new Intent(Pericolosi2.this, MapActivity.class);
                 startActivity(intent);
             }
         });
     }
 
     public boolean isServicesOk(){
-        Log.d(TAG, "isServicesOK: cecking google services version");
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(Pericolosi2.this);
         if (available == ConnectionResult.SUCCESS){
-            Log.d(TAG, "isServicesOK: Google Play Services is working");
             return true;
         }
         else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-            Log.d(TAG,"isServicesOK: an error occured but we can fix it");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(Pericolosi2.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
         }
