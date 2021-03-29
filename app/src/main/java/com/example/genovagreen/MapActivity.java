@@ -1,9 +1,12 @@
 package com.example.genovagreen;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -64,6 +67,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     LatLng docksLanterna = new LatLng(44.40367625780342, 8.93634469418444);
     LatLng alpEcologia = new LatLng(44.401074620004394, 8.94629809387334);
     LatLng ecover = new LatLng(44.445806671503654, 8.965719361559001);
+    LatLng isolaEcologica4 = new LatLng(44.48762950153952, 8.897787148115768);
+    LatLng amiu5 = new LatLng(44.49252783691238, 8.903795296275666);
 
     SupportMapFragment mapFragment;
     FusedLocationProviderClient client;
@@ -77,10 +82,35 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        client = LocationServices.getFusedLocationProviderClient(this);
-        getCurrentLocation();
+        listInit();
 
+        final LocationManager manager = (LocationManager) getSystemService( LOCATION_SERVICE );
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+        if ( manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            getCurrentLocation();
+        }
+        else{
+            buildAlertMessageNoGps();
+            getOnlyMarker();
+        }
+    }
+
+    private void getOnlyMarker() {
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                for(int i=0;i<arrayList.size();i++){
+                    for (int j=0;j<title.size();j++){
+                        googleMap.addMarker(new MarkerOptions().position(arrayList.get(i)).title(String.valueOf(title.get(i))));
+                    }
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayList.get(i), 11f));
+                }
+            }
+        });
+    }
+
+    private void listInit(){
         arrayList.add(isolaEcologica1);
         arrayList.add(isolaEcologica2);
         arrayList.add(isolaEcologica3);
@@ -107,6 +137,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         arrayList.add(reVetro);
         arrayList.add(rottamiMetallici);
         arrayList.add(ferrotrade);
+        arrayList.add(isolaEcologica4);
+        arrayList.add(amiu5);
 
         title.add("Isola Ecologica");
         title.add("Isola Ecologica");
@@ -134,9 +166,31 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         title.add("Re.Vetro S.r.l.");
         title.add("Cancellieri Giuseppe Rottami Metallici");
         title.add("Ferrotrade");
+        title.add("Isola Ecologica");
+        title.add("AMIU");
+    }
+
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void getCurrentLocation() {
+        client = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
@@ -147,7 +201,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             @Override
                             public void onMapReady(GoogleMap googleMap) {
                                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
+                                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
                                 if (ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                                         && ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                                     googleMap.setMyLocationEnabled(true);

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -11,6 +12,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -42,6 +44,48 @@ public class Pericolosi2 extends AppCompatActivity {
         if(isServicesOk()){
             init();
         }
+
+        TextView lista1 = findViewById(R.id.lista1);
+        lista1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToUrl("https://goo.gl/maps/QAt9C5tQoGp7XTWu8");
+            }
+        });
+        TextView lista2 = findViewById(R.id.lista2);
+        lista2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToUrl("https://goo.gl/maps/ZcMexynHRrCZRKFW8");
+            }
+        });
+        TextView lista3 = findViewById(R.id.lista3);
+        lista3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToUrl("https://goo.gl/maps/jSCGfuvuva3S4bbY8");
+            }
+        });
+        TextView lista4 = findViewById(R.id.lista4);
+        lista4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToUrl("https://goo.gl/maps/u6ZSdNxevdj73ys27");
+            }
+        });
+        TextView lista5 = findViewById(R.id.lista5);
+        lista5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToUrl("https://goo.gl/maps/GQNvmDHiSsM3PKacA");
+            }
+        });
+
+    }
+
+    private void goToUrl(String s) {
+        Uri uri = Uri.parse(s);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
     public void init(){
