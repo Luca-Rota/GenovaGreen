@@ -38,8 +38,8 @@
             android:icon="@drawable/ic_menu_impostazioni2"
             android:title="@string/impostazioni" />
         <item
-            android:id="@+id/contatti"
-            android:icon="@drawable/ic_menu_contatti3"
-            android:title="@string/contatti" />
+            android:id="@+id/informazioni"
+            android:icon="@drawable/ic_iconmonstr_info_8"
+            android:title="Informazioni" />
     </group>
 </menu>

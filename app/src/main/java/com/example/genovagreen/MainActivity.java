@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -73,8 +75,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_main);
 
-
     }
+
     public void switchFragment(){
         auth=FirebaseAuth.getInstance();
         FirebaseUser user=auth.getCurrentUser();
@@ -110,9 +112,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ImpostazioniFragment()).commit();
                 break;
-            case R.id.contatti:
+            case R.id.informazioni:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ContattiFragment()).commit();
+                        new InfoFragment()).commit();
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -128,19 +130,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(dl.isDrawerOpen(GravityCompat.START)) {
             dl.closeDrawer(GravityCompat.START);
         }
+
+
     }
 
-    public void clickedFb(View view){
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("https://fb.com/GenovaGreen"));
-            startActivity(intent);
-        }
-
-    public void clickedInsta(View view){
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("https://instagram.com/GenovaGreen"));
-        startActivity(intent);
-    }
 
 
     public void goToDoveLoButto(View v){
