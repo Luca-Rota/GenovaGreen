@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
-    private DatabaseReference ref;
 
 
 
@@ -74,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_main);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
 
     }
 
@@ -212,7 +215,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recreate();
 
     }
-
-
-
 }
