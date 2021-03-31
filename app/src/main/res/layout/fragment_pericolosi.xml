@@ -10,12 +10,12 @@
     android:id="@+id/pericolosi">
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView1"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="monospace"
+        android:gravity="center"
         android:text="@string/RUP_tit"
         android:textColor="@color/colorPrimary"
         android:textSize="25sp"
@@ -30,13 +30,11 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14">
+        app:layout_constraintTop_toBottomOf="@+id/textView1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -94,6 +92,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
@@ -134,8 +133,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2">
@@ -146,9 +145,12 @@
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button"
             android:fontFamily="monospace"
+            android:paddingLeft="10dp"
             android:paddingTop="20dp"
+            android:paddingRight="10dp"
             android:paddingBottom="20dp"
             android:text="@string/RUP_but"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

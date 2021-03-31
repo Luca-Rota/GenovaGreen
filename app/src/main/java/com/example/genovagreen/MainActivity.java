@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.spedizioni:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SpedizioniFragment()).commit();
+                        new Spedizioni2Fragment()).commit();
                 break;
             case R.id.impostazioni:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void goToSpedizioni(View v){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new SpedizioniFragment()).commit();
+                new Spedizioni2Fragment()).commit();
     }
 
     public void goToRegistrati(View v){
