@@ -62,8 +62,6 @@ public class Butto2Fragment extends Fragment {
         cassonettoholder.setText(cassonetto);
         descrizioneholder.setText(descrizione);
 
-
-
         return  view;
     }
 

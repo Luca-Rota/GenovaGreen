@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
+    FirebaseUser user;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
-        switchFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContentFragment()).commit();
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -73,23 +73,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_main);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
-
-    }
-
-    public void switchFragment(){
         auth=FirebaseAuth.getInstance();
-        FirebaseUser user=auth.getCurrentUser();
-        if(user==null){
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new LoginFragment()).commit();
-        }else {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ContentFragment()).commit();
-        }
+        user=auth.getCurrentUser();
+
     }
 
     @Override
@@ -108,8 +95,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new PericolosiFragment()).commit();
                 break;
             case R.id.spedizioni:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Spedizioni2Fragment()).commit();
+                if(user==null) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new SpedizioniFragment()).commit();
+                }else{
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            new Spedizioni2Fragment()).commit();
+                }
                 break;
             case R.id.impostazioni:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -137,8 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
-
     public void goToDoveLoButto(View v){
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ButtoFragment()).commit();
@@ -150,8 +140,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void goToSpedizioni(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new Spedizioni2Fragment()).commit();
+        if(user==null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new SpedizioniFragment()).commit();
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new Spedizioni2Fragment()).commit();
+        }
     }
 
     public void goToRegistrati(View v){

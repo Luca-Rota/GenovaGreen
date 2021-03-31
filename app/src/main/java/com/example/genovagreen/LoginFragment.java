@@ -47,7 +47,8 @@ public class LoginFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(getContext(), "Login eseguito con successo",Toast.LENGTH_SHORT).show();
-                                getActivity().recreate();
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                        new Spedizioni2Fragment()).commit();
                             }else{
                                 Toast.makeText(getContext(), "Qualcosa è andato storto con il login",Toast.LENGTH_SHORT).show();
                             }
@@ -70,4 +71,5 @@ public class LoginFragment extends Fragment {
         });
         return view;
     }
+
 }
