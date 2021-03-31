@@ -18,8 +18,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo2_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GenovaGreen"
-        android:usesCleartextTraffic="true">
+        android:theme="@style/Theme.GenovaGreen">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
