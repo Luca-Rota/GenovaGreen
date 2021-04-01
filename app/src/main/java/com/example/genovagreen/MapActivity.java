@@ -195,7 +195,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
                 @Override
-                public void onSuccess(Location location) {
+                public void onSuccess(final Location location) {
                     if (location != null) {
                         mapFragment.getMapAsync(new OnMapReadyCallback() {
                             @Override

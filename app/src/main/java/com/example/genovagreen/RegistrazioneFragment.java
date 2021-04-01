@@ -52,7 +52,9 @@ public class RegistrazioneFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                        getActivity().recreate();
+                                        auth.signOut();
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                                new LoginFragment()).commit();
                                     }else{
                                         Toast.makeText(getContext(), "Qualcosa è andato storto con la registrazione",Toast.LENGTH_SHORT).show();
                                     }

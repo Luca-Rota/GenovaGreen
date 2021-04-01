@@ -45,7 +45,6 @@ public class AdapterClass extends FirebaseRecyclerAdapter<Oggetto,AdapterClass.m
         public myviewholder(@NonNull View itemView) {
             super(itemView);
 
-            ;
             rifiutotext=itemView.findViewById(R.id.rifiutoId);
             cassonettotext=itemView.findViewById(R.id.cassonettoId);
 
