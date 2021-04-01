@@ -22,11 +22,11 @@ public class Spedizioni3 extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TextView but = (TextView) findViewById(R.id.textView3);
+        TextView but = findViewById(R.id.textView3);
         but.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   Intent in = new Intent(this, Spedizioni4.class);
+                   Intent in = new Intent(Spedizioni3.this, Spedizioni4.class);
                    startActivity(in);
                }
         });
