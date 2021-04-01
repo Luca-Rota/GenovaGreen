@@ -3,7 +3,11 @@ package com.example.genovagreen;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +15,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+public class Password extends AppCompatActivity {
 
-public class PasswordFragment extends Fragment {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_password);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+    }
+
+/* CODICE CHE C'ERA IN PASSWORDFRAGMENT
     private Button NewPass;
     private EditText Email;
     String codice;
@@ -36,4 +50,7 @@ public class PasswordFragment extends Fragment {
 
         return view;
     }
+
+
+ */
 }

@@ -66,6 +66,11 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_spedizioni2">Spedizioni2</string>
+    <string name="title_activity_spedizioni3">Spedizioni3</string>
+    <string name="title_activity_password">Password</string>
+    <string name="title_activity_password2">Password2</string>
+    <string name="title_activity_spedizioni4">Spedizioni4</string>
+    <string name="title_activity_spedizioni5">Spedizioni5</string>
 </resources>
 
 
