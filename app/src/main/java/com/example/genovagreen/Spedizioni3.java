@@ -26,7 +26,7 @@ public class Spedizioni3 extends AppCompatActivity {
         but.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   Intent in = new Intent(this, Spedizioni4.class);
+                   Intent in = new Intent(Spedizioni3.this, Spedizioni4.class);
                    startActivity(in);
                }
         });

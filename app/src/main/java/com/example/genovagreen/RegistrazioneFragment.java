@@ -52,6 +52,7 @@ public class RegistrazioneFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
+                                        Toast.makeText(getContext(), "Registrazione avvenuta con successo",Toast.LENGTH_SHORT).show();
                                         auth.signOut();
                                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                                 new LoginFragment()).commit();

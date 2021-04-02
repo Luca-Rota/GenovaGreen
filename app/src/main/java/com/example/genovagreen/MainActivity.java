@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
+    String codicepass;
     FirebaseUser user;
 
 
@@ -159,8 +160,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 new LoginFragment()).commit();
     }
     public void goToCambioPassword(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new PasswordFragment()).commit();
+        Intent intent=new Intent(MainActivity.this, Password.class);
+        startActivity(intent);
     }
 
     public void showChangeLanguageDialog(View v) {
