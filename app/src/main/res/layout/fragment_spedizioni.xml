@@ -78,7 +78,6 @@
             android:paddingLeft="45dp"
             android:paddingTop="20dp"
             android:paddingRight="45dp"
-            android:onClick="goToLogin"
             android:paddingBottom="20dp"
             android:text="Accedi"
             android:textColor="@color/white"
@@ -89,7 +88,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/button"
+            android:id="@+id/registrati"
             style="@style/cancelStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +96,6 @@
             android:background="@drawable/custom_submit"
             android:fontFamily="monospace"
             android:paddingTop="20dp"
-            android:onClick="goToRegistrati"
             android:paddingBottom="20dp"
             android:text="REGISTRATI"
             android:textColor="#ffffff"

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FirebaseAuth auth;
     private NavigationView navigationView;
     String codicepass;
-    FirebaseUser user;
+    private FirebaseUser user;
 
 
 
@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.content_main:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ContentFragment()).commit();
+                Intent intent=new Intent(MainActivity.this,Login.class);
+                startActivity(intent);
                 break;
             case R.id.dove_lo_butto:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -148,20 +148,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new Spedizioni2Fragment()).commit();
         }
-    }
-
-    public void goToRegistrati(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new RegistrazioneFragment()).commit();
-    }
-
-    public void goToLogin(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new LoginFragment()).commit();
-    }
-    public void goToCambioPassword(View v){
-        Intent intent=new Intent(MainActivity.this, Password.class);
-        startActivity(intent);
     }
 
     public void showChangeLanguageDialog(View v) {

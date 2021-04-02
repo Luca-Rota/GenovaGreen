@@ -28,6 +28,7 @@ public class Password extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         main=new MainActivity();
@@ -37,8 +38,8 @@ public class Password extends AppCompatActivity {
         Annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2,
-                        new LoginFragment()).commit();
+                Intent intent=new Intent(Password.this,Login.class);
+                startActivity(intent);
             }
         });
         NewPass.setOnClickListener(new View.OnClickListener() {

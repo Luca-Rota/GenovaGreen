@@ -19,9 +19,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GenovaGreen">
         <activity
+            android:name=".Registrazione"
+            android:label="@string/title_activity_registrazione"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
             android:name=".Spedizioni5"
             android:label="@string/title_activity_spedizioni5"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Spedizioni4"
             android:label="@string/title_activity_spedizioni4"
