@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/back"
-    tools:context=".RegistrazioneFragment">
+    tools:context=".Registrazione">
 
     <TextView
         android:id="@+id/textView1"
@@ -106,12 +107,12 @@
             android:textStyle="bold"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textLogin"
+            app:layout_constraintEnd_toStartOf="@+id/loginr"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textLogin"
+            android:id="@+id/loginr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

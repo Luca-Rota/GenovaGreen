@@ -12,15 +12,15 @@
             android:title="@string/home"
             android:visible="true" />
         <item
-            android:id="@+id/dove_lo_butto"
+            android:id="@+id/content_butto"
             android:icon="@drawable/ic_menu_butto2"
             android:title="@string/dove_lo_butto" />
         <item
-            android:id="@+id/pericolosi"
+            android:id="@+id/content_pericolosi"
             android:icon="@drawable/ic_menu_pericolosi3"
             android:title="@string/rifiuti_pericolosi" />
         <item
-            android:id="@+id/spedizioni"
+            android:id="@+id/content_spedizioni"
             android:icon="@drawable/ic_menu_spedizioni3"
             android:title="@string/spedizioni" />
     </group>
@@ -34,11 +34,11 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/impostazioni"
+            android:id="@+id/content_impostazioni"
             android:icon="@drawable/ic_menu_impostazioni2"
             android:title="@string/impostazioni" />
         <item
-            android:id="@+id/informazioni"
+            android:id="@+id/content_informazioni"
             android:icon="@drawable/ic_iconmonstr_info_8"
             android:title="Informazioni" />
     </group>

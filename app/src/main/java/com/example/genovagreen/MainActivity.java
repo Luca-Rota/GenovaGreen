@@ -110,15 +110,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent=new Intent(MainActivity.this,MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.dove_lo_butto:
+            case R.id.content_butto:
                 Intent intent2=new Intent(MainActivity.this,Butto.class);
                 startActivity(intent2);
                 break;
-            case R.id.pericolosi:
+            case R.id.content_pericolosi:
                 Intent intent3=new Intent(MainActivity.this,Pericolosi.class);
                 startActivity(intent3);
                 break;
-            case R.id.spedizioni:
+            case R.id.content_spedizioni:
                 if(user==null) {
                     Intent intent4=new Intent(MainActivity.this,Spedizioni.class);
                     startActivity(intent4);
@@ -127,11 +127,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(intent5);
                 }
                 break;
-            case R.id.impostazioni:
+            case R.id.content_impostazioni:
                 Intent intent6=new Intent(MainActivity.this,Impostazioni.class);
                 startActivity(intent6);
                 break;
-            case R.id.informazioni:
+            case R.id.content_informazioni:
                 Intent intent7=new Intent(MainActivity.this,Informazioni.class);
                 startActivity(intent7);
         }

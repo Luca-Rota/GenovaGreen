@@ -62,7 +62,7 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setCheckedItem(R.id.content_main);
+        navigationView.setCheckedItem(R.id.content_pericolosi);
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -147,15 +147,15 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
                 Intent intent=new Intent(Pericolosi2.this,MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.dove_lo_butto:
+            case R.id.content_butto:
                 Intent intent2=new Intent(Pericolosi2.this,Butto.class);
                 startActivity(intent2);
                 break;
-            case R.id.pericolosi:
+            case R.id.content_pericolosi:
                 Intent intent3=new Intent(Pericolosi2.this,Pericolosi.class);
                 startActivity(intent3);
                 break;
-            case R.id.spedizioni:
+            case R.id.content_spedizioni:
                 if(user==null) {
                     Intent intent4=new Intent(Pericolosi2.this,Spedizioni.class);
                     startActivity(intent4);
@@ -164,11 +164,11 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
                     startActivity(intent5);
                 }
                 break;
-            case R.id.impostazioni:
+            case R.id.content_impostazioni:
                 Intent intent6=new Intent(Pericolosi2.this,Impostazioni.class);
                 startActivity(intent6);
                 break;
-            case R.id.informazioni:
+            case R.id.content_informazioni:
                 Intent intent7=new Intent(Pericolosi2.this,Informazioni.class);
                 startActivity(intent7);
         }

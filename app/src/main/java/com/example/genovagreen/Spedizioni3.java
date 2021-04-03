@@ -42,7 +42,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setCheckedItem(R.id.content_main);
+        navigationView.setCheckedItem(R.id.content_spedizioni);
 
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -64,15 +64,15 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                 Intent intent=new Intent(Spedizioni3.this,MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.dove_lo_butto:
+            case R.id.content_butto:
                 Intent intent2=new Intent(Spedizioni3.this,Butto.class);
                 startActivity(intent2);
                 break;
-            case R.id.pericolosi:
+            case R.id.content_pericolosi:
                 Intent intent3=new Intent(Spedizioni3.this,Pericolosi.class);
                 startActivity(intent3);
                 break;
-            case R.id.spedizioni:
+            case R.id.content_spedizioni:
                 if(user==null) {
                     Intent intent4=new Intent(Spedizioni3.this,Spedizioni.class);
                     startActivity(intent4);
@@ -81,11 +81,11 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                     startActivity(intent5);
                 }
                 break;
-            case R.id.impostazioni:
+            case R.id.content_impostazioni:
                 Intent intent6=new Intent(Spedizioni3.this,Impostazioni.class);
                 startActivity(intent6);
                 break;
-            case R.id.informazioni:
+            case R.id.content_informazioni:
                 Intent intent7=new Intent(Spedizioni3.this,Informazioni.class);
                 startActivity(intent7);
         }

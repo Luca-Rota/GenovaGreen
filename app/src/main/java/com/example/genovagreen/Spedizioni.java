@@ -18,12 +18,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class Spedizioni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
+    private Button login;
+    private TextView registrati;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +43,26 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setCheckedItem(R.id.content_main);
+        navigationView.setCheckedItem(R.id.content_spedizioni);
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-
-
+        login=findViewById(R.id.logins);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Spedizioni.this,Login.class);
+                startActivity(intent);
+            }
+        });
+        registrati=findViewById(R.id.registratis);
+        registrati.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Spedizioni.this, Registrazione.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -54,15 +72,15 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
                 Intent intent=new Intent(Spedizioni.this,MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.dove_lo_butto:
+            case R.id.content_butto:
                 Intent intent2=new Intent(Spedizioni.this,Butto.class);
                 startActivity(intent2);
                 break;
-            case R.id.pericolosi:
+            case R.id.content_pericolosi:
                 Intent intent3=new Intent(Spedizioni.this,Pericolosi.class);
                 startActivity(intent3);
                 break;
-            case R.id.spedizioni:
+            case R.id.content_spedizioni:
                 if(user==null) {
                     Intent intent4=new Intent(Spedizioni.this,Spedizioni.class);
                     startActivity(intent4);
@@ -71,11 +89,11 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
                     startActivity(intent5);
                 }
                 break;
-            case R.id.impostazioni:
+            case R.id.content_impostazioni:
                 Intent intent6=new Intent(Spedizioni.this,Impostazioni.class);
                 startActivity(intent6);
                 break;
-            case R.id.informazioni:
+            case R.id.content_informazioni:
                 Intent intent7=new Intent(Spedizioni.this,Informazioni.class);
                 startActivity(intent7);
         }

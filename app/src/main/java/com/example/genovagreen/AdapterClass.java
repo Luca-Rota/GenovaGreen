@@ -18,24 +18,30 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterClass extends FirebaseRecyclerAdapter<Oggetto,AdapterClass.myviewholder>
-{
-
-    public AdapterClass(@NonNull FirebaseRecyclerOptions<Oggetto> options) {
-        super(options);
+public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder> {
+    ArrayList<Oggetto> list;
+    public AdapterClass(ArrayList<Oggetto> list){
+        this.list=list;
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull myviewholder holder, int position, @NonNull final Oggetto model) {
-        holder.rifiutotext.setText(model.getRifiuto());
-        holder.cassonettotext.setText(model.getCassonetto());
-    }
 
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder,parent,false);
+        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder,parent);
         return new myviewholder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull myviewholder holder, int position) {
+        holder.rifiutotext.setText(list.get(position).getRifiuto());
+        holder.cassonettotext.setText(list.get(position).getCassonetto());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
     }
 
     public class myviewholder extends RecyclerView.ViewHolder

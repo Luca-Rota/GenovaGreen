@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import static java.security.AccessController.getContext;
@@ -36,6 +37,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
+    private TextView login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +53,21 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setCheckedItem(R.id.content_main);
+        navigationView.setCheckedItem(R.id.content_spedizioni);
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
         emailAdd=findViewById(R.id.EmailAddress);
         password=findViewById(R.id.Password);
         password2=findViewById(R.id.RepeatPassword);
+        login=findViewById(R.id.loginr);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Registrazione.this,Login.class);
+                startActivity(intent);
+            }
+        });
         button=findViewById(R.id.button);
 
 
@@ -114,15 +124,15 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                 Intent intent=new Intent(Registrazione.this,MainActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.dove_lo_butto:
+            case R.id.content_butto:
                 Intent intent2=new Intent(Registrazione.this,Butto.class);
                 startActivity(intent2);
                 break;
-            case R.id.pericolosi:
+            case R.id.content_pericolosi:
                 Intent intent3=new Intent(Registrazione.this,Pericolosi.class);
                 startActivity(intent3);
                 break;
-            case R.id.spedizioni:
+            case R.id.content_spedizioni:
                 if(user==null) {
                     Intent intent4=new Intent(Registrazione.this,Spedizioni.class);
                     startActivity(intent4);
@@ -131,11 +141,11 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                     startActivity(intent5);
                 }
                 break;
-            case R.id.impostazioni:
+            case R.id.content_impostazioni:
                 Intent intent6=new Intent(Registrazione.this,Impostazioni.class);
                 startActivity(intent6);
                 break;
-            case R.id.informazioni:
+            case R.id.content_informazioni:
                 Intent intent7=new Intent(Registrazione.this,Informazioni.class);
                 startActivity(intent7);
         }

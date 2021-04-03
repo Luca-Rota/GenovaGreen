@@ -19,24 +19,44 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GenovaGreen">
         <activity
+        android:name=".Butto"
+        android:label="GenovaGreen"
+        android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+        <activity
+            android:name=".Butto2"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+        <activity
+            android:name=".Impostazioni"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+        <activity
+            android:name=".Informazioni"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+        <activity
             android:name=".Spedizioni5"
-            android:label="@string/title_activity_spedizioni5"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+        <activity
+            android:name=".Login"
+            android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
         <activity
             android:name=".Spedizioni4"
-            android:label="@string/title_activity_spedizioni4"
+            android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Password2"
-            android:label="@string/title_activity_password2"
+            android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Password"
-            android:label="@string/title_activity_password"
+            android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Spedizioni3"
-            android:label="@string/title_activity_spedizioni3"
+            android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
 
         <meta-data
@@ -45,15 +65,26 @@
 
         <activity
             android:name=".MapActivity"
-            android:label="@string/title_activity_map"
+            android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
+        <activity
+            android:name=".Pericolosi"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Pericolosi2"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
+            android:name=".Registrazione"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
+            android:name=".Spedizioni"
             android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
