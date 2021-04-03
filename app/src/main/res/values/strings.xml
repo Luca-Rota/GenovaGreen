@@ -71,14 +71,6 @@
     <string name="title_activity_password2">Password2</string>
     <string name="title_activity_spedizioni4">Spedizioni4</string>
     <string name="title_activity_spedizioni5">Spedizioni5</string>
-    <string name="title_activity_butto">Butto</string>
-    <string name="title_activity_butto2">Butto2</string>
-    <string name="title_activity_impostazioni">Impostazioni</string>
-    <string name="title_activity_informazioni">Informazioni</string>
-    <string name="title_activity_login">Login</string>
-    <string name="title_activity_pericolosi">Pericolosi</string>
-    <string name="title_activity_registrazione">Registrazione</string>
-    <string name="title_activity_spedizioni">Spedizioni</string>
 </resources>
 
 

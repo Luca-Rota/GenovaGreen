@@ -158,7 +158,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new LoginFragment()).commit();
     }
-
+    public void goToCambioPassword(View v){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new PasswordFragment()).commit();
+    }
 
     public void showChangeLanguageDialog(View v) {
         final String[] listItems={"Italiano", "English"};
