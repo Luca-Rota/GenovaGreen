@@ -1,19 +1,29 @@
 package com.example.genovagreen;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.SearchView;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+public class Butto2 extends AppCompatActivity {
 
-import java.sql.Connection;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_butto2);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-public class Butto2Fragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
+
+    }
+}
+
+/*private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
@@ -64,5 +74,3 @@ public class Butto2Fragment extends Fragment {
 
         return  view;
     }
-
-}

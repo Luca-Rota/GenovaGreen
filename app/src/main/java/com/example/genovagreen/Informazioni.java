@@ -1,24 +1,29 @@
 package com.example.genovagreen;
-import android.app.Application;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import org.w3c.dom.Text;
-
-public class InfoFragment extends Fragment {
+public class Informazioni extends AppCompatActivity {
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_informazioni);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+    }
+}
+
+/*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_info, container, false);
@@ -67,5 +72,3 @@ public class InfoFragment extends Fragment {
         });
         return view;
     }
-}
-
