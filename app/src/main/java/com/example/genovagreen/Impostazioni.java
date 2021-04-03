@@ -74,13 +74,13 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
                     public void onClick(DialogInterface dialog, int i) {
                         if(i==0){
                             setLocale("values");
-                            navigationView.setCheckedItem(R.id.content_impostazioni);
-                            recreate();
+                            Intent intent=new Intent(Impostazioni.this,Impostazioni.class);
+                            startActivity(intent);
                         }
                         if(i==1){
                             setLocale("en");
-                            navigationView.setCheckedItem(R.id.content_impostazioni);
-                            recreate();
+                            Intent intent2=new Intent(Impostazioni.this,Impostazioni.class);
+                            startActivity(intent2);
                         }
                         dialog.dismiss();
                     }
