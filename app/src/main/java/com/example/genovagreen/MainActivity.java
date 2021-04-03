@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
-    FirebaseUser user;
+    private ConstraintLayout DoveLoButto, Pericolosi, Spedizioni;
+    private FirebaseUser user;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContentFragment()).commit();
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -76,6 +76,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+        DoveLoButto=findViewById(R.id.DoveLoButtoMain);
+        DoveLoButto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, Butto.class);
+                startActivity(intent);
+            }
+        });
+        Pericolosi=findViewById(R.id.PeriocolosiMain);
+        Pericolosi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, Pericolosi.class);
+                startActivity(intent);
+            }
+        });
+        Spedizioni=findViewById(R.id.SpedizioniMain);
+        Spedizioni.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, Spedizioni.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -83,33 +107,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.content_main:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ContentFragment()).commit();
+                Intent intent=new Intent(MainActivity.this,MainActivity.class);
+                startActivity(intent);
                 break;
             case R.id.dove_lo_butto:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ButtoFragment()).commit();
+                Intent intent2=new Intent(MainActivity.this,Butto.class);
+                startActivity(intent2);
                 break;
             case R.id.pericolosi:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new PericolosiFragment()).commit();
+                Intent intent3=new Intent(MainActivity.this,Pericolosi.class);
+                startActivity(intent3);
                 break;
             case R.id.spedizioni:
                 if(user==null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new SpedizioniFragment()).commit();
+                    Intent intent4=new Intent(MainActivity.this,Spedizioni.class);
+                    startActivity(intent4);
                 }else{
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new Spedizioni2Fragment()).commit();
+                    Intent intent5=new Intent(MainActivity.this,Spedizioni2.class);
+                    startActivity(intent5);
                 }
                 break;
             case R.id.impostazioni:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ImpostazioniFragment()).commit();
+                Intent intent6=new Intent(MainActivity.this,Impostazioni.class);
+                startActivity(intent6);
                 break;
             case R.id.informazioni:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new InfoFragment()).commit();
+                Intent intent7=new Intent(MainActivity.this,Informazioni.class);
+                startActivity(intent7);
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -129,85 +153,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void goToDoveLoButto(View v){
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ButtoFragment()).commit();
-            }
-
-    public void goToPericolosi(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new PericolosiFragment()).commit();
-    }
-
-    public void goToSpedizioni(View v){
-        if(user==null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new SpedizioniFragment()).commit();
-        }else{
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new Spedizioni2Fragment()).commit();
-        }
-    }
-
-    public void goToRegistrati(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new RegistrazioneFragment()).commit();
-    }
-
-    public void goToLogin(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new LoginFragment()).commit();
-    }
-    public void goToCambioPassword(View v){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new PasswordFragment()).commit();
-    }
-
-    public void showChangeLanguageDialog(View v) {
-        final String[] listItems={"Italiano", "English"};
-        AlertDialog.Builder mBuilder= new AlertDialog.Builder(MainActivity.this);
-        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                if(i==0){
-                    setLocale("values");
-                    navigationView.setCheckedItem(R.id.content_main);
-                    recreate();
-                }
-                if(i==1){
-                    setLocale("en");
-                    navigationView.setCheckedItem(R.id.content_main);
-                    recreate();
-                }
-                dialog.dismiss();
-            }
-        });
-        AlertDialog mDialog=mBuilder.create();
-        mDialog.show();
-    }
-
-    private void setLocale(String lang) {
-        Locale locale= new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config=new Configuration();
-        config.locale=locale;
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
-        SharedPreferences.Editor editor= getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
-        editor.putString("My_Lang",lang);
-        editor.apply();
-    }
-
-    public void loadLocale(){
-        SharedPreferences prefs=getSharedPreferences("Settings", Context.MODE_PRIVATE);
-        String language=prefs.getString("My_Lang","");
-        setLocale(language);
-    }
-
-    public void Logout(View view){
-        auth=FirebaseAuth.getInstance();
-        auth.signOut();
-        navigationView.setCheckedItem(R.id.content_main);
-        recreate();
-
-    }
 }

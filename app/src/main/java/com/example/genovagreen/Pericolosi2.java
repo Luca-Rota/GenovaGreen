@@ -15,15 +15,22 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,10 +38,14 @@ import android.widget.Toast;
 
 import java.io.File;
 
-public class Pericolosi2 extends AppCompatActivity {
+public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "Pericolosi2";
     private static final int ERROR_DIALOG_REQUEST = 9001;
+    private FirebaseAuth auth;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,18 @@ public class Pericolosi2 extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setCheckedItem(R.id.content_main);
+
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
 
         if(isServicesOk()){
             init();
@@ -117,4 +140,40 @@ public class Pericolosi2 extends AppCompatActivity {
         return false;
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.content_main:
+                Intent intent=new Intent(Pericolosi2.this,MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.dove_lo_butto:
+                Intent intent2=new Intent(Pericolosi2.this,Butto.class);
+                startActivity(intent2);
+                break;
+            case R.id.pericolosi:
+                Intent intent3=new Intent(Pericolosi2.this,Pericolosi.class);
+                startActivity(intent3);
+                break;
+            case R.id.spedizioni:
+                if(user==null) {
+                    Intent intent4=new Intent(Pericolosi2.this,Spedizioni.class);
+                    startActivity(intent4);
+                }else{
+                    Intent intent5=new Intent(Pericolosi2.this,Spedizioni2.class);
+                    startActivity(intent5);
+                }
+                break;
+            case R.id.impostazioni:
+                Intent intent6=new Intent(Pericolosi2.this,Impostazioni.class);
+                startActivity(intent6);
+                break;
+            case R.id.informazioni:
+                Intent intent7=new Intent(Pericolosi2.this,Informazioni.class);
+                startActivity(intent7);
+        }
+
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
