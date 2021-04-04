@@ -40,7 +40,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private AdapterClass adapter;
+    private AdapterClass adapterClass;
     private ArrayList<Oggetto> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
@@ -68,16 +68,20 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         searchView=findViewById(R.id.searchView);
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
         if(ref!=null) {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Toast.makeText(Butto.this, "prova2", Toast.LENGTH_SHORT).show();
                     if(snapshot.exists()){
+                        Toast.makeText(Butto.this, "prova3", Toast.LENGTH_LONG).show();
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             list.add(ds.getValue(Oggetto.class));

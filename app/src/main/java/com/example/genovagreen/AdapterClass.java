@@ -44,8 +44,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
         return list.size();
     }
 
-    public class myviewholder extends RecyclerView.ViewHolder
-    {
+    public class myviewholder extends RecyclerView.ViewHolder {
         TextView rifiutotext, cassonettotext;
 
         public myviewholder(@NonNull View itemView) {
