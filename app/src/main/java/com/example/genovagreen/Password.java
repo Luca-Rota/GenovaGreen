@@ -3,6 +3,8 @@ package com.example.genovagreen;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -23,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -61,37 +64,29 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
         Annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Password.this,Login.class);
-                startActivity(intent);
+                startActivity(new Intent(Password.this,Login.class));
             }
         });
         NewPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String to=Email.getText().toString();
-                Intent sendemail = new Intent(Intent.ACTION_SEND);
-                sendemail.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
-                sendemail.putExtra(Intent.EXTRA_SUBJECT, "Modifica password GenovaGreen");
-                codice=rndCod();
-                sendemail.putExtra(Intent.EXTRA_TEXT, "Il codice per cambiare password è "+codice);
-                Intent intent=new Intent(Password.this, Password2.class);
-                startActivity(intent);
+                auth.sendPasswordResetEmail(Email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(Password.this,"E-mail inviata",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Password.this, Login.class));
+                        }else{
+                            Toast.makeText(Password.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 
     }
-    public String rndCod(){
-        char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
-        StringBuilder sb1 = new StringBuilder();
-        Random random1 = new Random();
-        for (int i = 0; i < 6; i++)
-        {
-            char c1 = chars1[random1.nextInt(chars1.length)];
-            sb1.append(c1);
-        }
-        String random_string = sb1.toString();
-        return random_string;
-    }
+
+
 
 
     @Override

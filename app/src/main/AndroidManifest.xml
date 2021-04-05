@@ -47,15 +47,15 @@
             android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Password2"
-            android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
-        <activity
             android:name=".Password"
             android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Spedizioni3"
+            android:label="GenovaGreen"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
+            android:name=".Spedizioni2"
             android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
 
