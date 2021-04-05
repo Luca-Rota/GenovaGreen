@@ -35,7 +35,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/search_custom"
         android:iconifiedByDefault="false"
-        android:queryHint="Cerca un prodotto"
+        android:queryHint="@string/SearchViewButtoHint"
         app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

@@ -9,7 +9,7 @@
     <string name="rifiuti_pericolosi">Rifiuti Pericolosi</string>
     <string name="spedizioni">Spedizioni</string>
     <string name="versione">Versione Alpha 1.0</string>
-    <string name="home">Home</string>
+    <string name="home" translatable="false">Home</string>
     <string name="impostazioni">Impostazioni</string>
     <string name="contatti">Contatti</string>
     <string name="navigation_drawer_open" translatable="false"> Open navigation drawer</string>
@@ -18,14 +18,14 @@
     <string name="notifiche">Notifiche</string>
     <string name="logout">Esci</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="button">Button</string>
+    <string name="button" translatable="false">Button</string>
 
     <string name="RUP_tit">Rifiuti Urbani Pericolosi \n e Rifiuti Ingombranti</string>
     <string name="rif_pericolisi_descrizione">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
     <string name="RUP_desc">Tutti i rifiuti urbani pericolosi devono essere conferiti presso i centri di raccolta cittadini.</string>
     <string name="RUP_desc_2">Ecco un breve elenco dei RUP:</string>
 
-    <string name="RUP_desc_3" translatable="false"> &#8226; Barattoli di colore, vernici, colle, solventi \n
+    <string name="RUP_desc_3"> &#8226; Barattoli di colore, vernici, colle, solventi \n
     <br>&#8226; Pile esauste (stilo, a bottone) \n</br>
     <br>&#8226; Batterie auto esauste \n</br>
     <br>&#8226; Farmaci scaduti e contenitori con residui di medicinali \n</br>
@@ -43,34 +43,59 @@
     <br>&#8226; Altri oggetti voluminosi (es. biciclette) \n</br></string>
     <string name="RUP_but">TROVA IL CENTRO DI RACCOLTA
         <br> PI&#217; VICINO A TE </br></string>
-    <string name="rec_pass">Inserisci qui la tua email e riceverai il codice di sicurezza per poter creare una nuova password</string>
+    <string name="rec_pass">Inserisci qui la tua email e ti invieremo il link per cambiare la password del tuo account</string>
     <string name="log">Non hai ancora un account?</string>
-
-    implementation 'com.google.firebase:firebase-analytics:18.0.0'
-    implementation 'com.google.android.gms:play-services-basement:17.5.0'
-    implementation 'com.google.android.gms:play-services-flags:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:18.0.0'
-
-
     <string name="google_maps_API_key" translatable="false">AIzaSyA8doEtufu_Z52wT-IacLHvjJOOYrfTFrU</string>
-    <string name="title_activity_pericolosi2">Pericolosi2</string>
+    <string name="title_activity_pericolosi2" translatable="false">Pericolosi2</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_porcoddio">porcoddio</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_spedizioni2">Spedizioni2</string>
-    <string name="title_activity_spedizioni3">Spedizioni3</string>
-    <string name="title_activity_password">Password</string>
-    <string name="title_activity_password2">Password2</string>
-    <string name="title_activity_spedizioni4">Spedizioni4</string>
-    <string name="title_activity_spedizioni5">Spedizioni5</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_porcoddio" translatable="false">porcoddio</string>
+    <string name="title_activity_map" translatable="false">MapActivity</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+    <string name="title_activity_spedizioni2" translatable="false">Spedizioni2</string>
+    <string name="title_activity_spedizioni3" translatable="false">Spedizioni3</string>
+    <string name="title_activity_password" translatable="false">Password</string>
+    <string name="title_activity_password2" translatable="false">Password2</string>
+    <string name="title_activity_spedizioni4" translatable="false">Spedizioni4</string>
+    <string name="title_activity_spedizioni5" translatable="false">Spedizioni5</string>
+    <string name="SearchViewButtoHint">Cerca un prodotto</string>
+    <string name="infoAssistenza">Assistenza</string>
+    <string name="infoCondividi">Condividi</string>
+    <string name="infoSeguici">Seguici anche sui Social!</string>
+    <string name="versione_app_alpha_1_0">Versione app: Alpha 1.0</string>
+    <string name="email">Email</string>
+    <string name="password_dimenticata">Password dimenticata?</string>
+    <string name="accedi">Accedi</string>
+    <string name="registrati_ora">Registrati ora!</string>
+    <string name="recupera_la_tua_password">Recupera la tua password</string>
+    <string name="annulla">ANNULLA</string>
+    <string name="invia">INVIA</string>
+    <string name="visualizza_la_mappa_di_tutti_i_centri_di_raccolta_rifiuti_a_genova">Visualizza la mappa di tutti i centri di raccolta rifiuti a Genova:</string>
+    <string name="o_cerca_il_centro_di_raccolta_in_base_al_prodotto_che_hai_da_smaltire">O cerca il centro di raccolta in base al prodotto che hai da smaltire:</string>
+    <string name="rifiuti_ingombranti">RIFIUTI INGOMBRANTI</string>
+    <string name="pile_e_batterie_esauste">PILE e BATTERIE ESAUSTE</string>
+    <string name="olio_esausto_e_filtri_olio">OLIO ESAUSTO e FILTRI OLIO</string>
+    <string name="farmaci_scaduti_e_contenitori">FARMACI SCADUTI e CONTENITORI</string>
+    <string name="vernici_solventi_e_insetticidi">VERNICI, SOLVENTI e INSETTICIDI</string>
+    <string name="registrazione">REGISTRAZIONE</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="ripeti_password">Ripeti password</string>
+    <string name="conferma">Conferma</string>
+    <string name="hai_gi_un_account">Hai già un account?</string>
+    <string name="accedi_subito">Accedi subito!</string>
+    <string name="partecipa_ad_una_delle_seguenti_spedizioni_di_volontariato">Partecipa ad una delle seguenti spedizioni di volontariato:</string>
+    <string name="le_mie_spedizioni">LE MIE SPEDIZIONI</string>
+    <string name="le_spedizioni_create_da_te">Le spedizioni create da te:</string>
+    <string name="aggiungi_una_nuova_spedizione">Aggiungi una nuova spedizione</string>
+    <string name="le_spedizioni_a_cui_parteciperai">Le spedizioni a cui parteciperai:</string>
+    <string name="crea_una_spedizione">CREA UNA SPEDIZIONE</string>
+    <string name="scegli_un_luogo_sulla_mappa">Scegli un luogo sulla mappa:</string>
 </resources>
 
 
