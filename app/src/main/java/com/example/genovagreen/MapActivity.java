@@ -22,22 +22,33 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.telecom.Call;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+    private FirebaseAuth auth;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private FirebaseUser user;
 
     ArrayList<String> title = new ArrayList<>();
     ArrayList<LatLng> arrayList = new ArrayList<>();
@@ -78,9 +89,21 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setCheckedItem(R.id.content_butto);
+
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
 
         listInit();
 
@@ -242,4 +265,40 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.content_main:
+                Intent intent=new Intent(MapActivity.this,MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.content_butto:
+                Intent intent2=new Intent(MapActivity.this,Butto.class);
+                startActivity(intent2);
+                break;
+            case R.id.content_pericolosi:
+                Intent intent3=new Intent(MapActivity.this,Pericolosi.class);
+                startActivity(intent3);
+                break;
+            case R.id.content_spedizioni:
+                if(user==null) {
+                    Intent intent4=new Intent(MapActivity.this,Spedizioni.class);
+                    startActivity(intent4);
+                }else{
+                    Intent intent5=new Intent(MapActivity.this,Spedizioni2.class);
+                    startActivity(intent5);
+                }
+                break;
+            case R.id.content_impostazioni:
+                Intent intent6=new Intent(MapActivity.this,Impostazioni.class);
+                startActivity(intent6);
+                break;
+            case R.id.content_informazioni:
+                Intent intent7=new Intent(MapActivity.this,Informazioni.class);
+                startActivity(intent7);
+        }
+
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.genovagreen;
 
+
 public class Oggetto {
     public String rifiuto;
     public String cassonetto;

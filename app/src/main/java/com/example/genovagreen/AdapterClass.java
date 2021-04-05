@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
     @NonNull
     @Override
     public myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder,parent);
+        View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder,parent,false);
         return new myviewholder(view);
     }
 
@@ -46,6 +47,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
 
     public class myviewholder extends RecyclerView.ViewHolder {
         TextView rifiutotext, cassonettotext;
+        ImageView cassonettoimg;
 
         public myviewholder(@NonNull View itemView) {
             super(itemView);

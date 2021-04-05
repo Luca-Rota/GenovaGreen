@@ -2,8 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/colorPrimary"
+    android:background="#55000000"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,14 +17,21 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginLeft="20dp" />
+
         <TextView
             android:id="@+id/cassonettoId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:text="esempio"
-            android:textSize="0sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgcassonetto"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
         <View
             android:layout_width="match_parent"
