@@ -51,16 +51,14 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Spedizioni.this,Login.class);
-                startActivity(intent);
+                startActivity(new Intent(Spedizioni.this,Login.class));
             }
         });
         registrati=findViewById(R.id.registratis);
         registrati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Spedizioni.this, Registrazione.class);
-                startActivity(intent);
+                startActivity(new Intent(Spedizioni.this, Registrazione.class));
             }
         });
     }
@@ -69,33 +67,26 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.content_main:
-                Intent intent=new Intent(Spedizioni.this,MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(Spedizioni.this, MainActivity.class));
                 break;
             case R.id.content_butto:
-                Intent intent2=new Intent(Spedizioni.this,Butto.class);
-                startActivity(intent2);
+                startActivity(new Intent(Spedizioni.this, Butto.class));
                 break;
             case R.id.content_pericolosi:
-                Intent intent3=new Intent(Spedizioni.this,Pericolosi.class);
-                startActivity(intent3);
+                startActivity(new Intent(Spedizioni.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
                 if(user==null) {
-                    Intent intent4=new Intent(Spedizioni.this,Spedizioni.class);
-                    startActivity(intent4);
+                    startActivity(new Intent(Spedizioni.this, Spedizioni.class));
                 }else{
-                    Intent intent5=new Intent(Spedizioni.this,Spedizioni2.class);
-                    startActivity(intent5);
+                    startActivity(new Intent(Spedizioni.this, Spedizioni2.class));
                 }
                 break;
             case R.id.content_impostazioni:
-                Intent intent6=new Intent(Spedizioni.this,Impostazioni.class);
-                startActivity(intent6);
+                startActivity(new Intent(Spedizioni.this, Impostazioni.class));
                 break;
             case R.id.content_informazioni:
-                Intent intent7=new Intent(Spedizioni.this,Informazioni.class);
-                startActivity(intent7);
+                startActivity(new Intent(Spedizioni.this, Informazioni.class));
         }
 
         drawer.closeDrawer(GravityCompat.START);

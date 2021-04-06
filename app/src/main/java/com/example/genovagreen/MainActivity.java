@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ConstraintLayout DoveLoButto, Pericolosi, Spedizioni;
     private FirebaseUser user;
-    private LinearLayout content;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,24 +80,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DoveLoButto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, Butto.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, Butto.class));
             }
         });
         Pericolosi=findViewById(R.id.PeriocolosiMain);
         Pericolosi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, Pericolosi.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, Pericolosi.class));
             }
         });
         Spedizioni=findViewById(R.id.SpedizioniMain);
         Spedizioni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, Spedizioni.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, Spedizioni.class));
             }
         });
 
@@ -109,35 +104,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.content_main:
-                Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
                 break;
             case R.id.content_butto:
-                Intent intent2=new Intent(MainActivity.this,Butto.class);
-                startActivity(intent2);
+                startActivity(new Intent(MainActivity.this, Butto.class));
                 break;
             case R.id.content_pericolosi:
-                Intent intent3=new Intent(MainActivity.this,Pericolosi.class);
-                startActivity(intent3);
+                startActivity(new Intent(MainActivity.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
                 if(user==null) {
-                    Intent intent4=new Intent(MainActivity.this,Spedizioni.class);
-                    startActivity(intent4);
+                    startActivity(new Intent(MainActivity.this, Spedizioni.class));
                 }else{
-                    Intent intent5=new Intent(MainActivity.this,Spedizioni2.class);
-                    startActivity(intent5);
+                    startActivity(new Intent(MainActivity.this, Spedizioni2.class));
                 }
                 break;
             case R.id.content_impostazioni:
-                Intent intent6=new Intent(MainActivity.this,Impostazioni.class);
-                startActivity(intent6);
+                startActivity(new Intent(MainActivity.this, Impostazioni.class));
                 break;
             case R.id.content_informazioni:
-                Intent intent7=new Intent(MainActivity.this,Informazioni.class);
-                startActivity(intent7);
+                startActivity(new Intent(MainActivity.this, Informazioni.class));
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

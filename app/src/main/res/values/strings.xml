@@ -8,7 +8,7 @@
     <string name="scopri">SCOPRI</string>
     <string name="rifiuti_pericolosi">Rifiuti Pericolosi</string>
     <string name="spedizioni">Spedizioni</string>
-    <string name="versione">Versione Alpha 1.0</string>
+    <string name="versione">Versione Beta 1.0</string>
     <string name="home" translatable="false">Home</string>
     <string name="impostazioni">Impostazioni</string>
     <string name="contatti">Contatti</string>
@@ -68,8 +68,8 @@
     <string name="infoAssistenza">Assistenza</string>
     <string name="infoCondividi">Condividi</string>
     <string name="infoSeguici">Seguici anche sui Social!</string>
-    <string name="versione_app_alpha_1_0">Versione app: Alpha 1.0</string>
-    <string name="email">Email</string>
+    <string name="versione_app_alpha_1_0">Versione app: Beta 1.0</string>
+    <string name="email" translatable="false">Email</string>
     <string name="password_dimenticata">Password dimenticata?</string>
     <string name="accedi">Accedi</string>
     <string name="registrati_ora">Registrati ora!</string>

@@ -50,8 +50,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(Spedizioni2.this, Spedizioni3.class);
-                startActivity(in);
+                startActivity(new Intent(Spedizioni2.this, Spedizioni3.class));
             }
         });
 
@@ -62,33 +61,26 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.content_main:
-                Intent intent=new Intent(Spedizioni2.this,MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(Spedizioni2.this, MainActivity.class));
                 break;
             case R.id.content_butto:
-                Intent intent2=new Intent(Spedizioni2.this,Butto.class);
-                startActivity(intent2);
+                startActivity(new Intent(Spedizioni2.this, Butto.class));
                 break;
             case R.id.content_pericolosi:
-                Intent intent3=new Intent(Spedizioni2.this,Pericolosi.class);
-                startActivity(intent3);
+                startActivity(new Intent(Spedizioni2.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
                 if(user==null) {
-                    Intent intent4=new Intent(Spedizioni2.this,Spedizioni.class);
-                    startActivity(intent4);
+                    startActivity(new Intent(Spedizioni2.this, Spedizioni.class));
                 }else{
-                    Intent intent5=new Intent(Spedizioni2.this,Spedizioni2.class);
-                    startActivity(intent5);
+                    startActivity(new Intent(Spedizioni2.this, Spedizioni2.class));
                 }
                 break;
             case R.id.content_impostazioni:
-                Intent intent6=new Intent(Spedizioni2.this,Impostazioni.class);
-                startActivity(intent6);
+                startActivity(new Intent(Spedizioni2.this, Impostazioni.class));
                 break;
             case R.id.content_informazioni:
-                Intent intent7=new Intent(Spedizioni2.this,Informazioni.class);
-                startActivity(intent7);
+                startActivity(new Intent(Spedizioni2.this, Informazioni.class));
         }
 
         drawer.closeDrawer(GravityCompat.START);

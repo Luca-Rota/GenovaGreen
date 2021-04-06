@@ -64,8 +64,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Registrazione.this,Login.class);
-                startActivity(intent);
+                startActivity(new Intent(Registrazione.this,Login.class));
             }
         });
         button=findViewById(R.id.button);
@@ -85,8 +84,8 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
                                         auth.signOut();
-                                        Intent intent=new Intent(Registrazione.this,Login.class);
-                                        startActivity(intent);
+                                        Toast.makeText(Registrazione.this, "Registrazione avvenuta con successo",Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(Registrazione.this,Login.class));
                                     }else{
                                         Toast.makeText(Registrazione.this, "Qualcosa è andato storto con la registrazione",Toast.LENGTH_SHORT).show();
                                     }
@@ -121,33 +120,26 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.content_main:
-                Intent intent=new Intent(Registrazione.this,MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(Registrazione.this, MainActivity.class));
                 break;
             case R.id.content_butto:
-                Intent intent2=new Intent(Registrazione.this,Butto.class);
-                startActivity(intent2);
+                startActivity(new Intent(Registrazione.this, Butto.class));
                 break;
             case R.id.content_pericolosi:
-                Intent intent3=new Intent(Registrazione.this,Pericolosi.class);
-                startActivity(intent3);
+                startActivity(new Intent(Registrazione.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
                 if(user==null) {
-                    Intent intent4=new Intent(Registrazione.this,Spedizioni.class);
-                    startActivity(intent4);
+                    startActivity(new Intent(Registrazione.this, Spedizioni.class));
                 }else{
-                    Intent intent5=new Intent(Registrazione.this,Spedizioni2.class);
-                    startActivity(intent5);
+                    startActivity(new Intent(Registrazione.this, Spedizioni2.class));
                 }
                 break;
             case R.id.content_impostazioni:
-                Intent intent6=new Intent(Registrazione.this,Impostazioni.class);
-                startActivity(intent6);
+                startActivity(new Intent(Registrazione.this, Impostazioni.class));
                 break;
             case R.id.content_informazioni:
-                Intent intent7=new Intent(Registrazione.this,Informazioni.class);
-                startActivity(intent7);
+                startActivity(new Intent(Registrazione.this, Informazioni.class));
         }
 
         drawer.closeDrawer(GravityCompat.START);

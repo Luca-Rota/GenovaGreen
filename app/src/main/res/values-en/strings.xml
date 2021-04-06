@@ -8,7 +8,7 @@
     <string name="scopri">DISCOVER</string>
     <string name="rifiuti_pericolosi">Dangerous waste</string>
     <string name="spedizioni">Expeditions</string>
-    <string name="versione">Alpha Version 1.0</string>
+    <string name="versione">Beta Version 1.0</string>
     <string name="impostazioni">Settings</string>
     <string name="contatti">Contacts</string>
     <string name="lingua">Language</string>
@@ -23,10 +23,10 @@
     <string name="RUP_but">FIND THE NEAREST COLLECTION CENTRE</string>
     <string name="log">Don’t you have an account yet?</string>
     <string name="SearchViewButtoHint">looking for a product</string>
-    <string name="infoAssistenza">support</string>
+    <string name="infoAssistenza">Support</string>
     <string name="infoCondividi">Share</string>
     <string name="infoSeguici">Follow us on Social Media!</string>
-    <string name="versione_app_alpha_1_0">App version: Alpha 1.0</string>
+    <string name="versione_app_alpha_1_0">App version: Beta 1.0</string>
     <string name="password_dimenticata">Forgot password?</string>
     <string name="accedi">Log in</string>
     <string name="registrati_ora">Register now!</string>

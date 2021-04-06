@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -56,9 +57,16 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                auth.signOut();
-                navigationView.setCheckedItem(R.id.content_impostazioni);
-                recreate();
+                AlertDialog mBuilder= new AlertDialog.Builder(Impostazioni.this)
+                        .setMessage("Sei sicuro di voler uscire dall'account?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                auth.signOut();
+                                Toast.makeText(Impostazioni.this, "Logout avvenuto con successo",Toast.LENGTH_SHORT).show();
+                                recreate();
+                            }})
+                        .setNegativeButton(android.R.string.no, null).show();
             }
         });
         notifiche=findViewById(R.id.notificheImpostazioni);
@@ -74,13 +82,11 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
                     public void onClick(DialogInterface dialog, int i) {
                         if(i==0){
                             setLocale("values");
-                            Intent intent=new Intent(Impostazioni.this,Impostazioni.class);
-                            startActivity(intent);
+                            startActivity(new Intent(Impostazioni.this, Impostazioni.class));
                         }
                         if(i==1){
                             setLocale("en");
-                            Intent intent2=new Intent(Impostazioni.this,Impostazioni.class);
-                            startActivity(intent2);
+                            startActivity(new Intent(Impostazioni.this, Impostazioni.class));
                         }
                         dialog.dismiss();
                     }
@@ -108,42 +114,30 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.content_main:
-                Intent intent=new Intent(Impostazioni.this,MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(Impostazioni.this, MainActivity.class));
                 break;
             case R.id.content_butto:
-                Intent intent2=new Intent(Impostazioni.this,Butto.class);
-                startActivity(intent2);
+                startActivity(new Intent(Impostazioni.this, Butto.class));
                 break;
             case R.id.content_pericolosi:
-                Intent intent3=new Intent(Impostazioni.this,Pericolosi.class);
-                startActivity(intent3);
+                startActivity(new Intent(Impostazioni.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
                 if(user==null) {
-                    Intent intent4=new Intent(Impostazioni.this,Spedizioni.class);
-                    startActivity(intent4);
+                    startActivity(new Intent(Impostazioni.this, Spedizioni.class));
                 }else{
-                    Intent intent5=new Intent(Impostazioni.this,Spedizioni2.class);
-                    startActivity(intent5);
+                    startActivity(new Intent(Impostazioni.this, Spedizioni2.class));
                 }
                 break;
             case R.id.content_impostazioni:
-                Intent intent6=new Intent(Impostazioni.this,Impostazioni.class);
-                startActivity(intent6);
+                startActivity(new Intent(Impostazioni.this, Impostazioni.class));
                 break;
             case R.id.content_informazioni:
-                Intent intent7=new Intent(Impostazioni.this,Informazioni.class);
-                startActivity(intent7);
+                startActivity(new Intent(Impostazioni.this, Informazioni.class));
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void loadLocale(){
-        SharedPreferences prefs=getSharedPreferences("Settings", Context.MODE_PRIVATE);
-        String language=prefs.getString("My_Lang","");
-        setLocale(language);
-    }
 }

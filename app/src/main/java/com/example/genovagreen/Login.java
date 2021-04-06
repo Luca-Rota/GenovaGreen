@@ -59,16 +59,14 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
         cambiopass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Login.this, Password.class);
-                startActivity(intent);
+                startActivity(new Intent(Login.this, Password.class));
             }
         });
         registrati=findViewById(R.id.registratil);
         registrati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Login.this, Registrazione.class);
-                startActivity(intent);
+                startActivity(new Intent(Login.this, Registrazione.class));
             }
         });
 
@@ -87,8 +85,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(Login.this, "Login eseguito con successo",Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(Login.this,Spedizioni2.class);
-                                startActivity(intent);
+                                startActivity(new Intent(Login.this, Spedizioni2.class));
                             }else{
                                 Toast.makeText(Login.this, "Qualcosa è andato storto con il login",Toast.LENGTH_SHORT).show();
                             }
@@ -117,33 +114,26 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.content_main:
-                Intent intent=new Intent(Login.this,MainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(Login.this, MainActivity.class));
                 break;
             case R.id.content_butto:
-                Intent intent2=new Intent(Login.this,Butto.class);
-                startActivity(intent2);
+                startActivity(new Intent(Login.this, Butto.class));
                 break;
             case R.id.content_pericolosi:
-                Intent intent3=new Intent(Login.this,Pericolosi.class);
-                startActivity(intent3);
+                startActivity(new Intent(Login.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
                 if(user==null) {
-                    Intent intent4=new Intent(Login.this,Spedizioni.class);
-                    startActivity(intent4);
+                    startActivity(new Intent(Login.this, Spedizioni.class));
                 }else{
-                    Intent intent5=new Intent(Login.this,Spedizioni2.class);
-                    startActivity(intent5);
+                    startActivity(new Intent(Login.this, Spedizioni2.class));
                 }
                 break;
             case R.id.content_impostazioni:
-                Intent intent6=new Intent(Login.this,Impostazioni.class);
-                startActivity(intent6);
+                startActivity(new Intent(Login.this, Impostazioni.class));
                 break;
             case R.id.content_informazioni:
-                Intent intent7=new Intent(Login.this,Informazioni.class);
-                startActivity(intent7);
+                startActivity(new Intent(Login.this, Informazioni.class));
         }
 
         drawer.closeDrawer(GravityCompat.START);
