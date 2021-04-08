@@ -34,7 +34,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private Button dateButton, timeButton;
+    private TextView dateButton, timeButton;
     private TextView dateText, timeText;
 
     @Override
@@ -56,8 +56,8 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
 
-        dateButton = findViewById(R.id.button2);
-        timeButton = findViewById(R.id.button3);
+        dateButton = findViewById(R.id.data);
+        timeButton = findViewById(R.id.time);
 
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
