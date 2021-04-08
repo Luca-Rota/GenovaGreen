@@ -51,7 +51,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         button.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   startActivity(new Intent(Spedizioni3.this, Spedizioni4.class));
+                   startActivity(new Intent(Spedizioni3.this, Spedizioni5.class));
                }
         });
     }
