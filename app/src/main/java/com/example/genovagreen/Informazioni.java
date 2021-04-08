@@ -101,10 +101,10 @@ public class Informazioni extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(Informazioni.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(Informazioni.this, Spedizioni.class));
-                }else{
+                if(user!=null && user.isEmailVerified()) {
                     startActivity(new Intent(Informazioni.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(Informazioni.this, Spedizioni.class));
                 }
                 break;
             case R.id.content_impostazioni:

@@ -84,8 +84,12 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(Login.this, "Login eseguito con successo",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Login.this, Spedizioni2.class));
+                                if(auth.getCurrentUser().isEmailVerified()){
+                                    Toast.makeText(Login.this, "Login eseguito con successo",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Login.this, Spedizioni2.class));
+                                }else{
+                                    Toast.makeText(Login.this, "Verifica il tuo indirizzo email",Toast.LENGTH_SHORT).show();
+                                }
                             }else{
                                 Toast.makeText(Login.this, "Qualcosa è andato storto con il login",Toast.LENGTH_SHORT).show();
                             }
@@ -123,10 +127,10 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                 startActivity(new Intent(Login.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(Login.this, Spedizioni.class));
-                }else{
+                if(user!=null && user.isEmailVerified()) {
                     startActivity(new Intent(Login.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(Login.this, Spedizioni.class));
                 }
                 break;
             case R.id.content_impostazioni:

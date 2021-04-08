@@ -278,10 +278,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 startActivity(new Intent(MapActivity.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(MapActivity.this, Spedizioni.class));
-                }else{
+                if(user!=null && user.isEmailVerified()) {
                     startActivity(new Intent(MapActivity.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(MapActivity.this, Spedizioni.class));
                 }
                 break;
             case R.id.content_impostazioni:

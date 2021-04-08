@@ -83,9 +83,18 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                        auth.signOut();
-                                        Toast.makeText(Registrazione.this, "Registrazione avvenuta con successo",Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Registrazione.this,Login.class));
+                                        auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    auth.signOut();
+                                                    Toast.makeText(Registrazione.this, "Registrazione avvenuta. Controlla la tua email per la verificare.",Toast.LENGTH_LONG).show();
+                                                    startActivity(new Intent(Registrazione.this,Login.class));
+                                                }else{
+                                                    Toast.makeText(Registrazione.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
                                     }else{
                                         Toast.makeText(Registrazione.this, "Qualcosa è andato storto con la registrazione",Toast.LENGTH_SHORT).show();
                                     }
@@ -129,10 +138,10 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(Registrazione.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(Registrazione.this, Spedizioni.class));
-                }else{
+                if(user!=null && user.isEmailVerified()) {
                     startActivity(new Intent(Registrazione.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(Registrazione.this, Spedizioni.class));
                 }
                 break;
             case R.id.content_impostazioni:

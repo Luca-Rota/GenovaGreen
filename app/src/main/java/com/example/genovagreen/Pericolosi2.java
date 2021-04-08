@@ -152,10 +152,10 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
                 startActivity(new Intent(Pericolosi2.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(Pericolosi2.this, Spedizioni.class));
-                }else{
+                if(user!=null && user.isEmailVerified()) {
                     startActivity(new Intent(Pericolosi2.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(Pericolosi2.this, Spedizioni.class));
                 }
                 break;
             case R.id.content_impostazioni:

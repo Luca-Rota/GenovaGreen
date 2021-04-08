@@ -94,7 +94,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Spedizioni.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Spedizioni.class));
+                if(user!=null && user.isEmailVerified()) {
+                    startActivity(new Intent(MainActivity.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(MainActivity.this, Spedizioni.class));
+                }
             }
         });
 
@@ -113,10 +117,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(MainActivity.this, Spedizioni.class));
-                }else{
+                if(user!=null && user.isEmailVerified()) {
                     startActivity(new Intent(MainActivity.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(MainActivity.this, Spedizioni.class));
                 }
                 break;
             case R.id.content_impostazioni:

@@ -102,10 +102,10 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(new Intent(Password.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(Password.this, Spedizioni.class));
-                }else{
+                if(user!=null && user.isEmailVerified()) {
                     startActivity(new Intent(Password.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(Password.this, Spedizioni.class));
                 }
                 break;
             case R.id.content_impostazioni:
