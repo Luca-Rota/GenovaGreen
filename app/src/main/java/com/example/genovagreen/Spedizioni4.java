@@ -1,6 +1,7 @@
 package com.example.genovagreen;
 
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,18 +25,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
 public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView dateButton, timeButton;
-    private TextView dateText, timeText;
+    private TextView timeButton;
+    private int tHour, tMinute;
+    private TextView dateButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +61,14 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         user=auth.getCurrentUser();
 
         dateButton = findViewById(R.id.data);
-        timeButton = findViewById(R.id.time);
-
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 handleDateButton();
             }
         });
+
+        timeButton = findViewById(R.id.time);
         timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,57 +76,47 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         });
 
+        Button annulla =findViewById(R.id.annulla);
+        annulla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+            }
+        });
 
     }
 
-    private void handleDateButton() {
+    private void handleDateButton(){
         Calendar calendar = Calendar.getInstance();
-        final int YEAR = calendar.get(Calendar.YEAR);
-        int MONTH = calendar.get(Calendar.MONTH);
-        int DATE = calendar.get(Calendar.DATE);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(Spedizioni4.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                Calendar calendar1 = Calendar.getInstance();
-                calendar1.set(Calendar.YEAR, year);
-                calendar1.set(Calendar.MONTH, month);
-                calendar1.set(Calendar.DATE, dayOfMonth);
-
-                CharSequence charSequence = DateFormat.format("FFFF, dd MMM yyyy", calendar1);
-                dateText.setText(charSequence);
+                month = month+1;
+                String date = dayOfMonth+"/"+month+"/"+year;
+                dateButton.setText(date);
             }
-        }, YEAR, MONTH, DATE);
-
+        }, year, month, day);
         datePickerDialog.show();
     }
 
-
     private void handleTimeButton() {
-        Calendar calendar = Calendar.getInstance();
-        int HOUR = calendar.get(Calendar.HOUR);
-        int MINUTE = calendar.get(Calendar.MINUTE);
-        boolean is24HourFormat = DateFormat.is24HourFormat(this);
-
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(Spedizioni4.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String timeString = "hour " + hourOfDay + "minute " + minute;
-                timeText.setText(timeString);
-
-                Calendar calendar1 = Calendar.getInstance();
-                calendar1.set(Calendar.HOUR, hourOfDay);
-                calendar1.set(Calendar.MINUTE, minute);
-
-                CharSequence charSequence = DateFormat.format("hh:mm a", calendar1);
-                timeText.setText(charSequence);
-
+                tHour = hourOfDay;
+                tMinute = minute;
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(0, 0, 0, tHour, tMinute);
+                timeButton.setText(DateFormat.format("hh:mm aa", calendar));
             }
-        }, HOUR, MINUTE, is24HourFormat);
-
+        }, 12, 0, false);
+        timePickerDialog.updateTime(tHour,tMinute);
         timePickerDialog.show();
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -153,4 +147,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
