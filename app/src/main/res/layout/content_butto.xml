@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
@@ -18,7 +18,7 @@
         android:fontFamily="monospace"
         android:gravity="center"
         android:padding="20dp"
-        android:text="@string/e_questo"
+        android:text="Dove lo butto?"
         android:textColor="@color/colorPrimary"
         android:textSize="25sp"
         android:textStyle="bold|italic"
