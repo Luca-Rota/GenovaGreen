@@ -46,7 +46,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myviewholder holder, int position) {
+    public void onBindViewHolder(@NonNull myviewholder holder, final int position) {
         holder.rifiutotext.setText(list.get(position).getRifiuto());
         holder.cassonettotext.setText(list.get(position).getCassonetto());
         holder.card.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +64,32 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         return true;
                     }
                 });
+                TextView rifiutopop=popupView.findViewById(R.id.rifiutopop);
+                TextView cassonettopop=popupView.findViewById(R.id.cassonettopop);
+                String cassonetto=list.get(position).getCassonetto().trim();
+                rifiutopop.setText(list.get(position).getRifiuto());
+                cassonettopop.setText(list.get(position).getCassonetto());
+                ImageView imgpop=popupView.findViewById(R.id.imgpop);
+                switch(cassonetto) {
+                    case "indifferenziata":
+                        imgpop.setImageResource(R.drawable.mixed);
+                        break;
+                    case "carta":
+                        imgpop.setImageResource(R.drawable.carta1);
+                        break;
+                    case "plastica":
+                        imgpop.setImageResource(R.drawable.plastica_met);
+                        break;
+                    case "vetro":
+                        imgpop.setImageResource(R.drawable.vetro1);
+                        break;
+                    case "umido":
+                        imgpop.setImageResource(R.drawable.umido1);
+                        break;
+                    default:
+                        imgpop.setImageResource(R.drawable.r_trash);
+                        break;
+                }
             }
         });
 
@@ -76,7 +102,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
 
     public class myviewholder extends RecyclerView.ViewHolder {
         TextView rifiutotext, cassonettotext;
-        ImageView cassonettoimg;
         CardView card;
 
         public myviewholder(@NonNull View itemView) {

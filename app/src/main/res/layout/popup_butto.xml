@@ -9,7 +9,7 @@
     android:id="@+id/popup_butto">
 
     <TextView
-        android:id="@+id/rifiutoholder"
+        android:id="@+id/rifiutopop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cassonettoholder"
+        android:id="@+id/cassonettopop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rifiutoholder" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgpop"
         android:layout_width="155dp"
         android:layout_height="267dp"
         android:background="#00000000"
