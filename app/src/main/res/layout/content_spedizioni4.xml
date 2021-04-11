@@ -16,7 +16,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:fontFamily="monospace"
-
         android:text="@string/scegli_un_luogo_sulla_mappa"
         android:textColor="#000"
         android:textSize="16sp"
@@ -108,7 +107,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/data"
+                android:id="@+id/data1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -143,14 +142,13 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/data"
+            android:layout_width="120dp"
             android:layout_height="50dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:hint="data"
             android:textColorHint="#726a6a"
-            android:text=""
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:hint="data"
             android:textColor="#000"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -192,7 +190,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/time"
+                android:id="@+id/time1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -227,8 +225,8 @@
 
 
         <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:id="@+id/time"
+            android:layout_width="120dp"
             android:layout_height="50dp"
             android:fontFamily="monospace"
             android:gravity="center"
