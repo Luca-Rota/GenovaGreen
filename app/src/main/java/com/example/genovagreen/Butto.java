@@ -33,7 +33,12 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import static java.util.Collections.*;
 
 public class Butto extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
@@ -45,7 +50,6 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     private DatabaseReference ref;
     private RecyclerView recyclerView;
     private SearchView searchView;
-    private Button prova;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +68,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_butto);
 
-        ref=FirebaseDatabase.getInstance().getReference().child("Data");
+        ref=FirebaseDatabase.getInstance().getReference().child("DoveLoButto");
         recyclerView=(RecyclerView)findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         searchView=findViewById(R.id.searchView);
@@ -76,20 +80,11 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     @Override
     public void onStart() {
         super.onStart();
-        list= new ArrayList<Oggetto>();
-        for(int i=0;i<12;i++){
-            Oggetto oggetto=new Oggetto("rifiuto","cassonetto");
-            list.add(oggetto);
-        }
-        adapterClass=new AdapterClass(list);
-        recyclerView.setAdapter(adapterClass);
         if(ref!=null) {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Toast.makeText(Butto.this, "prova2", Toast.LENGTH_LONG).show();
                     if(snapshot.exists()){
-                        Toast.makeText(Butto.this, "prova3", Toast.LENGTH_LONG).show();
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             list.add(ds.getValue(Oggetto.class));
