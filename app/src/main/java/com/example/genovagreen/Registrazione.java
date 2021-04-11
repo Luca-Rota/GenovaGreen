@@ -13,6 +13,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,15 +31,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 import static java.security.AccessController.getContext;
 
 public class Registrazione extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private EditText emailAdd, password, password2;
+    private EditText emailAdd, password, password2, username;
     private Button button;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
-    private FirebaseUser user;
+    private FirebaseUser firebaseUser;
     private TextView login;
 
     @Override
@@ -54,12 +61,12 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
-
         auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
+        firebaseUser=auth.getCurrentUser();
         emailAdd=findViewById(R.id.EmailAddress);
         password=findViewById(R.id.Password);
         password2=findViewById(R.id.RepeatPassword);
+        username=findViewById(R.id.Username);
         login=findViewById(R.id.loginr);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +80,11 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email=emailAdd.getText().toString();
+                final String email=emailAdd.getText().toString();
                 String pass=password.getText().toString();
                 String pass2=password2.getText().toString();
-                if(!email.isEmpty()&&!pass.isEmpty()&&!pass2.isEmpty()){
+                final String user=username.getText().toString();
+                if(!email.isEmpty()&&!pass.isEmpty()&&!pass2.isEmpty()&&!user.isEmpty()){
                     if(pass.equals(pass2)){
                         if(password.length()>5){
                             auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -87,6 +95,11 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if(task.isSuccessful()){
+                                                    DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Usernames");
+                                                    Map<String, User> users = new HashMap<>();
+                                                    String rnd=rndString();
+                                                    users.put(rnd, new User(user, email));
+                                                    ref.setValue(users);
                                                     auth.signOut();
                                                     Toast.makeText(Registrazione.this, "Registrazione avvenuta. Controlla la tua email per la verificare.",Toast.LENGTH_LONG).show();
                                                     startActivity(new Intent(Registrazione.this,Login.class));
@@ -138,7 +151,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(Registrazione.this, Pericolosi.class));
                 break;
             case R.id.content_spedizioni:
-                if(user!=null && user.isEmailVerified()) {
+                if(firebaseUser!=null && firebaseUser.isEmailVerified()) {
                     startActivity(new Intent(Registrazione.this, Spedizioni2.class));
                 }else{
                     startActivity(new Intent(Registrazione.this, Spedizioni.class));
@@ -153,6 +166,17 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public String rndString(){
+        char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
+        StringBuilder sb1 = new StringBuilder();
+        Random random1 = new Random();
+        for (int i = 0; i < 10; i++)
+        {
+            char c1 = chars1[random1.nextInt(chars1.length)];
+            sb1.append(c1);
+        }
+        return sb1.toString();
     }
 }
 
