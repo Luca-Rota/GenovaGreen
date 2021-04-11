@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="#00000000"
     android:orientation="vertical"
     android:id="@+id/card_holder">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center">
+
+
         <TextView
             android:id="@+id/rifiutoId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="esempio"
-            android:textSize="25sp"
+
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Lattine  "
+            android:textColor="#000"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginLeft="20dp" />
+             />
 
         <TextView
             android:id="@+id/cassonettoId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="esempio"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Lattine  "
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+//porcoddddiooooo
+
+
     </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#000"/>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+         />
 //ds
 </androidx.cardview.widget.CardView>

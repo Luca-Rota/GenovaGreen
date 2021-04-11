@@ -80,6 +80,9 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     @Override
     public void onStart() {
         super.onStart();
+        list=new ArrayList<>();
+        adapterClass=new AdapterClass(list);
+        recyclerView.setAdapter(adapterClass);
         if(ref!=null) {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
