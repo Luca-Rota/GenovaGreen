@@ -1,13 +1,18 @@
 package com.example.genovagreen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +49,23 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
         holder.rifiutotext.setText(list.get(position).getRifiuto());
         holder.cassonettotext.setText(list.get(position).getCassonetto());
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View popupView=inflater.inflate(R.layout.popup_butto, null);
+
+                final PopupWindow popupWindow=new PopupWindow(popupView,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                popupWindow.showAtLocation(v, Gravity.CENTER,0,0);
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+            }
+        });
 
     }
 
@@ -63,12 +85,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
             rifiutotext=itemView.findViewById(R.id.rifiutoId);
             cassonettotext=itemView.findViewById(R.id.cassonettoId);
             card=itemView.findViewById(R.id.card_holder);
-            card.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//djshjdhsjd
-                }
-            });
 
         }
     }

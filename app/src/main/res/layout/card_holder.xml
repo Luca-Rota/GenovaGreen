@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="#00000000"
+    android:focusable="true"
     android:orientation="vertical"
     android:id="@+id/card_holder">
 
@@ -19,7 +20,6 @@
             android:id="@+id/rifiutoId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:fontFamily="monospace"
             android:gravity="center"
             android:text="Lattine  "
@@ -34,13 +34,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="Lattine  "
+            android:text="Lattine"
             android:textColor="#000"
-            android:textSize="16sp"
+            android:textSize="0sp"
             android:textStyle="bold"
             />
-
-//porcoddddiooooo
 
 
     </LinearLayout>
