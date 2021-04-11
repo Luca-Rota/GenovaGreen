@@ -2,6 +2,9 @@ package com.example.genovagreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -56,14 +59,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 View popupView=inflater.inflate(R.layout.popup_butto, null);
 
                 final PopupWindow popupWindow=new PopupWindow(popupView,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setFocusable(true);
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 popupWindow.showAtLocation(v, Gravity.CENTER,0,0);
-                popupView.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        popupWindow.dismiss();
-                        return true;
-                    }
-                });
                 TextView rifiutopop=popupView.findViewById(R.id.rifiutopop);
                 TextView cassonettopop=popupView.findViewById(R.id.cassonettopop);
                 String cassonetto=list.get(position).getCassonetto().trim();
