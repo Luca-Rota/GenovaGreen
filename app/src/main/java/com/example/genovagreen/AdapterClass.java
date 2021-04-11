@@ -66,7 +66,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
             card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("prova","porcaccio il dio");
+
                 }
             });
 

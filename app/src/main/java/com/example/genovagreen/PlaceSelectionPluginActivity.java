@@ -1,5 +1,5 @@
 package com.example.genovagreen;
-
+/*
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import com.mapbox.mapboxsdk.plugins.places.autocomplete;
  * choosing a map location. Once selected, return to the previous location with a
  * CarmenFeature to extract information from for whatever use that you want.
  */
+/*
 public class PlaceSelectionPluginActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 5678;
@@ -43,6 +44,8 @@ public class PlaceSelectionPluginActivity extends AppCompatActivity {
     /**
      * Set up the PlacePickerOptions and startActivityForResult
      */
+
+/*
     private void goToPickerActivity() {
         startActivityForResult(
                 new PlacePicker.IntentBuilder()
@@ -60,6 +63,8 @@ public class PlaceSelectionPluginActivity extends AppCompatActivity {
      * @param resultCode code that is a part of the return to this activity
      * @param data the data that is a part of the return to this activity
      */
+
+/*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -86,4 +91,4 @@ public class PlaceSelectionPluginActivity extends AppCompatActivity {
             }
         }
     }
-}
+}*/
