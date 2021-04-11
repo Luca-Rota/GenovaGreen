@@ -52,6 +52,27 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
     public void onBindViewHolder(@NonNull myviewholder holder, final int position) {
         holder.rifiutotext.setText(list.get(position).getRifiuto());
         holder.cassonettotext.setText(list.get(position).getCassonetto());
+        String cassonetto=list.get(position).getCassonetto().trim();
+        switch(cassonetto) {
+            case "indifferenziata":
+                holder.imgrec.setImageResource(R.drawable.mixed);
+                break;
+            case "carta":
+                holder.imgrec.setImageResource(R.drawable.carta1);
+                break;
+            case "plastica":
+                holder.imgrec.setImageResource(R.drawable.plastica_met);
+                break;
+            case "vetro":
+                holder.imgrec.setImageResource(R.drawable.vetro1);
+                break;
+            case "umido":
+                holder.imgrec.setImageResource(R.drawable.umido1);
+                break;
+            default:
+                holder.imgrec.setImageResource(R.drawable.r_trash);
+                break;
+        }
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +122,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
 
     public class myviewholder extends RecyclerView.ViewHolder {
         TextView rifiutotext, cassonettotext;
+        ImageView imgrec;
         CardView card;
 
         public myviewholder(@NonNull View itemView) {
@@ -108,6 +130,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
 
             rifiutotext=itemView.findViewById(R.id.rifiutoId);
             cassonettotext=itemView.findViewById(R.id.cassonettoId);
+            imgrec=itemView.findViewById(R.id.imgrec);
             card=itemView.findViewById(R.id.card_holder);
 
         }
