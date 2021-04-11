@@ -3,23 +3,27 @@ package com.example.genovagreen;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.Navigator;
 
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +33,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+
 import java.util.Calendar;
+
 
 public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +46,12 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private TextView timeButton;
     private int tHour, tMinute;
     private TextView dateButton;
+    private Button map;
+    private TextView mapText;
+
+    private static final int REQUEST_CODE = 5678;
+    private TextView selectedLocationTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +69,8 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
 
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
         dateButton = findViewById(R.id.data);
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +88,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         });
 
-        Button annulla =findViewById(R.id.annulla);
+        Button annulla = findViewById(R.id.annulla);
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +96,19 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         });
 
+
+
+
+
     }
+
+
+
+
+
+
+
+
 
     private void handleDateButton(){
         Calendar calendar = Calendar.getInstance();
@@ -117,7 +141,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         timePickerDialog.show();
     }
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -147,6 +170,5 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }

@@ -56,14 +56,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/position"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="monospace"
             android:hint="Scegliere la posizione"
             android:textColorHint="#726a6a"
-
             android:text=""
             android:textColor="#000"
             android:textSize="16sp"
@@ -356,7 +355,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/newpass"
+            android:id="@+id/agg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"

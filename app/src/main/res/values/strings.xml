@@ -45,7 +45,10 @@
         <br> PI&#217; VICINO A TE </br></string>
     <string name="rec_pass">Inserisci qui la tua email e ti invieremo il link per cambiare la password del tuo account</string>
     <string name="log">Non hai ancora un account?</string>
+
+
     <string name="google_maps_API_key" translatable="false">AIzaSyA8doEtufu_Z52wT-IacLHvjJOOYrfTFrU</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiZ2Vub3ZhZ3JlZW4iLCJhIjoiY2tuY3kyNWoyMXEyMTJubXF3ZnV6OWRwZiJ9.RDHfP9Qt-y5YKf7QvtzAYA</string>
     <string name="title_activity_pericolosi2" translatable="false">Pericolosi2</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" translatable="false">First Fragment</string>
@@ -96,6 +99,7 @@
     <string name="le_spedizioni_a_cui_parteciperai">Le spedizioni a cui parteciperai:</string>
     <string name="crea_una_spedizione">CREA UNA SPEDIZIONE</string>
     <string name="scegli_un_luogo_sulla_mappa">Scegli un luogo sulla mappa:</string>
+    <string name="title_activity_place_selection_plugin">PlaceSelectionPluginActivity</string>
 </resources>
 
 
