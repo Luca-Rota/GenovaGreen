@@ -49,7 +49,7 @@
                 android:id="@+id/imageView5"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/ic_butto"
+                android:src="@drawable/ic_trash"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -129,9 +129,9 @@
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_pericolosi"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_nuclear_trash"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
