@@ -71,7 +71,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(Registrazione.this,Login.class));
             }
         });
-        button=findViewById(R.id.button);
+        button=findViewById(R.id.buttonMap);
 
 
         button.setOnClickListener(new View.OnClickListener() {

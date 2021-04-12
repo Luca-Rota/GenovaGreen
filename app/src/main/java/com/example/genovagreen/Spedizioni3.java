@@ -107,7 +107,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                             }
                                         }
                                         if(list1.isEmpty()){
-
+                                            recyclerView1.setVisibility(View.INVISIBLE);
                                         }else {
                                             adapterSpedizioni1 = new AdapterSpedizioni(list1);
                                             recyclerView1.setAdapter(adapterSpedizioni1);
@@ -154,7 +154,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                             }
                                         }
                                         if(list2.isEmpty()){
-
+                                             recyclerView2.setVisibility(View.INVISIBLE);
                                         }else {
                                             adapterSpedizioni2 = new AdapterSpedizioni(list2);
                                             recyclerView2.setAdapter(adapterSpedizioni2);

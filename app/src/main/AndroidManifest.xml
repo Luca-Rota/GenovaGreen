@@ -14,10 +14,12 @@
         android:roundIcon="@mipmap/logo2_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GenovaGreen">
-        <activity
-            android:name=".PlaceSelectionPluginActivity"
-            android:label="@string/title_activity_place_selection_plugin"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBeJo3DcQiUZZzjWffP4DX3h4FB5T8T4ks"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
         <activity
             android:name=".Butto"
             android:label="GenovaGreen"
@@ -41,7 +43,11 @@
         <activity
             android:name=".Spedizioni4"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar">
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyBeJo3DcQiUZZzjWffP4DX3h4FB5T8T4ks"/>
+        </activity>
         <activity
             android:name=".Password"
             android:label="GenovaGreen"
@@ -54,10 +60,6 @@
             android:name=".Spedizioni2"
             android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MapActivity"
