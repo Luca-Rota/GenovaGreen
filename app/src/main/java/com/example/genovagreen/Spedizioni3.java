@@ -8,6 +8,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,17 +20,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
+    private AdapterSpedizioni adapterSpedizioni1,adapterSpedizioni2;
+    private ArrayList<Spedizione> list1,list2;
+    private ArrayList<MySped> listemail1,listemail2;
+    private DatabaseReference ref1,ref2,ref3;
+    private RecyclerView recyclerView1,recyclerView2;
+    private String key;
     private TextView button;
 
     @Override
@@ -44,6 +59,14 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
 
+        ref1= FirebaseDatabase.getInstance().getReference().child("SpedCreate");
+        recyclerView1=(RecyclerView)findViewById(R.id.rvMySped3);
+        recyclerView1.setHasFixedSize(true);
+        ref2= FirebaseDatabase.getInstance().getReference().child("SpedPart");
+        ref3=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+        recyclerView2=(RecyclerView)findViewById(R.id.rvSped3);
+        recyclerView2.setHasFixedSize(true);
+
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
 
@@ -54,6 +77,105 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                    startActivity(new Intent(Spedizioni3.this, Spedizioni4.class));
                }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        final String email=user.getEmail();
+        if(ref1!=null) {
+            ref1.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        listemail1= new ArrayList<>();
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            if(email.equals(ds.getValue(MySped.class).getEmail()))
+                            listemail1.add(ds.getValue(MySped.class));
+                        }
+                        if(ref3!=null)
+                            ref3.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        list1=new ArrayList<>();
+                                        for(DataSnapshot ds : snapshot.getChildren()){
+                                            for(int i=0;i<listemail1.size();i++){
+                                                if(listemail1.get(i).getId().equals(ds.getKey())){
+                                                    list1.add(ds.getValue(Spedizione.class));
+                                                }
+                                            }
+                                        }
+                                        if(list1.isEmpty()){
+
+                                        }else {
+                                            adapterSpedizioni1 = new AdapterSpedizioni(list1);
+                                            recyclerView1.setAdapter(adapterSpedizioni1);
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Spedizioni3.this, "errore db", Toast.LENGTH_LONG).show();
+
+                }
+            });
+        }
+        if(ref2!=null) {
+            ref2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        listemail2= new ArrayList<>();
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            if(email.equals(ds.getValue(MySped.class).getEmail()))
+                                listemail2.add(ds.getValue(MySped.class));
+                        }
+                        if(ref3!=null)
+                            ref3.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        list2=new ArrayList<>();
+                                        for(DataSnapshot ds : snapshot.getChildren()){
+                                            for(int i=0;i<listemail2.size();i++){
+                                                if(listemail2.get(i).getId().equals(ds.getKey())){
+                                                    list2.add(ds.getValue(Spedizione.class));
+                                                }
+                                            }
+                                        }
+                                        if(list2.isEmpty()){
+
+                                        }else {
+                                            adapterSpedizioni2 = new AdapterSpedizioni(list2);
+                                            recyclerView2.setAdapter(adapterSpedizioni2);
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Spedizioni3.this, "errore db", Toast.LENGTH_LONG).show();
+
+                }
+            });
+        }
     }
 
     @Override

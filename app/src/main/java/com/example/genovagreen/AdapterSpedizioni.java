@@ -68,8 +68,8 @@ public class AdapterSpedizioni extends RecyclerView.Adapter<AdapterSpedizioni.my
             super(itemView);
 
             organizzatoretext=itemView.findViewById(R.id.organizzatore);
-            datatext=itemView.findViewById(R.id.TextView3);
-            oratext=itemView.findViewById(R.id.data);
+            datatext=itemView.findViewById(R.id.data);
+            oratext=itemView.findViewById(R.id.ora);
             card=itemView.findViewById(R.id.card_holder);
         }
     }
