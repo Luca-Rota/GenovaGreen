@@ -40,7 +40,6 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     private ArrayList<Spedizione> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
-    private SearchView searchView;
     private String key;
 
     @Override

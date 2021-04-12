@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
 
+
         DoveLoButto=findViewById(R.id.DoveLoButtoMain);
         DoveLoButto.setOnClickListener(new View.OnClickListener() {
             @Override

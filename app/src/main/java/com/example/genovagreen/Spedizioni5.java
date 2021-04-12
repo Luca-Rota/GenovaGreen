@@ -88,7 +88,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         partecipa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart");
+                DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                 Map<String, SpedPersonali> users = new HashMap<>();
                 String rnd=rndString();
                 users.put(rnd, new SpedPersonali(id, email));
