@@ -28,7 +28,7 @@
         android:id="@+id/cassonettopop"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:text="Bidone di Plastica e Lattine "
