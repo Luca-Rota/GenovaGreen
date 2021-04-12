@@ -186,7 +186,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/data"
+            android:id="@+id/TextView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -210,7 +210,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/data"
+            app:layout_constraintStart_toEndOf="@+id/TextView3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View

@@ -1,16 +1,9 @@
 package com.example.genovagreen;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -75,8 +68,8 @@ public class AdapterSpedizioni extends RecyclerView.Adapter<AdapterSpedizioni.my
             super(itemView);
 
             organizzatoretext=itemView.findViewById(R.id.organizzatore);
-            datatext=itemView.findViewById(R.id.data);
-            oratext=itemView.findViewById(R.id.ora);
+            datatext=itemView.findViewById(R.id.TextView3);
+            oratext=itemView.findViewById(R.id.data);
             card=itemView.findViewById(R.id.card_holder);
         }
     }
