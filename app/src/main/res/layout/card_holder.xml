@@ -21,19 +21,19 @@
                 android:id="@+id/imgrec"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/umido"
                 app:layout_constraintBottom_toTopOf="@+id/view6"
+                app:layout_constraintEnd_toStartOf="@+id/rifiutoId"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/rifiutoId"
-                android:layout_width="250dp"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="monospace"
@@ -42,6 +42,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/view6"
+                app:layout_constraintEnd_toStartOf="@+id/imageView15"
                 app:layout_constraintStart_toEndOf="@+id/imgrec"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:gravity="center"
-                android:text="porco"
+                android:text=""
                 android:textColor="#000"
                 android:textSize="0sp"
                 android:textStyle="bold"
@@ -67,6 +68,7 @@
                 android:src="@drawable/ic_info66"
                 app:layout_constraintBottom_toTopOf="@+id/view6"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/rifiutoId"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
