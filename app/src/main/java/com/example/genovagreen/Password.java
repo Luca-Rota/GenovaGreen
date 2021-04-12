@@ -64,7 +64,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
         Annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Password.this,Login.class));
+                finish();
             }
         });
         NewPass.setOnClickListener(new View.OnClickListener() {

@@ -23,27 +23,33 @@
         <activity
             android:name=".Butto"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Impostazioni"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Informazioni"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Spedizioni5"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Login"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Spedizioni4"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar">
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyBeJo3DcQiUZZzjWffP4DX3h4FB5T8T4ks"/>
@@ -51,20 +57,24 @@
         <activity
             android:name=".Password"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Spedizioni3"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Spedizioni2"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".MapActivity"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -73,22 +83,27 @@
         <activity
             android:name=".Pericolosi"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Pericolosi2"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Registrazione"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Spedizioni"
             android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar">
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

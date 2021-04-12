@@ -85,7 +85,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+        ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(MainActivity.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
 
         DoveLoButto=findViewById(R.id.DoveLoButtoMain);
         DoveLoButto.setOnClickListener(new View.OnClickListener() {

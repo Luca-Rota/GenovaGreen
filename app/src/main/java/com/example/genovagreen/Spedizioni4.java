@@ -110,17 +110,17 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                finish();
             }
         });
         map = findViewById(R.id.buttonMap);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MapFragment fragment=new MapFragment();
+                MapFragment fragment = new MapFragment();
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                getSupportFragmentManager().beginTransaction().replace(R.id.wrapper1,fragment).commit();
-                SupportMapFragment mapFragment=new SupportMapFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.wrapper1, fragment).commit();
+                SupportMapFragment mapFragment = new SupportMapFragment();
                 mapFragment.getMapAsync((OnMapReadyCallback) v.getContext());
                 if (ContextCompat.checkSelfPermission(v.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED) {
@@ -130,8 +130,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 }
             }
         });
-
-
     }
 
 

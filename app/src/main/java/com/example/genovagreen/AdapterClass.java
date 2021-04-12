@@ -84,7 +84,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 popupWindow.setOutsideTouchable(true);
                 popupWindow.setFocusable(true);
                 popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+                popupWindow.setAnimationStyle(R.style.Animation);
                 popupWindow.showAtLocation(v, Gravity.CENTER,0,0);
                 TextView rifiutopop=popupView.findViewById(R.id.rifiutopop);
                 TextView cassonettopop=popupView.findViewById(R.id.cassonettopop);
