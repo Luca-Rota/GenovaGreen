@@ -48,6 +48,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private TextView dateButton;
     private Button map;
     private TextView mapText;
+    private String date, time;
 
     private static final int REQUEST_CODE = 5678;
     private TextView selectedLocationTextView;
@@ -96,21 +97,10 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         });
 
-
-
-
-
     }
 
 
-
-
-
-
-
-
-
-    private void handleDateButton(){
+    private String handleDateButton(){
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -119,19 +109,21 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month+1;
-                String date = dayOfMonth+"/"+month+"/"+year;
+                date = dayOfMonth+"/"+month+"/"+year;
                 dateButton.setText(date);
             }
         }, year, month, day);
         datePickerDialog.show();
+        return date;
     }
 
-    private void handleTimeButton() {
+    private String handleTimeButton() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(Spedizioni4.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 tHour = hourOfDay;
                 tMinute = minute;
+                time=tHour+":"+tMinute;
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(0, 0, 0, tHour, tMinute);
                 timeButton.setText(DateFormat.format("hh:mm aa", calendar));
@@ -139,6 +131,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         }, 12, 0, false);
         timePickerDialog.updateTime(tHour,tMinute);
         timePickerDialog.show();
+        return time;
     }
 
     @Override

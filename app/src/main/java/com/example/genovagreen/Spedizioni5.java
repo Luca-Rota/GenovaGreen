@@ -8,6 +8,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,12 +20,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
+    private String luogo, ora, data, organizzatore, partecipanti, descrizione, id;
+    private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5;
+    private Button annulla,partecipa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +54,48 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+        final String email=user.getEmail();
 
+        luogo = getIntent().getStringExtra("luogo");
+        ora = getIntent().getStringExtra("ora");
+        data = getIntent().getStringExtra("data");
+        organizzatore = getIntent().getStringExtra("organizzatore");
+        partecipanti = getIntent().getStringExtra("partecipanti");
+        descrizione = getIntent().getStringExtra("descrizione");
+        id=getIntent().getStringExtra("chiave");
+
+        luogo5=findViewById(R.id.luogo5);
+        luogo5.setText(luogo);
+        ora5=findViewById(R.id.ora5);
+        ora5.setText(ora);
+        data5=findViewById(R.id.data5);
+        data5.setText(data);
+        organizzatore5=findViewById(R.id.organizzatore5);
+        organizzatore5.setText(organizzatore);
+        partecipanti5=findViewById(R.id.partecipanti5);
+        partecipanti5.setText(String.valueOf(partecipanti));
+        descrizione5=findViewById(R.id.descrizione5);
+        descrizione5.setText(descrizione);
+
+        annulla=findViewById(R.id.annulla);
+        annulla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Spedizioni5.this, Spedizioni2.class));
+            }
+        });
+        partecipa=findViewById(R.id.partecipa);
+        partecipa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart");
+                Map<String, SpedPersonali> users = new HashMap<>();
+                String rnd=rndString();
+                users.put(rnd, new SpedPersonali(id, email));
+                ref.setValue(users);
+                startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+            }
+        });
 
     }
 
@@ -75,5 +127,17 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public String rndString(){
+        char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
+        StringBuilder sb1 = new StringBuilder();
+        Random random1 = new Random();
+        for (int i = 0; i < 8; i++)
+        {
+            char c1 = chars1[random1.nextInt(chars1.length)];
+            sb1.append(c1);
+        }
+        return sb1.toString();
     }
 }

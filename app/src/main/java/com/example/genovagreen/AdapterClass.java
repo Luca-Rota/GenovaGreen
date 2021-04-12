@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -83,6 +84,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 popupWindow.setOutsideTouchable(true);
                 popupWindow.setFocusable(true);
                 popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
                 popupWindow.showAtLocation(v, Gravity.CENTER,0,0);
                 TextView rifiutopop=popupView.findViewById(R.id.rifiutopop);
                 TextView cassonettopop=popupView.findViewById(R.id.cassonettopop);
@@ -132,7 +134,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
             cassonettotext=itemView.findViewById(R.id.cassonettoId);
             imgrec=itemView.findViewById(R.id.imgrec);
             card=itemView.findViewById(R.id.card_holder);
-
         }
     }
 

@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="#00000000"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/card_holder">
 
     <RelativeLayout
         android:id="@+id/RelativeLayout"
@@ -33,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/organizzatore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -52,10 +53,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/organizzatore"
             android:layout_alignParentStart="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="10dp"
@@ -70,15 +71,15 @@
             app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/ora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/organizzatore"
             android:layout_marginStart="0dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="0dp"
             android:layout_toStartOf="@+id/imageView4"
-            android:layout_toEndOf="@+id/textView3"
+            android:layout_toEndOf="@+id/data"
             android:fontFamily="monospace"
             android:gravity="center"
             android:text="21/07/98 - 10:40 "
@@ -86,8 +87,8 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintStart_toEndOf="@+id/data"
+            app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
 
         <ImageView
             android:id="@+id/imageView4"
