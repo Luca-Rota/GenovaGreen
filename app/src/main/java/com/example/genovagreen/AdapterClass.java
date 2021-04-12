@@ -59,19 +59,19 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 holder.imgrec.setImageResource(R.drawable.mixed);
                 break;
             case "carta":
-                holder.imgrec.setImageResource(R.drawable.carta1);
+                holder.imgrec.setImageResource(R.drawable.carta);
                 break;
             case "plastica":
-                holder.imgrec.setImageResource(R.drawable.plastica_met);
+                holder.imgrec.setImageResource(R.drawable.plastica);
                 break;
             case "vetro":
-                holder.imgrec.setImageResource(R.drawable.vetro1);
+                holder.imgrec.setImageResource(R.drawable.vetro);
                 break;
             case "umido":
-                holder.imgrec.setImageResource(R.drawable.umido1);
+                holder.imgrec.setImageResource(R.drawable.umido);
                 break;
             default:
-                holder.imgrec.setImageResource(R.drawable.r_trash);
+
                 break;
         }
         holder.card.setOnClickListener(new View.OnClickListener() {
@@ -97,19 +97,19 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         imgpop.setImageResource(R.drawable.mixed);
                         break;
                     case "carta":
-                        imgpop.setImageResource(R.drawable.carta1);
+                        imgpop.setImageResource(R.drawable.carta);
                         break;
                     case "plastica":
-                        imgpop.setImageResource(R.drawable.plastica_met);
+                        imgpop.setImageResource(R.drawable.plastica);
                         break;
                     case "vetro":
-                        imgpop.setImageResource(R.drawable.vetro1);
+                        imgpop.setImageResource(R.drawable.vetro);
                         break;
                     case "umido":
-                        imgpop.setImageResource(R.drawable.umido1);
+                        imgpop.setImageResource(R.drawable.umido);
                         break;
                     default:
-                        imgpop.setImageResource(R.drawable.r_trash);
+
                         break;
                 }
             }

@@ -23,10 +23,6 @@
             android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Butto2"
-            android:label="GenovaGreen"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
-        <activity
             android:name=".Impostazioni"
             android:label="GenovaGreen"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />

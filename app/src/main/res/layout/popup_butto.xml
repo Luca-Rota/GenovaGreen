@@ -2,16 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/custom_popup"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:id="@+id/popup_butto">
 
     <TextView
         android:id="@+id/rifiutopop"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:text="Lattine"
@@ -24,27 +26,26 @@
 
     <TextView
         android:id="@+id/cassonettopop"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:text="Bidone di Plastica e Lattine "
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rifiutoholder" />
+        app:layout_constraintTop_toBottomOf="@+id/rifiutopop" />
 
     <ImageView
         android:id="@+id/imgpop"
         android:layout_width="155dp"
         android:layout_height="267dp"
         android:background="#00000000"
+        android:src="@drawable/umido"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cassonettoholder"
-        android:src="@drawable/umido1" />
+        app:layout_constraintTop_toBottomOf="@+id/cassonettopop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
