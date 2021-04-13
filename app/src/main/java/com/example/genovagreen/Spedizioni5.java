@@ -81,7 +81,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spedizioni5.this, Spedizioni2.class));
+                finish();
             }
         });
         partecipa=findViewById(R.id.partecipa);
