@@ -17,7 +17,7 @@
         <activity
             android:name=".PlaceSelectionPluginActivity"
             android:label="@string/title_activity_place_selection_plugin"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Butto"
             android:label="GenovaGreen"
