@@ -1,13 +1,13 @@
 package com.example.genovagreen;
 
 public class Spedizione {
-    public String luogo, descrizione, organizzatore, data, ora;
-    public int partecipanti;
+    public String luogo, descrizione, organizzatore, data, ora, partecipanti;
+
 
 
     public Spedizione(){}
 
-    public Spedizione(String luogo,String descrizione, String organizzatore, String data, String ora, int partecipanti){
+    public Spedizione(String luogo,String descrizione, String organizzatore, String data, String ora, String partecipanti){
         this.luogo=luogo;
         this.descrizione=descrizione;
         this.organizzatore=organizzatore;
@@ -15,6 +15,7 @@ public class Spedizione {
         this.ora=ora;
         this.partecipanti=partecipanti;
     }
+
 
     public void setData(String data) {
         this.data = data;
@@ -36,11 +37,11 @@ public class Spedizione {
         this.organizzatore = organizzatore;
     }
 
-    public void setPartecipanti(int partecipanti) {
+    public void setPartecipanti(String partecipanti) {
         this.partecipanti = partecipanti;
     }
 
-    public int getPartecipanti() {
+    public String getPartecipanti() {
         return partecipanti;
     }
 
