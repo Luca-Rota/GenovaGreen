@@ -100,7 +100,12 @@
     <string name="crea_una_spedizione">CREA UNA SPEDIZIONE</string>
     <string name="scegli_un_luogo_sulla_mappa">Scegli un luogo sulla mappa:</string>
     <string name="title_activity_place_selection_plugin">PlaceSelectionPluginActivity</string>
-    <string name="title_activity_diocan">diocan</string>
+
+    <string name="title_activity_notify">notifyActivity</string>
+    <string name="title_activity_notify2">notifyActivity2</string>
+
+    <string name="channel_name">canale 1</string>
+    <string name="channel_description">descrizione canale 1</string>
 </resources>
 
 
