@@ -24,6 +24,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -33,7 +38,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
 
 import android.text.format.DateFormat;
 import android.view.MenuItem;
@@ -41,8 +45,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 import java.io.IOException;
@@ -59,13 +65,16 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private FirebaseUser user;
     private TextView timeButton;
     private int tHour, tMinute;
-    private TextView dateButton;
-    private Button map;
+    private TextView dateButton, username, position4;
+    private Button map, agg;
     private TextView mapText;
     private String date, time;
     private GoogleMap mMap;
     private final static int PLACE_PICKER_REQUEST = 999;
     private final static int LOCATION_REQUEST_CODE = 23;
+    private EditText descrizione4;
+    private DatabaseReference ref;
+    private String nomeutente;
 
     private static final int REQUEST_CODE = 5678;
     private TextView selectedLocationTextView;
@@ -90,7 +99,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        dateButton = findViewById(R.id.TextView3);
+        dateButton = findViewById(R.id.data4);
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +114,36 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 handleTimeButton();
             }
         });
+
+        ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Spedizioni4.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
+
 
         Button annulla = findViewById(R.id.annulla);
         annulla.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +167,22 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                     ActivityCompat.requestPermissions((Activity) v.getContext(), new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
                             LOCATION_REQUEST_CODE);
                 }
+            }
+        });
+        position4=findViewById(R.id.position);
+        descrizione4=findViewById(R.id.descrizione4);
+        agg=findViewById(R.id.agg);
+        final String descrizione=descrizione4.getText().toString();
+        final String posizione=position4.getText().toString();
+        final String ora=timeButton.getText().toString();
+        final String date=dateButton.getText().toString();
+        agg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String partecipanti="1";
+                Spedizione spedizione=new Spedizione(posizione,descrizione,nomeutente,date,ora,partecipanti);
+                ref= FirebaseDatabase.getInstance().getReference("Spedizioni").push();
+                ref.setValue(spedizione);
             }
         });
     }
