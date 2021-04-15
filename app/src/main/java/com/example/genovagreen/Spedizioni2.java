@@ -86,11 +86,9 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                     if(snapshot.exists()){
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            key=ds.getKey().trim();
                             list.add(ds.getValue(Spedizione.class));
                         }
                         adapterSpedizioni=new AdapterSpedizioni(list);
-                        adapterSpedizioni.setKey(key);
                         recyclerView.setAdapter(adapterSpedizioni);
                     }
                 }

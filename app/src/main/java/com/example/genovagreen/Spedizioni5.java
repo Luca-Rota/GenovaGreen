@@ -42,6 +42,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5;
     private Button annulla,partecipa;
     private String id1;
+    private boolean bottone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +70,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         organizzatore = getIntent().getStringExtra("organizzatore");
         partecipanti = getIntent().getStringExtra("partecipanti");
         descrizione = getIntent().getStringExtra("descrizione");
-        id=getIntent().getStringExtra("chiave");
-
         luogo5=findViewById(R.id.luogo5);
         luogo5.setText(luogo);
         ora5=findViewById(R.id.ora5);
@@ -91,101 +90,110 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 finish();
             }
         });
-        partecipa=findViewById(R.id.partecipa);
-
-
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("SpedCreate");
-        if(ref!=null) {
-            ref.addValueEventListener(new ValueEventListener() {
+        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti);
+        partecipa = findViewById(R.id.partecipa);
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+        if(reference!=null) {
+            reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            id1=ds.getKey().trim();
-                            String email1=ds.getValue(SpedPersonali.class).getEmail().trim();
-                            Log.i("prova" ,id1);
-                            Log.i("prova" ,id);
-                            Log.i("prova" ,email1);
-                            Log.i("prova" ,email);
-                            if(id.equals(id1)&&email.equals(email1)){
-                                partecipa.setText("Elimina");
-                                partecipa.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("SpedCreate");
-                                        ref.child(id1).removeValue();
-                                        DatabaseReference ref1=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
-                                        ref1.child(id).removeValue();
-                                        startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
-                                    }
-                                });
-                            }
+                             if(sped.getOrganizzatore().trim().equals(ds.getValue(Spedizione.class).getOrganizzatore().trim())&&
+                                     sped.getData().trim().equals(ds.getValue(Spedizione.class).getData().trim())&&
+                                             sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
+                                                     sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())) {
+                                 id = ds.getKey();
+                                 final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
+                                 if (ref != null) {
+                                     ref.addValueEventListener(new ValueEventListener() {
+                                         @Override
+                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                             if (snapshot.exists()) {
+                                                 for (DataSnapshot ds : snapshot.getChildren()) {
+                                                     id1 = ds.getValue(SpedPersonali.class).getId().trim();
+                                                     String email1 = ds.getValue(SpedPersonali.class).getEmail().trim();
+                                                     if (id.equals(id1) && email.equals(email1)) {
+                                                         final String idCr=ds.getKey().trim();
+                                                         partecipa.setText("Elimina");
+                                                         partecipa.setOnClickListener(new View.OnClickListener() {
+                                                             @Override
+                                                             public void onClick(View v) {
+                                                                 ref.child(idCr).removeValue();
+                                                                 DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+                                                                 ref1.child(id).removeValue();
+                                                                 startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                             }
+                                                         });
+                                                     }
+                                                 }
+                                             }
+                                         }
+                                         @Override
+                                         public void onCancelled(@NonNull DatabaseError error) {
+                                             Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
+                                         }
+                                     });
+                                 }
+                             }
+                                 DatabaseReference ref1=FirebaseDatabase.getInstance().getReference().child("SpedPart");
+                                 if(ref1!=null) {
+                                     ref1.addValueEventListener(new ValueEventListener() {
+                                         @Override
+                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                             if(snapshot.exists()){
+                                                 for (DataSnapshot ds : snapshot.getChildren()) {
+                                                     id1=ds.getValue(SpedPersonali.class).getId().trim();
+                                                     String email1=ds.getValue(SpedPersonali.class).getEmail().trim();
+                                                     if(id.equals(id1)&&email.equals(email1)){
+                                                         final String idPart=ds.getKey().trim();
+                                                         partecipa.setText("Non partecipare");
+                                                         partecipa.setOnClickListener(new View.OnClickListener() {
+                                                             @Override
+                                                             public void onClick(View v) {
+                                                                 DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("SpedPart").child(idPart);
+                                                                 ref.removeValue();
+                                                                 sped.setPartecipanti(String.valueOf(Integer.parseInt(sped.getPartecipanti())-1));
+                                                                 DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+                                                                 update2.child(id).setValue(sped);
+                                                                 startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                             }
+                                                         });
+                                                     }
+                                                 }
+                                             }
+                                         }
+                                         @Override
+                                         public void onCancelled(@NonNull DatabaseError error) {
+                                             Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
+                                         }
+                                     });
+                                 }
+                                 partecipa.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+                                         int newPartecipanti=new Integer(partecipanti)+1;
+                                         String part=String.valueOf(newPartecipanti);
+                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part);
+                                         update2.child(id).setValue(updateSped);
+                                         DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
+                                         SpedPersonali users=new SpedPersonali(id,email);
+                                         ref.setValue(users);
+                                         startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                     }
+                                 });
+                             }
                         }
-
                     }
-                }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
-
                 }
             });
         }
-        DatabaseReference ref1=FirebaseDatabase.getInstance().getReference().child("SpedPart");
-        if(ref!=null) {
-            ref1.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            id1=ds.getKey().trim();
-                            String email1=ds.getValue(SpedPersonali.class).getEmail().trim();
-                            Log.i("prova" ,id1);
-                            Log.i("prova" ,id);
-                            Log.i("prova" ,email1);
-                            Log.i("prova" ,email);
-                            if(id.equals(id1)&&email.equals(email1)){
-                                partecipa.setText("Non partecipare");
-                                partecipa.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("SpedPart");
-                                        ref.child(id1).removeValue();
-                                        startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
-                                    }
-                                });
-                            }
-                        }
-
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
-
-                }
-            });
-        }
-
-        partecipa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
-                int newPartecipanti=new Integer(partecipanti)+1;
-                String part=String.valueOf(newPartecipanti);
-                Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part);
-                update2.child(id).setValue(updateSped);
-                DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
-                SpedPersonali users=new SpedPersonali(id,email);
-                ref.setValue(users);
-                startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
-            }
-        });
-
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -211,20 +219,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
             case R.id.content_informazioni:
                 startActivity(new Intent(Spedizioni5.this, Informazioni.class));
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public String rndString(){
-        char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
-        StringBuilder sb1 = new StringBuilder();
-        Random random1 = new Random();
-        for (int i = 0; i < 8; i++)
-        {
-            char c1 = chars1[random1.nextInt(chars1.length)];
-            sb1.append(c1);
-        }
-        return sb1.toString();
     }
 }

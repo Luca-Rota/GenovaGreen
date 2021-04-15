@@ -102,7 +102,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                         for(DataSnapshot ds : snapshot.getChildren()){
                                             for(int i=0;i<listemail1.size();i++){
                                                 if(listemail1.get(i).getId().equals(ds.getKey())){
-                                                    key=ds.getKey().trim();
                                                     list1.add(ds.getValue(Spedizione.class));
                                                 }
                                             }
@@ -111,7 +110,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                             recyclerView1.setVisibility(View.INVISIBLE);
                                         }else {
                                             adapterSpedizioni1 = new AdapterSpedizioni(list1);
-                                            adapterSpedizioni1.setKey(key);
                                             recyclerView1.setAdapter(adapterSpedizioni1);
                                         }
                                     }
@@ -151,7 +149,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                         for(DataSnapshot ds : snapshot.getChildren()){
                                             for(int i=0;i<listemail2.size();i++){
                                                 if(listemail2.get(i).getId().equals(ds.getKey())){
-                                                    key=ds.getKey().trim();
                                                     list2.add(ds.getValue(Spedizione.class));
                                                 }
                                             }
@@ -160,7 +157,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                              recyclerView2.setVisibility(View.INVISIBLE);
                                         }else {
                                             adapterSpedizioni2 = new AdapterSpedizioni(list2);
-                                            adapterSpedizioni2.setKey(key);
                                             recyclerView2.setAdapter(adapterSpedizioni2);
                                         }
                                     }
