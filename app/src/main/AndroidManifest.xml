@@ -91,6 +91,11 @@
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
+            android:name=".MapSpedizioni"
+            android:label="GenovaGreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.version"

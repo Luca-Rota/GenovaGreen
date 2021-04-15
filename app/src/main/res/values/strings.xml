@@ -106,6 +106,11 @@
 
     <string name="channel_name">canale 1</string>
     <string name="channel_description">descrizione canale 1</string>
+
+
+    <string name="action_geolocate">Pick Place</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="default_info_snippet">No places found, because location permission is disabled.</string>
 </resources>
 
 
