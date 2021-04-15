@@ -55,19 +55,19 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
         holder.cassonettotext.setText(list.get(position).getCassonetto());
         String cassonetto=list.get(position).getCassonetto().trim();
         switch(cassonetto) {
-            case "indifferenziata":
+            case "Cassonetto dell'indifferenziata":
                 holder.imgrec.setImageResource(R.drawable.mixed);
                 break;
-            case "carta":
+            case "Cassonetto della carta":
                 holder.imgrec.setImageResource(R.drawable.carta);
                 break;
-            case "plastica":
+            case "Cassonetto della plastica":
                 holder.imgrec.setImageResource(R.drawable.plastica);
                 break;
-            case "vetro":
+            case "Cassonetto del vetro":
                 holder.imgrec.setImageResource(R.drawable.vetro);
                 break;
-            case "umido":
+            case "Cassonetto del umido":
                 holder.imgrec.setImageResource(R.drawable.umido);
                 break;
             default:
@@ -93,19 +93,19 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 cassonettopop.setText(list.get(position).getCassonetto());
                 ImageView imgpop=popupView.findViewById(R.id.imgpop);
                 switch(cassonetto) {
-                    case "indifferenziata":
+                    case "Cassonetto dell'indifferenziata":
                         imgpop.setImageResource(R.drawable.mixed);
                         break;
-                    case "carta":
+                    case "Cassonetto della carta":
                         imgpop.setImageResource(R.drawable.carta);
                         break;
-                    case "plastica":
+                    case "Cassonetto della plastica":
                         imgpop.setImageResource(R.drawable.plastica);
                         break;
-                    case "vetro":
+                    case "Cassonetto del vetro":
                         imgpop.setImageResource(R.drawable.vetro);
                         break;
-                    case "umido":
+                    case "Cassonetto del umido":
                         imgpop.setImageResource(R.drawable.umido);
                         break;
                     default:

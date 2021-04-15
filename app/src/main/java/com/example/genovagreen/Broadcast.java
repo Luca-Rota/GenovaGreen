@@ -14,8 +14,8 @@ public class Broadcast extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, notifyActivity2.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, notifyActivity2.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
@@ -24,7 +24,7 @@ public class Broadcast extends BroadcastReceiver {
                 .setContentText("Hello World!")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .setContentIntent(pendingIntent)
+                //.setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
