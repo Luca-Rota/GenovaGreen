@@ -15,18 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GenovaGreen">
 
-        <receiver
-            android:name=".Broadcast"
-            android:enabled="true"
-            android:exported="false" >
-        </receiver>
+        <receiver android:name=".AlertReceiver" />
+
 
         <activity
-            android:name=".notifyActivity2"
-            android:label="@string/title_activity_notify2"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar"></activity>
-        <activity
-            android:name=".notifyActivity"
+            android:name=".Notification"
             android:label="@string/title_activity_notify"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
 

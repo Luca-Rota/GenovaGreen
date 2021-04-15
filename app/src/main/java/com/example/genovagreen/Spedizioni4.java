@@ -39,7 +39,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.text.format.DateFormat;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -52,6 +51,7 @@ import android.widget.Toast;
 
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -188,6 +188,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         DatePickerDialog datePickerDialog = new DatePickerDialog(Spedizioni4.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                Calendar c = Calendar.getInstance();
                 month = month + 1;
                 date = dayOfMonth + "/" + month + "/" + year;
                 dateButton.setText(date);
@@ -198,18 +199,20 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     }
 
     private String handleTimeButton() {
+        Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
         TimePickerDialog timePickerDialog = new TimePickerDialog(Spedizioni4.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                tHour = hourOfDay;
-                tMinute = minute;
-                time = tHour + ":" + tMinute;
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(0, 0, 0, tHour, tMinute);
-                timeButton.setText(DateFormat.format("hh:mm aa", calendar));
+                Calendar c = Calendar.getInstance();
+                c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                c.set(Calendar.MINUTE, minute);
+                c.set(Calendar.SECOND, 0);
+                String timeText = java.text.DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+                timeButton.setText(timeText);
             }
-        }, 12, 0, false);
-        timePickerDialog.updateTime(tHour, tMinute);
+        }, hour, minute, android.text.format.DateFormat.is24HourFormat(Spedizioni4.this));
         timePickerDialog.show();
         return time;
     }
