@@ -53,6 +53,14 @@ public class Notification extends AppCompatActivity {
                 setAlarm();
             }
         });
+
+        Button buttonCancelAlarm = findViewById(R.id.button_cancel);
+        buttonCancelAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelAlarm();
+            }
+        });
     }
 
     private void handleDateButton() {
@@ -118,5 +126,10 @@ public class Notification extends AppCompatActivity {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
     }
 
-
+    private void cancelAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        alarmManager.cancel(pendingIntent);
+    }
 }
