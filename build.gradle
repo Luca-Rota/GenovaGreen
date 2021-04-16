@@ -29,7 +29,6 @@ allprojects {
                 password = project.properties['MAPBOX_DOWNLOADS_TOKEN'] ?: "sk.eyJ1IjoiZ2Vub3ZhZ3JlZW4iLCJhIjoiY2tuY3pxbTRxMjZpMjJubzZ5eDQ2YXBkZCJ9.zg-zkCcaAj4RT8njIxIA0w"
             }
         }
-        maven { url 'https://jitpack.io'}
     }
 }
 

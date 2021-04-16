@@ -2,14 +2,11 @@ package com.example.genovagreen;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -60,20 +57,18 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView dateButton, timeButton;
-    private int[] dateL, timeL;
-    private TextView  username, position4;
+    private TextView timeButton;
+    private int tHour, tMinute;
+    private TextView dateButton, username, position4;
     private Button map, agg;
     private TextView mapText;
-    private GoogleMap mMap;
-    private final static int PLACE_PICKER_REQUEST = 999;
-    private final static int LOCATION_REQUEST_CODE = 23;
+    private String date, time;
     private EditText descrizione4;
     private DatabaseReference ref;
     private String nomeutente;
@@ -158,80 +153,103 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MapFragment fragment = new MapFragment();
-                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                getSupportFragmentManager().beginTransaction().replace(R.id.wrapper1, fragment).commit();
-                SupportMapFragment mapFragment = new SupportMapFragment();
-                mapFragment.getMapAsync((OnMapReadyCallback) v.getContext());
-                if (ContextCompat.checkSelfPermission(v.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED) {
+                startActivity(new Intent(Spedizioni4.this, MapSpedizioni.class));
 
-                    ActivityCompat.requestPermissions((Activity) v.getContext(), new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                            LOCATION_REQUEST_CODE);
-                }
             }
         });
+        String luogo=getIntent().getStringExtra("luogo");
         position4=findViewById(R.id.position);
+        position4.setText(luogo);
         descrizione4=findViewById(R.id.descrizione4);
         agg=findViewById(R.id.agg);
-        final String descrizione=descrizione4.getText().toString();
-        final String posizione=position4.getText().toString();
-        final String ora=timeButton.getText().toString();
-        final String date=dateButton.getText().toString();
         agg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String partecipanti="1";
-                Spedizione spedizione=new Spedizione(posizione,descrizione,nomeutente,date,ora,partecipanti);
-                ref= FirebaseDatabase.getInstance().getReference("Spedizioni").push();
-                ref.setValue(spedizione);
-                setAlarm();
+                ref=FirebaseDatabase.getInstance().getReference("Usernames");
+                    final String email = user.getEmail().trim();
+                    if (ref != null) {
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    for (DataSnapshot ds : snapshot.getChildren()) {
+                                        User ogg = ds.getValue(User.class);
+                                        String email2 = ogg.getEmail().trim();
+                                        nomeutente = ogg.getUsername();
+                                        if (email.equals(email2)) {
+                                            String descrizione=descrizione4.getText().toString();
+                                            String posizione=position4.getText().toString();
+                                            String ora=timeButton.getText().toString();
+                                            String date=dateButton.getText().toString();
+                                            if(!descrizione.isEmpty()&&!posizione.isEmpty()&&!ora.isEmpty()&&!date.isEmpty()) {
+                                                String partecipanti = "1";
+                                                Spedizione sped = new Spedizione(posizione, descrizione, nomeutente, date, ora, partecipanti);
+                                                ref = FirebaseDatabase.getInstance().getReference("Spedizioni").push();
+                                                ref.setValue(sped);
+                                                ref = FirebaseDatabase.getInstance().getReference("Spedizioni");
+                                                ref.addValueEventListener(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                        if(snapshot.exists()){
+                                                            for(DataSnapshot ds : snapshot.getChildren()){
+                                                                if(sped.getOrganizzatore().trim().equals(ds.getValue(Spedizione.class).getOrganizzatore().trim())&&
+                                                                        sped.getData().trim().equals(ds.getValue(Spedizione.class).getData().trim())&&
+                                                                        sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
+                                                                        sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())){
+                                                                    String id=ds.getKey();
+                                                                    ref = FirebaseDatabase.getInstance().getReference("SpedCreate").push();
+                                                                    MySped mySped= new MySped(id, email);
+                                                                    ref.setValue(mySped);
+                                                                    startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                    }
+                                                });
+                                            }else{
+                                                Toast.makeText(Spedizioni4.this,"Tutti i campi devono essere riempiti", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(Spedizioni4.this, "errore db", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+
+
             }
         });
     }
 
-    private void setAlarm() {
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, timeL[0]);
-        c.set(Calendar.MINUTE, timeL[1]);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.DAY_OF_MONTH, dateL[0]);
-        c.set(Calendar.MONTH, dateL[1]);
-        c.set(Calendar.YEAR, dateL[2]);
-        startAlarm(c);
-    }
 
-    private void startAlarm(Calendar c) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
-        if (c.before(Calendar.getInstance())) {
-            c.add(Calendar.DATE, 1);
-        }
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-    }
-
-    private void handleDateButton() {
-        Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+    private String handleDateButton() {
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(Spedizioni4.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 Calendar c = Calendar.getInstance();
-                c.set(Calendar.YEAR, year);
-                c.set(Calendar.MONTH, month);
-                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String date = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
+                month = month + 1;
+                date = dayOfMonth + "/" + month + "/" + year;
                 dateButton.setText(date);
-                dateL = new int[]{dayOfMonth, month, year};
             }
         }, year, month, day);
         datePickerDialog.show();
+        return date;
     }
 
-    private void handleTimeButton() {
+    private String handleTimeButton() {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
@@ -242,12 +260,12 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 c.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 c.set(Calendar.MINUTE, minute);
                 c.set(Calendar.SECOND, 0);
-                String time = java.text.DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-                timeButton.setText(time);
-                timeL = new int[]{hourOfDay, minute};
+                String timeText = java.text.DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+                timeButton.setText(timeText);
             }
         }, hour, minute, android.text.format.DateFormat.is24HourFormat(Spedizioni4.this));
         timePickerDialog.show();
+        return time;
     }
 
     @Override
@@ -280,105 +298,5 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         return true;
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case LOCATION_REQUEST_CODE: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        //    ActivityCompat#requestPermissions
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for ActivityCompat#requestPermissions for more details.
-                        return;
-                    }
-                    mMap.setMyLocationEnabled(true);
-                    mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
-                        @Override
-                        public void onMyLocationChange(Location location) {
-                            LatLng ltlng=new LatLng(location.getLatitude(),location.getLongitude());
-                            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
-                                    ltlng, 16f);
-                            mMap.animateCamera(cameraUpdate);
-                        }
-                    });
-                    Location location = mMap.getMyLocation();
-
-                    mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                        @Override
-                        public void onMapClick(LatLng latLng) {
-                            MarkerOptions markerOptions = new MarkerOptions();
-                            markerOptions.position(latLng);
-
-                            markerOptions.title(getAddress(latLng));
-                            mMap.clear();
-                            CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
-                                    latLng, 15);
-                            mMap.animateCamera(location);
-                            mMap.addMarker(markerOptions);
-                        }
-                    });
-
-
-
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-        }
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-    }
-
-
-    private String getAddress(LatLng latLng){
-
-        Geocoder geocoder;
-        List<Address> addresses;
-        geocoder = new Geocoder(this, Locale.getDefault());
-
-        try {
-            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            String city = addresses.get(0).getLocality();
-            String state = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
-            String postalCode = addresses.get(0).getPostalCode();
-            String knownName = addresses.get(0).getFeatureName();
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-            if (prev != null) {
-
-                ft.remove(prev);
-            }
-            ft.addToBackStack(null);
-            DialogFragment dialogFragment = new ConfirmAddress();
-
-            Bundle args = new Bundle();
-            args.putDouble("lat", latLng.latitude);
-            args.putDouble("long", latLng.longitude);
-            args.putString("address", address);
-            dialogFragment.setArguments(args);
-            dialogFragment.show(ft, "dialog");
-            return address;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "No Address Found";
-
-        }
-
-
-    }
 }

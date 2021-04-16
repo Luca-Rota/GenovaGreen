@@ -1,356 +1,321 @@
 package com.example.genovagreen;
 
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.mapbox.android.core.permissions.PermissionsListener;
+import com.mapbox.android.core.permissions.PermissionsManager;
+import com.mapbox.api.geocoding.v5.GeocodingCriteria;
+import com.mapbox.api.geocoding.v5.MapboxGeocoding;
+import com.mapbox.api.geocoding.v5.models.CarmenFeature;
+import com.mapbox.api.geocoding.v5.models.GeocodingResponse;
+import com.mapbox.core.exceptions.ServicesException;
+import com.mapbox.geojson.Point;
+import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.location.LocationComponent;
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
+import com.mapbox.mapboxsdk.location.modes.CameraMode;
+import com.mapbox.mapboxsdk.location.modes.RenderMode;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
+import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.style.layers.Layer;
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
+
+import java.util.List;
+import java.util.Map;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import timber.log.Timber;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import static com.mapbox.mapboxsdk.style.layers.Property.NONE;
+import static com.mapbox.mapboxsdk.style.layers.Property.VISIBLE;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+public class MapSpedizioni extends AppCompatActivity implements PermissionsListener, OnMapReadyCallback{
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.PlaceLikelihood;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
-import com.google.android.libraries.places.api.net.PlacesClient;
-
-import java.util.Arrays;
-import java.util.List;
-
-public class MapSpedizioni extends AppCompatActivity implements OnMapReadyCallback {
-
-    // New variables for Current Place picker
-    private static final String TAG = "MapsActivity";
-    ListView lstPlaces;
-    private PlacesClient mPlacesClient;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
-
-    // The geographical location where the device is currently located. That is, the last-known
-    // location retrieved by the Fused Location Provider.
-    private Location mLastKnownLocation;
-
-    // A default location (Sydney, Australia) and default zoom to use when location permission is
-    // not granted.
-    private final LatLng mDefaultLocation = new LatLng(43.8523341, 151.2106085);
-    private static final int DEFAULT_ZOOM = 15;
-    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-    private boolean mLocationPermissionGranted;
-
-    // Used for selecting the Current Place.
-    private static final int M_MAX_ENTRIES = 5;
-    private String[] mLikelyPlaceNames;
-    private String[] mLikelyPlaceAddresses;
-    private String[] mLikelyPlaceAttributions;
-    private LatLng[] mLikelyPlaceLatLngs;
-    private GoogleMap mMap;
+    private static final String DROPPED_MARKER_LAYER_ID = "DROPPED_MARKER_LAYER_ID";
+    private MapView mapView;
+    private MapboxMap mapboxMap;
+    private Button selectLocationButton;
+    private PermissionsManager permissionsManager;
+    private ImageView hoveringMarker;
+    private Layer droppedMarkerLayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapspedizioni);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
 
-        //
-        // PASTE THE LINES BELOW THIS COMMENT
-        //
+// Mapbox access token is configured here. This needs to be called either in your application
+// object or in the same activity which contains the mapview.
+        Mapbox.getInstance(this, getString(R.string.access_token));
 
-        // Set up the action toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+// This contains the MapView in XML and needs to be called after the access token is configured.
+        setContentView(R.layout.activity_lab_location_picker);
 
-        // Set up the views
-        lstPlaces = (ListView) findViewById(R.id.listPlaces);
-
-        // Initialize the Places client
-        String apiKey = getString(R.string.google_maps_key);
-        Places.initialize(getApplicationContext(), apiKey);
-        mPlacesClient = Places.createClient(this);
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        Log.i("prova", "onCreate2");
+// Initialize the mapboxMap view
+        mapView = findViewById(R.id.mapView);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+    public void onMapReady(@NonNull final MapboxMap mapboxMap) {
+        MapSpedizioni.this.mapboxMap = mapboxMap;
+        mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
+            @Override
+            public void onStyleLoaded(@NonNull final Style style) {
+                enableLocationPlugin(style);
 
-        return super.onCreateOptionsMenu(menu);
-    }
+// Toast instructing user to tap on the mapboxMap
+                Toast.makeText(
+                        MapSpedizioni.this,
+                        getString(R.string.move_map_instruction), Toast.LENGTH_SHORT).show();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_geolocate:
+// When user is still picking a location, we hover a marker above the mapboxMap in the center.
+// This is done by using an image view with the default marker found in the SDK. You can
+// swap out for your own marker image, just make sure it matches up with the dropped marker.
+                hoveringMarker = new ImageView(MapSpedizioni.this);
+                hoveringMarker.setImageResource(R.drawable.red_marker);
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER);
+                hoveringMarker.setLayoutParams(params);
+                mapView.addView(hoveringMarker);
 
-                // Present the current place picker
-                pickCurrentPlace();
-                return true;
+// Initialize, but don't show, a SymbolLayer for the marker icon which will represent a selected location.
+                initDroppedMarker(style);
 
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
-        }
-    }
-
-    private void getLocationPermission() {
-        Log.i("prova", "getLocationPermission");
-        /*
-         * Request location permission, so that we can get the location of the
-         * device. The result of the permission request is handled by a callback,
-         * onRequestPermissionsResult.
-         */
-        mLocationPermissionGranted = false;
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            mLocationPermissionGranted = true;
-        } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-        }
-        Log.i("prova", "getLocationPermission2");
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-        Log.i("prova", "onRequestPermissionResult");
-        mLocationPermissionGranted = false;
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermissionGranted = true;
-                }
-            }
-        }
-        Log.i("prova", "onRequestPermissionResult2");
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        Log.i("prova", "onMapReady");
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-        //
-        // PASTE THE LINES BELOW THIS COMMENT
-        //
-
-        // Enable the zoom controls for the map
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-
-        // Prompt the user for permission.
-        getLocationPermission();
-        Log.i("prova", "onMapReady2");
-    }
-
-    private void getCurrentPlaceLikelihoods() {
-        Log.i("prova", "getCurrentPlaceLikelihoods");
-        // Use fields to define the data types to return.
-        List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS,
-                Place.Field.LAT_LNG);
-
-        // Get the likely places - that is, the businesses and other points of interest that
-        // are the best match for the device's current location.
-        if (ActivityCompat.checkSelfPermission(MapSpedizioni.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-        final FindCurrentPlaceRequest request =
-                FindCurrentPlaceRequest.builder(placeFields).build();
-        Task<FindCurrentPlaceResponse> placeResponse = mPlacesClient.findCurrentPlace(request);
-        Log.i("prova", "getCurrentPlaceLikelihoods2");
-        placeResponse.addOnCompleteListener(this,
-                new OnCompleteListener<FindCurrentPlaceResponse>() {
+// Button for user to drop marker or to pick marker back up.
+                selectLocationButton = findViewById(R.id.select_location_button);
+                selectLocationButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onComplete(@NonNull Task<FindCurrentPlaceResponse> task) {
-                        if (task.isSuccessful()) {
-                            Log.i("prova", "childhood");
-                            FindCurrentPlaceResponse response = task.getResult();
-                            // Set the count, handling cases where less than 5 entries are returned.
-                            int count;
-                            if (response.getPlaceLikelihoods().size() < M_MAX_ENTRIES) {
-                                count = response.getPlaceLikelihoods().size();
-                            } else {
-                                count = M_MAX_ENTRIES;
-                            }
+                    public void onClick(View view) {
+                        if (hoveringMarker.getVisibility() == View.VISIBLE) {
 
-                            int i = 0;
-                            mLikelyPlaceNames = new String[count];
-                            mLikelyPlaceAddresses = new String[count];
-                            mLikelyPlaceAttributions = new String[count];
-                            mLikelyPlaceLatLngs = new LatLng[count];
+// Use the map target's coordinates to make a reverse geocoding search
+                            final LatLng mapTargetLatLng = mapboxMap.getCameraPosition().target;
 
-                            for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods()) {
-                                Place currPlace = placeLikelihood.getPlace();
-                                mLikelyPlaceNames[i] = currPlace.getName();
-                                mLikelyPlaceAddresses[i] = currPlace.getAddress();
-                                mLikelyPlaceAttributions[i] = (currPlace.getAttributions() == null) ?
-                                        null : TextUtils.join(" ", currPlace.getAttributions());
-                                mLikelyPlaceLatLngs[i] = currPlace.getLatLng();
+// Hide the hovering red hovering ImageView marker
+                            hoveringMarker.setVisibility(View.INVISIBLE);
 
-                                String currLatLng = (mLikelyPlaceLatLngs[i] == null) ?
-                                        "" : mLikelyPlaceLatLngs[i].toString();
+// Transform the appearance of the button to become the cancel button
+                            selectLocationButton.setBackgroundColor(
+                                    ContextCompat.getColor(MapSpedizioni.this, R.color.colorAccent));
+                            selectLocationButton.setText(getString(R.string.location_picker_select_location_button_cancel));
 
-                                Log.i(TAG, String.format("Place " + currPlace.getName()
-                                        + " has likelihood: " + placeLikelihood.getLikelihood()
-                                        + " at " + currLatLng));
-
-                                i++;
-                                if (i > (count - 1)) {
-                                    break;
+// Show the SymbolLayer icon to represent the selected map location
+                            if (style.getLayer(DROPPED_MARKER_LAYER_ID) != null) {
+                                GeoJsonSource source = style.getSourceAs("dropped-marker-source-id");
+                                if (source != null) {
+                                    source.setGeoJson(Point.fromLngLat(mapTargetLatLng.getLongitude(), mapTargetLatLng.getLatitude()));
+                                }
+                                droppedMarkerLayer = style.getLayer(DROPPED_MARKER_LAYER_ID);
+                                if (droppedMarkerLayer != null) {
+                                    droppedMarkerLayer.setProperties(visibility(VISIBLE));
                                 }
                             }
 
+// Use the map camera target's coordinates to make a reverse geocoding search
+                            reverseGeocode(Point.fromLngLat(mapTargetLatLng.getLongitude(), mapTargetLatLng.getLatitude()));
 
-                            // COMMENTED OUT UNTIL WE DEFINE THE METHOD
-                            // Populate the ListView
-                            fillPlacesList();
                         } else {
-                            Exception exception = task.getException();
-                            if (exception instanceof ApiException) {
-                                ApiException apiException = (ApiException) exception;
-                                Log.e(TAG, "Place not found: " + apiException.getStatusCode());
+
+// Switch the button appearance back to select a location.
+                            selectLocationButton.setBackgroundColor(
+                                    ContextCompat.getColor(MapSpedizioni.this, R.color.colorPrimary));
+                            selectLocationButton.setText(getString(R.string.location_picker_select_location_button_select));
+
+// Show the red hovering ImageView marker
+                            hoveringMarker.setVisibility(View.VISIBLE);
+
+// Hide the selected location SymbolLayer
+                            droppedMarkerLayer = style.getLayer(DROPPED_MARKER_LAYER_ID);
+                            if (droppedMarkerLayer != null) {
+                                droppedMarkerLayer.setProperties(visibility(NONE));
                             }
                         }
                     }
                 });
-        Log.i("prova", "getCurrentPlaceLikelihoods3");
-        } else{
-            ActivityCompat.requestPermissions(MapSpedizioni.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-        }
-    }
-
-    private void getDeviceLocation() {
-        Log.i("prova", "getDeviceLocation");
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
-        try {
-            if (mLocationPermissionGranted) {
-                Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-                        if (task.isSuccessful()) {
-                            // Set the map's camera position to the current location of the device.
-                            mLastKnownLocation = task.getResult();
-                            Log.d(TAG, "Latitude: " + mLastKnownLocation.getLatitude());
-                            Log.d(TAG, "Longitude: " + mLastKnownLocation.getLongitude());
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(mLastKnownLocation.getLatitude(),
-                                            mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                        } else {
-                            Log.d(TAG, "Current location is null. Using defaults.");
-                            Log.e(TAG, "Exception: %s", task.getException());
-                            mMap.moveCamera(CameraUpdateFactory
-                                    .newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
-                        }
-
-                        getCurrentPlaceLikelihoods();
-                    }
-                });
             }
-        } catch (SecurityException e)  {
-            Log.e("Exception: %s", e.getMessage());
-        }
-        Log.i("prova", "getDeviceLocation2");
+        });
     }
 
-    private void pickCurrentPlace() {
-        Log.i("prova", "pickCurrentPlace");
-        if (mMap == null) {
-            return;
-        }
+    private void initDroppedMarker(@NonNull Style loadedMapStyle) {
+// Add the marker image to map
+        loadedMapStyle.addImage("dropped-icon-image", BitmapFactory.decodeResource(
+                getResources(), R.drawable.blue_marker));
+        loadedMapStyle.addSource(new GeoJsonSource("dropped-marker-source-id"));
+        loadedMapStyle.addLayer(new SymbolLayer(DROPPED_MARKER_LAYER_ID,
+                "dropped-marker-source-id").withProperties(
+                iconImage("dropped-icon-image"),
+                visibility(NONE),
+                iconAllowOverlap(true),
+                iconIgnorePlacement(true)
+        ));
+    }
 
-        if (mLocationPermissionGranted) {
-            getDeviceLocation();
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    @SuppressWarnings( {"MissingPermission"})
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        mapView.onStop();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        permissionsManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onExplanationNeeded(List<String> permissionsToExplain) {
+        Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onPermissionResult(boolean granted) {
+        if (granted && mapboxMap != null) {
+            Style style = mapboxMap.getStyle();
+            if (style != null) {
+                enableLocationPlugin(style);
+            }
         } else {
-            // The user has not granted permission.
-            Log.i("prova", "The user did not grant location permission.");
-
-            // Add a default marker, because the user hasn't selected a place.
-            mMap.addMarker(new MarkerOptions()
-                    .title(getString(R.string.default_info_title))
-                    .position(mDefaultLocation)
-                    .snippet(getString(R.string.default_info_snippet)));
-
-            // Prompt the user for permission.
-            getLocationPermission();
+            Toast.makeText(this, R.string.user_location_permission_not_granted, Toast.LENGTH_LONG).show();
+            finish();
         }
-        Log.i("prova", "pickCurrentPlace2");
     }
 
-    private AdapterView.OnItemClickListener listClickedHandler = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView parent, View v, int position, long id) {
-            Log.i("prova", "onItemClick");
-            // position will give us the index of which place was selected in the array
-            LatLng markerLatLng = mLikelyPlaceLatLngs[position];
-            String markerSnippet = mLikelyPlaceAddresses[position];
-            if (mLikelyPlaceAttributions[position] != null) {
-                markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[position];
-            }
+    /**
+     * This method is used to reverse geocode where the user has dropped the marker.
+     *
+     * @param point The location to use for the search
+     */
 
-            // Add a marker for the selected place, with an info window
-            // showing information about that place.
-            mMap.addMarker(new MarkerOptions()
-                    .title(mLikelyPlaceNames[position])
-                    .position(markerLatLng)
-                    .snippet(markerSnippet));
+    private void reverseGeocode(final Point point) {
+        try {
+            MapboxGeocoding client = MapboxGeocoding.builder()
+                    .accessToken(getString(R.string.access_token))
+                    .query(Point.fromLngLat(point.longitude(), point.latitude()))
+                    .geocodingTypes(GeocodingCriteria.TYPE_ADDRESS)
+                    .build();
 
-            // Position the map's camera at the location of the marker.
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(markerLatLng));
-            Log.i("prova", "onItemClick2");
+            client.enqueueCall(new Callback<GeocodingResponse>() {
+                @Override
+                public void onResponse(Call<GeocodingResponse> call, Response<GeocodingResponse> response) {
+
+                    if (response.body() != null) {
+                        List<CarmenFeature> results = response.body().features();
+                        if (results.size() > 0) {
+                            final CarmenFeature feature = results.get(0);
+
+// If the geocoder returns a result, we take the first in the list and show a Toast with the place name.
+                            mapboxMap.getStyle(new Style.OnStyleLoaded() {
+                                @Override
+                                public void onStyleLoaded(@NonNull Style style) {
+                                    if (style.getLayer(DROPPED_MARKER_LAYER_ID) != null) {
+                                        Intent intent=new Intent(MapSpedizioni.this, Spedizioni4.class);
+                                        intent.putExtra("luogo",feature.placeName());
+                                        startActivity(intent);
+                                        Toast.makeText(MapSpedizioni.this,
+                                                String.format(getString(R.string.location_picker_place_name_result),
+                                                        feature.placeName()), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                        } else {
+                            Toast.makeText(MapSpedizioni.this,
+                                    getString(R.string.location_picker_dropped_marker_snippet_no_results), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<GeocodingResponse> call, Throwable throwable) {
+                    Timber.e("Geocoding Failure: %s", throwable.getMessage());
+                }
+            });
+        } catch (ServicesException servicesException) {
+            Timber.e("Error geocoding: %s", servicesException.toString());
+            servicesException.printStackTrace();
         }
-
-    };
-
-    private void fillPlacesList() {
-        Log.i("prova", "fillPlacesList");
-        // Set up an ArrayAdapter to convert likely places into TextViews to populate the ListView
-        ArrayAdapter<String> placesAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mLikelyPlaceNames);
-        lstPlaces.setAdapter(placesAdapter);
-        lstPlaces.setOnItemClickListener(listClickedHandler);
-        Log.i("prova", "fillPlacesList2");
     }
 
+    @SuppressWarnings( {"MissingPermission"})
+    private void enableLocationPlugin(@NonNull Style loadedMapStyle) {
+// Check if permissions are enabled and if not request
+        if (PermissionsManager.areLocationPermissionsGranted(this)) {
 
+// Get an instance of the component. Adding in LocationComponentOptions is also an optional
+// parameter
+            LocationComponent locationComponent = mapboxMap.getLocationComponent();
+            locationComponent.activateLocationComponent(LocationComponentActivationOptions.builder(
+                    this, loadedMapStyle).build());
+            locationComponent.setLocationComponentEnabled(true);
 
+// Set the component's camera mode
+            locationComponent.setCameraMode(CameraMode.TRACKING);
+            locationComponent.setRenderMode(RenderMode.NORMAL);
+
+        } else {
+            permissionsManager = new PermissionsManager(this);
+            permissionsManager.requestLocationPermissions(this);
+        }
+    }
 }

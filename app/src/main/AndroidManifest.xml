@@ -59,11 +59,7 @@
             android:name=".Spedizioni4"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar">
-            <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyBeJo3DcQiUZZzjWffP4DX3h4FB5T8T4ks" />
-        </activity>
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"/>
         <activity
             android:name=".Password"
             android:label="GenovaGreen"
