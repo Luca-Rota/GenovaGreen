@@ -2,11 +2,14 @@ package com.example.genovagreen;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -63,12 +66,11 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView timeButton;
-    private int tHour, tMinute;
-    private TextView dateButton, username, position4;
+    private TextView dateButton, timeButton;
+    private int[] dateL, timeL;
+    private TextView  username, position4;
     private Button map, agg;
     private TextView mapText;
-    private String date, time;
     private GoogleMap mMap;
     private final static int PLACE_PICKER_REQUEST = 999;
     private final static int LOCATION_REQUEST_CODE = 23;
@@ -183,30 +185,53 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 Spedizione spedizione=new Spedizione(posizione,descrizione,nomeutente,date,ora,partecipanti);
                 ref= FirebaseDatabase.getInstance().getReference("Spedizioni").push();
                 ref.setValue(spedizione);
+                setAlarm();
             }
         });
     }
 
+    private void setAlarm() {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, timeL[0]);
+        c.set(Calendar.MINUTE, timeL[1]);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.DAY_OF_MONTH, dateL[0]);
+        c.set(Calendar.MONTH, dateL[1]);
+        c.set(Calendar.YEAR, dateL[2]);
+        startAlarm(c);
+    }
 
-    private String handleDateButton() {
-        Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+    private void startAlarm(Calendar c) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        if (c.before(Calendar.getInstance())) {
+            c.add(Calendar.DATE, 1);
+        }
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+    }
+
+    private void handleDateButton() {
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(Spedizioni4.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 Calendar c = Calendar.getInstance();
-                month = month + 1;
-                date = dayOfMonth + "/" + month + "/" + year;
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String date = DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
                 dateButton.setText(date);
+                dateL = new int[]{dayOfMonth, month, year};
             }
         }, year, month, day);
         datePickerDialog.show();
-        return date;
     }
 
-    private String handleTimeButton() {
+    private void handleTimeButton() {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
@@ -217,12 +242,12 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 c.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 c.set(Calendar.MINUTE, minute);
                 c.set(Calendar.SECOND, 0);
-                String timeText = java.text.DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-                timeButton.setText(timeText);
+                String time = java.text.DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+                timeButton.setText(time);
+                timeL = new int[]{hourOfDay, minute};
             }
         }, hour, minute, android.text.format.DateFormat.is24HourFormat(Spedizioni4.this));
         timePickerDialog.show();
-        return time;
     }
 
     @Override

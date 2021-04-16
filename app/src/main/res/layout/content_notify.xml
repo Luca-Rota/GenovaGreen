@@ -7,14 +7,14 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.genovagreen.Notification">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/invia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/button_timepicker"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="No Alarm set"
+        android:text="invia"
         android:textSize="30sp" />
     <Button
         android:id="@+id/button_timepicker"
@@ -24,11 +24,29 @@
         android:layout_centerVertical="true"
         android:text="open time picker" />
     <Button
-        android:id="@+id/button_cancel"
+        android:id="@+id/button_datapciker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_timepicker"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
-        android:text="cancel alarm" />
+        android:text="open datapicker" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_datapciker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="ddddddddddd" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="ddddddddddd" />
 </RelativeLayout>
