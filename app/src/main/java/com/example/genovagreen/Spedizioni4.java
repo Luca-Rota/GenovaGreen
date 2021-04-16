@@ -154,6 +154,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 finish();
             }
         });
+        /*
         map = findViewById(R.id.buttonMap);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,6 +172,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 }
             }
         });
+        */
         position4=findViewById(R.id.position);
         descrizione4=findViewById(R.id.descrizione4);
         agg=findViewById(R.id.agg);
