@@ -8,6 +8,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,6 +24,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Pericolosi extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Button button;
@@ -26,6 +33,7 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
+    private TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,34 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Pericolosi.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
 
         button=findViewById(R.id.buttonPeriocolosi);
         button.setOnClickListener(new View.OnClickListener() {

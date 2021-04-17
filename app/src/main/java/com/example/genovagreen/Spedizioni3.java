@@ -41,7 +41,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
     private DatabaseReference ref1,ref2,ref3;
     private RecyclerView recyclerView1,recyclerView2;
     private String key;
-    private TextView button;
+    private TextView button, username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +69,34 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
 
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Spedizioni3.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
 
         button = findViewById(R.id.textSpedizioni3);
         button.setOnClickListener(new View.OnClickListener() {

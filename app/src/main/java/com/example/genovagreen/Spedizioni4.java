@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -42,6 +43,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -65,7 +67,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private FirebaseUser user;
     private TextView timeButton;
     private int tHour, tMinute;
-    private TextView dateButton, username, position4;
+    private TextView dateButton, username, position4, username1;
     private Button map, agg;
     private TextView mapText;
     private String date, time;
@@ -88,13 +90,47 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset){
+                super.onDrawerSlide(drawerView, slideOffset);
+                hideKeyboard(Spedizioni4.this);
+            }
+        };
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+        ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username1 = view.findViewById(R.id.nomeutente);
+            username1.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username1.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Spedizioni4.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
 
         dateButton = findViewById(R.id.data4);
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +182,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
             }
         });
         map = findViewById(R.id.buttonMap);
@@ -297,6 +333,11 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null && activity.getCurrentFocus() != null) {
+            imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 
 }

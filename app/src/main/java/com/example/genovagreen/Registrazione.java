@@ -1,5 +1,7 @@
 package com.example.genovagreen;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,6 +28,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -42,6 +45,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     private FirebaseUser firebaseUser;
     private TextView login;
     private boolean res;
+    private TextView username1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +58,46 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset){
+                super.onDrawerSlide(drawerView, slideOffset);
+                hideKeyboard(Registrazione.this);
+            }
+        };
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
         auth=FirebaseAuth.getInstance();
         firebaseUser=auth.getCurrentUser();
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(firebaseUser!=null) {
+            View view=navigationView.getHeaderView(0);
+            username1 = view.findViewById(R.id.nomeutente);
+            username1.setVisibility(View.VISIBLE);
+            final String email = firebaseUser.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username1.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Registrazione.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
         emailAdd=findViewById(R.id.EmailAddress);
         password=findViewById(R.id.Password);
         password2=findViewById(R.id.RepeatPassword);
@@ -77,94 +115,86 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                res=true;
-                final String email=emailAdd.getText().toString().trim();
-                String pass=password.getText().toString();
-                String pass2=password2.getText().toString();
-                final String user=username.getText().toString().trim();
-                if(!email.isEmpty()&&!pass.isEmpty()&&!pass2.isEmpty()&&!user.isEmpty()){
-                   //controllo username unico
-                    if(res){
-                        if(pass.equals(pass2)){
-                            if(password.length()>5){
-                                auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if(task.isSuccessful()){
-                                            auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                res = true;
+                final String email = emailAdd.getText().toString().trim();
+                String pass = password.getText().toString();
+                String pass2 = password2.getText().toString();
+                final String user = username.getText().toString().trim();
+                if (!email.isEmpty() && !pass.isEmpty() && !pass2.isEmpty() && !user.isEmpty()) {
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Usernames");
+                    ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    if (ds.getValue(User.class).getUsername().equals(user)) {
+                                        res = false;
+                                    }
+                                }
+                                if(!email.isEmpty()&&!pass.isEmpty()&&!pass2.isEmpty()&&!user.isEmpty()){
+                                if(res){
+                                    if(pass.equals(pass2)){
+                                        if(password.length()>5){
+                                            auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                 @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
                                                     if(task.isSuccessful()){
-                                                        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Usernames").push();
-                                                        User users=new User();
-                                                        users.setEmail(email);
-                                                        users.setUsername(user);
-                                                        ref.setValue(users);
-                                                        auth.signOut();
-                                                        Toast.makeText(Registrazione.this, "Registrazione avvenuta. Controlla la tua email per la verificare.",Toast.LENGTH_LONG).show();
-                                                        startActivity(new Intent(Registrazione.this,Login.class));
+                                                        auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                if(task.isSuccessful()){
+                                                                    DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Usernames").push();
+                                                                    User users=new User();
+                                                                    users.setEmail(email);
+                                                                    users.setUsername(user);
+                                                                    ref.setValue(users);
+                                                                    auth.signOut();
+                                                                    Toast.makeText(Registrazione.this, "Registrazione avvenuta. Controlla la tua email per la verificare.",Toast.LENGTH_LONG).show();
+                                                                    startActivity(new Intent(Registrazione.this,Login.class));
+                                                                }else{
+                                                                    Toast.makeText(Registrazione.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+                                                        });
                                                     }else{
-                                                        Toast.makeText(Registrazione.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(Registrazione.this, "Qualcosa è andato storto con la registrazione",Toast.LENGTH_SHORT).show();
                                                     }
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(Registrazione.this, "Errore "+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+                                                }
+                                            }).addOnCanceledListener(new OnCanceledListener() {
+                                                @Override
+                                                public void onCanceled() {
+                                                    Toast.makeText(Registrazione.this, "Riprova",Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                         }else{
-                                            Toast.makeText(Registrazione.this, "Qualcosa è andato storto con la registrazione",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Registrazione.this, "La password deve avere almeno 6 caratteri",Toast.LENGTH_SHORT).show();
                                         }
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(Registrazione.this, "Errore "+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnCanceledListener(new OnCanceledListener() {
-                                    @Override
-                                    public void onCanceled() {
-                                        Toast.makeText(Registrazione.this, "Riprova",Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }else{
-                                Toast.makeText(Registrazione.this, "La password deve avere almeno 6 caratteri",Toast.LENGTH_SHORT).show();
-                            }
 
-                        }else{
-                            Toast.makeText(Registrazione.this, "Password e Conferma password non corrispondono",Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(Registrazione.this, "Password e Conferma password non corrispondono",Toast.LENGTH_SHORT).show();
+                                    }
+                                }else{
+                                    Toast.makeText(Registrazione.this, "Username già in uso",Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(Registrazione.this, "Non possono esserci campi vuoti",Toast.LENGTH_SHORT).show();
+                            }
+                         }
                         }
-                        }else{
-                        Toast.makeText(Registrazione.this, "Username già in uso",Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(Registrazione.this, "Non possono esserci campi vuoti",Toast.LENGTH_SHORT).show();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(Registrazione.this, "Errore db",Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
-    }
-
-    private void userIsUnique(final String user) {
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Usernames");
-        if(ref!=null) {
-            ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
-                        for (DataSnapshot ds : snapshot.getChildren()) {
-                            if(user.equals(ds.getValue(User.class).getUsername().toString().trim())){
-                                setResFalse();
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Registrazione.this, "errore db", Toast.LENGTH_LONG).show();
-                }
-            });
-        }
-    }
-
-    private void setResFalse() {
-        res=false;
     }
 
     @Override
@@ -196,16 +226,11 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public String rndString(){
-        char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
-        StringBuilder sb1 = new StringBuilder();
-        Random random1 = new Random();
-        for (int i = 0; i < 10; i++)
-        {
-            char c1 = chars1[random1.nextInt(chars1.length)];
-            sb1.append(c1);
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null && activity.getCurrentFocus() != null) {
+            imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
-        return sb1.toString();
     }
 }
 

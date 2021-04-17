@@ -39,7 +39,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private NavigationView navigationView;
     private FirebaseUser user;
     private String luogo, ora, data, organizzatore, partecipanti, descrizione, id;
-    private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5;
+    private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username;
     private Button annulla,partecipa;
     private String id1;
     private boolean bottone;
@@ -62,6 +62,34 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
         final String email=user.getEmail();
 
         luogo = getIntent().getStringExtra("luogo");

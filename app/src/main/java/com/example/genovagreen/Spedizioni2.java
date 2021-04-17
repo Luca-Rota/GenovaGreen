@@ -26,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     private ArrayList<Spedizione> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
-    private String key;
+    private TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +59,39 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
 
-        ref= FirebaseDatabase.getInstance().getReference().child("Spedizioni");
         recyclerView=(RecyclerView)findViewById(R.id.rvsped2);
         recyclerView.setHasFixedSize(true);
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
+        ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Spedizioni2.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
 
         button= findViewById(R.id.buttonSpedizioni2);
         button.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +101,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
             }
         });
 
-
+        ref= FirebaseDatabase.getInstance().getReference().child("Spedizioni");
     }
 
     @Override

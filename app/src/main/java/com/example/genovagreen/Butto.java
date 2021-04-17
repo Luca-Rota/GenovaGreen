@@ -1,5 +1,7 @@
 package com.example.genovagreen;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -52,6 +55,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     private DatabaseReference ref;
     private RecyclerView recyclerView;
     private SearchView searchView;
+    private TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,18 +69,51 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset){
+                super.onDrawerSlide(drawerView, slideOffset);
+                   hideKeyboard(Butto.this);
+            }
+        };
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_butto);
 
-        ref=FirebaseDatabase.getInstance().getReference().child("DoveLoButto");
         recyclerView=(RecyclerView)findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         searchView=findViewById(R.id.searchView);
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-
+        ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Butto.this, "errore db", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
+        ref=FirebaseDatabase.getInstance().getReference().child("DoveLoButto");
         TextView support =findViewById(R.id.segnala);
         support.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +124,8 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
                 startActivity(Intent.createChooser(intent, "Scegli un'applicazione"));
             }
         });
-
     }
+
 
     @Override
     public void onStart() {
@@ -171,4 +208,11 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null && activity.getCurrentFocus() != null) {
+            imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
 }

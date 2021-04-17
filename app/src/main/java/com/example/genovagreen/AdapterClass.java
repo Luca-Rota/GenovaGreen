@@ -53,7 +53,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
     public void onBindViewHolder(@NonNull myviewholder holder, final int position) {
         holder.rifiutotext.setText(list.get(position).getRifiuto());
         holder.cassonettotext.setText(list.get(position).getCassonetto());
-        String cassonetto=list.get(position).getCassonetto().trim();
+        String cassonetto=list.get(position).getCassonetto();
         switch(cassonetto) {
             case "Cassonetto dell'indifferenziata":
                 holder.imgrec.setImageResource(R.drawable.mixed);
@@ -71,7 +71,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 holder.imgrec.setImageResource(R.drawable.umido);
                 break;
             default:
-
+                holder.imgrec.setImageResource(R.drawable.vetro);
                 break;
         }
         holder.card.setOnClickListener(new View.OnClickListener() {

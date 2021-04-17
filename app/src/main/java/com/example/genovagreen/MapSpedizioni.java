@@ -272,9 +272,6 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
                                         Intent intent=new Intent(MapSpedizioni.this, Spedizioni4.class);
                                         intent.putExtra("luogo",feature.placeName());
                                         startActivity(intent);
-                                        Toast.makeText(MapSpedizioni.this,
-                                                String.format(getString(R.string.location_picker_place_name_result),
-                                                        feature.placeName()), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
