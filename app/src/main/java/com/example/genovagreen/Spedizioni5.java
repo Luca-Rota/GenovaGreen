@@ -143,7 +143,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                      String email1 = ds.getValue(SpedPersonali.class).getEmail().trim();
                                                      if (id.equals(id1) && email.equals(email1)) {
                                                          final String idCr=ds.getKey().trim();
-                                                         partecipa.setText("Elimina");
+                                                         partecipa.setText(" Elimina ");
                                                          partecipa.setOnClickListener(new View.OnClickListener() {
                                                              @Override
                                                              public void onClick(View v) {

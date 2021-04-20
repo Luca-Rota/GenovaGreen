@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@drawable/back">
+
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -40,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/mappa"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,12 +74,11 @@
             android:layout_marginStart="10dp"
             android:fontFamily="monospace"
             android:hint="Scegliere la posizione"
-            android:textColorHint="#726a6a"
-            android:text=""
             android:textColor="#000"
+            android:textColorHint="#726a6a"
             android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,7 +91,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -101,7 +101,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,17 +152,30 @@
         <TextView
             android:id="@+id/data4"
             android:layout_width="120dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:textColorHint="#726a6a"
             android:hint="data"
             android:textColor="#000"
+            android:textColorHint="#726a6a"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/view7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout24"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout24"
+            app:layout_constraintTop_toBottomOf="@+id/data4" />
 
         <View
             android:id="@+id/view3"
@@ -184,7 +196,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -236,19 +247,32 @@
         <TextView
             android:id="@+id/time"
             android:layout_width="120dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:fontFamily="monospace"
             android:gravity="center"
             android:hint="ora"
-            android:textColorHint="#726a6a"
             android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#000"
+            android:textColorHint="#726a6a"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/view8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout7"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout7"
+            app:layout_constraintTop_toBottomOf="@+id/time" />
 
         <View
             android:id="@+id/view4"
@@ -268,7 +292,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -311,14 +335,14 @@
                 android:id="@+id/descrizione4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="monospace"
-                android:textColorHint="#726a6a"
                 android:background="#00000000"
+                android:fontFamily="monospace"
                 android:hint="Inscerisci qui una breve descrizione sul lavoro da compiere."
                 android:text=""
                 android:textColor="#000"
+                android:textColorHint="#726a6a"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="italic" />
 
         </ScrollView>
 

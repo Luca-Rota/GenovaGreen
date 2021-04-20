@@ -114,7 +114,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
             }
         }
         ref=FirebaseDatabase.getInstance().getReference().child("DoveLoButto");
-        TextView support =findViewById(R.id.segnala);
+        Button support =findViewById(R.id.segnala);
         support.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
