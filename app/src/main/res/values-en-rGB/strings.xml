@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GenovaGreen</string>
     <string name="slogan">Help us make Genoa even more Green!</string>
     <string name="e_questo">Where do I throw this?</string>
     <string name="lo_sapevi_che">Did you know that recycling varies according to the municipality in which you are located? Look for a product and find out in which bin to be disposed of.</string>
@@ -17,7 +16,19 @@
     <string name="RUP_tit">"Hazardous Municipal Waste and Bulky Waste "</string>
     <string name="rif_pericolisi_descrizione">Hazardous municipal waste (RUP) is the type of waste produced by domestic users which, by containing a high dose of substances dangerous to the environment and health, they must be collected separately in order to permit their regular treatment and disposal at the approved facilities.</string>
     <string name="RUP_desc">All hazardous municipal waste must be delivered to city collection centres.</string>
-    <string name="RUP_desc_2">Here is a short list of the RUPs</string>
+    <string name="RUP_desc_2">Here is a short list of the RUPs:</string>
+    <string name="RUP_desc_3"> &#8226; Paint cans, varnishes, glues, solvents \n
+    <br>&#8226; Spent batteries (stylus, button) \n</br>
+    <br>&#8226; Spent car batteries \n</br>
+    <br>&#8226; Expired medicines and containers with medicinal residues \n</br>
+    <br>&#8226; Ink and toner cartridges \n</br>
+    <br>&#8226; Spray cans \n</br>
+    <br>&#8226; Chemical solvents for domestic use \n</br>
+    <br>&#8226; Pesticide, insecticide and topicoid products for domestic use \n</br>
+    <br>&#8226; Exhausted kitchen oil \n</br>
+    <br>&#8226; Exhausted engine oil \n</br>
+    <br>&#8226; Oil filters \n</br>
+    &#8226; Small battery-powered electronic equipment</string>
     <string name="RUP_desc4">Instead, they are bulky waste:</string>
     <string name="RUP_desc_5">&#8226; Household appliances (washing machines, microwaves, refrigerators, etc.)<br>&#8226; Furniture (cabinets, bookcases, beds, etc.) </br>     <br>&#8226; Other bulky objects (e.g. bicycles)  </br></string>
     <string name="rec_pass">Enter your email here and we’ll send you the link to change your account password</string>
@@ -53,4 +64,47 @@
     <string name="infoCondividi">Share</string>
     <string name="infoSeguici">Follow us on Social Media!</string>
     <string name="RUP_but">FIND THE NEAREST COLLECTION CENTRE</string>
+    <string name="move_map_instruction">Move the map and select the desired location.</string>
+    <string name="user_location_permission_explanation">This function requires location permissions to work</string>
+    <string name="user_location_permission_not_granted">You don\'t have tracking permissions.</string>
+    <string name="segnala">Report</string>
+    <string name="nessun_prodotto_trovato">No product found.</string>
+    <string name="popup_impostazioni">Are you sure you want to log out?</string>
+    <string name="logout_toast">Logout happened with success.</string>
+    <string name="login_successo">Login happened with success.</string>
+    <string name="verifica_email">Please check your email address.</string>
+    <string name="riprova">Retry.</string>
+    <string name="login_storto">Something went wrong with the login.</string>
+    <string name="no_campi_vuoti">There can be no empty fields.</string>
+    <string name="errore_db">Database error.</string>
+    <string name="si">Yes</string>
+    <string name="gps_non_attivo">This function requires the use of GPS. Do you want to enable it?</string>
+    <string name="seleziona_un_luogo">Select a location</string>
+    <string name="email_inviata">Email sent</string>
+    <string name="registrazione_avvenuta">Successful registration. Check your email for verification.</string>
+    <string name="registrazione_storta">Something went wrong with the recording.</string>
+    <string name="username_in_uso">Username already in use.</string>
+    <string name="pass_confermapass_non_coincidono">Password and Confirm password do not match.</string>
+    <string name="pass_min_6_caratteri">The password must have at least 6 characters.</string>
+    <string name="nessuna_spedizione_trovata">No shipment found yet.</string>
+    <string name="elimina">Delete</string>
+    <string name="scegliere_la_posizione">Choose the location</string>
+    <string name="non_partecipare">Not to participate</string>
+    <string name="impostare_data">Set date:</string>
+    <string name="data">date</string>
+    <string name="ora">time</string>
+    <string name="impostare_ora">Set time:</string>
+    <string name="breve_descrizione">Short description:</string>
+    <string name="aggiungi">ADD</string>
+    <string name="inserisci_qui_una_breve_descrizione_sul_lavoro_da_compiere">Enter here a brief description of the work to be done.</string>
+    <string name="posizione">Location</string>
+    <string name="indietro">Back</string>
+    <string name="partecipa">Participate</string>
+    <string name="numero_partecipanti">Number of Participants:</string>
+    <string name="data_e_ora">Date and time:</string>
+    <string name="organizzatore">Organizer:</string>
+    <string name="location_picker_dropped_marker_snippet_no_results">No result</string>
+    <string name="location_picker_select_location_button_cancel">Cancel</string>
+    <string name="location_picker_select_location_button_select">Select a location</string>
+    <string name="location_picker_place_name_result">Place name: %1$s</string>
 </resources>

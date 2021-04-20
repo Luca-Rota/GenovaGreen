@@ -24,7 +24,6 @@
     <string name="rif_pericolisi_descrizione">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
     <string name="RUP_desc">Tutti i rifiuti urbani pericolosi devono essere conferiti presso i centri di raccolta cittadini.</string>
     <string name="RUP_desc_2">Ecco un breve elenco dei RUP:</string>
-
     <string name="RUP_desc_3"> &#8226; Barattoli di colore, vernici, colle, solventi \n
     <br>&#8226; Pile esauste (stilo, a bottone) \n</br>
     <br>&#8226; Batterie auto esauste \n</br>
@@ -98,25 +97,25 @@
     <string name="le_spedizioni_a_cui_parteciperai">Le spedizioni a cui parteciperai:</string>
     <string name="crea_una_spedizione">CREA UNA SPEDIZIONE</string>
     <string name="scegli_un_luogo_sulla_mappa">Scegli un luogo sulla mappa:</string>
-    <string name="title_activity_place_selection_plugin">PlaceSelectionPluginActivity</string>
+    <string name="title_activity_place_selection_plugin" translatable="false">PlaceSelectionPluginActivity</string>
 
-    <string name="title_activity_notify">notifyActivity</string>
-    <string name="title_activity_notify2">notifyActivity2</string>
+    <string name="title_activity_notify" translatable="false">notifyActivity</string>
+    <string name="title_activity_notify2" translatable="false">notifyActivity2</string>
 
-    <string name="channel_name">canale 1</string>
-    <string name="channel_description">descrizione canale 1</string>
+    <string name="channel_name" translatable="false">canale 1</string>
+    <string name="channel_description" translatable="false">descrizione canale 1</string>
 
-    <string name="move_map_instruction">Muovi la mappa e seleziona il luogo desiderato</string>
-    <string name="location_picker_select_location_button_cancel">Cancel</string>
-    <string name="location_picker_select_location_button_select">Select a location</string>
-    <string name="location_picker_dropped_marker_snippet_no_results">No results</string>
-    <string name="location_picker_place_name_result">Place name: %1$s</string>
+    <string name="move_map_instruction">Muovi la mappa e seleziona il luogo desiderato.</string>
+    <string name="location_picker_select_location_button_cancel">Annulla</string>
+    <string name="location_picker_select_location_button_select">Seleziona un luogo</string>
+    <string name="location_picker_dropped_marker_snippet_no_results">Nessun risultato</string>
+    <string name="location_picker_place_name_result">Nome del luogo: %1$s</string>
 
     <string name="user_location_permission_explanation">Questa funzione necessita dei permessi di localizzazione per funzionare</string>
     <string name="user_location_permission_not_granted">Non hai i permessi per la localizzazione.</string>
     <string name="segnala">Segnala</string>
     <string name="nessun_prodotto_trovato">Nessun prodotto trovato.</string>
-    <string name="popup_impostazioni">Sei sicuro di voler uscire dall'account?</string>
+    <string name="popup_impostazioni">Sei sicuro di voler uscire dall\'account?</string>
     <string name="logout_toast">Logout avvenuto con successo.</string>
     <string name="login_successo">Login eseguito con successo.</string>
     <string name="verifica_email">Verifica il tuo indirizzo email.</string>
@@ -124,9 +123,9 @@
     <string name="login_storto">Qualcosa è andato storto con il login.</string>
     <string name="no_campi_vuoti">Non ci possono essere campi vuoti.</string>
     <string name="errore_db">Errore database.</string>
-    <string name="gps_non_attivo">Questa funzione necessita l'utilizzo del GPS. Vuoi abilitarlo?</string>
+    <string name="gps_non_attivo">Questa funzione necessita l\'utilizzo del GPS. Vuoi abilitarlo?</string>
     <string name="si">Si</string>
-    <string name="no">No</string>
+    <string name="no" translatable="false">No</string>
     <string name="seleziona_un_luogo">Seleziona un luogo</string>
     <string name="email_inviata">Email inviata</string>
     <string name="registrazione_avvenuta">Registrazione avvenuta con successo. Controlla la tua email per la verifica.</string>
@@ -134,14 +133,12 @@
     <string name="username_in_uso">Username già in uso.</string>
     <string name="pass_confermapass_non_coincidono">Password e Conferma password non corrispondono.</string>
     <string name="pass_min_6_caratteri">La password deve avere almeno 6 caratteri.</string>
-    <string name="spedizioni">Spedizioni</string>
     <string name="nessuna_spedizione_trovata">Nessuna spedizione trovata.</string>
     <string name="scegliere_la_posizione">Scegliere la posizione</string>
     <string name="elimina">Elimina</string>
     <string name="non_partecipare">Non partecipare</string>
     <string name="impostare_data">Impostare data:</string>
     <string name="data">data</string>
-    <string name="impostare_ora">Impostare ora:</string>
     <string name="ora">ora</string>
     <string name="breve_descrizione">Breve descrizione:</string>
     <string name="inserisci_qui_una_breve_descrizione_sul_lavoro_da_compiere">Inserisci qui una breve descrizione sul lavoro da compiere.</string>
@@ -150,9 +147,9 @@
     <string name="data_e_ora">Data e ora:</string>
     <string name="posizione">Posizione:</string>
     <string name="numero_partecipanti">Numero Partecipanti:</string>
-    <string name="breve_descrizione">Breve descrizione:</string>
     <string name="indietro">Indietro</string>
     <string name="partecipa">Partecipa</string>
+    <string name="impostare_ora">Impostare ora:</string>
 
 
 </resources>
