@@ -1,7 +1,10 @@
 package com.example.genovagreen;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.SupportMapFragment;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.api.geocoding.v5.GeocodingCriteria;
@@ -61,6 +65,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
     private ImageView hoveringMarker;
     private Layer droppedMarkerLayer;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +76,11 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
 
 // This contains the MapView in XML and needs to be called after the access token is configured.
         setContentView(R.layout.activity_lab_location_picker);
+
+        final LocationManager manager = (LocationManager) getSystemService( LOCATION_SERVICE );
+
+        if (!manager.isProviderEnabled( LocationManager.GPS_PROVIDER ))
+            buildAlertMessageNoGps();
 
 // Initialize the mapboxMap view
         mapView = findViewById(R.id.mapView);
@@ -158,6 +168,24 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
                 });
             }
         });
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Questa funzione necessita l'utilizzo del GPS. Vuoi abilitarlo?")
+                .setCancelable(false)
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        startActivity(new Intent(MapSpedizioni.this,Spedizioni4.class));
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void initDroppedMarker(@NonNull Style loadedMapStyle) {

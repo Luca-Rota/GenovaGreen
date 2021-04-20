@@ -145,28 +145,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         final LocationManager manager = (LocationManager) getSystemService( LOCATION_SERVICE );
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
-        if ( manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+        if ( manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) )
             getCurrentLocation();
-        }
-        else{
+        else
             buildAlertMessageNoGps();
-            getOnlyMarker();
-        }
+
     }
 
-    private void getOnlyMarker() {
-        mapFragment.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                for(int i=0;i<arrayList.size();i++){
-                    for (int j=0;j<title.size();j++){
-                        googleMap.addMarker(new MarkerOptions().position(arrayList.get(i)).title(String.valueOf(title.get(i))));
-                    }
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayList.get(i), 11f));
-                }
-            }
-        });
-    }
 
     private void listInit(){
         arrayList.add(isolaEcologica1);
@@ -228,19 +213,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         title.add("AMIU");
     }
 
-
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+        builder.setMessage("Questa funzione necessita l'utilizzo del GPS. Vuoi abilitarlo?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        dialog.cancel();
+                        startActivity(new Intent(MapActivity.this,Pericolosi2.class));
                     }
                 });
         final AlertDialog alert = builder.create();

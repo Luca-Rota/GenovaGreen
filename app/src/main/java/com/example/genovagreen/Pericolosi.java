@@ -86,7 +86,7 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Pericolosi.this,Notification.class));
+                startActivity(new Intent(Pericolosi.this,Pericolosi2.class));
             }
         });
 
