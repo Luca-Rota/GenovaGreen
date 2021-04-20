@@ -1,6 +1,9 @@
 package com.example.genovagreen;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,6 +27,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +54,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         setContentView(R.layout.activity_spedizioni5);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE| WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -147,10 +153,17 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                          partecipa.setOnClickListener(new View.OnClickListener() {
                                                              @Override
                                                              public void onClick(View v) {
-                                                                 ref.child(idCr).removeValue();
-                                                                 DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Spedizioni");
-                                                                 ref1.child(id).removeValue();
-                                                                 startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                             AlertDialog mBuilder= new AlertDialog.Builder(Spedizioni5.this)
+                                                                 .setMessage(R.string.popup_sped2)
+                                                                 .setIcon(android.R.drawable.ic_dialog_alert)
+                                                                 .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                                                                     public void onClick(DialogInterface dialog, int whichButton) {
+                                                                     ref.child(idCr).removeValue();
+                                                                     DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+                                                                     ref1.child(id).removeValue();
+                                                                     startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                                 }})
+                                                                 .setNegativeButton(R.string.no, null).show();
                                                              }
                                                          });
                                                      }
@@ -179,12 +192,19 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                          partecipa.setOnClickListener(new View.OnClickListener() {
                                                              @Override
                                                              public void onClick(View v) {
-                                                                 DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("SpedPart").child(idPart);
-                                                                 ref.removeValue();
-                                                                 sped.setPartecipanti(String.valueOf(Integer.parseInt(sped.getPartecipanti())-1));
-                                                                 DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
-                                                                 update2.child(id).setValue(sped);
-                                                                 startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                                 AlertDialog mBuilder= new AlertDialog.Builder(Spedizioni5.this)
+                                                                     .setMessage(R.string.popup_sped1)
+                                                                     .setIcon(android.R.drawable.ic_dialog_alert)
+                                                                     .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                                                                         public void onClick(DialogInterface dialog, int whichButton) {
+                                                                         DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("SpedPart").child(idPart);
+                                                                         ref.removeValue();
+                                                                         sped.setPartecipanti(String.valueOf(Integer.parseInt(sped.getPartecipanti())-1));
+                                                                         DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+                                                                         update2.child(id).setValue(sped);
+                                                                         startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                                     }})
+                                                                     .setNegativeButton(R.string.no, null).show();
                                                              }
                                                          });
                                                      }
@@ -221,7 +241,20 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 }
             });
         }
+
+        TextView mappa = findViewById(R.id.mappa);
+        mappa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:0,0?q="+luogo));
+                startActivity(intent);
+            }
+        });
     }
+
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){

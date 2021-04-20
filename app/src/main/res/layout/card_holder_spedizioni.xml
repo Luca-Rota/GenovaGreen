@@ -13,103 +13,123 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/RelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout30"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:text="@string/organizzatore"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/organizzatore"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            <TextView
+                android:id="@+id/data4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="monospace"
+                android:text="Data e ora:"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:text="Organizzatore:"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout28"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toStartOf="@+id/imageView4"
-            android:layout_toEndOf="@+id/textView1"
-            android:fontFamily="monospace"
-            android:text="Andrea Cappelli"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/textView1"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout30"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/data4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/organizzatore"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="monospace"
-            android:text="@string/data_e_ora"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
+            <TextView
+                android:id="@+id/organizzatore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="monospace"
+                android:text="Andrea Cappelli"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/organizzatore"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toStartOf="@+id/imageView4"
-            android:layout_toEndOf="@+id/data4"
-            android:fontFamily="monospace"
-            android:text="21/07/98"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/data4"
-            app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
+            <TextView
+                android:id="@+id/data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/organizzatore"
+                android:layout_marginTop="12dp"
+                android:fontFamily="monospace"
+                android:text="21/07/98"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="monospace"
-            android:text=" - "
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/data"
-            app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
+            <TextView
+                android:id="@+id/ora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="monospace"
+                android:text="10:30"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
 
-        <TextView
-            android:id="@+id/ora"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="monospace"
-            android:text="10:30"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="monospace"
+                android:text="-"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/ora"
+                app:layout_constraintStart_toEndOf="@+id/data"
+                app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/imageView4"
@@ -118,7 +138,6 @@
             android:layout_above="@+id/view"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -130,12 +149,11 @@
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_below="@+id/textView4"
-            android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/data" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout28" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -112,6 +112,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
                         .setNegativeButton(R.string.no, null).show();
             }
         });
+
         notifiche=findViewById(R.id.notificheImpostazioni);
 
         lingua=findViewById(R.id.linguaImpostazioni);

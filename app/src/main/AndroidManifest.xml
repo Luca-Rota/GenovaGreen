@@ -47,6 +47,7 @@
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Spedizioni5"
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
