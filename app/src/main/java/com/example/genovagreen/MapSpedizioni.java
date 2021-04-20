@@ -172,14 +172,14 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
 
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Questa funzione necessita l'utilizzo del GPS. Vuoi abilitarlo?")
+        builder.setMessage(R.string.gps_non_attivo)
                 .setCancelable(false)
-                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         startActivity(new Intent(MapSpedizioni.this,Spedizioni4.class));
                     }
@@ -218,7 +218,6 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
     @Override
     protected void onStop() {
         super.onStop();
-
         mapView.onStop();
     }
 

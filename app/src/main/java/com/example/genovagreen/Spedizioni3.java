@@ -22,6 +22,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +42,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
     private DatabaseReference ref1,ref2,ref3;
     private RecyclerView recyclerView1,recyclerView2;
     private String key;
-    private TextView button, username;
+    private TextView button, username, nosped1, nosped2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +98,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                 });
             }
         }
-
         button = findViewById(R.id.textSpedizioni3);
         button.setOnClickListener(new View.OnClickListener() {
                @Override
@@ -110,6 +110,10 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onStart() {
         super.onStart();
+        recyclerView1=(RecyclerView)findViewById(R.id.rvMySped3);
+        recyclerView2=(RecyclerView)findViewById(R.id.rvSped3);
+        nosped1=findViewById(R.id.nosped1);
+        nosped2=findViewById(R.id.nosped2);
         final String email=user.getEmail();
         if(ref1!=null) {
             ref1.addValueEventListener(new ValueEventListener() {
@@ -136,6 +140,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                         }
                                         if(list1.isEmpty()){
                                             recyclerView1.setVisibility(View.INVISIBLE);
+                                            nosped1.setVisibility(View.VISIBLE);
                                         }else {
                                             adapterSpedizioni1 = new AdapterSpedizioni(list1);
                                             recyclerView1.setAdapter(adapterSpedizioni1);
@@ -183,6 +188,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                         }
                                         if(list2.isEmpty()){
                                              recyclerView2.setVisibility(View.INVISIBLE);
+                                             nosped2.setVisibility(View.VISIBLE);
                                         }else {
                                             adapterSpedizioni2 = new AdapterSpedizioni(list2);
                                             recyclerView2.setAdapter(adapterSpedizioni2);

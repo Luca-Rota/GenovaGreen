@@ -96,7 +96,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Password.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Password.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -118,7 +118,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Password.this,"E-mail inviata",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Password.this,R.string.email_inviata,Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Password.this, Login.class));
                         }else{
                             Toast.makeText(Password.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();

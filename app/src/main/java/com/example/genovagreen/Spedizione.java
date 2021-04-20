@@ -1,5 +1,7 @@
 package com.example.genovagreen;
 
+import java.util.Comparator;
+
 public class Spedizione {
     public String luogo, descrizione, organizzatore, data, ora, partecipanti;
 
@@ -64,4 +66,5 @@ public class Spedizione {
     public String getOrganizzatore() {
         return organizzatore;
     }
+
 }

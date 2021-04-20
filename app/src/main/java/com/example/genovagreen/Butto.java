@@ -55,7 +55,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     private DatabaseReference ref;
     private RecyclerView recyclerView;
     private SearchView searchView;
-    private TextView username;
+    private TextView username, noprod, segnala;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +108,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Butto.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Butto.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -124,6 +124,8 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
                 startActivity(Intent.createChooser(intent, "Scegli un'applicazione"));
             }
         });
+        noprod=findViewById(R.id.noprod);
+        segnala=findViewById(R.id.segnala);
     }
 
 
@@ -146,7 +148,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Butto.this, "errore db", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Butto.this, R.string.errore_db, Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -168,11 +170,19 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     }
 
     public void search(String str) {
+        recyclerView.setVisibility(View.VISIBLE);
+        noprod.setVisibility(View.INVISIBLE);
+        segnala.setVisibility(View.INVISIBLE);
         ArrayList<Oggetto> myList = new ArrayList<Oggetto>();
         for(Oggetto oggetto:list){
             if(oggetto.getRifiuto().toLowerCase().contains(str.toLowerCase())){
                 myList.add(oggetto);
             }
+        }
+        if(myList.isEmpty()){
+            recyclerView.setVisibility(View.INVISIBLE);
+            noprod.setVisibility(View.VISIBLE);
+            segnala.setVisibility(View.VISIBLE);
         }
         AdapterClass adapterClass=new AdapterClass(myList);
         recyclerView.setAdapter(adapterClass);

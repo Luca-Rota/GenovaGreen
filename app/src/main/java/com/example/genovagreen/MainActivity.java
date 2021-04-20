@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(MainActivity.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }

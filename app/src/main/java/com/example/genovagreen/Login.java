@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Login.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -127,28 +127,28 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 if(auth.getCurrentUser().isEmailVerified()){
-                                    Toast.makeText(Login.this, "Login eseguito con successo",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, R.string.login_successo,Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(Login.this, Spedizioni2.class));
                                 }else{
-                                    Toast.makeText(Login.this, "Verifica il tuo indirizzo email",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, R.string.verifica_email,Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                Toast.makeText(Login.this, "Qualcosa è andato storto con il login",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, R.string.login_storto,Toast.LENGTH_SHORT).show();
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(Login.this, "Errore "+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, ""+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
                         }
                     }).addOnCanceledListener(new OnCanceledListener() {
                         @Override
                         public void onCanceled() {
-                            Toast.makeText(Login.this, "Riprova",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, R.string.riprova,Toast.LENGTH_SHORT).show();
                         }
                     });
                 }else{
-                    Toast.makeText(Login.this, "Non possono esserci campi vuoti", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, R.string.no_campi_vuoti, Toast.LENGTH_SHORT).show();
                 }
             }
         });

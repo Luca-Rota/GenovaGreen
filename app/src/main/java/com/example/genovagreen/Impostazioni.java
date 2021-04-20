@@ -85,7 +85,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Impostazioni.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Impostazioni.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -101,15 +101,15 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 AlertDialog mBuilder= new AlertDialog.Builder(Impostazioni.this)
-                        .setMessage("Sei sicuro di voler uscire dall'account?")
+                        .setMessage(R.string.popup_impostazioni)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 auth.signOut();
-                                Toast.makeText(Impostazioni.this, "Logout avvenuto con successo",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Impostazioni.this, R.string.logout_toast,Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(Impostazioni.this, MainActivity.class));
                             }})
-                        .setNegativeButton(android.R.string.no, null).show();
+                        .setNegativeButton(R.string.no, null).show();
             }
         });
         notifiche=findViewById(R.id.notificheImpostazioni);

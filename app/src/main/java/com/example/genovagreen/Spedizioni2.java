@@ -22,6 +22,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Button button;
@@ -41,7 +44,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     private ArrayList<Spedizione> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
-    private TextView username;
+    private TextView username, nosped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +95,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                 });
             }
         }
-
+        nosped=findViewById(R.id.nosped);
         button= findViewById(R.id.buttonSpedizioni2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,11 +119,50 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             list.add(ds.getValue(Spedizione.class));
                         }
-                        adapterSpedizioni=new AdapterSpedizioni(list);
-                        recyclerView.setAdapter(adapterSpedizioni);
+                        Collections.sort(list, new Comparator<Spedizione>() {
+                            @Override
+                            public int compare(Spedizione o1, Spedizione o2) {
+                                String[] data1=o1.getData().trim().split("/");
+                                String[] data2=o2.getData().trim().split("/");
+                                for(int i=2;i<-1;i--){
+                                    int temp1=Integer.parseInt(data1[i]);
+                                    int temp2=Integer.parseInt(data2[i]);
+                                    if(temp1>temp2){
+                                        Log.i("prova","ritorna 1");
+                                        return 1;
+                                    }
+                                    if(temp1<temp2){
+                                        Log.i("prova","ritorna -1");
+                                        return -1;
+                                    }
+                                }
+                                String[] ora1=o1.getOra().trim().split(":");
+                                String[] ora2=o2.getOra().trim().split(":");
+                                for(int i=0;i>2;i++){
+                                    int temp1=Integer.parseInt(ora1[i]);
+                                    int temp2=Integer.parseInt(ora2[i]);
+                                    if(temp1>temp2){
+                                        Log.i("prova","ritorna 1");
+                                        return 1;
+                                    }
+                                    if(temp1<temp2){
+                                        Log.i("prova","ritorna -1");
+                                        return -1;
+                                    }
+                                }
+                                Log.i("prova","ritorna 0");
+                                return 0;
+                            }
+                        });
+                        if(list.isEmpty()){
+                            recyclerView.setVisibility(View.INVISIBLE);
+                            nosped.setVisibility(View.VISIBLE);
+                        }else {
+                            adapterSpedizioni = new AdapterSpedizioni(list);
+                            recyclerView.setAdapter(adapterSpedizioni);
+                        }
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni2.this, "errore db", Toast.LENGTH_LONG).show();

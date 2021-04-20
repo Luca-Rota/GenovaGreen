@@ -41,6 +41,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.os.PersistableBundle;
 import android.telecom.Call;
 import android.util.Log;
 import android.view.MenuItem;
@@ -134,7 +135,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(MapActivity.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MapActivity.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -144,7 +145,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         final LocationManager manager = (LocationManager) getSystemService( LOCATION_SERVICE );
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-
         if ( manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) )
             getCurrentLocation();
         else
@@ -213,22 +213,60 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         title.add("AMIU");
     }
 
+
+
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Questa funzione necessita l'utilizzo del GPS. Vuoi abilitarlo?")
+        builder.setMessage(R.string.gps_non_attivo)
                 .setCancelable(false)
-                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         startActivity(new Intent(MapActivity.this,Pericolosi2.class));
                     }
                 });
         final AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getCurrentLocation();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getCurrentLocation();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getCurrentLocation();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        getCurrentLocation();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getCurrentLocation();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getCurrentLocation();
     }
 
     private void getCurrentLocation() {

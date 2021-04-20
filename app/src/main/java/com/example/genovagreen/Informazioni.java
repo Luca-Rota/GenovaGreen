@@ -76,7 +76,7 @@ public class Informazioni extends AppCompatActivity implements NavigationView.On
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Informazioni.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Informazioni.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
