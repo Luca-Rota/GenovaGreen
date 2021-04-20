@@ -129,6 +129,30 @@
     <string name="no">No</string>
     <string name="seleziona_un_luogo">Seleziona un luogo</string>
     <string name="email_inviata">Email inviata</string>
+    <string name="registrazione_avvenuta">Registrazione avvenuta con successo. Controlla la tua email per la verifica.</string>
+    <string name="registrazione_storta">Qualcosa è andato storto con la registrazione.</string>
+    <string name="username_in_uso">Username già in uso.</string>
+    <string name="pass_confermapass_non_coincidono">Password e Conferma password non corrispondono.</string>
+    <string name="pass_min_6_caratteri">La password deve avere almeno 6 caratteri.</string>
+    <string name="spedizioni">Spedizioni</string>
+    <string name="nessuna_spedizione_trovata">Nessuna spedizione trovata.</string>
+    <string name="scegliere_la_posizione">Scegliere la posizione</string>
+    <string name="elimina">Elimina</string>
+    <string name="non_partecipare">Non partecipare</string>
+    <string name="impostare_data">Impostare data:</string>
+    <string name="data">data</string>
+    <string name="impostare_ora">Impostare ora:</string>
+    <string name="ora">ora</string>
+    <string name="breve_descrizione">Breve descrizione:</string>
+    <string name="inserisci_qui_una_breve_descrizione_sul_lavoro_da_compiere">Inserisci qui una breve descrizione sul lavoro da compiere.</string>
+    <string name="aggiungi">AGGIUNGI</string>
+    <string name="organizzatore">Organizzatore:</string>
+    <string name="data_e_ora">Data e ora:</string>
+    <string name="posizione">Posizione:</string>
+    <string name="numero_partecipanti">Numero Partecipanti:</string>
+    <string name="breve_descrizione">Breve descrizione:</string>
+    <string name="indietro">Indietro</string>
+    <string name="partecipa">Partecipa</string>
 
 
 </resources>

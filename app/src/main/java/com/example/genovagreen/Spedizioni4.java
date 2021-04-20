@@ -126,7 +126,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni4.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Spedizioni4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -171,7 +171,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni4.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Spedizioni4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -248,7 +248,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                     }
                                                 });
                                             }else{
-                                                Toast.makeText(Spedizioni4.this,"Tutti i campi devono essere riempiti", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Spedizioni4.this, R.string.no_campi_vuoti, Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     }
@@ -256,7 +256,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(Spedizioni4.this, "errore db", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Spedizioni4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                             }
                         });
                     }

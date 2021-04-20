@@ -76,7 +76,7 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Spedizioni.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }

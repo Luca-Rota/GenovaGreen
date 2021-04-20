@@ -85,7 +85,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -143,7 +143,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                      String email1 = ds.getValue(SpedPersonali.class).getEmail().trim();
                                                      if (id.equals(id1) && email.equals(email1)) {
                                                          final String idCr=ds.getKey().trim();
-                                                         partecipa.setText(" Elimina ");
+                                                         partecipa.setText(R.string.elimina);
                                                          partecipa.setOnClickListener(new View.OnClickListener() {
                                                              @Override
                                                              public void onClick(View v) {
@@ -159,7 +159,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          }
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError error) {
-                                             Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
+                                             Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                          }
                                      });
                                  }
@@ -175,7 +175,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                      String email1=ds.getValue(SpedPersonali.class).getEmail().trim();
                                                      if(id.equals(id1)&&email.equals(email1)){
                                                          final String idPart=ds.getKey().trim();
-                                                         partecipa.setText("Non partecipare");
+                                                         partecipa.setText(R.string.non_partecipare);
                                                          partecipa.setOnClickListener(new View.OnClickListener() {
                                                              @Override
                                                              public void onClick(View v) {
@@ -193,7 +193,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          }
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError error) {
-                                             Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
+                                             Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                          }
                                      });
                                  }
@@ -217,7 +217,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni5.this, "errore db", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
         }

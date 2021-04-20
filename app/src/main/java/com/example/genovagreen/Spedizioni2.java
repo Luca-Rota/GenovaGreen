@@ -90,7 +90,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni2.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -165,7 +165,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni2.this, "errore db", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
 
                 }
             });

@@ -93,7 +93,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni3.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -158,7 +158,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni3.this, "errore db", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -205,7 +205,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni3.this, "errore db", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
 
                 }
             });

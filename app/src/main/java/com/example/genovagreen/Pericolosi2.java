@@ -95,7 +95,7 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Pericolosi2.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Pericolosi2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }

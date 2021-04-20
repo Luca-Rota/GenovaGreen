@@ -93,7 +93,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Registrazione.this, "errore db", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Registrazione.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -149,7 +149,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                                                                     users.setUsername(user);
                                                                     ref.setValue(users);
                                                                     auth.signOut();
-                                                                    Toast.makeText(Registrazione.this, "Registrazione avvenuta. Controlla la tua email per la verificare.",Toast.LENGTH_LONG).show();
+                                                                    Toast.makeText(Registrazione.this, R.string.registrazione_avvenuta,Toast.LENGTH_LONG).show();
                                                                     startActivity(new Intent(Registrazione.this,Login.class));
                                                                 }else{
                                                                     Toast.makeText(Registrazione.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
@@ -157,39 +157,39 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                                                             }
                                                         });
                                                     }else{
-                                                        Toast.makeText(Registrazione.this, "Qualcosa è andato storto con la registrazione",Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(Registrazione.this, R.string.registrazione_storta,Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(Registrazione.this, "Errore "+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Registrazione.this, ""+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
                                                 }
                                             }).addOnCanceledListener(new OnCanceledListener() {
                                                 @Override
                                                 public void onCanceled() {
-                                                    Toast.makeText(Registrazione.this, "Riprova",Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Registrazione.this, R.string.riprova,Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                         }else{
-                                            Toast.makeText(Registrazione.this, "La password deve avere almeno 6 caratteri",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Registrazione.this, R.string.pass_min_6_caratteri,Toast.LENGTH_SHORT).show();
                                         }
 
                                     }else{
-                                        Toast.makeText(Registrazione.this, "Password e Conferma password non corrispondono",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Registrazione.this, R.string.pass_confermapass_non_coincidono,Toast.LENGTH_SHORT).show();
                                     }
                                 }else{
-                                    Toast.makeText(Registrazione.this, "Username già in uso",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registrazione.this, R.string.username_in_uso,Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                Toast.makeText(Registrazione.this, "Non possono esserci campi vuoti",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Registrazione.this, R.string.no_campi_vuoti,Toast.LENGTH_SHORT).show();
                             }
                          }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Registrazione.this, "Errore db",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Registrazione.this, R.string.errore_db,Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
