@@ -117,7 +117,10 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                     if(snapshot.exists()){
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            list.add(ds.getValue(Spedizione.class));
+                            if(!ds.getValue(Spedizione.class).getLuogo().equals("default")) {
+                                Log.i("prova", "dio boia");
+                                list.add(ds.getValue(Spedizione.class));
+                            }
                         }
                         Collections.sort(list, new Comparator<Spedizione>() {
                             @Override
@@ -127,6 +130,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                                 for(int i=2;i<-1;i--){
                                     int temp1=Integer.parseInt(data1[i]);
                                     int temp2=Integer.parseInt(data2[i]);
+                                    Log.i("prova",temp1+" "+ temp2);
                                     if(temp1>temp2){
                                         Log.i("prova","ritorna 1");
                                         return 1;

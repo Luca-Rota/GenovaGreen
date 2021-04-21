@@ -107,4 +107,6 @@
     <string name="location_picker_select_location_button_cancel">Cancel</string>
     <string name="location_picker_select_location_button_select">Select a location</string>
     <string name="location_picker_place_name_result">Place name: %1$s</string>
+    <string name="popup_sped2">Are you sure you want to delete the expedition?</string>
+    <string name="popup_sped1">Are you sure you don’t want to participate in the expedition anymore?</string>
 </resources>

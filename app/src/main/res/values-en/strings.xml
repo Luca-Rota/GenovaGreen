@@ -96,7 +96,7 @@
     <string name="impostare_ora">Set time:</string>
     <string name="breve_descrizione">Short description:</string>
     <string name="aggiungi">ADD</string>
-    <string name="inserisci_qui_una_breve_descrizione_sul_lavoro_da_compiere">Enter here a brief description of the work to be done.</string>
+    <string name="inserisci_qui_una_breve_descrizione_sul_lavoro_da_compiere">Enter here a short description of the work to be done.</string>
     <string name="posizione">Location:</string>
     <string name="indietro">Back</string>
     <string name="partecipa">Participate</string>
@@ -107,4 +107,7 @@
     <string name="location_picker_select_location_button_cancel">Cancel</string>
     <string name="location_picker_select_location_button_select">Select a location</string>
     <string name="location_picker_place_name_result">Place name: %1$s</string>
+    <string name="popup_sped2">Are you sure you want to delete the expedition?</string>
+    <string name="popup_sped1">Are you sure you don’t want to participate in the expedition anymore?</string>
+    <string name="informazioni">Informations</string>
 </resources>

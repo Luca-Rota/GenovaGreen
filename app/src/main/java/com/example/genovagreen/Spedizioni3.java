@@ -41,7 +41,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
     private ArrayList<MySped> listemail1,listemail2;
     private DatabaseReference ref1,ref2,ref3;
     private RecyclerView recyclerView1,recyclerView2;
-    private String key;
     private TextView button, username, nosped1, nosped2;
 
     @Override
@@ -155,11 +154,9 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                             });
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-
                 }
             });
         }
@@ -195,10 +192,8 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                         }
                                     }
                                 }
-
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-
                                 }
                             });
                     }
@@ -206,12 +201,10 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-
                 }
             });
         }
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -237,7 +230,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
             case R.id.content_informazioni:
                 startActivity(new Intent(Spedizioni3.this, Informazioni.class));
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -98,13 +98,13 @@
     <string name="le_spedizioni_a_cui_parteciperai">Le spedizioni a cui parteciperai:</string>
     <string name="crea_una_spedizione">CREA UNA SPEDIZIONE</string>
     <string name="scegli_un_luogo_sulla_mappa">Scegli un luogo sulla mappa:</string>
-    <string name="title_activity_place_selection_plugin">PlaceSelectionPluginActivity</string>
+    <string name="title_activity_place_selection_plugin" translatable="false">PlaceSelectionPluginActivity</string>
 
-    <string name="title_activity_notify">notifyActivity</string>
-    <string name="title_activity_notify2">notifyActivity2</string>
+    <string name="title_activity_notify" translatable="false">notifyActivity</string>
+    <string name="title_activity_notify2" translatable="false">notifyActivity2</string>
 
-    <string name="channel_name">canale 1</string>
-    <string name="channel_description">descrizione canale 1</string>
+    <string name="channel_name" translatable="false">canale 1</string>
+    <string name="channel_description" translatable="false">descrizione canale 1</string>
 
     <string name="move_map_instruction">Muovi la mappa e seleziona il luogo desiderato</string>
     <string name="location_picker_select_location_button_cancel">Cancel</string>
@@ -126,9 +126,34 @@
     <string name="errore_db">Errore database.</string>
     <string name="gps_non_attivo">Questa funzione necessita l\'utilizzo del GPS. Vuoi abilitarlo?</string>
     <string name="si">Si</string>
-    <string name="no">No</string>
+    <string name="no" translatable="false">No</string>
     <string name="seleziona_un_luogo">Seleziona un luogo</string>
     <string name="email_inviata">Email inviata</string>
+    <string name="registrazione_avvenuta">Registrazione avvenuta con successo. Controlla la tua email per la verifica.</string>
+    <string name="registrazione_storta">Qualcosa è andato storto con la registrazione.</string>
+    <string name="username_in_uso">Username già in uso.</string>
+    <string name="pass_confermapass_non_coincidono">Password e Conferma password non corrispondono.</string>
+    <string name="pass_min_6_caratteri">La password deve avere almeno 6 caratteri.</string>
+    <string name="nessuna_spedizione_trovata">Nessuna spedizione trovata.</string>
+    <string name="scegliere_la_posizione">Scegliere la posizione</string>
+    <string name="elimina">Elimina</string>
+    <string name="non_partecipare">Non partecipare</string>
+    <string name="impostare_data">Impostare data:</string>
+    <string name="data">data</string>
+    <string name="ora">ora</string>
+    <string name="breve_descrizione">Breve descrizione:</string>
+    <string name="inserisci_qui_una_breve_descrizione_sul_lavoro_da_compiere">Inserisci qui una breve descrizione sul lavoro da compiere.</string>
+    <string name="aggiungi">AGGIUNGI</string>
+    <string name="organizzatore">Organizzatore:</string>
+    <string name="data_e_ora">Data e ora:</string>
+    <string name="posizione">Posizione:</string>
+    <string name="numero_partecipanti">Numero Partecipanti:</string>
+    <string name="indietro">Indietro</string>
+    <string name="partecipa">Partecipa</string>
+    <string name="impostare_ora">Impostare ora:</string>
+    <string name="popup_sped2">Sei sicuro di voler eliminare la spedizione?</string>
+    <string name="popup_sped1">Sei sicuro di non voler più partecipare alla spedizione?</string>
+    <string name="informazioni">Informazioni</string>
 
 
 </resources>

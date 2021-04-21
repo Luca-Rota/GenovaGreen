@@ -60,7 +60,8 @@
             android:name=".Spedizioni4"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar"/>
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Password"
             android:label="GenovaGreen"

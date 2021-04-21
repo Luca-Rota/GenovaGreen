@@ -40,6 +40,6 @@
         <item
             android:id="@+id/content_informazioni"
             android:icon="@drawable/ic_iconmonstr_info_8"
-            android:title="Informazioni" />
+            android:title="@string/informazioni" />
     </group>
 </menu>
