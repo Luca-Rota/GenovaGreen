@@ -118,7 +118,6 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             if(!ds.getValue(Spedizione.class).getLuogo().equals("default")) {
-                                Log.i("prova", "dio boia");
                                 list.add(ds.getValue(Spedizione.class));
                             }
                         }
@@ -127,34 +126,28 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                             public int compare(Spedizione o1, Spedizione o2) {
                                 String[] data1=o1.getData().trim().split("/");
                                 String[] data2=o2.getData().trim().split("/");
-                                for(int i=2;i<-1;i--){
+                                for(int i=2;i>-1;i--){
                                     int temp1=Integer.parseInt(data1[i]);
                                     int temp2=Integer.parseInt(data2[i]);
-                                    Log.i("prova",temp1+" "+ temp2);
                                     if(temp1>temp2){
-                                        Log.i("prova","ritorna 1");
                                         return 1;
                                     }
                                     if(temp1<temp2){
-                                        Log.i("prova","ritorna -1");
                                         return -1;
                                     }
                                 }
                                 String[] ora1=o1.getOra().trim().split(":");
                                 String[] ora2=o2.getOra().trim().split(":");
-                                for(int i=0;i>2;i++){
+                                for(int i=0;i<2;i++){
                                     int temp1=Integer.parseInt(ora1[i]);
                                     int temp2=Integer.parseInt(ora2[i]);
                                     if(temp1>temp2){
-                                        Log.i("prova","ritorna 1");
                                         return 1;
                                     }
                                     if(temp1<temp2){
-                                        Log.i("prova","ritorna -1");
                                         return -1;
                                     }
                                 }
-                                Log.i("prova","ritorna 0");
                                 return 0;
                             }
                         });
