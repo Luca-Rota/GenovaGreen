@@ -7,6 +7,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
@@ -41,10 +43,13 @@ public class NotificationHelper extends ContextWrapper {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.logo2_round);
+
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("Hey, tra un'ora inizierà una nuova spedizione!")
                 .setContentText("Clicca su questa notifica e scopri quale.")
                 .setSmallIcon(R.drawable.ic_spedizioni)
+                .setLargeIcon(largeIcon)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);

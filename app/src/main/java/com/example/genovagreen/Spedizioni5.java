@@ -1,6 +1,9 @@
 package com.example.genovagreen;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -33,6 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -46,7 +50,9 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username;
     private Button annulla,partecipa;
     private String id1;
-    private boolean bottone;
+
+    public static int idAlert;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +144,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                              sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
                                                      sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())) {
                                  id = ds.getKey();
+                                 idAlert = Integer.parseInt(id.trim());
                                  final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
                                  if (ref != null) {
                                      ref.addValueEventListener(new ValueEventListener() {
@@ -228,6 +235,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          SpedPersonali users=new SpedPersonali(id,email);
                                          ref.setValue(users);
+                                         setAlarm();
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                      }
                                  });
@@ -253,6 +261,32 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         });
     }
 
+
+    private void setAlarm() {
+        String str1 = ora5.getText().toString();
+        String str2 = data5.getText().toString();
+        String[] timeL = str1.split(":");
+        String[] dateL = str2.split("/");
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeL[0]));
+        c.set(Calendar.MINUTE, Integer.parseInt(timeL[1]));
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateL[0]));
+        c.set(Calendar.MONTH, Integer.parseInt(dateL[1]));
+        c.set(Calendar.YEAR, Integer.parseInt(dateL[2]));
+        startAlarm(c);
+    }
+
+    private void startAlarm(Calendar c) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        if (c.before(Calendar.getInstance())) {
+            c.add(Calendar.DATE, 1);
+        }
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+    }
 
 
     @Override
