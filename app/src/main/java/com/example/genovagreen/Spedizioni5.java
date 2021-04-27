@@ -50,7 +50,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username;
     private Button annulla,partecipa;
     private String id1;
-
     public static int idAlert;
 
 

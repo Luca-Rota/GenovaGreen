@@ -154,6 +154,7 @@
     <string name="popup_sped2">Sei sicuro di voler eliminare la spedizione?</string>
     <string name="popup_sped1">Sei sicuro di non voler più partecipare alla spedizione?</string>
     <string name="informazioni">Informazioni</string>
+    <string name="title_activity_splash1">SplashActivity1</string>
 
 
 </resources>

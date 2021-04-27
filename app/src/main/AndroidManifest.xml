@@ -17,7 +17,6 @@
 
         <receiver android:name=".AlertReceiver" />
 
-
         <activity
             android:name=".Notification"
             android:label="@string/title_activity_notify"
@@ -47,10 +46,10 @@
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Spedizioni5"
-            android:windowSoftInputMode="adjustPan|adjustResize"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+            android:theme="@style/Theme.GenovaGreen.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".Login"
             android:label="GenovaGreen"
@@ -61,7 +60,7 @@
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Password"
             android:label="GenovaGreen"
@@ -114,6 +113,12 @@
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".MainActivity"
+            android:label="GenovaGreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar">
             <intent-filter>
@@ -122,6 +127,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

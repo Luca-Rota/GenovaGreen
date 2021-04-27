@@ -1,10 +1,13 @@
 package com.example.genovagreen;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import com.bumptech.glide.load.resource.drawable.DrawableResource;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +33,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -119,20 +125,23 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
         password=findViewById(R.id.Password1);
         if(password.getText()!=null){
             ImageView showPass=findViewById(R.id.showPassword);
-            showPass.setOnTouchListener(new View.OnTouchListener() {
-                public boolean onTouch(View v, MotionEvent event) {
-
-                    switch ( event.getAction() ) {
-                        case MotionEvent.ACTION_DOWN:
-                            password.setInputType(InputType.TYPE_CLASS_TEXT);
-                            break;
-                        case MotionEvent.ACTION_UP:
-                            password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                            break;
+            showPass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                        showPass.setImageResource(R.drawable.ic_hide_pw);
+                        password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        password.setSelection(password.getText().length());
                     }
-                    return true;
+                    else{
+                        showPass.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
+                        password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        password.setSelection(password.getText().length());
+                    }
                 }
             });
+
+
         }
         button=findViewById(R.id.accedi);
 

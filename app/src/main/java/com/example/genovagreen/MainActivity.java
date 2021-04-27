@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
+
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -183,20 +183,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
-    public void loadLocale(){
-        SharedPreferences prefs=getSharedPreferences("Settings", Context.MODE_PRIVATE);
-        String language=prefs.getString("My_Lang","");
-        setLocale(language);
-    }
-    private void setLocale(String lang) {
-        Locale locale= new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config=new Configuration();
-        config.locale=locale;
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
-        SharedPreferences.Editor editor= getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
-        editor.putString("My_Lang",lang);
-        editor.apply();
-    }
+
 
 }

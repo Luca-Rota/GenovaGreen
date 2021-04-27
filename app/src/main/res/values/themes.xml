@@ -3,7 +3,7 @@
 
     <style name="Theme.GenovaGreen" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#42e760</item>
+        <item name="colorPrimary">#25d366</item>
         <!--<item name="colorPrimary">#25d366</item>-->
         <item name="colorPrimaryDark">#11887a</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
