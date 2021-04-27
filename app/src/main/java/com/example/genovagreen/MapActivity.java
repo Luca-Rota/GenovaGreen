@@ -351,4 +351,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void ClickLogo(View view){
+        closeDrawer(drawer);
+    }
+
+    public static void closeDrawer(DrawerLayout dl) {
+        if(dl.isDrawerOpen(GravityCompat.START)) {
+            dl.closeDrawer(GravityCompat.START);
+        }
+
+    }
 }

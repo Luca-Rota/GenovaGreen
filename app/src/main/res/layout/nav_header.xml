@@ -16,7 +16,7 @@
         android:layout_gravity="start">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/logoNavHeader"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="ClickLogo"
@@ -34,7 +34,7 @@
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/logoNavHeader"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="italic"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/logoNavHeader"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

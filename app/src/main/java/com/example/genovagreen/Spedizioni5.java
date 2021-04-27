@@ -144,7 +144,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                              sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
                                                      sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())) {
                                  id = ds.getKey();
-                                 idAlert = Integer.parseInt(id.trim());
                                  final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
                                  if (ref != null) {
                                      ref.addValueEventListener(new ValueEventListener() {
@@ -263,10 +262,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
 
     private void setAlarm() {
-        String str1 = ora5.getText().toString();
-        String str2 = data5.getText().toString();
-        String[] timeL = str1.split(":");
-        String[] dateL = str2.split("/");
+        String[] timeL = ora.split(":");
+        String[] dateL = data.split("/");
 
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeL[0]));
@@ -316,5 +313,16 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void ClickLogo(View view){
+        closeDrawer(drawer);
+    }
+
+    public static void closeDrawer(DrawerLayout dl) {
+        if(dl.isDrawerOpen(GravityCompat.START)) {
+            dl.closeDrawer(GravityCompat.START);
+        }
+
     }
 }

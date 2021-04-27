@@ -28,11 +28,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.text.InputType;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -114,6 +117,23 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
 
         emailAdd=findViewById(R.id.EmailAddress1);
         password=findViewById(R.id.Password1);
+        if(password.getText()!=null){
+            ImageView showPass=findViewById(R.id.showPassword);
+            showPass.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    switch ( event.getAction() ) {
+                        case MotionEvent.ACTION_DOWN:
+                            password.setInputType(InputType.TYPE_CLASS_TEXT);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            break;
+                    }
+                    return true;
+                }
+            });
+        }
         button=findViewById(R.id.accedi);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -192,5 +212,15 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
         }
     }
 
+    public void ClickLogo(View view){
+        closeDrawer(drawer);
+    }
+
+    public static void closeDrawer(DrawerLayout dl) {
+        if(dl.isDrawerOpen(GravityCompat.START)) {
+            dl.closeDrawer(GravityCompat.START);
+        }
+
+    }
 }
 

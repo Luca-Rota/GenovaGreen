@@ -225,4 +225,14 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         }
     }
 
+    public void ClickLogo(View view){
+        closeDrawer(drawer);
+    }
+
+    public static void closeDrawer(DrawerLayout dl) {
+        if(dl.isDrawerOpen(GravityCompat.START)) {
+            dl.closeDrawer(GravityCompat.START);
+        }
+
+    }
 }

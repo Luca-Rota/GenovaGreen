@@ -43,6 +43,9 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -342,4 +345,5 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
             permissionsManager.requestLocationPermissions(this);
         }
     }
+
 }
