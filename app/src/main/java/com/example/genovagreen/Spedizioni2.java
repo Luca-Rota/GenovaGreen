@@ -130,10 +130,45 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                         calendarSped.set(Calendar.HOUR_OF_DAY, ora);
                         calendarSped.set(Calendar.MINUTE, Integer.parseInt(tempo[1]));
                         calendarSped.set(Calendar.SECOND, 0);
-                        //Log.i("prova", data[0]+" "+data[1]+" "+data[2]+" "+tempo[0]+" "+tempo[1]);
                         if(calendarNow.compareTo(calendarSped)==1){
-                            Log.i("prova", "porcoddio");
-                            ref.child(ds.getKey()).removeValue();
+                            String key=ds.getKey();
+                            ref.child(key).removeValue();
+                            ref= FirebaseDatabase.getInstance().getReference().child("SpedCreate");
+                            ref.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        for(DataSnapshot ds: snapshot.getChildren()){
+                                            if(ds.getValue(MySped.class).getId()==key){
+                                                ref.child(ds.getKey()).removeValue();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            ref= FirebaseDatabase.getInstance().getReference().child("SpedPart");
+                            ref.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists()){
+                                        for(DataSnapshot ds: snapshot.getChildren()){
+                                            if(ds.getValue(MySped.class).getId()==key){
+                                                ref.child(ds.getKey()).removeValue();
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                                }
+                            });
                         }
                     }
                 }
@@ -141,7 +176,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
             }
         }));
     }

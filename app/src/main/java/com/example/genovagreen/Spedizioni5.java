@@ -110,6 +110,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         partecipanti = getIntent().getStringExtra("partecipanti");
         descrizione = getIntent().getStringExtra("descrizione");
         int idNotifica=getIntent().getIntExtra("idNotifica",0);
+        Log.i("prova", idNotifica+"");
         luogo5=findViewById(R.id.luogo5);
         luogo5.setText(luogo);
         ora5=findViewById(R.id.ora5);
