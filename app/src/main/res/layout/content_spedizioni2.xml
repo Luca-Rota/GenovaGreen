@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/back2"
+    android:background="@drawable/back3"
     android:layout_gravity="center"
     android:id="@+id/spedizioni2">
 
@@ -64,7 +64,7 @@
             android:layout_marginTop="30dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="nessuna_spedizione_trovata"
+            android:text="@string/nessuna_spedizione_trovata"
             android:textColor="#000"
             android:textSize="16sp"
             android:textStyle="bold"

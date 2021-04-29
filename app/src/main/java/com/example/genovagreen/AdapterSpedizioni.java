@@ -44,6 +44,7 @@ public class AdapterSpedizioni extends RecyclerView.Adapter<AdapterSpedizioni.my
                 intent.putExtra("organizzatore",list.get(position).getOrganizzatore().trim());
                 intent.putExtra("partecipanti",String.valueOf(list.get(position).getPartecipanti()));
                 intent.putExtra("chiave", key);
+                intent.putExtra("idNotifica", list.get(position).getIdNotifica());
                 v.getContext().startActivity(intent);
             }
 

@@ -130,8 +130,10 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                         calendarSped.set(Calendar.HOUR_OF_DAY, ora);
                         calendarSped.set(Calendar.MINUTE, Integer.parseInt(tempo[1]));
                         calendarSped.set(Calendar.SECOND, 0);
+                        Log.i("prova", data[0]+" "+data[1]+" "+data[2]+" "+tempo[0]+" "+tempo[1]);
                         if(calendarNow.compareTo(calendarSped)==1){
-                            ref.child(ds.getKey()).removeValue();
+                            Log.i("prova", "porcoddio");
+                            //ref.child(ds.getKey()).removeValue();
                         }
                     }
                 }

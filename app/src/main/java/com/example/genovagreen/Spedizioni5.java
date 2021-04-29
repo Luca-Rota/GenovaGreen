@@ -129,7 +129,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 finish();
             }
         });
-        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti);
+        int idNotifica=1 + (int)(Math.random() * (99999 - 1));
+        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotifica);
         partecipa = findViewById(R.id.partecipa);
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
         if(reference!=null) {
@@ -228,7 +229,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                          int newPartecipanti=new Integer(partecipanti)+1;
                                          String part=String.valueOf(newPartecipanti);
-                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part);
+                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part, idNotifica);
                                          update2.child(id).setValue(updateSped);
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          SpedPersonali users=new SpedPersonali(id,email);
@@ -258,7 +259,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
             }
         });
     }
-
 
     private void setAlarm() {
         String[] timeL = ora.split(":");

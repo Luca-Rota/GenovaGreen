@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/back2"
+    android:background="@drawable/back3"
     android:layout_gravity="center"
     android:id="@+id/spedizioni">
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
-                android:text="(TESTO PROVVISORIO del tipo: Effettuando l accesso in questa sezione potrai prendere parte anche tu alle spedizioni (trovare nome migliore) per agire attivamente sul green ecc ecc) L'Impero romano è lo Stato romano consolidatosi nell'area euro-mediterranea tra il I secolo a.C. e il XV secolo; in questo articolo si tratta il periodo che va dalla sua fondazione, generalmente indicato con il 27 a.C. (primo anno del principato di Augusto) e il 395, quando dopo la morte di Teodosio I, l'Impero fu suddiviso dal punto di vista amministrativo ma non politico in una pars occidentalis e in una pars orientalis. L'Impero romano d'Occidente si fa terminare per convenzione nel 476, anno in cui Odoacre depone l'ultimo imperatore, Romolo Augusto, mentre, l'Impero romano d'Oriente (indicato talvolta come Impero bizantino nella sua fase medievale), si protrarrà invece fino al momento della conquista di Costantinopoli da parte degli Ottomani, nel 1453."
+                android:text="Sul teritorio genovese operano diversi gruppi di volontariato che si occupano della bonifica di luoghi inquinati. Questa sezione è stata studiata per semplificare l'organizzazione e informare dell'esistenza di queste spedizioni. Anche se non sei un gruppo di volontariato avrai la possibilità di creare una spedizione e trovare gente che come te ha a cuore la pulizia della nostra città. "
                 android:textColor="#000"
                 android:textSize="16sp"
                 android:textStyle="bold"

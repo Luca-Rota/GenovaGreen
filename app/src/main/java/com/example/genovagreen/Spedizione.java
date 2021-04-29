@@ -4,18 +4,20 @@ import java.util.Comparator;
 
 public class Spedizione {
     public String luogo, descrizione, organizzatore, data, ora, partecipanti;
+    int idNotifica;
 
 
 
     public Spedizione(){}
 
-    public Spedizione(String luogo,String descrizione, String organizzatore, String data, String ora, String partecipanti){
+    public Spedizione(String luogo,String descrizione, String organizzatore, String data, String ora, String partecipanti, int idNotifica){
         this.luogo=luogo;
         this.descrizione=descrizione;
         this.organizzatore=organizzatore;
         this.data=data;
         this.ora=ora;
         this.partecipanti=partecipanti;
+        this.idNotifica=idNotifica;
     }
 
 
@@ -67,4 +69,11 @@ public class Spedizione {
         return organizzatore;
     }
 
+    public int getIdNotifica() {
+        return idNotifica;
+    }
+
+    public void setIdNotifica(int idNotifica) {
+        this.idNotifica = idNotifica;
+    }
 }

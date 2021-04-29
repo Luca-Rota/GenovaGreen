@@ -194,6 +194,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         });
         String luogo=getIntent().getStringExtra("luogo");
+        int idNotifica=getIntent().getIntExtra("idNotifica", 0);
         position4=findViewById(R.id.position);
         position4.setText(luogo);
         descrizione4=findViewById(R.id.descrizione4);
@@ -219,7 +220,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                             String date=dateButton.getText().toString();
                                             if(!descrizione.isEmpty()&&!posizione.isEmpty()&&!ora.isEmpty()&&!date.isEmpty()) {
                                                 String partecipanti = "1";
-                                                Spedizione sped = new Spedizione(posizione, descrizione, nomeutente, date, ora, partecipanti);
+                                                Spedizione sped = new Spedizione(posizione, descrizione, nomeutente, date, ora, partecipanti, idNotifica);
                                                 ref = FirebaseDatabase.getInstance().getReference("Spedizioni").push();
                                                 ref.setValue(sped);
                                                 ref = FirebaseDatabase.getInstance().getReference("Spedizioni");
