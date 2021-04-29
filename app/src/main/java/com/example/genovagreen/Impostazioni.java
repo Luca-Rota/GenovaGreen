@@ -194,4 +194,9 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Impostazioni.this,MainActivity.class));
+    }
 }

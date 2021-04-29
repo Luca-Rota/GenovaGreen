@@ -235,4 +235,9 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Butto.this,MainActivity.class));
+    }
 }

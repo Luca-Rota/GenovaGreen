@@ -134,6 +134,10 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
         if(dl.isDrawerOpen(GravityCompat.START)) {
             dl.closeDrawer(GravityCompat.START);
         }
-
+    }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Spedizioni.this,MainActivity.class));
     }
 }

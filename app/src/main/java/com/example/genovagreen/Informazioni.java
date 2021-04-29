@@ -167,6 +167,11 @@ public class Informazioni extends AppCompatActivity implements NavigationView.On
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Informazioni.this,MainActivity.class));
+    }
 }
 
 

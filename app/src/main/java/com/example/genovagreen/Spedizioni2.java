@@ -245,4 +245,9 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Spedizioni2.this,MainActivity.class));
+    }
 }

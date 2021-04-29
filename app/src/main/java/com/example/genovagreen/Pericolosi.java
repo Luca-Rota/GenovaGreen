@@ -132,4 +132,9 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Pericolosi.this,MainActivity.class));
+    }
 }
