@@ -243,4 +243,9 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Spedizioni3.this,Spedizioni2.class));
+    }
 }
