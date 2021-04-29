@@ -40,6 +40,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -58,6 +59,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -195,7 +197,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         });
         String luogo=getIntent().getStringExtra("luogo");
-        int idNotifica=getIntent().getIntExtra("idNotifica", 0);
         position4=findViewById(R.id.position);
         position4.setText(luogo);
         descrizione4=findViewById(R.id.descrizione4);
@@ -221,6 +222,8 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                             String date=dateButton.getText().toString();
                                             if(!descrizione.isEmpty()&&!posizione.isEmpty()&&!ora.isEmpty()&&!date.isEmpty()) {
                                                 String partecipanti = "1";
+                                                Random myRandom=new Random();
+                                                int idNotifica=myRandom.nextInt(99999);
                                                 Spedizione sped = new Spedizione(posizione, descrizione, nomeutente, date, ora, partecipanti, idNotifica);
                                                 ref = FirebaseDatabase.getInstance().getReference("Spedizioni").push();
                                                 ref.setValue(sped);

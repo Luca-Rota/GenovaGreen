@@ -109,6 +109,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         organizzatore = getIntent().getStringExtra("organizzatore");
         partecipanti = getIntent().getStringExtra("partecipanti");
         descrizione = getIntent().getStringExtra("descrizione");
+        int idNotifica=getIntent().getIntExtra("idNotifica",0);
         luogo5=findViewById(R.id.luogo5);
         luogo5.setText(luogo);
         ora5=findViewById(R.id.ora5);
@@ -121,7 +122,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         partecipanti5.setText(String.valueOf(partecipanti));
         descrizione5=findViewById(R.id.descrizione5);
         descrizione5.setText(descrizione);
-
         annulla=findViewById(R.id.annulla);
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +129,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 finish();
             }
         });
-        int idNotifica=1 + (int)(Math.random() * (99999 - 1));
         final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotifica);
         partecipa = findViewById(R.id.partecipa);
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
@@ -259,6 +258,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
             }
         });
     }
+
 
     private void setAlarm() {
         String[] timeL = ora.split(":");
