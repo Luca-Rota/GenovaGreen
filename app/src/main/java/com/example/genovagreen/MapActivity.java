@@ -2,6 +2,7 @@ package com.example.genovagreen;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,6 +10,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import com.google.android.gms.common.api.GoogleApi;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
@@ -52,6 +55,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -89,9 +93,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     LatLng isolaEcologica4 = new LatLng(44.48762950153952, 8.897787148115768);
     LatLng amiu5 = new LatLng(44.49252783691238, 8.903795296275666);
 
-    SupportMapFragment mapFragment;
-    FusedLocationProviderClient client;
-    private GoogleMap nMap;
+    private GoogleMap mMap;
+    private static final int REQUEST_LOCATION_PERMISSION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,14 +147,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         listInit();
 
         final LocationManager manager = (LocationManager) getSystemService( LOCATION_SERVICE );
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        if ( manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) )
-            getCurrentLocation();
+
+        if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);}
         else
             buildAlertMessageNoGps();
 
     }
-
 
     private void listInit(){
         arrayList.add(isolaEcologica1);
@@ -213,8 +216,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         title.add("AMIU");
     }
 
-
-
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.gps_non_attivo)
@@ -234,93 +235,41 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        getCurrentLocation();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getCurrentLocation();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        getCurrentLocation();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        getCurrentLocation();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        getCurrentLocation();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        getCurrentLocation();
-    }
-
-    private void getCurrentLocation() {
-        client = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            client.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(final Location location) {
-                    if (location != null) {
-                        mapFragment.getMapAsync(new OnMapReadyCallback() {
-                            @Override
-                            public void onMapReady(GoogleMap googleMap) {
-                                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
-                                if (ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                                        && ActivityCompat.checkSelfPermission(MapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                                    googleMap.setMyLocationEnabled(true);
-                                }
-                                for(int i=0;i<arrayList.size();i++){
-                                    for (int j=0;j<title.size();j++){
-                                        googleMap.addMarker(new MarkerOptions().position(arrayList.get(i)).title(String.valueOf(title.get(i))));
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-        } else{
-            ActivityCompat.requestPermissions(MapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        enableMyLocation();
+        for(int i=0;i<arrayList.size();i++){
+            for (int j=0;j<title.size();j++){
+                mMap.addMarker(new MarkerOptions().position(arrayList.get(i)).title(String.valueOf(title.get(i))));
+            }
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arrayList.get(i), 11f));
         }
+    }
+
+    private void enableMyLocation() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+            mMap.setMyLocationEnabled(true);
+        else
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 44) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getCurrentLocation();
-            }
+        switch (requestCode) {
+            case REQUEST_LOCATION_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    enableMyLocation();
+                    break;
+                }
         }
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        nMap= googleMap;
-        for(int i=0;i<arrayList.size();i++){
-            for (int j=0;j<title.size();j++){
-                nMap.addMarker(new MarkerOptions().position(arrayList.get(i)).title(String.valueOf(title.get(i))));
-            }
-            nMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arrayList.get(i), 11f));
-        }
+    protected void onRestart() {
+        super.onRestart();
+        onMapReady(mMap);
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

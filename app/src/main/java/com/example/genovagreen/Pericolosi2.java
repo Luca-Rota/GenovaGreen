@@ -168,7 +168,7 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
             dialog.show();
         }
         else{
-            Toast.makeText(this, "You can't make map request", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Google Maps non sta funzionando.", Toast.LENGTH_SHORT).show();
         }
         return false;
     }
