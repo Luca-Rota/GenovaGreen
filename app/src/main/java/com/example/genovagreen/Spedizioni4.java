@@ -276,9 +276,11 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 Calendar c = Calendar.getInstance();
-                month = month + 1;
-                date = dayOfMonth + "/" + month + "/" + year;
-                dateButton.setText(date);
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String dateText = java.text.DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
+                dateButton.setText(dateText);
             }
         }, year, month, day);
         datePickerDialog.show();

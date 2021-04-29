@@ -266,9 +266,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     @Override
-    protected void onRestart() {
+    public void onRestart(){
         super.onRestart();
-        onMapReady(mMap);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
     }
 
     @Override
