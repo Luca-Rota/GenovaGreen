@@ -50,7 +50,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username;
     private Button annulla,partecipa;
     private String id1;
-    public static int idAlert;
+    public static int idNotify;
 
 
     @Override
@@ -70,7 +70,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
-
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Usernames");
@@ -106,10 +105,11 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         luogo = getIntent().getStringExtra("luogo");
         ora = getIntent().getStringExtra("ora");
         data = getIntent().getStringExtra("data");
+        Calendar cx = setAlarm(ora, data);
         organizzatore = getIntent().getStringExtra("organizzatore");
         partecipanti = getIntent().getStringExtra("partecipanti");
         descrizione = getIntent().getStringExtra("descrizione");
-        int idNotifica=getIntent().getIntExtra("idNotifica",0);
+        idNotify=getIntent().getIntExtra("idNotifica",0);
         luogo5=findViewById(R.id.luogo5);
         luogo5.setText(luogo);
         ora5=findViewById(R.id.ora5);
@@ -129,7 +129,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 finish();
             }
         });
-        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotifica);
+        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotify);
         partecipa = findViewById(R.id.partecipa);
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
         if(reference!=null) {
@@ -207,6 +207,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                          sped.setPartecipanti(String.valueOf(Integer.parseInt(sped.getPartecipanti())-1));
                                                                          DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                                                          update2.child(id).setValue(sped);
+                                                                         cancelAlarm();
                                                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                                                      }})
                                                                      .setNegativeButton(R.string.no, null).show();
@@ -228,13 +229,12 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                          int newPartecipanti=new Integer(partecipanti)+1;
                                          String part=String.valueOf(newPartecipanti);
-                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part, idNotifica);
+                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part, idNotify);
                                          update2.child(id).setValue(updateSped);
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          SpedPersonali users=new SpedPersonali(id,email);
                                          ref.setValue(users);
-                                         idAlert =
-                                         setAlarm();
+                                         //startAlarm(setAlarm());
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                      }
                                  });
@@ -261,10 +261,9 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     }
 
 
-    private void setAlarm() {
+    private Calendar setAlarm(String ora, String data) {
         String[] timeL = ora.split(":");
         String[] dateL = data.split("/");
-
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeL[0]));
         c.set(Calendar.MINUTE, Integer.parseInt(timeL[1]));
@@ -272,7 +271,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateL[0]));
         c.set(Calendar.MONTH, Integer.parseInt(dateL[1]));
         c.set(Calendar.YEAR, Integer.parseInt(dateL[2]));
-        startAlarm(c);
+        Log.i("prova", c+"");
+        return c;
     }
 
     private void startAlarm(Calendar c) {
@@ -285,6 +285,12 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
     }
 
+    private void cancelAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        alarmManager.cancel(pendingIntent);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
