@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -105,6 +106,42 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         });
 
         ref= FirebaseDatabase.getInstance().getReference().child("Spedizioni");
+        cancellaDati();
+    }
+
+    private void cancellaDati() {
+        Calendar calendarNow=Calendar.getInstance();
+        int mese=calendarNow.get(Calendar.MONTH);
+        mese++;
+        calendarNow.set(calendarNow.MONTH, mese);
+        ref.addValueEventListener((new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot ds: snapshot.getChildren()){
+                        Calendar calendarSped=Calendar.getInstance();
+                        String[] data=ds.getValue(Spedizione.class).getData().split("/");
+                        String[] tempo=ds.getValue(Spedizione.class).getOra().split(":");
+                        calendarSped.set(Calendar.YEAR, Integer.parseInt(data[2]));
+                        calendarSped.set(Calendar.MONTH, Integer.parseInt(data[1]));
+                        calendarSped.set(Calendar.DAY_OF_MONTH, Integer.parseInt(data[0]));
+                        int ora=Integer.parseInt(tempo[0]);
+                        ora++;
+                        calendarSped.set(Calendar.HOUR_OF_DAY, ora);
+                        calendarSped.set(Calendar.MINUTE, Integer.parseInt(tempo[1]));
+                        calendarSped.set(Calendar.SECOND, 0);
+                        if(calendarNow.compareTo(calendarSped)==1){
+                            ref.child(ds.getKey()).removeValue();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        }));
     }
 
     @Override
