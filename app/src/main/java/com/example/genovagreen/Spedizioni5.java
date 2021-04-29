@@ -233,6 +233,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          SpedPersonali users=new SpedPersonali(id,email);
                                          ref.setValue(users);
+                                         idAlert =
                                          setAlarm();
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                      }
