@@ -54,6 +54,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -276,11 +277,8 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         DatePickerDialog datePickerDialog = new DatePickerDialog(Spedizioni4.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Calendar c = Calendar.getInstance();
-                c.set(Calendar.YEAR, year);
-                c.set(Calendar.MONTH, month);
-                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String dateText = java.text.DateFormat.getDateInstance(DateFormat.SHORT).format(c.getTime());
+                month++;
+                String dateText = dayOfMonth+"/"+month+"/"+year;
                 dateButton.setText(dateText);
             }
         }, year, month, day);

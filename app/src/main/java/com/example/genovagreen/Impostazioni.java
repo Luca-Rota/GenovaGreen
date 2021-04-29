@@ -45,6 +45,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
     private FirebaseUser user;
     private ConstraintLayout layout;
     private TextView username;
+    private TextView notify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +141,13 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        notify=findViewById(R.id.notify);
+        notify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
     }
 
