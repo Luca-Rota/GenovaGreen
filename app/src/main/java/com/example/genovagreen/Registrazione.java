@@ -242,6 +242,11 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         }
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Registrazione.this,Spedizioni.class));
+    }
 }
 
 

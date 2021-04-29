@@ -120,6 +120,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
                         if(task.isSuccessful()){
                             Toast.makeText(Password.this,R.string.email_inviata,Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Password.this, Login.class));
+                            finish();
                         }else{
                             Toast.makeText(Password.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }
