@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.LabeledIntent;
 import android.content.res.Configuration;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,6 +30,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
@@ -91,7 +94,6 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        notifiche=findViewById(R.id.notificheImpostazioni);
 
         lingua=findViewById(R.id.linguaImpostazioni);
         lingua.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +124,15 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         notify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                    startActivity(intent);
+                }
             }
         });
 

@@ -20,7 +20,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout30"
-            android:layout_width="135dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
@@ -38,7 +38,7 @@
                 android:fontFamily="monospace"
                 android:text="@string/data_e_ora"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView1" />
@@ -53,7 +53,7 @@
                 android:gravity="center"
                 android:text="@string/organizzatore"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

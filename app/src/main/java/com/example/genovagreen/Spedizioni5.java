@@ -71,12 +71,36 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
 
-        auth=FirebaseAuth.getInstance();
+        auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        View view=navigationView.getHeaderView(0);
-        username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
-
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Usernames");
+        if(user!=null) {
+            View view=navigationView.getHeaderView(0);
+            username = view.findViewById(R.id.nomeutente);
+            username.setVisibility(View.VISIBLE);
+            final String email = user.getEmail().trim();
+            if (ref != null) {
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                User ogg = ds.getValue(User.class);
+                                String email2 = ogg.getEmail().trim();
+                                String nomeutente = ogg.getUsername();
+                                if (email.equals(email2)) {
+                                    username.setText(nomeutente);
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        }
         final String email=user.getEmail();
 
         luogo = getIntent().getStringExtra("luogo");
@@ -119,15 +143,15 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                              sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
                                                      sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())) {
                                  id = ds.getKey();
-                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
+                                 final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
                                  if (ref != null) {
                                      ref.addValueEventListener(new ValueEventListener() {
                                          @Override
                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
                                              if (snapshot.exists()) {
                                                  for (DataSnapshot ds : snapshot.getChildren()) {
-                                                     id1 = ds.getValue(MySped.class).getId().trim();
-                                                     String email1 = ds.getValue(MySped.class).getEmail().trim();
+                                                     id1 = ds.getValue(SpedPersonali.class).getId().trim();
+                                                     String email1 = ds.getValue(SpedPersonali.class).getEmail().trim();
                                                      if (id.equals(id1) && email.equals(email1)) {
                                                          final String idCr=ds.getKey().trim();
                                                          partecipa.setText(R.string.elimina);
@@ -165,8 +189,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
                                              if(snapshot.exists()){
                                                  for (DataSnapshot ds : snapshot.getChildren()) {
-                                                     id1=ds.getValue(MySped.class).getId().trim();
-                                                     String email1=ds.getValue(MySped.class).getEmail().trim();
+                                                     id1=ds.getValue(SpedPersonali.class).getId().trim();
+                                                     String email1=ds.getValue(SpedPersonali.class).getEmail().trim();
                                                      if(id.equals(id1)&&email.equals(email1)){
                                                          final String idPart=ds.getKey().trim();
                                                          partecipa.setText(R.string.non_partecipare);
@@ -207,7 +231,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part, idNotifica);
                                          update2.child(id).setValue(updateSped);
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
-                                         MySped users=new MySped(id,email);
+                                         SpedPersonali users=new SpedPersonali(id,email);
                                          ref.setValue(users);
                                          setAlarm();
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
@@ -262,14 +286,42 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item){
-        View v=new View(this);
-        CommonFunctions.onNavigationItemSelected(item,v,user, drawer);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.content_main:
+                startActivity(new Intent(Spedizioni5.this, MainActivity.class));
+                break;
+            case R.id.content_butto:
+                startActivity(new Intent(Spedizioni5.this, Butto.class));
+                break;
+            case R.id.content_pericolosi:
+                startActivity(new Intent(Spedizioni5.this, Pericolosi.class));
+                break;
+            case R.id.content_spedizioni:
+                if(user!=null && user.isEmailVerified()) {
+                    startActivity(new Intent(Spedizioni5.this, Spedizioni2.class));
+                }else{
+                    startActivity(new Intent(Spedizioni5.this, Spedizioni.class));
+                }
+                break;
+            case R.id.content_impostazioni:
+                startActivity(new Intent(Spedizioni5.this, Impostazioni.class));
+                break;
+            case R.id.content_informazioni:
+                startActivity(new Intent(Spedizioni5.this, Informazioni.class));
+        }
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-
     public void ClickLogo(View view){
-        CommonFunctions.closeDrawer(drawer);
+        closeDrawer(drawer);
+    }
+
+    public static void closeDrawer(DrawerLayout dl) {
+        if(dl.isDrawerOpen(GravityCompat.START)) {
+            dl.closeDrawer(GravityCompat.START);
+        }
+
     }
 }
