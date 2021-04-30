@@ -61,36 +61,13 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_impostazioni);
+
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Usernames");
-        if(user!=null) {
-            View view=navigationView.getHeaderView(0);
-            username = view.findViewById(R.id.nomeutente);
-            username.setVisibility(View.VISIBLE);
-            final String email = user.getEmail().trim();
-            if (ref != null) {
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                User ogg = ds.getValue(User.class);
-                                String email2 = ogg.getEmail().trim();
-                                String nomeutente = ogg.getUsername();
-                                if (email.equals(email2)) {
-                                    username.setText(nomeutente);
-                                }
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Impostazioni.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
+        View view=navigationView.getHeaderView(0);
+        username = view.findViewById(R.id.nomeutente);
+        CommonFunctions.setUsername(username, navigationView, user);
+
         layout=findViewById(R.id.LayoutLogout);
         if(user!=null){
             layout.setVisibility(View.VISIBLE);
@@ -163,44 +140,15 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.content_main:
-                startActivity(new Intent(Impostazioni.this, MainActivity.class));
-                break;
-            case R.id.content_butto:
-                startActivity(new Intent(Impostazioni.this, Butto.class));
-                break;
-            case R.id.content_pericolosi:
-                startActivity(new Intent(Impostazioni.this, Pericolosi.class));
-                break;
-            case R.id.content_spedizioni:
-                if(user==null) {
-                    startActivity(new Intent(Impostazioni.this, Spedizioni.class));
-                }else{
-                    startActivity(new Intent(Impostazioni.this, Spedizioni2.class));
-                }
-                break;
-            case R.id.content_impostazioni:
-                startActivity(new Intent(Impostazioni.this, Impostazioni.class));
-                break;
-            case R.id.content_informazioni:
-                startActivity(new Intent(Impostazioni.this, Informazioni.class));
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        View v=new View(this);
+        CommonFunctions.onNavigationItemSelected(item,v,user, drawer);
         return true;
     }
 
+
     public void ClickLogo(View view){
-        closeDrawer(drawer);
-    }
-
-    public static void closeDrawer(DrawerLayout dl) {
-        if(dl.isDrawerOpen(GravityCompat.START)) {
-            dl.closeDrawer(GravityCompat.START);
-        }
-
+        CommonFunctions.closeDrawer(drawer);
     }
     @Override
     public void onBackPressed()

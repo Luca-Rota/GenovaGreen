@@ -78,34 +78,10 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Usernames");
-        if(user!=null) {
-            View view=navigationView.getHeaderView(0);
-            username = view.findViewById(R.id.nomeutente);
-            username.setVisibility(View.VISIBLE);
-            final String email = user.getEmail().trim();
-            if (ref != null) {
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                User ogg = ds.getValue(User.class);
-                                String email2 = ogg.getEmail().trim();
-                                String nomeutente = ogg.getUsername();
-                                if (email.equals(email2)) {
-                                    username.setText(nomeutente);
-                                }
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Login.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
+        View view=navigationView.getHeaderView(0);
+        username = view.findViewById(R.id.nomeutente);
+        CommonFunctions.setUsername(username, navigationView, user);
+
         cambiopass=findViewById(R.id.cambiopass);
         cambiopass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,34 +162,17 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.content_main:
-                startActivity(new Intent(Login.this, MainActivity.class));
-                break;
-            case R.id.content_butto:
-                startActivity(new Intent(Login.this, Butto.class));
-                break;
-            case R.id.content_pericolosi:
-                startActivity(new Intent(Login.this, Pericolosi.class));
-                break;
-            case R.id.content_spedizioni:
-                if(user!=null && user.isEmailVerified()) {
-                    startActivity(new Intent(Login.this, Spedizioni2.class));
-                }else{
-                    startActivity(new Intent(Login.this, Spedizioni.class));
-                }
-                break;
-            case R.id.content_impostazioni:
-                startActivity(new Intent(Login.this, Impostazioni.class));
-                break;
-            case R.id.content_informazioni:
-                startActivity(new Intent(Login.this, Informazioni.class));
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        View v=new View(this);
+        CommonFunctions.onNavigationItemSelected(item,v,user, drawer);
         return true;
     }
+
+
+    public void ClickLogo(View view){
+        CommonFunctions.closeDrawer(drawer);
+    }
+
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null && activity.getCurrentFocus() != null) {
@@ -221,16 +180,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
         }
     }
 
-    public void ClickLogo(View view){
-        closeDrawer(drawer);
-    }
 
-    public static void closeDrawer(DrawerLayout dl) {
-        if(dl.isDrawerOpen(GravityCompat.START)) {
-            dl.closeDrawer(GravityCompat.START);
-        }
-
-    }
     @Override
     public void onBackPressed()
     {

@@ -68,36 +68,13 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
+
         auth=FirebaseAuth.getInstance();
         firebaseUser=auth.getCurrentUser();
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Usernames");
-        if(firebaseUser!=null) {
-            View view=navigationView.getHeaderView(0);
-            username1 = view.findViewById(R.id.nomeutente);
-            username1.setVisibility(View.VISIBLE);
-            final String email = firebaseUser.getEmail().trim();
-            if (ref != null) {
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                User ogg = ds.getValue(User.class);
-                                String email2 = ogg.getEmail().trim();
-                                String nomeutente = ogg.getUsername();
-                                if (email.equals(email2)) {
-                                    username1.setText(nomeutente);
-                                }
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Registrazione.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
+        View view=navigationView.getHeaderView(0);
+        username = view.findViewById(R.id.nomeutente);
+        CommonFunctions.setUsername(username, navigationView, firebaseUser);
+
         emailAdd=findViewById(R.id.EmailAddress);
         password=findViewById(R.id.Password);
         password2=findViewById(R.id.RepeatPassword);
@@ -198,33 +175,15 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.content_main:
-                startActivity(new Intent(Registrazione.this, MainActivity.class));
-                break;
-            case R.id.content_butto:
-                startActivity(new Intent(Registrazione.this, Butto.class));
-                break;
-            case R.id.content_pericolosi:
-                startActivity(new Intent(Registrazione.this, Pericolosi.class));
-                break;
-            case R.id.content_spedizioni:
-                if(firebaseUser!=null && firebaseUser.isEmailVerified()) {
-                    startActivity(new Intent(Registrazione.this, Spedizioni2.class));
-                }else{
-                    startActivity(new Intent(Registrazione.this, Spedizioni.class));
-                }
-                break;
-            case R.id.content_impostazioni:
-                startActivity(new Intent(Registrazione.this, Impostazioni.class));
-                break;
-            case R.id.content_informazioni:
-                startActivity(new Intent(Registrazione.this, Informazioni.class));
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        View v=new View(this);
+        CommonFunctions.onNavigationItemSelected(item,v,firebaseUser, drawer);
         return true;
+    }
+
+
+    public void ClickLogo(View view){
+        CommonFunctions.closeDrawer(drawer);
     }
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -232,16 +191,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
             imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
     }
-    public void ClickLogo(View view){
-        closeDrawer(drawer);
-    }
 
-    public static void closeDrawer(DrawerLayout dl) {
-        if(dl.isDrawerOpen(GravityCompat.START)) {
-            dl.closeDrawer(GravityCompat.START);
-        }
-
-    }
     @Override
     public void onBackPressed()
     {

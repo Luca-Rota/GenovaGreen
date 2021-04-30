@@ -104,36 +104,11 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
 
-        auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
-        ref=FirebaseDatabase.getInstance().getReference("Usernames");
-        if(user!=null) {
-            View view=navigationView.getHeaderView(0);
-            username1 = view.findViewById(R.id.nomeutente);
-            username1.setVisibility(View.VISIBLE);
-            final String email = user.getEmail().trim();
-            if (ref != null) {
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                User ogg = ds.getValue(User.class);
-                                String email2 = ogg.getEmail().trim();
-                                String nomeutente = ogg.getUsername();
-                                if (email.equals(email2)) {
-                                    username1.setText(nomeutente);
-                                }
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
+        View view=navigationView.getHeaderView(0);
+        username = view.findViewById(R.id.nomeutente);
+        CommonFunctions.setUsername(username, navigationView, user);
 
         dateButton = findViewById(R.id.data4);
         dateButton.setOnClickListener(new View.OnClickListener() {
@@ -150,36 +125,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 handleTimeButton();
             }
         });
-
-        ref=FirebaseDatabase.getInstance().getReference("Usernames");
-        if(user!=null) {
-            View view=navigationView.getHeaderView(0);
-            username = view.findViewById(R.id.nomeutente);
-            username.setVisibility(View.VISIBLE);
-            final String email = user.getEmail().trim();
-            if (ref != null) {
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                User ogg = ds.getValue(User.class);
-                                String email2 = ogg.getEmail().trim();
-                                nomeutente = ogg.getUsername();
-                                if (email.equals(email2)) {
-                                    username.setText(nomeutente);
-                                }
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
-
 
         Button annulla = findViewById(R.id.annulla);
         annulla.setOnClickListener(new View.OnClickListener() {
@@ -309,33 +254,15 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.content_main:
-                startActivity(new Intent(Spedizioni4.this, MainActivity.class));
-                break;
-            case R.id.content_butto:
-                startActivity(new Intent(Spedizioni4.this, Butto.class));
-                break;
-            case R.id.content_pericolosi:
-                startActivity(new Intent(Spedizioni4.this, Pericolosi.class));
-                break;
-            case R.id.content_spedizioni:
-                if (user != null && user.isEmailVerified()) {
-                    startActivity(new Intent(Spedizioni4.this, Spedizioni2.class));
-                } else {
-                    startActivity(new Intent(Spedizioni4.this, Spedizioni.class));
-                }
-                break;
-            case R.id.content_impostazioni:
-                startActivity(new Intent(Spedizioni4.this, Impostazioni.class));
-                break;
-            case R.id.content_informazioni:
-                startActivity(new Intent(Spedizioni4.this, Informazioni.class));
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        View v=new View(this);
+        CommonFunctions.onNavigationItemSelected(item,v,user, drawer);
         return true;
+    }
+
+
+    public void ClickLogo(View view){
+        CommonFunctions.closeDrawer(drawer);
     }
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -343,14 +270,5 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
     }
-    public void ClickLogo(View view){
-        closeDrawer(drawer);
-    }
 
-    public static void closeDrawer(DrawerLayout dl) {
-        if(dl.isDrawerOpen(GravityCompat.START)) {
-            dl.closeDrawer(GravityCompat.START);
-        }
-
-    }
 }

@@ -67,36 +67,12 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         recyclerView2=(RecyclerView)findViewById(R.id.rvSped3);
         recyclerView2.setHasFixedSize(true);
 
-        auth= FirebaseAuth.getInstance();
+        auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("Usernames");
-        if(user!=null) {
-            View view=navigationView.getHeaderView(0);
-            username = view.findViewById(R.id.nomeutente);
-            username.setVisibility(View.VISIBLE);
-            final String email = user.getEmail().trim();
-            if (ref != null) {
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                User ogg = ds.getValue(User.class);
-                                String email2 = ogg.getEmail().trim();
-                                String nomeutente = ogg.getUsername();
-                                if (email.equals(email2)) {
-                                    username.setText(nomeutente);
-                                }
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
+        View view=navigationView.getHeaderView(0);
+        username = view.findViewById(R.id.nomeutente);
+        CommonFunctions.setUsername(username, navigationView, user);
+
         button = findViewById(R.id.textSpedizioni3);
         button.setOnClickListener(new View.OnClickListener() {
                @Override
@@ -206,42 +182,15 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         }
     }
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.content_main:
-                startActivity(new Intent(Spedizioni3.this, MainActivity.class));
-                break;
-            case R.id.content_butto:
-                startActivity(new Intent(Spedizioni3.this, Butto.class));
-                break;
-            case R.id.content_pericolosi:
-                startActivity(new Intent(Spedizioni3.this, Pericolosi.class));
-                break;
-            case R.id.content_spedizioni:
-                if(user!=null && user.isEmailVerified()) {
-                    startActivity(new Intent(Spedizioni3.this, Spedizioni2.class));
-                }else{
-                    startActivity(new Intent(Spedizioni3.this, Spedizioni.class));
-                }
-                break;
-            case R.id.content_impostazioni:
-                startActivity(new Intent(Spedizioni3.this, Impostazioni.class));
-                break;
-            case R.id.content_informazioni:
-                startActivity(new Intent(Spedizioni3.this, Informazioni.class));
-        }
-        drawer.closeDrawer(GravityCompat.START);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        View v=new View(this);
+        CommonFunctions.onNavigationItemSelected(item,v,user, drawer);
         return true;
     }
+
+
     public void ClickLogo(View view){
-        closeDrawer(drawer);
-    }
-
-    public static void closeDrawer(DrawerLayout dl) {
-        if(dl.isDrawerOpen(GravityCompat.START)) {
-            dl.closeDrawer(GravityCompat.START);
-        }
-
+        CommonFunctions.closeDrawer(drawer);
     }
     @Override
     public void onBackPressed()

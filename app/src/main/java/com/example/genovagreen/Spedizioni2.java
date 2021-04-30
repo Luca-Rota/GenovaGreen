@@ -68,34 +68,10 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        ref=FirebaseDatabase.getInstance().getReference("Usernames");
-        if(user!=null) {
-            View view=navigationView.getHeaderView(0);
-            username = view.findViewById(R.id.nomeutente);
-            username.setVisibility(View.VISIBLE);
-            final String email = user.getEmail().trim();
-            if (ref != null) {
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                User ogg = ds.getValue(User.class);
-                                String email2 = ogg.getEmail().trim();
-                                String nomeutente = ogg.getUsername();
-                                if (email.equals(email2)) {
-                                    username.setText(nomeutente);
-                                }
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
+        View view=navigationView.getHeaderView(0);
+        username = view.findViewById(R.id.nomeutente);
+        CommonFunctions.setUsername(username, navigationView, user);
+
         nosped=findViewById(R.id.nosped);
         button= findViewById(R.id.buttonSpedizioni2);
         button.setOnClickListener(new View.OnClickListener() {
@@ -133,14 +109,15 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                         if(calendarNow.compareTo(calendarSped)==1){
                             String key=ds.getKey();
                             ref.child(key).removeValue();
-                            ref= FirebaseDatabase.getInstance().getReference().child("SpedCreate");
-                            ref.addValueEventListener(new ValueEventListener() {
+                            DatabaseReference ref1= FirebaseDatabase.getInstance().getReference().child("SpedCreate");
+                            ref1.addValueEventListener(new ValueEventListener() {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if(snapshot.exists()){
-                                        for(DataSnapshot ds: snapshot.getChildren()){
-                                            if(ds.getValue(MySped.class).getId()==key){
-                                                ref.child(ds.getKey()).removeValue();
+                                public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                    if(snapshot1.exists()){
+                                        for(DataSnapshot ds1: snapshot1.getChildren()){
+                                            if(ds1.getValue(MySped.class).getId().equals(key)){
+                                                String keyCr=ds1.getKey();
+                                                ref1.child(keyCr).removeValue();
                                             }
                                         }
                                     }
@@ -151,14 +128,14 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                                     Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                 }
                             });
-                            ref= FirebaseDatabase.getInstance().getReference().child("SpedPart");
-                            ref.addValueEventListener(new ValueEventListener() {
+                            DatabaseReference ref2= FirebaseDatabase.getInstance().getReference().child("SpedPart");
+                            ref2.addValueEventListener(new ValueEventListener() {
                                 @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if(snapshot.exists()){
-                                        for(DataSnapshot ds: snapshot.getChildren()){
-                                            if(ds.getValue(MySped.class).getId()==key){
-                                                ref.child(ds.getKey()).removeValue();
+                                public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                                    if(snapshot2.exists()){
+                                        for(DataSnapshot ds2: snapshot2.getChildren()){
+                                            if(ds2.getValue(MySped.class).getId().equals(key)){
+                                                ref.child(ds2.getKey()).removeValue();
                                             }
                                         }
                                     }
@@ -244,43 +221,15 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.content_main:
-                startActivity(new Intent(Spedizioni2.this, MainActivity.class));
-                break;
-            case R.id.content_butto:
-                startActivity(new Intent(Spedizioni2.this, Butto.class));
-                break;
-            case R.id.content_pericolosi:
-                startActivity(new Intent(Spedizioni2.this, Pericolosi.class));
-                break;
-            case R.id.content_spedizioni:
-                if(user!=null && user.isEmailVerified()) {
-                    startActivity(new Intent(Spedizioni2.this, Spedizioni2.class));
-                }else{
-                    startActivity(new Intent(Spedizioni2.this, Spedizioni.class));
-                }
-                break;
-            case R.id.content_impostazioni:
-                startActivity(new Intent(Spedizioni2.this, Impostazioni.class));
-                break;
-            case R.id.content_informazioni:
-                startActivity(new Intent(Spedizioni2.this, Informazioni.class));
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        View v=new View(this);
+        CommonFunctions.onNavigationItemSelected(item,v,user, drawer);
         return true;
     }
+
+
     public void ClickLogo(View view){
-        closeDrawer(drawer);
-    }
-
-    public static void closeDrawer(DrawerLayout dl) {
-        if(dl.isDrawerOpen(GravityCompat.START)) {
-            dl.closeDrawer(GravityCompat.START);
-        }
-
+        CommonFunctions.closeDrawer(drawer);
     }
     @Override
     public void onBackPressed()
