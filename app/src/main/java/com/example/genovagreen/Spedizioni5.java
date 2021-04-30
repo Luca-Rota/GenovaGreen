@@ -108,11 +108,9 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotifica);
         partecipa = findViewById(R.id.partecipa);
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
-        if(reference!=null) {
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
                         for (DataSnapshot ds : snapshot.getChildren()) {
                              if(sped.getOrganizzatore().trim().equals(ds.getValue(Spedizione.class).getOrganizzatore().trim())&&
                                      sped.getData().trim().equals(ds.getValue(Spedizione.class).getData().trim())&&
@@ -120,11 +118,10 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                      sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())) {
                                  id = ds.getKey();
                                  final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
-                                 if (ref != null) {
+
                                      ref.addValueEventListener(new ValueEventListener() {
                                          @Override
                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                             if (snapshot.exists()) {
                                                  for (DataSnapshot ds : snapshot.getChildren()) {
                                                      id1 = ds.getValue(MySped.class).getId().trim();
                                                      String email1 = ds.getValue(MySped.class).getEmail().trim();
@@ -150,20 +147,17 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                      }
                                                  }
                                              }
-                                         }
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError error) {
                                              Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                          }
                                      });
-                                 }
                              }
                                  DatabaseReference ref1=FirebaseDatabase.getInstance().getReference().child("SpedPart");
-                                 if(ref1!=null) {
+
                                      ref1.addValueEventListener(new ValueEventListener() {
                                          @Override
                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                             if(snapshot.exists()){
                                                  for (DataSnapshot ds : snapshot.getChildren()) {
                                                      id1=ds.getValue(MySped.class).getId().trim();
                                                      String email1=ds.getValue(MySped.class).getEmail().trim();
@@ -191,7 +185,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                      }
                                                  }
                                              }
-                                         }
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError error) {
                                              Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
@@ -214,15 +207,12 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                      }
                                  });
                              }
-                        }
-                    }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
-        }
 
         TextView mappa = findViewById(R.id.mappa);
         mappa.setOnClickListener(new View.OnClickListener() {

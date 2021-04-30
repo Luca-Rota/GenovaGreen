@@ -65,7 +65,6 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
             }
         });
 
-
     }
 
     @Override

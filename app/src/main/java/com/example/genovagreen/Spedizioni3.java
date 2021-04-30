@@ -90,21 +90,18 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         nosped1=findViewById(R.id.nosped1);
         nosped2=findViewById(R.id.nosped2);
         final String email=user.getEmail();
-        if(ref1!=null) {
             ref1.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
+
                         listemail1= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             if(email.equals(ds.getValue(MySped.class).getEmail()))
                             listemail1.add(ds.getValue(MySped.class));
                         }
-                        if(ref3!=null)
                             ref3.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if(snapshot.exists()){
                                         list1=new ArrayList<>();
                                         for(DataSnapshot ds : snapshot.getChildren()){
                                             for(int i=0;i<listemail1.size();i++){
@@ -121,7 +118,6 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                             recyclerView1.setAdapter(adapterSpedizioni1);
                                         }
                                     }
-                                }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
@@ -129,28 +125,25 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                 }
                             });
                     }
-                }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
-        }
-        if(ref2!=null) {
+
             ref2.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
+
                         listemail2= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             if(email.equals(ds.getValue(MySped.class).getEmail()))
                                 listemail2.add(ds.getValue(MySped.class));
                         }
-                        if(ref3!=null)
                             ref3.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if(snapshot.exists()){
+
                                         list2=new ArrayList<>();
                                         for(DataSnapshot ds : snapshot.getChildren()){
                                             for(int i=0;i<listemail2.size();i++){
@@ -167,19 +160,17 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                             recyclerView2.setAdapter(adapterSpedizioni2);
                                         }
                                     }
-                                }
+
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                 }
                             });
                     }
-                }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
-        }
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){

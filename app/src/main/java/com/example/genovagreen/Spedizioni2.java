@@ -93,7 +93,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         ref.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+
                     for(DataSnapshot ds: snapshot.getChildren()){
                         Calendar calendarSped=Calendar.getInstance();
                         String[] data=ds.getValue(Spedizione.class).getData().split("/");
@@ -113,7 +113,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                             ref1.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                                    if(snapshot1.exists()){
+
                                         for(DataSnapshot ds1: snapshot1.getChildren()){
                                             if(ds1.getValue(MySped.class).getId().equals(key)){
                                                 String keyCr=ds1.getKey();
@@ -121,7 +121,6 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                                             }
                                         }
                                     }
-                                }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
@@ -132,14 +131,13 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                             ref2.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot2) {
-                                    if(snapshot2.exists()){
+
                                         for(DataSnapshot ds2: snapshot2.getChildren()){
                                             if(ds2.getValue(MySped.class).getId().equals(key)){
                                                 ref.child(ds2.getKey()).removeValue();
                                             }
                                         }
                                     }
-                                }
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
@@ -149,7 +147,6 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                         }
                     }
                 }
-            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -161,11 +158,9 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onStart() {
         super.onStart();
-        if(ref!=null) {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             if(!ds.getValue(Spedizione.class).getLuogo().equals("default")) {
@@ -210,15 +205,12 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                             recyclerView.setAdapter(adapterSpedizioni);
                         }
                     }
-                }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
-
                 }
             });
         }
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){

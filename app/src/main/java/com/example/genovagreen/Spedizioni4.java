@@ -79,8 +79,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private String nomeutente;
 
     private static final int REQUEST_CODE = 5678;
-    private TextView selectedLocationTextView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,11 +149,9 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             public void onClick(View v) {
                 ref=FirebaseDatabase.getInstance().getReference("Usernames");
                     final String email = user.getEmail().trim();
-                    if (ref != null) {
                         ref.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.exists()) {
                                     for (DataSnapshot ds : snapshot.getChildren()) {
                                         User ogg = ds.getValue(User.class);
                                         String email2 = ogg.getEmail().trim();
@@ -176,7 +172,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                 ref.addValueEventListener(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                        if(snapshot.exists()){
                                                             for(DataSnapshot ds : snapshot.getChildren()){
                                                                 if(sped.getOrganizzatore().trim().equals(ds.getValue(Spedizione.class).getOrganizzatore().trim())&&
                                                                         sped.getData().trim().equals(ds.getValue(Spedizione.class).getData().trim())&&
@@ -190,7 +185,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                                 }
                                                             }
                                                         }
-                                                    }
+
 
                                                     @Override
                                                     public void onCancelled(@NonNull DatabaseError error) {
@@ -203,16 +198,12 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                         }
                                     }
                                 }
-                            }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                                 Toast.makeText(Spedizioni4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                             }
                         });
                     }
-
-
-            }
         });
     }
 
