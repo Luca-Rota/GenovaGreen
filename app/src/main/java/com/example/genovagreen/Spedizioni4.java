@@ -122,7 +122,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
             }
         });
         map = findViewById(R.id.buttonMap);
