@@ -35,6 +35,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -98,6 +100,12 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         partecipanti5.setText(String.valueOf(partecipanti));
         descrizione5=findViewById(R.id.descrizione5);
         descrizione5.setText(descrizione);
+
+        Calendar cal = setAlarm();
+        TextView txt1 = findViewById(R.id.prova1);
+        DateFormat sdf = new SimpleDateFormat("MM/dd/yyyy/hh a/mm");
+        txt1.setText(sdf.format(cal.getTime()));
+
         annulla=findViewById(R.id.annulla);
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +210,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          MySped users=new MySped(id,email);
                                          ref.setValue(users);
-                                         setAlarm();
+                                         startAlarm(setAlarm());
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                      }
                                  });
@@ -226,18 +234,19 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     }
 
 
-    private void setAlarm() {
+    private Calendar setAlarm() {
         String[] timeL = ora.split(":");
         String[] dateL = data.split("/");
-
+        
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeL[0]));
         c.set(Calendar.MINUTE, Integer.parseInt(timeL[1]));
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateL[0]));
-        c.set(Calendar.MONTH, Integer.parseInt(dateL[1]));
+        c.set(Calendar.MONTH, Integer.parseInt(dateL[1])-1);
         c.set(Calendar.YEAR, Integer.parseInt(dateL[2]));
-        startAlarm(c);
+
+        return c;
     }
 
     private void startAlarm(Calendar c) {
