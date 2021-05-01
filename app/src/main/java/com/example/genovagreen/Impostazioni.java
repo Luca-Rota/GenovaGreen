@@ -40,15 +40,12 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class Impostazioni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private TextView logout,lingua;
-    private Switch notifiche;
+    private TextView logout,lingua, username, notify;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
     private FirebaseUser user;
     private ConstraintLayout layout;
-    private TextView username;
-    private TextView notify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

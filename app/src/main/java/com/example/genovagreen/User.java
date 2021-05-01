@@ -1,8 +1,8 @@
 package com.example.genovagreen;
 
 public class User {
-    private String username;
-    private String email;
+    private String username, email;
+
     public User(){}
     public User(String user, String email){
         this.username=user;

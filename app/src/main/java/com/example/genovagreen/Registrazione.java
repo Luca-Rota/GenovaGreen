@@ -45,7 +45,6 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     private FirebaseUser firebaseUser;
     private TextView login;
     private boolean res;
-    private TextView username1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

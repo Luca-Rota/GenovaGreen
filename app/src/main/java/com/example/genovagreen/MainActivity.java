@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ConstraintLayout DoveLoButto, Pericolosi, Spedizioni;
     private FirebaseUser user;
     private TextView username;
-    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

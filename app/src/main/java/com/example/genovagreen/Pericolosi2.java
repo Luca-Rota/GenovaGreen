@@ -44,8 +44,6 @@ import android.widget.Toast;
 import java.io.File;
 
 public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    private static final String TAG = "Pericolosi2";
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private FirebaseAuth auth;
     private DrawerLayout drawer;

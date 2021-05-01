@@ -63,22 +63,16 @@ import java.util.Random;
 
 
 public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView timeButton;
-    private int tHour, tMinute;
-    private TextView dateButton, username, position4, username1;
+    private TextView dateButton, username, position4, timeButton;
     private Button map, agg;
-    private TextView mapText;
     private String date, time;
     private EditText descrizione4;
     private DatabaseReference ref;
     private String nomeutente;
-
-    private static final int REQUEST_CODE = 5678;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

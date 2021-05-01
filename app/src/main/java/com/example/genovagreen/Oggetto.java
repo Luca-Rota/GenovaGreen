@@ -4,8 +4,7 @@ package com.example.genovagreen;
 import java.util.Comparator;
 
 public class Oggetto {
-    public String rifiuto;
-    public String cassonetto;
+    public String rifiuto,cassonetto;
 
     public Oggetto(){}
 
