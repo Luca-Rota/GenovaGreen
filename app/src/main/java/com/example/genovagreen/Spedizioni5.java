@@ -117,8 +117,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                              sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
                                                      sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())) {
                                  id = ds.getKey();
-                                 final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
-
+                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
                                      ref.addValueEventListener(new ValueEventListener() {
                                          @Override
                                          public void onDataChange(@NonNull DataSnapshot snapshot) {

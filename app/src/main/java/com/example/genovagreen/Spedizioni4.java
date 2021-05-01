@@ -72,6 +72,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private EditText descrizione4;
     private DatabaseReference ref;
     private String nomeutente;
+    private boolean ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,11 +171,17 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                                         sped.getData().trim().equals(ds.getValue(Spedizione.class).getData().trim())&&
                                                                         sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
                                                                         sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())){
-                                                                    String id=ds.getKey();
-                                                                    ref = FirebaseDatabase.getInstance().getReference("SpedCreate").push();
-                                                                    MySped mySped= new MySped(id, email);
-                                                                    ref.setValue(mySped);
-                                                                    startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                    if(ok==true){
+                                                                        startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                        finish();
+                                                                    }else {
+                                                                        String id = ds.getKey();
+                                                                        ref = FirebaseDatabase.getInstance().getReference("SpedCreate").push();
+                                                                        MySped mySped = new MySped(id, email);
+                                                                        ref.setValue(mySped);
+                                                                        ok = true;
+                                                                        startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                    }
                                                                 }
                                                             }
                                                         }
