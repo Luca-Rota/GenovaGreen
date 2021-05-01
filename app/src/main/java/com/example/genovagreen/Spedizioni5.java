@@ -100,12 +100,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         partecipanti5.setText(String.valueOf(partecipanti));
         descrizione5=findViewById(R.id.descrizione5);
         descrizione5.setText(descrizione);
-
-        Calendar cal = setAlarm();
-        TextView txt1 = findViewById(R.id.prova1);
-        DateFormat sdf = new SimpleDateFormat("MM/dd/yyyy/hh a/mm");
-        txt1.setText(sdf.format(cal.getTime()));
-
         annulla=findViewById(R.id.annulla);
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,7 +231,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private Calendar setAlarm() {
         String[] timeL = ora.split(":");
         String[] dateL = data.split("/");
-        
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeL[0]));
         c.set(Calendar.MINUTE, Integer.parseInt(timeL[1]));
@@ -245,7 +238,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateL[0]));
         c.set(Calendar.MONTH, Integer.parseInt(dateL[1])-1);
         c.set(Calendar.YEAR, Integer.parseInt(dateL[2]));
-
         return c;
     }
 
