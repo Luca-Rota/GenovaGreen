@@ -69,7 +69,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private FirebaseUser user;
     private TextView dateButton, username, position4, timeButton;
     private Button map, agg;
-    private String date, time;
     private EditText descrizione4;
     private DatabaseReference ref;
     private String nomeutente;
@@ -179,8 +178,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                                 }
                                                             }
                                                         }
-
-
                                                     @Override
                                                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -202,7 +199,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     }
 
 
-    private String handleDateButton() {
+    private void handleDateButton() {
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -216,10 +213,9 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         }, year, month, day);
         datePickerDialog.show();
-        return date;
     }
 
-    private String handleTimeButton() {
+    private void handleTimeButton() {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
@@ -235,7 +231,6 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         }, hour, minute, android.text.format.DateFormat.is24HourFormat(Spedizioni4.this));
         timePickerDialog.show();
-        return time;
     }
 
     @Override
