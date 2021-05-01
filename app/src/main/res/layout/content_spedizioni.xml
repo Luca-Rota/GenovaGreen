@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
-                android:text="Sul teritorio genovese operano diversi gruppi di volontariato che si occupano della bonifica di luoghi inquinati. Questa sezione è stata studiata per semplificare l'organizzazione e informare dell'esistenza di queste spedizioni. Anche se non sei un gruppo di volontariato avrai la possibilità di creare una spedizione e trovare gente che come te ha a cuore la pulizia della nostra città. "
+                android:text="Sul teritorio genovese operano diversi gruppi di volontariato che si occupano della bonifica di luoghi inquinati. Questa sezione è stata studiata per semplificare l'organizzazione e informare dell'esistenza di queste iniziative. Anche se non sei un gruppo di volontariato avrai la possibilità di creare una spedizione e trovare gente che come te ha a cuore la pulizia della nostra città. Accedi o registrati subito per vedere le spedizioni che sono già state programmate o programmarne una tu stesso!"
                 android:textColor="#000"
                 android:textSize="16sp"
                 android:textStyle="bold"
