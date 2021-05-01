@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView image;
     TextView logo;
-    private static int SPLASH_SCREEN = 3000;
+    private static int SPLASH_SCREEN = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
