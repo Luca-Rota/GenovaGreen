@@ -27,6 +27,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -117,6 +118,12 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             list.add(ds.getValue(Oggetto.class));
                         }
+                        Collections.sort(list, new Comparator<Oggetto>() {
+                            @Override
+                            public int compare(Oggetto o1, Oggetto o2) {
+                                return o1.getRifiuto().compareTo(o2.getRifiuto());
+                            }
+                        });
                         adapterClass=new AdapterClass(list);
                         recyclerView.setAdapter(adapterClass);
                     }
