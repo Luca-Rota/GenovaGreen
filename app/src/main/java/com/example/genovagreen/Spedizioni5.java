@@ -52,7 +52,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username;
     private Button annulla,partecipa;
     private String id1;
-    public static int idAlert;
+    public static int idNotify;
 
 
     @Override
@@ -87,7 +87,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         organizzatore = getIntent().getStringExtra("organizzatore");
         partecipanti = getIntent().getStringExtra("partecipanti");
         descrizione = getIntent().getStringExtra("descrizione");
-        int idNotifica=getIntent().getIntExtra("idNotifica",0);
+        idNotify = getIntent().getIntExtra("idNotifica",0);
         luogo5=findViewById(R.id.luogo5);
         luogo5.setText(luogo);
         ora5=findViewById(R.id.ora5);
@@ -107,7 +107,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 finish();
             }
         });
-        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotifica);
+        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotify);
         partecipa = findViewById(R.id.partecipa);
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
             reference.addValueEventListener(new ValueEventListener() {
@@ -178,6 +178,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                          sped.setPartecipanti(String.valueOf(Integer.parseInt(sped.getPartecipanti())-1));
                                                                          DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                                                          update2.child(id).setValue(sped);
+                                                                         cancelAlarm();
                                                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                                                      }})
                                                                      .setNegativeButton(R.string.no, null).show();
@@ -198,7 +199,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                          int newPartecipanti=new Integer(partecipanti)+1;
                                          String part=String.valueOf(newPartecipanti);
-                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part, idNotifica);
+                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part, idNotify);
                                          update2.child(id).setValue(updateSped);
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          MySped users=new MySped(id,email);
@@ -248,6 +249,13 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
             c.add(Calendar.DATE, 1);
         }
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+    }
+
+    private void cancelAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        alarmManager.cancel(pendingIntent);
     }
 
     @Override

@@ -40,6 +40,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,10 +54,13 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -73,6 +77,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private DatabaseReference ref;
     private String nomeutente;
     private boolean ok;
+    public Calendar calendar = Calendar.getInstance();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,7 +160,15 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                             String posizione=position4.getText().toString();
                                             String ora=timeButton.getText().toString();
                                             String date=dateButton.getText().toString();
-                                            if(!descrizione.isEmpty()&&!posizione.isEmpty()&&!ora.isEmpty()&&!date.isEmpty()) {
+
+                                            Calendar currentTime = Calendar.getInstance();
+                                            int month = currentTime.get(Calendar.MONTH) + 1;
+                                            currentTime.set(Calendar.MONTH, month);
+                                            if (calendar.compareTo(currentTime) == -1 ) {
+                                                Toast.makeText(getApplicationContext(), "Orario non valido", Toast.LENGTH_LONG).show();
+                                            }
+
+                                            else if(!descrizione.isEmpty()&&!posizione.isEmpty()&&!ora.isEmpty()&&!date.isEmpty()) {
                                                 String partecipanti = "1";
                                                 Random myRandom=new Random();
                                                 int idNotifica=myRandom.nextInt(99999);
@@ -207,21 +220,24 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
 
 
     private void handleDateButton() {
-        Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
+        Calendar c = Calendar.getInstance();
+        final int year = c.get(Calendar.YEAR);
+        final int month = c.get(Calendar.MONTH);
+        final int day = c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(Spedizioni4.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month++;
                 String dateText = dayOfMonth+"/"+month+"/"+year;
                 dateButton.setText(dateText);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.YEAR, year);
             }
         }, year, month, day);
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
+
     }
 
     private void handleTimeButton() {
@@ -231,12 +247,22 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         TimePickerDialog timePickerDialog = new TimePickerDialog(Spedizioni4.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                Calendar c = Calendar.getInstance();
-                c.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                c.set(Calendar.MINUTE, minute);
-                c.set(Calendar.SECOND, 0);
-                String timeText = java.text.DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-                timeButton.setText(timeText);
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                calendar.set(Calendar.MINUTE, minute);
+                calendar.set(Calendar.SECOND, 0);
+                String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
+                SimpleDateFormat h_mm_a   = new SimpleDateFormat("h:mm a");
+                SimpleDateFormat hh_mm = new SimpleDateFormat("HH:mm");
+                if (timeText.length()>5){
+                    try {
+                        Date d1 = h_mm_a.parse(timeText);
+                        timeButton.setText(hh_mm.format(d1));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else
+                    timeButton.setText(timeText);
             }
         }, hour, minute, android.text.format.DateFormat.is24HourFormat(Spedizioni4.this));
         timePickerDialog.show();
