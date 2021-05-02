@@ -134,7 +134,8 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
 
                                         for(DataSnapshot ds2: snapshot2.getChildren()){
                                             if(ds2.getValue(MySped.class).getId().equals(key)){
-                                                ref.child(ds2.getKey()).removeValue();
+                                                String keyPart=ds2.getKey();
+                                                ref.child(keyPart).removeValue();
                                             }
                                         }
                                     }
