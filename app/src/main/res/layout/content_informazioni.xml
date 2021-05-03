@@ -183,7 +183,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="@string/versione_app_alpha_1_0"
+            android:text="@string/versione"
             android:textColor="#000000"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
