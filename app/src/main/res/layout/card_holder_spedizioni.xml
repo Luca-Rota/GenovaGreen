@@ -52,13 +52,13 @@
 
         <TextView
             android:id="@+id/organizzatore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="10"
+            android:maxLines="2"
             android:text="Andrea Cappelli"
             android:textColor="#000"
             android:textSize="14sp"
@@ -137,8 +137,7 @@
             android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout28" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

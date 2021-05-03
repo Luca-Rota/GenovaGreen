@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AlertDialogLayout;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
@@ -18,6 +19,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -29,6 +34,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewManager;
+import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,6 +48,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.internal.Constants;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FirebaseUser user;
     private TextView username;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,37 +94,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_main);
 
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
-        View view=navigationView.getHeaderView(0);
-        username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        if (isOnline()) {
+                auth = FirebaseAuth.getInstance();
+                user = auth.getCurrentUser();
+                View view = navigationView.getHeaderView(0);
+                username = view.findViewById(R.id.nomeutente);
+                CommonFunctions.setUsername(username, navigationView, user);
 
-        DoveLoButto=findViewById(R.id.DoveLoButtoMain);
-        DoveLoButto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Butto.class));
-            }
-        });
-        Pericolosi=findViewById(R.id.PeriocolosiMain);
-        Pericolosi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Pericolosi.class));
-            }
-        });
-        Spedizioni=findViewById(R.id.SpedizioniMain);
-        Spedizioni.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(user!=null && user.isEmailVerified()) {
-                    startActivity(new Intent(MainActivity.this, Spedizioni2.class));
-                }else{
-                    startActivity(new Intent(MainActivity.this, Spedizioni.class));
-                }
-            }
-        });
+                DoveLoButto = findViewById(R.id.DoveLoButtoMain);
+                DoveLoButto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, Butto.class));
+                    }
+                });
+                Pericolosi = findViewById(R.id.PeriocolosiMain);
+                Pericolosi.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, Pericolosi.class));
+                    }
+                });
+                Spedizioni = findViewById(R.id.SpedizioniMain);
+                Spedizioni.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (user != null && user.isEmailVerified()) {
+                            startActivity(new Intent(MainActivity.this, Spedizioni2.class));
+                        } else {
+                            startActivity(new Intent(MainActivity.this, Spedizioni.class));
+                        }
+                    }
+                });
+
+        } else {
+                AlertDialog mBuilder= new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Internet non disponibile.")
+                        .setCancelable(false)
+                        .setMessage("Verifica la tua connessioene e riprova di nuovo.")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Riprova", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                recreate();
+                            }
+                        }).show();
+
+        }
+
+
+
+
+
     }
 
     @Override
@@ -127,5 +158,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void ClickLogo(View view){
         CommonFunctions.closeDrawer(drawer);
     }
+    public boolean isOnline() {
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
 
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable())
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog mBuilder= new AlertDialog.Builder(MainActivity.this)
+                .setMessage("Sei sicuro di voler uscire?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }})
+                .setNegativeButton(R.string.no, null).show();
+
+
+    }
 }
