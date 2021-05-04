@@ -78,9 +78,6 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        View view=navigationView.getHeaderView(0);
-        username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
 
         cambiopass=findViewById(R.id.cambiopass);
         cambiopass.setOnClickListener(new View.OnClickListener() {

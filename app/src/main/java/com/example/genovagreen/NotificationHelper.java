@@ -13,7 +13,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper extends ContextWrapper {
-    public static final String channelID = "channelID";
+    public static final String channelID =String.valueOf(Spedizioni5.idNotify);
     public static final String channelName = "Channel Name";
     private NotificationManager mManager;
 
@@ -27,6 +27,9 @@ public class NotificationHelper extends ContextWrapper {
     @TargetApi(Build.VERSION_CODES.O)
     private void createChannel() {
         NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
+        /* qua prima di creare il canale dovrai fare un intent e mandare l'id come extra, in questo caso se ho capito come funziona il tutto Spedizioni5.idNotify
+        dovrebbe andare bene perchè qua ancora l'app sarà attiva, ti ho mandato la documentazione per capire come fare
+         */
         getManager().createNotificationChannel(channel);
     }
 

@@ -43,13 +43,14 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser firebaseUser;
-    private TextView login;
+    private TextView login,Username;
     private boolean res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -70,9 +71,6 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
 
         auth=FirebaseAuth.getInstance();
         firebaseUser=auth.getCurrentUser();
-        View view=navigationView.getHeaderView(0);
-        username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, firebaseUser);
 
         emailAdd=findViewById(R.id.EmailAddress);
         password=findViewById(R.id.Password);

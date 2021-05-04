@@ -73,9 +73,6 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        View view=navigationView.getHeaderView(0);
-        username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
 
         Email=findViewById(R.id.EmailAddress1);
         NewPass=findViewById(R.id.newpass);

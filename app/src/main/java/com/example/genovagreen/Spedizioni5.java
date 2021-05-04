@@ -140,6 +140,21 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                      ref.child(idCr).removeValue();
                                                                      DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                                                      ref1.child(id).removeValue();
+                                                                     DatabaseReference ref3=FirebaseDatabase.getInstance().getReference().child("SpedPart");
+                                                                     ref3.addValueEventListener(new ValueEventListener() {
+                                                                         @Override
+                                                                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                                                             for(DataSnapshot ds1:snapshot1.getChildren()){
+                                                                                 if(ds1.getValue(MySped.class).getId().equals(id)){
+                                                                                     String idPart=ds1.getKey();
+                                                                                     ref3.child(idPart).removeValue();
+                                                                                 }
+                                                                             }
+                                                                         }
+                                                                         @Override
+                                                                         public void onCancelled(@NonNull DatabaseError error) {
+                                                                         }
+                                                                     });
                                                                      startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                                                  }})
                                                                  .setNegativeButton(R.string.no, null).show();

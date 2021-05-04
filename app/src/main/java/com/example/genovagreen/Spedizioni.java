@@ -53,9 +53,6 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
 
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
-        View view=navigationView.getHeaderView(0);
-        username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
 
         login=findViewById(R.id.logins);
         login.setOnClickListener(new View.OnClickListener() {
