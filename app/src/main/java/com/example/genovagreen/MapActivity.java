@@ -59,7 +59,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView username;
+    private TextView username, id;
 
     ArrayList<String> title = new ArrayList<>();
     ArrayList<LatLng> arrayList = new ArrayList<>();
@@ -116,7 +116,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id, navigationView, user);
 
         listInit();
 

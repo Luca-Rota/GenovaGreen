@@ -40,7 +40,7 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class Impostazioni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private TextView logout,lingua, username, notify;
+    private TextView logout,lingua, username, id, notify;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
@@ -66,7 +66,8 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id, navigationView, user);
 
         layout=findViewById(R.id.LayoutLogout);
         if(user!=null){

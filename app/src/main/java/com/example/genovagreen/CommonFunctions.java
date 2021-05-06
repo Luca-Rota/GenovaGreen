@@ -53,10 +53,11 @@ public class CommonFunctions {
         }
     }
 
-    public static void setUsername(TextView username, NavigationView navigationView, FirebaseUser user) {
+    public static void setUsername(TextView username, TextView id, NavigationView navigationView, FirebaseUser user) {
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Usernames");
         if(user!=null) {
             username.setVisibility(View.VISIBLE);
+            id.setVisibility(View.VISIBLE);
             final String email = user.getEmail().trim();
             if (ref != null) {
                 ref.addValueEventListener(new ValueEventListener() {

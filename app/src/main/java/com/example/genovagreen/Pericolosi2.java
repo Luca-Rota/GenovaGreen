@@ -49,7 +49,7 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView username;
+    private TextView username, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,8 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id, navigationView, user);
 
         if(isServicesOk()){
             init();

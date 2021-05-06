@@ -42,7 +42,7 @@
     <string name="accedi">Log in</string>
     <string name="registrati_ora">Register now!</string>
     <string name="recupera_la_tua_password">Retrieve your password</string>
-    <string name="annulla">UNDO</string>
+    <string name="annulla">CANCEL</string>
     <string name="invia">SEND</string>
     <string name="visualizza_la_mappa_di_tutti_i_centri_di_raccolta_rifiuti_a_genova">See the map of all waste collection centers in Genoa:</string>
     <string name="o_cerca_il_centro_di_raccolta_in_base_al_prodotto_che_hai_da_smaltire">Or look for the collection center based on the product you have to dispose of:</string>
@@ -67,6 +67,7 @@
     <string name="move_map_instruction">Move the map and select the desired location.</string>
     <string name="user_location_permission_explanation">This function requires location permissions to work</string>
     <string name="user_location_permission_not_granted">You don\'t have tracking permissions.</string>
+    <string name="exit">Are you sure you want to exit?</string>
     <string name="segnala">Report</string>
     <string name="nessun_prodotto_trovato">No product found.</string>
     <string name="popup_impostazioni">Are you sure you want to log out?</string>
@@ -89,7 +90,7 @@
     <string name="nessuna_spedizione_trovata">No shipment found yet.</string>
     <string name="elimina">Delete</string>
     <string name="scegliere_la_posizione">Choose the location</string>
-    <string name="non_partecipare">Not to participate</string>
+    <string name="non_partecipare">Not to join</string>
     <string name="impostare_data">Set date:</string>
     <string name="data">date</string>
     <string name="ora">time</string>
@@ -99,15 +100,15 @@
     <string name="inserisci_qui_una_breve_descrizione_sul_lavoro_da_compiere">Enter here a short description of the work to be done.</string>
     <string name="posizione">Location:</string>
     <string name="indietro">Back</string>
-    <string name="partecipa">Participate</string>
+    <string name="partecipa">Join</string>
     <string name="numero_partecipanti">Number of Participants:</string>
-    <string name="data_e_ora">Date and time:</string>
+    <string name="data_e_ora">Date/time:</string>
     <string name="organizzatore">Organizer:</string>
     <string name="location_picker_dropped_marker_snippet_no_results">No result</string>
     <string name="location_picker_select_location_button_cancel">Cancel</string>
     <string name="location_picker_select_location_button_select">Select a location</string>
     <string name="location_picker_place_name_result">Place name: %1$s</string>
     <string name="popup_sped2">Are you sure you want to delete the expedition?</string>
-    <string name="popup_sped1">Are you sure you don’t want to participate in the expedition anymore?</string>
+    <string name="popup_sped1">Are you sure you don’t want to join in the expedition anymore?</string>
     <string name="informazioni">Informations</string>
 </resources>

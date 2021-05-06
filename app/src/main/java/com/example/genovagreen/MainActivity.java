@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ConstraintLayout DoveLoButto, Pericolosi, Spedizioni;
     private FirebaseUser user;
-    private TextView username;
+    private TextView username, id;
 
 
     @Override
@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 user = auth.getCurrentUser();
                 View view = navigationView.getHeaderView(0);
                 username = view.findViewById(R.id.nomeutente);
-                CommonFunctions.setUsername(username, navigationView, user);
+                id = view.findViewById(R.id.id);
+                CommonFunctions.setUsername(username, id, navigationView, user);
 
                 DoveLoButto = findViewById(R.id.DoveLoButtoMain);
                 DoveLoButto.setOnClickListener(new View.OnClickListener() {
@@ -171,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         AlertDialog mBuilder= new AlertDialog.Builder(MainActivity.this)
-                .setMessage("Sei sicuro di voler uscire?")
+                .setMessage(R.string.exit)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

@@ -27,6 +27,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,7 +52,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private NavigationView navigationView;
     private FirebaseUser user;
     private String luogo, ora, data, organizzatore, partecipanti, descrizione, id;
-    private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username;
+    private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username, id2;
     private Button annulla,partecipa;
     private String id1;
     public static int idNotify;
@@ -77,7 +80,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id2 = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id2, navigationView, user);
 
         final String email=user.getEmail();
 
@@ -89,7 +93,9 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         descrizione = getIntent().getStringExtra("descrizione");
         idNotify = getIntent().getIntExtra("idNotifica",0);
         luogo5=findViewById(R.id.luogo5);
-        luogo5.setText(luogo);
+        SpannableString content = new SpannableString(luogo);
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        luogo5.setText(content);
         ora5=findViewById(R.id.ora5);
         ora5.setText(ora);
         data5=findViewById(R.id.data5);
@@ -231,7 +237,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 }
             });
 
-        TextView mappa = findViewById(R.id.mappa);
+        TextView mappa = findViewById(R.id.luogo5);
         mappa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -56,7 +56,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     private DatabaseReference ref;
     private RecyclerView recyclerView;
     private SearchView searchView;
-    private TextView username, noprod, segnala;
+    private TextView username, id, noprod, segnala;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +88,8 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id, navigationView, user);
 
         ref=FirebaseDatabase.getInstance().getReference().child("DoveLoButto");
         Button support =findViewById(R.id.segnala);

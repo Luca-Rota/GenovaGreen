@@ -71,7 +71,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView dateButton, username, position4, timeButton;
+    private TextView dateButton, username, position4, timeButton, id;
     private Button map, agg;
     private EditText descrizione4;
     private DatabaseReference ref;
@@ -105,7 +105,8 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id, navigationView, user);
 
         dateButton = findViewById(R.id.data4);
         dateButton.setOnClickListener(new View.OnClickListener() {

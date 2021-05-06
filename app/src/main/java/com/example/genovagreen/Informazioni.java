@@ -33,7 +33,7 @@ public class Informazioni extends AppCompatActivity implements NavigationView.On
     private FirebaseAuth auth;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private TextView username;
+    private TextView username, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,8 @@ public class Informazioni extends AppCompatActivity implements NavigationView.On
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id, navigationView, user);
 
         TextView share = findViewById(R.id.share);
         share.setOnClickListener(new View.OnClickListener() {

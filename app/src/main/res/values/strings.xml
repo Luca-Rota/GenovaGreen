@@ -19,7 +19,7 @@
     <string name="logout">Esci</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="button" translatable="false">Button</string>
-
+    <string name="exit">Sei sicuro di voler uscire?</string>
     <string name="RUP_tit">Rifiuti Urbani Pericolosi e Rifiuti Ingombranti</string>
     <string name="rif_pericolisi_descrizione">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
     <string name="RUP_desc">Tutti i rifiuti urbani pericolosi devono essere conferiti presso i centri di raccolta cittadini.</string>
@@ -154,7 +154,7 @@
     <string name="popup_sped2">Sei sicuro di voler eliminare la spedizione?</string>
     <string name="popup_sped1">Sei sicuro di non voler più partecipare alla spedizione?</string>
     <string name="informazioni">Informazioni</string>
-    <string name="title_activity_splash1">SplashActivity1</string>
+    <string name="title_activity_splash1" translatable="false">SplashActivity1</string>
 
 
 </resources>

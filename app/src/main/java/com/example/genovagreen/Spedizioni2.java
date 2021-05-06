@@ -45,7 +45,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     private ArrayList<Spedizione> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
-    private TextView username, nosped;
+    private TextView username, id, nosped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,8 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
         username = view.findViewById(R.id.nomeutente);
-        CommonFunctions.setUsername(username, navigationView, user);
+        id = view.findViewById(R.id.id);
+        CommonFunctions.setUsername(username, id, navigationView, user);
 
         nosped=findViewById(R.id.nosped);
         button= findViewById(R.id.buttonSpedizioni2);
