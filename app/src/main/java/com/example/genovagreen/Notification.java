@@ -104,7 +104,6 @@ public class Notification extends AppCompatActivity {
         timePickerDialog.show();
     }
 
-
     private void setAlarm() {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, timeL[0]);
