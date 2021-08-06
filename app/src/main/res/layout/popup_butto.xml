@@ -62,4 +62,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cassonettopop" />
 
+    <TextView
+        android:id="@+id/isola1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:maxLines="3"
+        android:text="@string/consulta_la_sezione_dedicata"
+        android:textColor="#0000ff"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgpop" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

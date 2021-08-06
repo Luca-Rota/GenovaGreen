@@ -70,8 +70,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
             case "Cassonetto dell'umido":
                 holder.imgrec.setImageResource(R.drawable.umido);
                 break;
+            case "Cassonetto degli abiti":
+                holder.imgrec.setImageResource(R.drawable.abiti);
+                break;
             default:
-                holder.imgrec.setImageResource(R.drawable.vetro);
+                holder.imgrec.setImageResource(R.drawable.isola);
                 break;
         }
         holder.card.setOnClickListener(new View.OnClickListener() {
