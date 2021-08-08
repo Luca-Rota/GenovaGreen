@@ -37,12 +37,12 @@
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="28dp"
+            android:layout_height="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_email"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,7 +56,7 @@
             android:textColor="#000"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view1"
             app:layout_constraintStart_toEndOf="@+id/imageView1"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +71,7 @@
             android:textColor="#000"
             android:textSize="16sp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/organizzatore"
             app:layout_constraintTop_toTopOf="parent" />
@@ -179,8 +179,8 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_password"
