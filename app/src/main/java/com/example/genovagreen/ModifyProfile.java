@@ -8,6 +8,8 @@ import android.os.Bundle;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -22,10 +24,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-public class Password extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Button NewPass,Annulla;
+public class ModifyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private Button Annulla;
+    private ImageView NewPass;
     private EditText Email;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
@@ -35,7 +39,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password);
+        setContentView(R.layout.activity_modify_profile);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,9 +52,10 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset){
                 super.onDrawerSlide(drawerView, slideOffset);
-                hideKeyboard(Password.this);
+                hideKeyboard(ModifyProfile.this);
             }
         };
+
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
@@ -61,29 +66,29 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
         Email=findViewById(R.id.EmailAddress1);
         NewPass=findViewById(R.id.newpass1);
         Annulla=findViewById(R.id.buttonAnnulla);
+
         Annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
         NewPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (Email.getText().toString().matches(""))
-                    Toast.makeText(Password.this, "Inserire email valida", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ModifyProfile.this, "Inserire email valida", Toast.LENGTH_SHORT).show();
 
                 else {
                     auth.sendPasswordResetEmail(Email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(Password.this, R.string.email_inviata, Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Password.this, Login.class));
-                                finish();
+                                Toast.makeText(ModifyProfile.this, R.string.email_inviata, Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(Password.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ModifyProfile.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -100,7 +105,6 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
         return true;
     }
 
-
     public void ClickLogo(View view){
         CommonFunctions.closeDrawer(drawer);
     }
@@ -112,6 +116,3 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
     }
 
 }
-
-
-

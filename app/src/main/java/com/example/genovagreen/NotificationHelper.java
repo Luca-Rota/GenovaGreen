@@ -41,7 +41,7 @@ public class NotificationHelper extends ContextWrapper {
 
         Intent intent = new Intent(this, Spedizioni3.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, Spedizioni5.idNotify, intent, 0);
 
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.logo2_round);
 

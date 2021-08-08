@@ -40,12 +40,12 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class Impostazioni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private TextView logout,lingua, username, id, notify;
+    private TextView logout,lingua, username, id, notify, modify;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private ConstraintLayout layout;
+    private ConstraintLayout layout, layoutProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +69,28 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         id = view.findViewById(R.id.id);
         CommonFunctions.setUsername(username, id, navigationView, user);
 
+        layoutProfile=findViewById(R.id.layoutProfile);
+        if(user!=null){
+            layoutProfile.setVisibility(View.VISIBLE);
+        }else{
+            layoutProfile.setVisibility(View.INVISIBLE);
+        }
+
+        modify=findViewById(R.id.modificaProfilo);
+        modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Impostazioni.this, ModifyProfile.class));
+            }
+        });
+
         layout=findViewById(R.id.LayoutLogout);
         if(user!=null){
             layout.setVisibility(View.VISIBLE);
         }else{
             layout.setVisibility(View.INVISIBLE);
         }
+
         logout=findViewById(R.id.LogoutImpostazioni);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

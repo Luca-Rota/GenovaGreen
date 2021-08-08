@@ -207,7 +207,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/luogo5"
+            android:id="@+id/edit1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -233,7 +233,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/luogo5" />
+            app:layout_constraintTop_toBottomOf="@+id/edit1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -249,7 +249,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/newpass1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_baseline_supervisor_account_24"
@@ -268,7 +268,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintStart_toEndOf="@+id/newpass1"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -294,7 +294,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/newpass1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -380,7 +380,7 @@
 
 
         <Button
-            android:id="@+id/annulla"
+            android:id="@+id/buttonAnnulla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -393,12 +393,12 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/partecipa"
+            app:layout_constraintEnd_toStartOf="@+id/salva"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/partecipa"
+            android:id="@+id/salva"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -411,7 +411,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/annulla"
+            app:layout_constraintStart_toEndOf="@+id/buttonAnnulla"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

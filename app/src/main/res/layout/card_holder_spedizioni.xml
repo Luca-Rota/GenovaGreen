@@ -63,7 +63,7 @@
             android:textColor="#000"
             android:textSize="14sp"
             android:textStyle="italic"
-            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintEnd_toStartOf="@+id/newpass1"
             app:layout_constraintStart_toEndOf="@+id/textView1"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,7 +117,7 @@
             app:layout_constraintTop_toBottomOf="@+id/organizzatore" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/newpass1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_above="@+id/view"

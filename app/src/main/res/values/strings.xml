@@ -156,6 +156,7 @@
     <string name="informazioni">Informazioni</string>
     <string name="title_activity_splash1" translatable="false">SplashActivity1</string>
     <string name="consulta_la_sezione_dedicata"><u>Consulta la sezione dedicata.</u></string>
+    <string name="title_activity_modify_profile">ModifyProfile</string>
 
 
 </resources>
