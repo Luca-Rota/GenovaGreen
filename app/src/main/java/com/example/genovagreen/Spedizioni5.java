@@ -2,13 +2,17 @@ package com.example.genovagreen;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import com.example.genovagreen.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -55,8 +59,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private TextView luogo5,ora5,data5,organizzatore5,partecipanti5,descrizione5,username, id2;
     private Button annulla,partecipa;
     private String id1;
-    public static int idNotify;
-
+    public int idNotify;
+    private AlarmManager alarmManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         setSupportActionBar(toolbar);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE| WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -225,6 +228,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          MySped users=new MySped(id,email);
                                          ref.setValue(users);
+                                         createNotificationChannel();
                                          startAlarm(setAlarm());
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                      }
@@ -248,7 +252,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         });
     }
 
-
     private Calendar setAlarm() {
         String[] timeL = ora.split(":");
         String[] dateL = data.split("/");
@@ -263,20 +266,32 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     }
 
     private void startAlarm(Calendar c) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        Toast.makeText(this, ""+idNotify, Toast.LENGTH_SHORT).show();
+        intent.putExtra("idNotifica", idNotify);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
         }
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+        Toast.makeText(this, "Notifica messa",Toast.LENGTH_SHORT).show();
     }
 
     private void cancelAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        /*
+
+        TODO
+
         Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        if(alarmManager==null){
+            alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        }
         alarmManager.cancel(pendingIntent);
+        Toast.makeText(this, "Notifica tolta",Toast.LENGTH_SHORT).show();
+
+         */
     }
 
     @Override
@@ -286,8 +301,20 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         return true;
     }
 
-
     public void ClickLogo(View view){
         CommonFunctions.closeDrawer(drawer);
     }
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            CharSequence name = Integer.toString(idNotify);
+            String id = Integer.toString(idNotify);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(id, name, importance);
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+            Log.i("prova","Creato canale: "+channel);
+        }
+    }
+
 }

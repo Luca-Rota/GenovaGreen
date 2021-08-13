@@ -1,11 +1,16 @@
 package com.example.genovagreen;
 
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,33 +19,29 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.okhttp.internal.DiskLruCache;
 
-public class AlertReceiver extends BroadcastReceiver {
-   // DatabaseReference ref;
+import java.util.Random;
+
+public class AlertReceiver extends BroadcastReceiver {è
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        /*ref=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds: snapshot.getChildren()){
-                    if(ds.getValue(Spedizione.class).getIdNotifica()==(inserisci qui l'id che hai preso dell'extra)){
-    */
-
-
-                        NotificationHelper notificationHelper = new NotificationHelper(context);
-                        NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
-                        notificationHelper.getManager().notify(Spedizioni5.idNotify, nb.build());
-
-
-            /*}
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
+        int channel_id=intent.getExtras().getInt("idNotifica");
+        String channel_id2=Integer.toString(channel_id);
+        Intent i = new Intent(context,Spedizioni3.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent=PendingIntent.getActivity(context,0,i,PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(context,channel_id2)
+                .setSmallIcon(R.drawable.logo2_round)
+                .setContentTitle("GenovaGreen")
+                .setContentText("La spedizione a cui vuoi partecipare sta per iniziare")
+                .setAutoCancel(true)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent);
+        NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(context);
+        notificationManagerCompat.notify(channel_id,builder.build());
+        Log.i("prova","Ricevuto canale numero:"+channel_id);
     }
-
 }
 
 

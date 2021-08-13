@@ -140,13 +140,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 recreate();
                             }
                         }).show();
-
         }
-
-
-
-
-
     }
 
     @Override
@@ -182,7 +176,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         startActivity(intent);
                     }})
                 .setNegativeButton(R.string.no, null).show();
-
-
     }
+
 }
