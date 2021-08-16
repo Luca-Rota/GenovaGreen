@@ -94,6 +94,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_main);
 
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("firstStart", true);
+
+        if(firstStart){
+            showStartTutorial();
+        }
+
         if (isOnline()) {
                 auth = FirebaseAuth.getInstance();
                 user = auth.getCurrentUser();
@@ -143,10 +150,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
+    }
+
+    private void showStartTutorial(){
 
 
-
-
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
     }
 
     @Override
