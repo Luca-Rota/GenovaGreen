@@ -11,10 +11,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
-
+/*
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID =String.valueOf(Spedizioni5.idNotify);
-    public static final String channelName = "Spedizioni";
+    public static final String channelName = "Channel Name";
     private NotificationManager mManager;
 
     public NotificationHelper(Context base) {
@@ -27,6 +27,9 @@ public class NotificationHelper extends ContextWrapper {
     @TargetApi(Build.VERSION_CODES.O)
     private void createChannel() {
         NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
+         qua prima di creare il canale dovrai fare un intent e mandare l'id come extra, in questo caso se ho capito come funziona il tutto Spedizioni5.idNotify
+        dovrebbe andare bene perchè qua ancora l'app sarà attiva, ti ho mandato la documentazione per capire come fare
+
         getManager().createNotificationChannel(channel);
     }
 
@@ -41,7 +44,7 @@ public class NotificationHelper extends ContextWrapper {
 
         Intent intent = new Intent(this, Spedizioni3.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, Spedizioni5.idNotify, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.logo2_round);
 
@@ -54,4 +57,4 @@ public class NotificationHelper extends ContextWrapper {
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
     }
-}
+    */
