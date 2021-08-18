@@ -2,14 +2,11 @@ package com.example.genovagreen;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -65,7 +62,7 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
 
         Email=findViewById(R.id.EmailAddress1);
         NewPass=findViewById(R.id.newpass1);
-        Annulla=findViewById(R.id.buttonAnnulla);
+        Annulla=findViewById(R.id.annulla);
 
         Annulla.setOnClickListener(new View.OnClickListener() {
             @Override

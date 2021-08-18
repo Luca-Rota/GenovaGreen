@@ -36,6 +36,26 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
+            android:name=".Tutorial0"
+            android:label="GenovaGreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
+            android:name=".Tutorial1"
+            android:label="GenovaGreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
+            android:name=".Tutorial2"
+            android:label="GenovaGreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
+            android:name=".Tutorial3"
+            android:label="GenovaGreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
+        <activity
             android:name=".ModifyProfile"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"

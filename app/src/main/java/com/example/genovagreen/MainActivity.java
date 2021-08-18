@@ -35,6 +35,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewManager;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -74,7 +76,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ConstraintLayout DoveLoButto, Pericolosi, Spedizioni;
     private FirebaseUser user;
     private TextView username, id;
-
+    Animation anim1;
+    Animation anim2;
+    Animation anim3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,20 +114,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 CommonFunctions.setUsername(username, id, navigationView, user);
 
                 DoveLoButto = findViewById(R.id.DoveLoButtoMain);
+                anim1 = AnimationUtils.loadAnimation(this, R.anim.anim_button1);
+                DoveLoButto.setAnimation(anim1);
+
                 DoveLoButto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(MainActivity.this, Butto.class));
                     }
                 });
+
                 Pericolosi = findViewById(R.id.PeriocolosiMain);
+                anim2 = AnimationUtils.loadAnimation(this, R.anim.anim_button2);
+                Pericolosi.setAnimation(anim2);
+
                 Pericolosi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(MainActivity.this, Pericolosi.class));
                     }
                 });
+
                 Spedizioni = findViewById(R.id.SpedizioniMain);
+                anim3 = AnimationUtils.loadAnimation(this, R.anim.anim_button3);
+                Spedizioni.setAnimation(anim3);
+
                 Spedizioni.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -139,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 AlertDialog mBuilder= new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Internet non disponibile.")
                         .setCancelable(false)
-                        .setMessage("Verifica la tua connessioene e riprova di nuovo.")
+                        .setMessage("Verifica la tua connessione e riprova di nuovo.")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton("Riprova", new DialogInterface.OnClickListener() {
                             @Override
@@ -153,8 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void showStartTutorial(){
-
-
+        startActivity(new Intent(MainActivity.this, Tutorial0.class));
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("firstStart", false);

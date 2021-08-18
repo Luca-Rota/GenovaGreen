@@ -21,7 +21,7 @@ import com.squareup.okhttp.internal.DiskLruCache;
 
 import java.util.Random;
 
-public class AlertReceiver extends BroadcastReceiver {è
+public class AlertReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {

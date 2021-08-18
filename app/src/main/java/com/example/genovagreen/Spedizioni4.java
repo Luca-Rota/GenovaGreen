@@ -98,7 +98,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             }
         });
 
-        Button annulla = findViewById(R.id.buttonAnnulla);
+        Button annulla = findViewById(R.id.annulla);
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
