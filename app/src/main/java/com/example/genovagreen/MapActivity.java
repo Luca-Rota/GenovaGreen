@@ -54,7 +54,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+public class  MapActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;

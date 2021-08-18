@@ -1,5 +1,6 @@
 package com.example.genovagreen;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,7 +12,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -32,6 +36,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import static androidx.core.content.ContextCompat.getSystemService;
 import static androidx.core.content.ContextCompat.startActivity;
 import static java.security.AccessController.getContext;
 
@@ -77,6 +82,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 holder.imgrec.setImageResource(R.drawable.isola);
                 break;
         }
+
+
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +122,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
 
                         break;
                 }
+
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+
             }
+
+
         });
 
     }

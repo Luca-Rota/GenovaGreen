@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -170,6 +171,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         }
         AdapterClass adapterClass=new AdapterClass(myList);
         recyclerView.setAdapter(adapterClass);
+
     }
 
     @Override

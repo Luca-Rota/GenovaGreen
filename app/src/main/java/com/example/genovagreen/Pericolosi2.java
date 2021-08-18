@@ -158,4 +158,11 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
     public void ClickLogo(View view){
         CommonFunctions.closeDrawer(drawer);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Pericolosi2.this, Pericolosi.class));
+    }
+
 }
