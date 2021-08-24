@@ -47,10 +47,12 @@
 
     </SearchView>
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
@@ -109,29 +111,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:fastScrollEnabled="true"
+            app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+            app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
+            app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+            app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <com.trendyol.bubblescrollbarlib.BubbleScrollBar
-        android:elevation="100dp"
-        android:id="@+id/fastscroll"
-        android:layout_width="200dp"
-        android:layout_height="500dp"
-        android:layout_gravity="end"
-        android:orientation="vertical"
-        app:bubbleBackground="@drawable/fast_scroll_thumb"
-        app:bubbleElevation="6dp"
-        app:bubbleHeight="50dp"
-        app:bubbleMargin="4dp"
-        app:bubbleMinWidth="50dp"
-        app:bubblePadding="4dp"
-        app:bubbleTextColor="@color/default_bubble_text_color"
-        app:bubbleTextSize="8sp"
-        app:scrollbarBackground="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9"
-        app:thumbBackground="@color/colorAccent"/>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

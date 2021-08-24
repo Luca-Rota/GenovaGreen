@@ -40,7 +40,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
 import static androidx.core.content.ContextCompat.startActivity;
 import static java.security.AccessController.getContext;
 
-public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder> {
+public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder>  {
     ArrayList<Oggetto> list;
     public AdapterClass(ArrayList<Oggetto> list){
         this.list=list;
@@ -138,6 +138,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
     public int getItemCount() {
         return list.size();
     }
+
+
 
     public class myviewholder extends RecyclerView.ViewHolder {
         TextView rifiutotext, cassonettotext;

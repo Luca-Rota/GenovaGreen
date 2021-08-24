@@ -17,8 +17,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.trendyol.bubblescrollbarlib.BubbleScrollBar;
-import com.trendyol.bubblescrollbarlib.BubbleTextProvider;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -47,6 +45,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+
 import static java.util.Collections.*;
 
 public class Butto extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,7 +59,6 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     private RecyclerView recyclerView;
     private SearchView searchView;
     private TextView username, id, noprod, segnala;
-    BubbleScrollBar scrollBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,15 +107,11 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         noprod=findViewById(R.id.noprod);
         segnala=findViewById(R.id.segnala);
 
-        scrollBar = (BubbleScrollBar) findViewById(R.id.fastscroll);
-        scrollBar.attachToRecyclerView(recyclerView);
-        scrollBar.setBubbleTextProvider(new BubbleTextProvider() {
-            @Override
-            public String provideBubbleText(int i) {
-                return new StringBuilder(list.get(i).getRifiuto().substring(0, 1)).toString();
-            }
-        });
+
     }
+
+
+
 
 
     @Override
@@ -141,14 +135,9 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
                         adapterClass=new AdapterClass(list);
                         recyclerView.setAdapter(adapterClass);
 
-                        scrollBar = (BubbleScrollBar) findViewById(R.id.fastscroll);
-                        scrollBar.attachToRecyclerView(recyclerView);
-                        scrollBar.setBubbleTextProvider(new BubbleTextProvider() {
-                            @Override
-                            public String provideBubbleText(int i) {
-                                return new StringBuilder(list.get(i).getRifiuto().substring(0, 1)).toString();
-                            }
-                        });
+
+
+
                     }
                 }
 
