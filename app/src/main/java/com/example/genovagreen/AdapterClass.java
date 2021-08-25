@@ -4,44 +4,28 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-
-
 import java.util.ArrayList;
-import java.util.List;
-
-import static androidx.core.content.ContextCompat.getSystemService;
-import static androidx.core.content.ContextCompat.startActivity;
-import static java.security.AccessController.getContext;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder>  {
     ArrayList<Oggetto> list;
+    private TextView txt;
+    Activity activity;
     public AdapterClass(ArrayList<Oggetto> list){
         this.list=list;
     }
@@ -78,8 +62,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
             case "Cassonetto degli abiti":
                 holder.imgrec.setImageResource(R.drawable.abiti);
                 break;
-            default:
+            case "Isola dei rifiuti":
                 holder.imgrec.setImageResource(R.drawable.isola);
+                break;
+            default:
                 break;
         }
 
@@ -101,6 +87,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 String cassonetto=list.get(position).getCassonetto().trim();
                 rifiutopop.setText(list.get(position).getRifiuto());
                 cassonettopop.setText(list.get(position).getCassonetto());
+                txt = popupView.findViewById(R.id.link_isola);
                 ImageView imgpop=popupView.findViewById(R.id.imgpop);
                 switch(cassonetto) {
                     case "Cassonetto dell'indifferenziata":
@@ -118,8 +105,19 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                     case "Cassonetto del umido":
                         imgpop.setImageResource(R.drawable.umido);
                         break;
+                    case "Cassonetto degli abiti":
+                        imgpop.setImageResource(R.drawable.abiti);
+                        break;
+                    case "Isola dei rifiuti":
+                        imgpop.setImageResource(R.drawable.isola);
+                        txt.setVisibility(View.VISIBLE);
+                        txt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                v.getContext().startActivity(new Intent(v.getContext(), Pericolosi.class));
+                            }
+                        });
                     default:
-
                         break;
                 }
 

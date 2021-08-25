@@ -111,4 +111,5 @@
     <string name="popup_sped2">Are you sure you want to delete the expedition?</string>
     <string name="popup_sped1">Are you sure you don’t want to join in the expedition anymore?</string>
     <string name="informazioni">Informations</string>
+    <string name="consulta_la_sezione_dedicata">Consult the relative section</string>
 </resources>

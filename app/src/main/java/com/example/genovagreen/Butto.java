@@ -60,6 +60,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     private SearchView searchView;
     private TextView username, id, noprod, segnala;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
