@@ -12,10 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.example.genovagreen.databinding.ActivityMainBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,10 +25,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
@@ -42,13 +37,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
@@ -95,13 +84,13 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         partecipanti = getIntent().getStringExtra("partecipanti");
         descrizione = getIntent().getStringExtra("descrizione");
         idNotify = getIntent().getIntExtra("idNotifica",0);
-        luogo5=findViewById(R.id.luogo5);
+        luogo5=findViewById(R.id.placeholder);
         SpannableString content = new SpannableString(luogo);
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         luogo5.setText(content);
         ora5=findViewById(R.id.ora5);
         ora5.setText(ora);
-        data5=findViewById(R.id.data5);
+        data5=findViewById(R.id.email_utente);
         data5.setText(data);
         organizzatore5=findViewById(R.id.organizzatore5);
         organizzatore5.setText(organizzatore);
@@ -241,7 +230,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 }
             });
 
-        TextView mappa = findViewById(R.id.luogo5);
+        TextView mappa = findViewById(R.id.placeholder);
         mappa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -280,9 +269,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
     private void cancelAlarm() {
         /*
-
         TODO
-
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         if(alarmManager==null){
@@ -290,7 +277,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         }
         alarmManager.cancel(pendingIntent);
         Toast.makeText(this, "Notifica tolta",Toast.LENGTH_SHORT).show();
-
          */
     }
 
@@ -316,5 +302,4 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
             Log.i("prova","Creato canale: "+channel);
         }
     }
-
 }
