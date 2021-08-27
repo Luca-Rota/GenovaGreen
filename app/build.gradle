@@ -71,7 +71,7 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-turf:5.5.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-services:5.5.0'
 
-
+    implementation 'com.github.gifffert:ExpandableTextView:0.1.6'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
 }
