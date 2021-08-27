@@ -59,7 +59,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
         user=auth.getCurrentUser();
 
         Email=findViewById(R.id.EmailAddress1);
-        NewPass=findViewById(R.id.newpass1);
+        NewPass=findViewById(R.id.newuser);
         Annulla=findViewById(R.id.annulla);
         Annulla.setOnClickListener(new View.OnClickListener() {
             @Override

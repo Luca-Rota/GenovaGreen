@@ -9,6 +9,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,12 +27,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ModifyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Button Annulla;
-    private ImageView NewPass;
-    private EditText Email;
+    private Button Annulla, NewPass;
+    private ImageView NewUser;
+    private TextView Email_Utente;
+    private EditText Placeholder;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -45,9 +52,9 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
-            public void onDrawerSlide(View drawerView, float slideOffset){
+            public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
                 hideKeyboard(ModifyProfile.this);
             }
@@ -57,12 +64,67 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_spedizioni);
 
-        auth=FirebaseAuth.getInstance();
-        user=auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        String email = user.getEmail().trim();
+        NewPass=findViewById(R.id.invia);
+        Placeholder=findViewById(R.id.placeholder);
+        NewUser=findViewById(R.id.newuser);
 
-        Email=findViewById(R.id.EmailAddress1);
-        NewPass=findViewById(R.id.newpass1);
-        Annulla=findViewById(R.id.annulla);
+        Email_Utente=findViewById(R.id.email_utente);
+        Email_Utente.setText(email);
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Usernames");
+        if (ref != null) {
+            ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            User ogg = ds.getValue(User.class);
+                            String email2 = ogg.getEmail().trim();
+                            String nomeutente = ogg.getUsername();
+                            if (email.equals(email2)) {
+                                Placeholder.setHint(nomeutente);
+                            }
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+        NewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Usernames");
+                if (ref != null) {
+                    ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    User ogg = ds.getValue(User.class);
+                                    String email2 = ogg.getEmail().trim();
+                                    String nomeutente = ogg.getUsername();
+                                    String id=ds.getKey();
+                                    if (email.equals(email2)) {
+                                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
+                                        User user = new User(Placeholder.getText().toString(),email);
+                                        ref.child(id).setValue(user);
+                                        finish();
+                                    }
+                                }
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                }
+            }
+        });
+        Annulla = findViewById(R.id.annulla);
 
         Annulla.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,25 +136,18 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
         NewPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (Email.getText().toString().matches(""))
-                    Toast.makeText(ModifyProfile.this, "Inserire email valida", Toast.LENGTH_SHORT).show();
-
-                else {
-                    auth.sendPasswordResetEmail(Email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(ModifyProfile.this, R.string.email_inviata, Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(ModifyProfile.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
+                auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(ModifyProfile.this, R.string.email_inviata, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ModifyProfile.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
             }
         });
-
     }
 
     @Override

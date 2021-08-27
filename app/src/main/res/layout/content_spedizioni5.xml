@@ -106,7 +106,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/data5"
+            android:id="@+id/email_utente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -131,7 +131,7 @@
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ora5"
-            app:layout_constraintStart_toEndOf="@+id/data5"
+            app:layout_constraintStart_toEndOf="@+id/email_utente"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -207,7 +207,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/luogo5"
+            android:id="@+id/placeholder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -233,7 +233,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/luogo5" />
+            app:layout_constraintTop_toBottomOf="@+id/placeholder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -249,7 +249,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         <ImageView
-            android:id="@+id/newpass1"
+            android:id="@+id/newuser"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_baseline_supervisor_account_24"
@@ -268,7 +268,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/newpass1"
+            app:layout_constraintStart_toEndOf="@+id/newuser"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -294,7 +294,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newpass1" />
+            app:layout_constraintTop_toBottomOf="@+id/newuser" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
