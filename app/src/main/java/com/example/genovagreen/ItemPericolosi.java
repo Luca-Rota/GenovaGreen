@@ -4,7 +4,7 @@ public class ItemPericolosi {
 
     private String titles;
     private String desc;
-    private boolean isShrink = true;
+    private boolean expanded;
 
     public ItemPericolosi(){
     }
@@ -12,6 +12,7 @@ public class ItemPericolosi {
     public ItemPericolosi(String titles, String desc) {
         this.titles = titles;
         this.desc = desc;
+        this.expanded=false;
     }
 
     public String getTitles() {
@@ -30,11 +31,11 @@ public class ItemPericolosi {
         this.desc = desc;
     }
 
-    public boolean isShrink() {
-        return isShrink;
+    public boolean isExpanded() {
+        return expanded;
     }
 
-    public void setShrink(boolean shrink) {
-        isShrink = shrink;
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
     }
 }

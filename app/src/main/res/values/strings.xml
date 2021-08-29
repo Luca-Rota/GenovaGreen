@@ -156,7 +156,17 @@
     <string name="informazioni">Informazioni</string>
     <string name="title_activity_splash1" translatable="false">SplashActivity1</string>
     <string name="consulta_la_sezione_dedicata"><u>Consulta la sezione dedicata</u></string>
-    <string name="title_activity_modify_profile">ModifyProfile</string>
+    <string name="title_activity_modify_profile" translatable="false">ModifyProfile</string>
+    <string name="modifica_profilo">Modifica profilo</string>
+    <string name="invia_mail">Invia mail</string>
+    <string name="modifica_password">Modifica password:</string>
+    <string name="modifica_nome_utente">Modifica nome utente:</string>
+    <string name="salta">SALTA</string>
+    <string name="utilizza_questa_funzione_per_trovare_subito_il_giusto_cassonetto_per_ogni_rifiuto">Utilizza questa funzione per trovare subito il giusto cassonetto per ogni rifiuto.</string>
+    <string name="trova_la_stazione_ecologica_pi_vicina_a_te_per_i_vari_rifiuti_speciali">Trova la stazione ecologica più vicina a te per i vari rifiuti speciali.</string>
+    <string name="inizia">INIZIA</string>
+    <string name="organizzati_con_vari_gruppi_di_volontariato_per_bonificare_il_verde_del_nostro_territorio">Organizzati con vari gruppi di volontariato per bonificare il verde del nostro territorio.</string>
+    <string name="crea_una_spedizione1">Crea una spedizione</string>
 
     
     <string name="pericolo1_tit"> Rifiuti Pericolosi</string>

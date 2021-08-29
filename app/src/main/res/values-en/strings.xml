@@ -112,4 +112,14 @@
     <string name="popup_sped1">Are you sure you don’t want to join in the expedition anymore?</string>
     <string name="informazioni">Informations</string>
     <string name="consulta_la_sezione_dedicata">Consult the relative section</string>
+    <string name="inizia">START</string>
+    <string name="invia_mail">Send mail</string>
+    <string name="modifica_profilo">Edit profile</string>
+    <string name="modifica_password">Change password:</string>
+    <string name="modifica_nome_utente">Change username:</string>
+    <string name="salta">SKIP</string>
+    <string name="crea_una_spedizione1">Create a shipment</string>
+    <string name="utilizza_questa_funzione_per_trovare_subito_il_giusto_cassonetto_per_ogni_rifiuto">Use this feature to quickly find the right dumpster for every waste.</string>
+    <string name="trova_la_stazione_ecologica_pi_vicina_a_te_per_i_vari_rifiuti_speciali">Find the nearest ecological station to you for various special waste.</string>
+    <string name="organizzati_con_vari_gruppi_di_volontariato_per_bonificare_il_verde_del_nostro_territorio">Organized with various voluntary groups to clean up the green of our territory.</string>
 </resources>

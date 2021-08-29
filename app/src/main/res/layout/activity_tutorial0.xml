@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="SALTA"
+            android:text="@string/salta"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold"

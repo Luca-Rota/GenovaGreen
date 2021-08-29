@@ -111,10 +111,6 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
 
     }
 
-
-
-
-
     @Override
     public void onStart() {
         super.onStart();

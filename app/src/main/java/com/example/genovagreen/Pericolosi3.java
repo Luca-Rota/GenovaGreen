@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
-import ru.embersoft.expandabletextview.ExpandableTextView;
 
 public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,7 +28,7 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
     private NavigationView navigationView;
     private FirebaseUser user;
     private TextView username, id;
-    private ArrayList<ItemPericolosi> items = new ArrayList<>();
+    private ArrayList<ItemPericolosi> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +55,16 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
 
         RecyclerView recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new AdapterPericolosi(items, this));
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        SetDati();
+        AdapterPericolosi adapterPericolosi=new AdapterPericolosi(items);
+        recyclerView.setAdapter(adapterPericolosi);
 
+    }
+
+    private void SetDati(){
+        items=new ArrayList<>();
         items.add(new ItemPericolosi(getString(R.string.pericolo1_tit), getString(R.string.pericolo1_desc)));
         items.add(new ItemPericolosi(getString(R.string.pericolo2_tit), getString(R.string.pericolo2_desc)));
-
-
     }
 
 

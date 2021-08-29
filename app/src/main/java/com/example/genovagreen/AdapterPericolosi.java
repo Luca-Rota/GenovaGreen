@@ -15,16 +15,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import ru.embersoft.expandabletextview.ExpandableTextView;
 
 public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.ViewHolder>{
 
     private ArrayList<ItemPericolosi> items;
-    private Context context;
 
-    public AdapterPericolosi(ArrayList<ItemPericolosi> items, Context context){
+    public AdapterPericolosi(ArrayList<ItemPericolosi> items){
         this.items = items;
-        this.context = context;
     }
 
     @NonNull
@@ -36,19 +33,11 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
 
     @Override
     public void onBindViewHolder(@NonNull AdapterPericolosi.ViewHolder holder, int position) {
-        final ItemPericolosi item = items.get(position);
+        ItemPericolosi item = items.get(position);
         holder.title.setText(item.getTitles());
         holder.desc.setText(item.getDesc());
-        holder.desc.setOnStateChangeListener(new ExpandableTextView.OnStateChangeListener() {
-            @Override
-            public void onStateChange(boolean isShrink) {
-                ItemPericolosi contentItem = items.get(position);
-                contentItem.setShrink(isShrink);
-                items.set(position, contentItem);
-            }
-        });
-        holder.desc.setText(item.getDesc());
-        holder.desc.resetState(item.isShrink());
+        boolean isExpanded =items.get(position).isExpanded();
+        holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -58,13 +47,24 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ExpandableTextView desc;
-        TextView title;
+        TextView desc, title;
+        ConstraintLayout expandableLayout;
 
         public ViewHolder (@NonNull View itemView){
             super(itemView);
-            desc = itemView.findViewById(R.id.txtDesc);
-            title = itemView.findViewById(R.id.titleText);
+
+            desc = itemView.findViewById(R.id.Descrizione);
+            title = itemView.findViewById(R.id.title);
+            expandableLayout=itemView.findViewById(R.id.expandableLayout);
+
+            title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ItemPericolosi itemPericolosi=items.get(getAdapterPosition());
+                    itemPericolosi.setExpanded(!itemPericolosi.isExpanded());
+                    notifyItemChanged(getAdapterPosition());
+                }
+            });
         }
     }
 }
