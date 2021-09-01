@@ -168,7 +168,7 @@
     <string name="organizzati_con_vari_gruppi_di_volontariato_per_bonificare_il_verde_del_nostro_territorio">Organizzati con vari gruppi di volontariato per bonificare il verde del nostro territorio.</string>
     <string name="crea_una_spedizione1">Crea una spedizione</string>
 
-    
+
     <string name="pericolo1_tit"> Rifiuti Pericolosi</string>
     <string name="pericolo1_desc">
         <br> Alcuni tipi di rifiuti sono definiti pericolosi per le conseguenze che possono avere sulla salute dell’uomo e sull’ambiente che lo circonda. \n\n </br>
@@ -240,6 +240,7 @@
     <string name="inserire_email">Inserire email valida</string>
     <string name="inserire_user">Inserire username valido</string>
     <string name="inserire_pw">Inserire mail valida</string>
+    <string name="title_activity_vetro">vetro</string>
 
 </resources>
 

@@ -87,30 +87,60 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 String cassonetto=list.get(position).getCassonetto().trim();
                 rifiutopop.setText(list.get(position).getRifiuto());
                 cassonettopop.setText(list.get(position).getCassonetto());
-                txt = popupView.findViewById(R.id.link_isola);
+                txt = popupView.findViewById(R.id.link_rifiuto);
                 ImageView imgpop=popupView.findViewById(R.id.imgpop);
                 switch(cassonetto) {
                     case "Cassonetto dell'indifferenziata":
                         imgpop.setImageResource(R.drawable.mixed);
+                        txt.setVisibility(View.INVISIBLE);
                         break;
                     case "Cassonetto della carta":
                         imgpop.setImageResource(R.drawable.carta);
+                        txt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                            }
+                        });
                         break;
                     case "Cassonetto della plastica":
                         imgpop.setImageResource(R.drawable.plastica);
+                        txt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                            }
+                        });
                         break;
                     case "Cassonetto del vetro":
                         imgpop.setImageResource(R.drawable.vetro);
+                        txt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                            }
+                        });
                         break;
                     case "Cassonetto del umido":
                         imgpop.setImageResource(R.drawable.umido);
+                        txt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                            }
+                        });
                         break;
                     case "Cassonetto degli abiti":
                         imgpop.setImageResource(R.drawable.abiti);
+                        txt.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                            }
+                        });
                         break;
                     case "Isola Ecologica":
                         imgpop.setImageResource(R.drawable.isola);
-                        txt.setVisibility(View.VISIBLE);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

@@ -21,14 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GenovaGreen">
 
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -39,7 +38,11 @@
             android:name=".Notification"
             android:label="@string/title_activity_notify"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
-
+        <activity
+            android:name=".Differenziata"
+            android:label="GenovaGreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
             android:name=".Tutorial0"
             android:label="GenovaGreen"
@@ -152,7 +155,6 @@
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
-
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
