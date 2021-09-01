@@ -5,35 +5,25 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.LabeledIntent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,7 +66,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             layoutProfile.setVisibility(View.INVISIBLE);
         }
 
-        modify=findViewById(R.id.modificaProfilo);
+        modify=findViewById(R.id.modificaProfilo1);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +81,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             layout.setVisibility(View.INVISIBLE);
         }
 
-        logout=findViewById(R.id.LogoutImpostazioni);
+        logout=findViewById(R.id.LogoutImpostazioni1);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +99,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         });
 
 
-        lingua=findViewById(R.id.linguaImpostazioni);
+        lingua=findViewById(R.id.linguaImpostazioni1);
         lingua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

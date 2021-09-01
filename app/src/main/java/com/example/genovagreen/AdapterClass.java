@@ -56,14 +56,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
             case "Cassonetto del vetro":
                 holder.imgrec.setImageResource(R.drawable.vetro);
                 break;
+            case "Isola Ecologica":
+                holder.imgrec.setImageResource(R.drawable.isola);
+                break;
             case "Cassonetto dell'umido":
                 holder.imgrec.setImageResource(R.drawable.umido);
                 break;
             case "Cassonetto degli abiti":
                 holder.imgrec.setImageResource(R.drawable.abiti);
-                break;
-            case "Isola dei rifiuti":
-                holder.imgrec.setImageResource(R.drawable.isola);
                 break;
             default:
                 break;
@@ -108,13 +108,13 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                     case "Cassonetto degli abiti":
                         imgpop.setImageResource(R.drawable.abiti);
                         break;
-                    case "Isola dei rifiuti":
+                    case "Isola Ecologica":
                         imgpop.setImageResource(R.drawable.isola);
                         txt.setVisibility(View.VISIBLE);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                v.getContext().startActivity(new Intent(v.getContext(), Pericolosi.class));
+                                v.getContext().startActivity(new Intent(v.getContext(), Pericolosi3.class));
                             }
                         });
                     default:
