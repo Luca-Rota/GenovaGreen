@@ -170,9 +170,76 @@
 
     
     <string name="pericolo1_tit"> Rifiuti Pericolosi</string>
-    <string name="pericolo1_desc"> dddddddddddddddddddddddddddddddddddd</string>
-    <string name="pericolo2_tit"> Apparecchi elettrici ed elettronici</string>
-    <string name="pericolo2_desc"> dddddddddddddddddddddddddddddddddddd</string>
+    <string name="pericolo1_desc">
+        <br> Alcuni tipi di rifiuti sono definiti pericolosi per le conseguenze che possono avere sulla salute dell’uomo e sull’ambiente che lo circonda. \n\n </br>
+        <br> Raccoglierli in modo differenziato, oltre a finalità di recupero, ha quindi un importante obiettivo di salvaguardia e tutela della sicurezza. \n\n </br>
+        <br> - Olii esausti (recipienti compresi) di origine minerale o sintetica, usati per motori e macchine, o di origine vegetale. Sono molto inquinanti, se dispersi nell’ambiente si infiltrano nel terreno e possono contaminare le falde acquifere \n </br>
+        <br> - Tossici e infiammabili: sono etichettati T e/o F. Possono compromettere gravemente la salute di persone e animali \n </br>
+        <br> - Chimici domestici (recipienti compresi), detersivi, insetticidi, tarmicidi, prodotti chimici per fotografia, alcool etilico e denaturato, detergenti per il bagno, trielina, prodotti per lucidare, decalcificanti, concimi chimici, diserbanti, anticrittogamici, disinfettanti, acidi e soluzioni chimiche \n </br>
+        <br> - Vernici e solventi (recipienti compresi): pitture, vernici, solventi, sverniciatori, collanti, stucchi, sigillanti, smacchiatori, lucidanti, antiruggine \n </br>
+        <br> - Termometri \n </br>
+        <br> - Neon e lampadine: tubi al neon, lampade alogene, lampade fluorescenti \n\n </br>
+        Cosa puoi fare con i rifiuti pericolosi \n\n
+        <br> - portarli alle Isole Ecologiche: il personale Amiu li ritira gratuitamente e li avvia allo smaltimento \n </br>
+        <br> - portarli direttamente nelle piattaforme di recupero presenti a Genova \n </br>
+        <br> - consegnarli al camioncino Ecovan +, che opera settimanalmente nelle vie cittadine ad ore e giorni prefissati. \n\n </br>
+        Cosa NON puoi fare con i rifiuti pericolosi \n\n
+        <br> - Abbandonarli per strada e accanto ai cassonetti dei rifiuti \n </br>
+        <br> - Metterli nei contenitori per la raccolta dei rifiuti \n </br>
+        <br> - Metterli nei contenitori per la raccolta differenziata \n </br>
+        <br> - Smontare e separare parti di elettrodomestici, batterie, contenitori di toner per stampanti scaldarli o bruciarli \n </br>
+    </string>
+    <string name="pericolo2_tit"> Apparecchi elettronici</string>
+    <string name="pericolo2_desc">
+        <br>  Cosa sono i RAEE? Apparecchi elettrici ed elettronici che si alimentano con corrente elettrica, attaccandoli alla presa di casa o con le pile, non più funzionanti che vogliamo gettare via. \n\n </br>
+        <br> Ecco un esempio dei principali RAEE:  \n\n </br>
+        <br> televisori, robot da cucina, tostapane, forni a microonde, computer, modem, telefonini, utensili, giocattoli alimentati a batteria o pile o fili elettrici, orologi, frigoriferi, lavatrici e altri elettrodomestici.  \n\n </br>
+        <br> A seconda delle loro caratteristiche, si dividono in 5 categorie:  \n\n </br>
+        <br> - R1: Freddo e clima (es. frigoriferi e condizionatori apparecchi per il condizionamento \n </br>
+        <br> - R2:  Grandi bianchi (es. lavatrici, lavastoviglie, forni a microonde, cucine economiche) \n </br>
+        <br> - R3: TV e monitor (televisori, monitor di computer) \n </br>
+        <br> - R4: Informatica, elettronica di consumo e piccoli elettrodomestici (es. aspirapolvere, macchine per cucire, ferri da stiro, friggitrici, frullatori, computer (unità centrale, mouse, tastiera), stampanti, fax, telefoni cellulari, videoregistratori, apparecchi radio, plafoniere) \n </br>
+        <br> - R5: Sorgenti luminose (es. neon, lampade a basso consumo – N.B. le vecchie lampadine a incandescenza non sono RAEE e vanno gettate nei rifiuti indifferenziati) \n\n </br>
+        <br> Dove butto i RAEE? Per una corretta raccolta dei RAEE la prima cosa da fare è separare i rifiuti. AMIU mette a disposizione diversi servizi gratuiti per aiutarti  a differenziarli, i RAEE: \n\n </br>
+        <br> - Possono essere portati alle isole ecologiche (tutti i tipi di RAEE) </br>
+        <br> - Possono essere portati all’EcoVan (tutti i tipi di RAEE) /n/n </br>
+        <br> Per gli elettrodomestici di grandi dimensioni (frigoriferi, cucine, televisori, …) è anche possibile richiedere il servizio a pagamento di ritiro a domicilio. Anche i negozi che vendono apparecchiature elettriche ed elettroniche (AEE) collaborano alla raccolta, con modalità diverse: quando acquisti una nuova apparecchiatura, porta quella vecchia al tuo negoziante che la ritira gratuitamente. Questo obbligo si applica a tutti gli esercizi commerciali che distribuiscono AEE di qualunque tipo, anche nel caso di televendite, vendite on-line o consegna a domicilio. \n\n</br>
+        <br> Inoltre, la nuova normativa sui RAEE ha introdotto l’obbligo dell’1 contro 0 per i grandi distributori. I consumatori possono consegnare gratuitamente i RAEE di piccole dimensioni – inferiori a 25 cm – presso i grandi punti vendita, con una superficie di vendita di apparecchiature elettriche ed elettroniche superiori a 400 metri quadrati, senza alcun obbligo di acquisto. Anche i piccoli negozi possono decidere di aderire a questa iniziativa su base volontaria. \n\n </br>
+        <br> Perché differenziare i RAEE? Da un televisore si arrivano ad ottenere metalli ferrosi (48%), plastica (21%), circuiti stampati (9,8%), vetro (8%) e altro ancora. Dai piccoli elettrodomestici riciclati in modo corretto possiamo ottenere plastica per accessori da giardino o stampati, rame per una nuova rubinetteria e ancora argento, palladio, oro e alluminio. \n\n </br>
+        <br> Raccoglierli e riciclarli in modo corretto vuole dire: \n\n </br>
+        <br> - Ridurre le emissioni di CO2 : perché riduciamo i gas serra e le sostanze contenute vengono eliminate in modo sicuro. \n </br>
+        <br> - Risparmiare energia: perché oggi il riciclo consuma meno energia di quella che serve per estrarre le materie prime. \n </br>
+        <br> - Recuperare materie prime dai rifiuti: perché alluminio, vetro, rame e plastica possono essere in buona parte riutilizzati. \n </br>
+        <br> - Combattere il traffico illegale di apparecchi elettronici verso i paesi in via di sviluppo: perché nei paesi più poveri non vengono riciclati correttamente, inquinando e aumentando il lavoro minorile. </br>
+    </string>
+    <string name="pericolo3_tit"> Olio alimentare </string>
+    <string name="pericolo3_desc">
+        <br> E’ stato calcolato che in Italia si producono ogni anno 160 milioni di chili di olio vegetale esausto proveniente dalle famiglie. Si tratta dell’olio della frittura, del tonno in scatola o quello contenuto nei barattoli delle conserve o avanzato dall’insalata. \n\n </br>
+        <br> Spesso l’olio non è separato in modo corretto, ma gettato nel lavandino, con un danno considerevole sia dal punto di vista economico che ambientale. Se immesso nella rete fognaria finisce nel depuratore comunale che per trattare un chilo di olio impiega almeno 3 kw/h di energia e una spesa di circa 50 centesimi. \n\n </br>
+        <br> L’olio esausto se differenziato correttamente è riciclabile e, inoltre, è una risorsa preziosa: da un chilo di olio,infatti, si può ricavare biocarburante a basso impatto ambientale oppure glicerina per l’industria cosmetica. A Genova questo tipo di olio è raccolto: nelle isole ecologiche, dal camioncino EcoVan + (guarda gli appuntamenti). \n\n </br>
+        <br> Attraverso il progetto Riciclolio, cofinanziato dal Programma Comunitario Life +, è stato ampliato il sistema di raccolta dell’olio mediante l’installazione di appositi contenitori distribuiti nelle scuole, nelle associazioni di quartiere e nei punti di aggregazione. \n\n </br>
+        <br> I cittadini hanno a disposizione questi punti per portare l’olio usato che verrà poi raccolto e inviato al riciclo. \n\n </br>
+        <br> È importante ricordare che questi contenitori servono solo per la raccolta di olio alimentare proveniente da casa ed è vietato l’inserimento di olio motore (quello delle macchine e che può essere conferito alle isole ecologiche e sul camioncino EcoVan+. \n\n </br>
+    </string>
+    <string name="pericolo4_tit"> Pile e farmaci </string>
+    <string name="pericolo4_desc">
+        <br> Pile e farmaci sono rifiuti pericolosi che NON vanno buttati nel cassonetto. Contengono infatti sostanze inquinanti che non devono finire in discarica o dispersi nell’ambiente.  \n\n </br>
+        <br> Le pile usate di ogni tipo (stilo, torcia, pastiglia, ecc) sono rifiuti pericolosi in quanto costituite da metalli pesanti come mercurio, cadmio, nichel e piombo. Grazie alla raccolta differenziata sono trattate e smaltite in appositi impianti. \n </br>
+        <br> Trovi i contenitori per la raccolta differenziata delle pile nei supermercati, nei negozi e nelle rivendite convenzionate (tabaccherie, negozi di elettrodomestici ecc.). \n\n </br>
+        <br> Le pile e i farmaci possono essere portati gratuitamente anche all’Ecovan + e dopo specifico trattamento, saranno smaltiti correttamente evitando così di danneggiare l’ambiente. </br>
+    </string>
+    <string name="pericolo5_tit"> Toner e cartucce </string>
+    <string name="pericolo5_desc">
+        <br> Le cartucce utilizzate nelle stampanti laser, a getto d’inchiostro, ad aghi e le unità a tamburo per fotocopiatori sono rifiuti da raccogliere in modo differenziato e non vanno gettate nel cassonetto dei rifiuti indifferenziati. \n </br>
+        <br> Quelle di provenienza domestica si possono portare gratuitamente alle Isole Ecologiche, ai camioncini Ecovan+ allestiti per la raccolta dei rifiuti ingombranti, pericolosi e dei piccoli RAEE. \n\n </br>
+        <br> I liberi professionisti e le aziende, purchè iscritte all’Albo Nazionale Gestori Ambientali nella categoria 2 bis, possono portare le loro cartucce e toner alle Isole Ecologiche e ai camioncini Ecovan+ senza compilare il formulario di identificazione e trasporto rifiuti, se non si eccede la quantità giornaliera di 30 kg o 30 litri e se non si effettuano più di 5 conferimenti ad anno solare. \n </br>
+        <br> Oltre il quinto conferimento nell’anno solare, chi ne ha necessità dovrà iscriversi all’albo (se ne ha titolo) e dovrà compilare il formulario per conferire i rifiuti.  \n\n </br>
+        <br> In alternativa potranno usufruire di un servizio di ritiro personalizzato a pagamento scrivendo a contatti@amiu.genova.it o telefonando allo 010 80 89 800. In questo modo le cartucce e toner verranno riutilizzate allungando così il loro ciclo di vita. </br>
+    </string>
+    <string name="richiedi">Richiedi modifica via email</string>
+    <string name="inserire_email">Inserire email valida</string>
+    <string name="inserire_user">Inserire username valido</string>
+
 </resources>
 
 

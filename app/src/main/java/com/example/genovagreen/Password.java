@@ -72,7 +72,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
             public void onClick(View v) {
 
                 if (Email.getText().toString().matches(""))
-                    Toast.makeText(Password.this, "Inserire email valida", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Password.this, R.string.inserire_email, Toast.LENGTH_SHORT).show();
 
                 else {
                     auth.sendPasswordResetEmail(Email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -31,8 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ModifyProfile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Button Annulla, NewPass;
-    private ImageView NewUser;
+    private Button Annulla;
+    private ImageView NewUser, NewPass;
     private TextView Email_Utente;
     private EditText Placeholder;
     private FirebaseAuth auth;
@@ -97,30 +98,37 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
         NewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Usernames");
-                if (ref != null) {
-                    ref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
-                                for (DataSnapshot ds : snapshot.getChildren()) {
-                                    User ogg = ds.getValue(User.class);
-                                    String email2 = ogg.getEmail().trim();
-                                    String nomeutente = ogg.getUsername();
-                                    String id=ds.getKey();
-                                    if (email.equals(email2)) {
-                                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
-                                        User user = new User(Placeholder.getText().toString(),email);
-                                        ref.child(id).setValue(user);
-                                        finish();
+
+                if (Placeholder.getText().toString().matches(""))
+                    Toast.makeText(ModifyProfile.this, R.string.inserire_user, Toast.LENGTH_SHORT).show();
+
+                else {
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
+                    if (ref != null) {
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    for (DataSnapshot ds : snapshot.getChildren()) {
+                                        User ogg = ds.getValue(User.class);
+                                        String email2 = ogg.getEmail().trim();
+                                        String nomeutente = ogg.getUsername();
+                                        String id = ds.getKey();
+                                        if (email.equals(email2)) {
+                                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
+                                            User user = new User(Placeholder.getText().toString(), email);
+                                            ref.child(id).setValue(user);
+                                            finish();
+                                        }
                                     }
                                 }
                             }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                    }
                 }
             }
         });

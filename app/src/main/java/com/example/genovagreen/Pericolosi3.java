@@ -65,6 +65,9 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
         items=new ArrayList<>();
         items.add(new ItemPericolosi(getString(R.string.pericolo1_tit), getString(R.string.pericolo1_desc)));
         items.add(new ItemPericolosi(getString(R.string.pericolo2_tit), getString(R.string.pericolo2_desc)));
+        items.add(new ItemPericolosi(getString(R.string.pericolo3_tit), getString(R.string.pericolo3_desc)));
+        items.add(new ItemPericolosi(getString(R.string.pericolo4_tit), getString(R.string.pericolo4_desc)));
+        items.add(new ItemPericolosi(getString(R.string.pericolo5_tit), getString(R.string.pericolo5_desc)));
     }
 
 

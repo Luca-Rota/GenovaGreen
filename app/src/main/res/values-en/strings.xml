@@ -122,4 +122,8 @@
     <string name="utilizza_questa_funzione_per_trovare_subito_il_giusto_cassonetto_per_ogni_rifiuto">Use this feature to quickly find the right dumpster for every waste.</string>
     <string name="trova_la_stazione_ecologica_pi_vicina_a_te_per_i_vari_rifiuti_speciali">Find the nearest ecological station to you for various special waste.</string>
     <string name="organizzati_con_vari_gruppi_di_volontariato_per_bonificare_il_verde_del_nostro_territorio">Organized with various voluntary groups to clean up the green of our territory.</string>
+    <string name="richiedi">Request via email</string>
+    <string name="inserire_pw">Enter valid email</string>
+    <string name="inserire_user">Enter valid username</string>
+    <string name="inserire_email">Enter valid email</string>
 </resources>
