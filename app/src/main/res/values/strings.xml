@@ -236,12 +236,123 @@
         <br> Oltre il quinto conferimento nell’anno solare, chi ne ha necessità dovrà iscriversi all’albo (se ne ha titolo) e dovrà compilare il formulario per conferire i rifiuti.  \n\n </br>
         <br> In alternativa potranno usufruire di un servizio di ritiro personalizzato a pagamento scrivendo a contatti@amiu.genova.it o telefonando allo 010 80 89 800. In questo modo le cartucce e toner verranno riutilizzate allungando così il loro ciclo di vita. </br>
     </string>
+
     <string name="richiedi">Richiedi modifica via email</string>
     <string name="inserire_email">Inserire email valida</string>
     <string name="inserire_user">Inserire username valido</string>
     <string name="inserire_pw">Inserire mail valida</string>
-    <string name="title_activity_vetro">vetro</string>
+    <string name="title_activity_differenziata" translatable="false">Differe</string>
 
+    <string name="differenziata1_tit"> Carta e Cartone </string>
+    <string name="differenziata2_desc">
+        <br> La carta è composta da fibre cellulosiche normalmente presenti in natura. Queste, attraverso processi chimici, una volta eliminate polveri, coloranti e collanti, possono essere riaggregate nuovamente e quindi riciclate. Riciclare correttamente la carta permette di recuperare materiali e trarre beneficio per l’ambiente. \n\n </br>
+        <br> Per riciclare la carta: \n\n </br>
+        <br> - Usa esclusivamente i contenitori di colore bianco \n </br>
+        <br> - Riduci al massimo l’ingombro: ripiegando i giornali, schiacciando le scatole di cartone per ridurne il volume e utilizzando sacchi di carta \n </br>
+        <br> - Non inserire la carta in buste di plastica. Ciò abbassa la qualità del materiale raccolto e    aumenta i costi del riciclaggio \n </br>
+        PUOI INTRODURRE nel contenitore BIANCO (ATTENZIONE: per adeguarsi alle normative il contenitore per la carta in tutta la città diventerà BLU. I contenitori saranno progressivamente sostituiti.) \n\n
+        <br> - Carta e cartoncino di ogni dimensione \n </br>
+        <br> - Giornali, riviste e opuscoli pubblicitari non plastificati \n </br>
+        <br> - Libri e quaderni \n </br>
+        <br> - Carta per usi grafici, da disegno e per fotocopie \n </br>
+        <br> - Cartone per bevande (es. Tetra Pak per latte, succhi di frutta, panna) \n </br>
+        <br> - Sacchetti di carta \n </br>
+        <br> - Scatole e imballaggi in carta, cartoncino, cartone ondulato e carta da pacchi \n </br>
+        NON INTRODURRE nel contenitore BIANCO \n\n
+        <br> Carta sporca (es. tovaglioli e piatti di carta usati), carta oleata per alimenti, carta assorbente per cucina e carta da forno, carta plastificata,  pannolini, carta chimica per fax e autocopiante, polistirolo e sacchetti di plastica. Quando è possibile riduci i volumi. </br>
+    </string>
+
+    <string name="differenziata2_tit"> Carta e Cartone </string>
+    <string name="differenziata2_desc">
+        <br> Il vetro è un materiale ottenuto fondendo ad altissime temperature (circa 1.500 gradi) una miscela composta da sabbia silicea, soda (carbonato di sodio) e calcare. Se abbandonato nell’ambiente, il vetro si degrada in tempi lunghissimi, mentre si può riciclare infinite volte. Riciclare il vetro significa raccoglierlo separatamente, frantumarlo e rimescolarlo con altra soda e calcare, fondendolo a temperature molto inferiori rispetto a quelle necessarie con il materiale vergine. Questo permette un notevole risparmio energetico ed economico sulle fase di estrazione e fusione delle materie prime. \n\n</br>
+        <br> Per riciclare il vetro: \n\n</br>
+        <br> - Usa esclusivamente i contenitori di colore verde \n</br>
+        <br> - Non introdurre ceramiche e porcellana: questi materiali hanno un punto di fusione diverso e possono danneggiare grosse quantità di vetro in fase di lavorazione \n</br>
+        <br> - Introduci nelle campane il vetro libero da ogni materiale estraneo: tappi, etichette, coperchi. Essi vanno riciclati singolarmente a seconda del materiale \n</br>
+        <br> - Preferisci la confezione di vetro come vuoto a rendere: consente un risparmio di materie prime e di energia \n\n</br>
+        PUOI INTRODURRE nel contenitore VERDE \n\n
+        <br> - Bottiglie e bicchieri \n </br>
+        <br> - Vasetti, barattoli e contenitori di vetro di qualsiasi colore, senza tappo \n\n</br>
+        NON INTRODURRE nel contenitore VERDE \n\n
+        <br> Ceramica e porcellana (stoviglie intere o rotte), specchi, vetri per finestre, vetro retinato, lampadine e tubi al neon, schermi di TV e monitor, barattoli con resti di colori o vernici, materiali diversi come cristalli \n\n</br>
+        <br> Nota bene: Non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente, non bisogna togliere le etichette, ma bisogna rimuovere i residui. </br>
+    </string>
+
+    <string name="differenziata3_tit"> Umido </string>
+    <string name="differenziata3_desc">
+        <br> Oltre il 30% dei rifiuti delle famiglie è composto da rifiuti organici, cioè scarti alimentari e avanzi di cibo sia crudi che cotti, frutta, verdura, fogliame, piante recise, erbacce, ecc. \n\n </br>
+        <br> Se opportunamente trattati, possono diventare un ottimo concime per le piante del nostro terrazzo o per l’orto e il giardino. AMIU sta estendendo la raccolta differenziata dei rifiuti organici (con contenitore stradale marrone) nei diversi quartieri. \n\n </br>
+        <br> I rifiuti umidi raccolti sono destinati a impianti di trattamento che producono fertilizzante naturale per le coltivazioni e consentono di recuperare energia rinnovabile mediante la produzione di biogas. \n\n </br>
+        <br> Per un recupero di qualità, occorre tuttavia che le regole della raccolta differenziata siano ben osservate per evitare che materiali estranei finiscano nei contenitori marroni. \n\n </br>
+        COSA INTRODURRE nel contenitore MARRONE \n\n
+        <br> - Avanzi di cibo (sia crudi che cotti), bucce, semi, torsoli e noccioli di frutta, verdura \n </br>
+        <br> - Carne, pesce, formaggi, pane, pasta, uova, fondi di caffè e bustine di the \n </br>
+        <br> - Gusci di frutta secca, gusci d’uovo, lische di pesce, peli e piume, conchiglie di molluschi \n </br>
+        <br> - Carta da cucina, tovaglioli e fazzoletti di carta, fiammiferi di legno, tappi in sughero, segatura \n </br>
+        <br> - Erba, fogliame, piccole piante e fiori recisi \n\n </br>
+        <br> Nota bene: non inserire borse e sacchetti di plastica, usare solo sacchetti compostabili o di carta \n\n </br>
+        <br> IL COMPOSTAGGIO DOMESTICO. Come i contadini che da sempre utilizzano questa tecnica per concimare la terra, anche chi ha un giardino o un terrazzo in città può produrre da sé un ottimo fertilizzante per piante e ortaggi, e nello stesso tempo contribuire a diminuire la quantità di rifiuti inviati in discarica. \n </br>
+        <br> Grazie ad un’iniziativa realizzata in collaborazione con l’Assessorato all’Ambiente del Comune di Genova, chiunque si impegni a praticare il compostaggio domestico e ha i requisiti necessari (un giardino, orto o terrazzo di almeno 15 mq) può ottenere uno sconto su TARI: 10 euro per il singolo utente, 15 euro per il nucleo famigliare con due o più componenti. </br>
+    </string>
+
+    <string name="differenziata4_tit"> Abiti usati </string>
+    <string name="differenziata4_desc">
+        <br> Lo StaccaPanni non è la solita raccolta indumenti e abiti usati. E’ un percorso in cui ogni tappa contribuisce allo sviluppo di una cultura della solidarietà e dell’attenzione verso il prossimo. \n\n</br>
+        <br>  La raccolta e la selezione del materiale rappresentano un’occasione di lavoro per persone appartenenti a fasce sociali deboli. Gli indumenti in buono stato, vengono distribuiti alle famiglie e alle persone in difficoltà attraverso il circuito della fondazione Auxilium. \n\n</br>
+        <br>  Ma gli abiti donati sono di più di quanto viene richiesto. Quello che avanza viene pertanto venduto ad aziende specializzate nel settore dell’abito usato. In questo modo l’abito non è buttato in discarica e si trasforma in un ricavo che viene speso a favore delle persone emarginate a Genova in progetti indicati dalla Caritas Diocesana di Genova. Il ricavato dello Staccapanni, ad esempio, contribuisce ad affrontare i costi per la mensa per persone senza fissa dimora presso la casa della Giovane in piazza santa Sabina a Genova (più di 2.400 pasti al mese). \n\n</br>
+        PUOI INTRODURRE nello STACCAPANNI: \n\n
+        <br>  Vestiti e indumenti usati, scarpe, borse e cappelli, coperte e biancheria in genere confezionati in sacchetti chiusi. </br>
+    </string>
+
+    <string name="differenziata5_tit"> Plastica </string>
+    <string name="differenziata5_desc">
+        <br> La plastica viene ricavata dal petrolio attraverso un processo chiamato polimerizzazione, cioè il legarsi di alcune molecole con altre identiche in catene teoricamente infinite, mediante riscaldamento in presenza di catalizzatori. La plastica è resistente, impermeabile, leggera ed economica. Ha però un grande difetto: non è biodegradabile e quindi molto inquinante, per questo occorre riciclarla completamente. \n\n</br>
+        <br> La plastica ha poco peso e molto volume, quindi le bottiglie e i contenitori in genere devono essere ridotti il più possibile. \n\n</br>
+        <br> In generale tutti i contenitori in plastica, anche quelli per alimenti (purchè privi di residui), vanno sciacquati e schiacciati, chiusi con il loro tappo, anch’esso riciclabile, e inseriti nel contenitore giallo per la raccolta della plastica. \n</br>
+        <br> Non è necessario staccare eventuali etichette di carta. \n\n</br>
+        <br> Per riciclare la plastica: \n</br>
+        <br> - Usa esclusivamente i contenitori di colore giallo \n</br>
+        <br> - Riduci l’ingombro di bottiglie e imballaggi \n</br>
+        <br> - Evita la presenza di corpi estranei \n</br>
+        <br> - Non abbandonare i rifiuti fuori o attorno ai contenitori per la raccolta \n\n</br>
+        PUOI INTRODURRE nel contenitore GIALLO: \n\n
+        <br> - Piatti e bicchieri in plastica \n</br>
+        <br> - Bottiglie e flaconi di plastica per acqua, bibite e prodotti alimentari \n</br>
+        <br> - Vasetti per prodotti alimentari (es. yogurt, dessert), confezioni e vaschette in plastica per alimenti \n</br>
+        <br> - Confezioni in plastica per uova ed altri imballaggi in plastica sagomata \n</br>
+        <br> - Buste e sacchetti in plastica per prodotti alimentari (es. pasta, pane, cracker, surgelati), reti per frutta e verdura \n</br>
+        <br> - Flaconi per detersivi e detergenti per la casa, dispenser per l’igiene personale e la cosmetica \n</br>
+        <br> - Buste, sacchetti e scatole di plastica, borse di nylon e di cellophane, cellophane in pellicola, tappi di plastica, vasi per piante (senza terra) \n</br>
+        <br> - Vaschette e vassoi in polistirolo (per frutta, verdura, carne), imballaggi di piccoli elettrodomestici in polistirolo \n</br>
+        <br> - Grucce appendiabiti \n\n</br>
+        NON INTRODURRE nel contenitore GIALLO:
+        <br> Cassette per frutta e verdura in plastica; posate in plastica; giocattoli; custodie per cd, dvd e altri materiali audiovisivi; beni durevoli in plastica (elettrodomestici, casalinghi, complementi d’arredo, ecc.); tutti i rifiuti in plastica sporchi di materiali organici o sostanze pericolose come vernice, colle ecc.; rifiuti ospedalieri (es. siringhe, sacche per plasma, contenitori per liquidi fisiologici e per emodialisi); contenitori per vernici, smalti, smacchiatori, acidi, colle e insetticidi \n\n</br>
+        <br> Nota bene:  Non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente, non bisogna togliere le etichette, ma bisogna rimuovere i residui di cibo. E quando è possibile riduci i volumi. </br>
+    </string>
+
+    <string name="differenziata6_tit"> Metalli </string>
+    <string name="differenziata6_desc">
+    <br> L’alluminio combinato con silicio, magnesio, rame, zinco e manganese forma numerose leghe leggere, che trovano impiego nella tecnica moderna. L’alluminio puro è invece utilizzato come conduttore nelle linee ad alta tensione. \n\n</br>
+    <br> L’acciaio è una lega a base di ferro e carbonio in quantità diverse a seconda degli scopi. È il materiale più riciclato al mondo: con i rottami si produce acciaio per veicoli, elettrodomestici, rotaie, tondini per l’edilizia, travi per ponti. \n\n</br>
+    <br> Per riciclare i metalli: \n</br>
+    <br> - Usa esclusivamente i contenitori di colore giallo \n</br>
+    <br> - Sciacqua le vaschette degli alimenti ed elimina eventuali residui di cibo \n</br>
+    <br> - Accartoccia i fogli di alluminio in modo tale che non si disperdano \n</br>
+    <br> - Introduci nel contenitore le lattine marchiate AL \n</br>
+    <br> - Non abbandonare i rifiuti intorno ai contenitori \n\n</br>
+    PUOI INTRODURRE nel contenitore GIALLO: \n\n
+    <br> - Lattine per bevande e per olio \n</br>
+    <br> - Fogli di alluminio da cucina, involucri per cioccolato e coperchi degli yogurt \n</br>
+    <br> - Scatolette in banda stagnata per alimenti (es. pelati, carne, tonno, legumi, cibo per animali) \n</br>
+    <br> - Vaschette e contenitori in alluminio per la conservazione e il congelamento dei cibi \n</br>
+    <br> - Bombolette spray per deodoranti, lacche per capelli o panna montata \n</br>
+    <br> - Barattoli e scatole in metallo per biscotti, cioccolatini, liquori \n</br>
+    <br> - Tubetti per conserve, creme e cosmetici \n</br>
+    <br> - Capsule, chiusure e tappi in metallo per bottiglie (es. olio, vino, liquori, bibite) \n\n</br>
+    NON INTRODURRE nel contenitore GIALLO: \n\n
+    <br> Contenitori per vernici, smalti, smacchiatori, solventi, acidi, colle e insetticidi \n\n</br>
+    <br> Nota bene: Non bisogna togliere le etichette, non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente e bisogna rimuovere i residui di cibo </br>
+    </string>
 </resources>
 
 
