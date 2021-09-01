@@ -63,11 +63,12 @@ public class Differenziata extends AppCompatActivity implements NavigationView.O
 
     private void SetDati(){
         items=new ArrayList<>();
-        items.add(new ItemPericolosi(getString(R.string.pericolo1_tit), getString(R.string.pericolo1_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo2_tit), getString(R.string.pericolo2_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo3_tit), getString(R.string.pericolo3_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo4_tit), getString(R.string.pericolo4_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo5_tit), getString(R.string.pericolo5_desc)));
+        items.add(new ItemPericolosi(getString(R.string.differenziata1_tit), getString(R.string.differenziata1_desc)));
+        items.add(new ItemPericolosi(getString(R.string.differenziata2_tit), getString(R.string.differenziata2_desc)));
+        items.add(new ItemPericolosi(getString(R.string.differenziata3_tit), getString(R.string.differenziata3_desc)));
+        items.add(new ItemPericolosi(getString(R.string.differenziata4_tit), getString(R.string.differenziata4_desc)));
+        items.add(new ItemPericolosi(getString(R.string.differenziata5_tit), getString(R.string.differenziata5_desc)));
+        items.add(new ItemPericolosi(getString(R.string.differenziata6_tit), getString(R.string.differenziata6_desc)));
     }
 
 

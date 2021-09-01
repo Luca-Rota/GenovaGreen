@@ -244,7 +244,7 @@
     <string name="title_activity_differenziata" translatable="false">Differe</string>
 
     <string name="differenziata1_tit"> Carta e Cartone </string>
-    <string name="differenziata2_desc">
+    <string name="differenziata1_desc">
         <br> La carta è composta da fibre cellulosiche normalmente presenti in natura. Queste, attraverso processi chimici, una volta eliminate polveri, coloranti e collanti, possono essere riaggregate nuovamente e quindi riciclate. Riciclare correttamente la carta permette di recuperare materiali e trarre beneficio per l’ambiente. \n\n </br>
         <br> Per riciclare la carta: \n\n </br>
         <br> - Usa esclusivamente i contenitori di colore bianco \n </br>
@@ -261,8 +261,7 @@
         NON INTRODURRE nel contenitore BIANCO \n\n
         <br> Carta sporca (es. tovaglioli e piatti di carta usati), carta oleata per alimenti, carta assorbente per cucina e carta da forno, carta plastificata,  pannolini, carta chimica per fax e autocopiante, polistirolo e sacchetti di plastica. Quando è possibile riduci i volumi. </br>
     </string>
-
-    <string name="differenziata2_tit"> Carta e Cartone </string>
+    <string name="differenziata2_tit"> Vetro </string>
     <string name="differenziata2_desc">
         <br> Il vetro è un materiale ottenuto fondendo ad altissime temperature (circa 1.500 gradi) una miscela composta da sabbia silicea, soda (carbonato di sodio) e calcare. Se abbandonato nell’ambiente, il vetro si degrada in tempi lunghissimi, mentre si può riciclare infinite volte. Riciclare il vetro significa raccoglierlo separatamente, frantumarlo e rimescolarlo con altra soda e calcare, fondendolo a temperature molto inferiori rispetto a quelle necessarie con il materiale vergine. Questo permette un notevole risparmio energetico ed economico sulle fase di estrazione e fusione delle materie prime. \n\n</br>
         <br> Per riciclare il vetro: \n\n</br>
@@ -277,7 +276,6 @@
         <br> Ceramica e porcellana (stoviglie intere o rotte), specchi, vetri per finestre, vetro retinato, lampadine e tubi al neon, schermi di TV e monitor, barattoli con resti di colori o vernici, materiali diversi come cristalli \n\n</br>
         <br> Nota bene: Non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente, non bisogna togliere le etichette, ma bisogna rimuovere i residui. </br>
     </string>
-
     <string name="differenziata3_tit"> Umido </string>
     <string name="differenziata3_desc">
         <br> Oltre il 30% dei rifiuti delle famiglie è composto da rifiuti organici, cioè scarti alimentari e avanzi di cibo sia crudi che cotti, frutta, verdura, fogliame, piante recise, erbacce, ecc. \n\n </br>
@@ -294,7 +292,6 @@
         <br> IL COMPOSTAGGIO DOMESTICO. Come i contadini che da sempre utilizzano questa tecnica per concimare la terra, anche chi ha un giardino o un terrazzo in città può produrre da sé un ottimo fertilizzante per piante e ortaggi, e nello stesso tempo contribuire a diminuire la quantità di rifiuti inviati in discarica. \n </br>
         <br> Grazie ad un’iniziativa realizzata in collaborazione con l’Assessorato all’Ambiente del Comune di Genova, chiunque si impegni a praticare il compostaggio domestico e ha i requisiti necessari (un giardino, orto o terrazzo di almeno 15 mq) può ottenere uno sconto su TARI: 10 euro per il singolo utente, 15 euro per il nucleo famigliare con due o più componenti. </br>
     </string>
-
     <string name="differenziata4_tit"> Abiti usati </string>
     <string name="differenziata4_desc">
         <br> Lo StaccaPanni non è la solita raccolta indumenti e abiti usati. E’ un percorso in cui ogni tappa contribuisce allo sviluppo di una cultura della solidarietà e dell’attenzione verso il prossimo. \n\n</br>
@@ -303,7 +300,6 @@
         PUOI INTRODURRE nello STACCAPANNI: \n\n
         <br>  Vestiti e indumenti usati, scarpe, borse e cappelli, coperte e biancheria in genere confezionati in sacchetti chiusi. </br>
     </string>
-
     <string name="differenziata5_tit"> Plastica </string>
     <string name="differenziata5_desc">
         <br> La plastica viene ricavata dal petrolio attraverso un processo chiamato polimerizzazione, cioè il legarsi di alcune molecole con altre identiche in catene teoricamente infinite, mediante riscaldamento in presenza di catalizzatori. La plastica è resistente, impermeabile, leggera ed economica. Ha però un grande difetto: non è biodegradabile e quindi molto inquinante, per questo occorre riciclarla completamente. \n\n</br>
@@ -329,30 +325,30 @@
         <br> Cassette per frutta e verdura in plastica; posate in plastica; giocattoli; custodie per cd, dvd e altri materiali audiovisivi; beni durevoli in plastica (elettrodomestici, casalinghi, complementi d’arredo, ecc.); tutti i rifiuti in plastica sporchi di materiali organici o sostanze pericolose come vernice, colle ecc.; rifiuti ospedalieri (es. siringhe, sacche per plasma, contenitori per liquidi fisiologici e per emodialisi); contenitori per vernici, smalti, smacchiatori, acidi, colle e insetticidi \n\n</br>
         <br> Nota bene:  Non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente, non bisogna togliere le etichette, ma bisogna rimuovere i residui di cibo. E quando è possibile riduci i volumi. </br>
     </string>
-
     <string name="differenziata6_tit"> Metalli </string>
     <string name="differenziata6_desc">
-    <br> L’alluminio combinato con silicio, magnesio, rame, zinco e manganese forma numerose leghe leggere, che trovano impiego nella tecnica moderna. L’alluminio puro è invece utilizzato come conduttore nelle linee ad alta tensione. \n\n</br>
-    <br> L’acciaio è una lega a base di ferro e carbonio in quantità diverse a seconda degli scopi. È il materiale più riciclato al mondo: con i rottami si produce acciaio per veicoli, elettrodomestici, rotaie, tondini per l’edilizia, travi per ponti. \n\n</br>
-    <br> Per riciclare i metalli: \n</br>
-    <br> - Usa esclusivamente i contenitori di colore giallo \n</br>
-    <br> - Sciacqua le vaschette degli alimenti ed elimina eventuali residui di cibo \n</br>
-    <br> - Accartoccia i fogli di alluminio in modo tale che non si disperdano \n</br>
-    <br> - Introduci nel contenitore le lattine marchiate AL \n</br>
-    <br> - Non abbandonare i rifiuti intorno ai contenitori \n\n</br>
-    PUOI INTRODURRE nel contenitore GIALLO: \n\n
-    <br> - Lattine per bevande e per olio \n</br>
-    <br> - Fogli di alluminio da cucina, involucri per cioccolato e coperchi degli yogurt \n</br>
-    <br> - Scatolette in banda stagnata per alimenti (es. pelati, carne, tonno, legumi, cibo per animali) \n</br>
-    <br> - Vaschette e contenitori in alluminio per la conservazione e il congelamento dei cibi \n</br>
-    <br> - Bombolette spray per deodoranti, lacche per capelli o panna montata \n</br>
-    <br> - Barattoli e scatole in metallo per biscotti, cioccolatini, liquori \n</br>
-    <br> - Tubetti per conserve, creme e cosmetici \n</br>
-    <br> - Capsule, chiusure e tappi in metallo per bottiglie (es. olio, vino, liquori, bibite) \n\n</br>
-    NON INTRODURRE nel contenitore GIALLO: \n\n
-    <br> Contenitori per vernici, smalti, smacchiatori, solventi, acidi, colle e insetticidi \n\n</br>
-    <br> Nota bene: Non bisogna togliere le etichette, non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente e bisogna rimuovere i residui di cibo </br>
+        <br> L’alluminio combinato con silicio, magnesio, rame, zinco e manganese forma numerose leghe leggere, che trovano impiego nella tecnica moderna. L’alluminio puro è invece utilizzato come conduttore nelle linee ad alta tensione. \n\n</br>
+        <br> L’acciaio è una lega a base di ferro e carbonio in quantità diverse a seconda degli scopi. È il materiale più riciclato al mondo: con i rottami si produce acciaio per veicoli, elettrodomestici, rotaie, tondini per l’edilizia, travi per ponti. \n\n</br>
+        <br> Per riciclare i metalli: \n</br>
+        <br> - Usa esclusivamente i contenitori di colore giallo \n</br>
+        <br> - Sciacqua le vaschette degli alimenti ed elimina eventuali residui di cibo \n</br>
+        <br> - Accartoccia i fogli di alluminio in modo tale che non si disperdano \n</br>
+        <br> - Introduci nel contenitore le lattine marchiate AL \n</br>
+        <br> - Non abbandonare i rifiuti intorno ai contenitori \n\n</br>
+        PUOI INTRODURRE nel contenitore GIALLO: \n\n
+        <br> - Lattine per bevande e per olio \n</br>
+        <br> - Fogli di alluminio da cucina, involucri per cioccolato e coperchi degli yogurt \n</br>
+        <br> - Scatolette in banda stagnata per alimenti (es. pelati, carne, tonno, legumi, cibo per animali) \n</br>
+        <br> - Vaschette e contenitori in alluminio per la conservazione e il congelamento dei cibi \n</br>
+        <br> - Bombolette spray per deodoranti, lacche per capelli o panna montata \n</br>
+        <br> - Barattoli e scatole in metallo per biscotti, cioccolatini, liquori \n</br>
+        <br> - Tubetti per conserve, creme e cosmetici \n</br>
+        <br> - Capsule, chiusure e tappi in metallo per bottiglie (es. olio, vino, liquori, bibite) \n\n</br>
+        NON INTRODURRE nel contenitore GIALLO: \n\n
+        <br> Contenitori per vernici, smalti, smacchiatori, solventi, acidi, colle e insetticidi \n\n</br>
+        <br> Nota bene: Non bisogna togliere le etichette, non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente e bisogna rimuovere i residui di cibo </br>
     </string>
+
 </resources>
 
 
