@@ -239,6 +239,7 @@
     <string name="richiedi">Richiedi modifica via email</string>
     <string name="inserire_email">Inserire email valida</string>
     <string name="inserire_user">Inserire username valido</string>
+    <string name="inserire_pw">Inserire mail valida</string>
 
 </resources>
 
