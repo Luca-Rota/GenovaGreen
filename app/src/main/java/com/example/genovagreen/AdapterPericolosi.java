@@ -82,14 +82,16 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
 
         TextView desc, title;
         ConstraintLayout expandableLayout;
+        ConstraintLayout constraintLayout;
 
         public ViewHolder (@NonNull View itemView){
             super(itemView);
 
             desc = itemView.findViewById(R.id.Descrizione);
             title = itemView.findViewById(R.id.title);
+            constraintLayout=itemView.findViewById(R.id.constraintLayout);
             expandableLayout=itemView.findViewById(R.id.expandableLayout);
-            title.setOnClickListener(new View.OnClickListener() {
+            constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ItemPericolosi itemPericolosi=items.get(getAdapterPosition());

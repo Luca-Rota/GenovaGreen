@@ -32,8 +32,8 @@ public class AlertReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent=PendingIntent.getActivity(context,0,i,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder=new NotificationCompat.Builder(context,channel_id2)
                 .setSmallIcon(R.drawable.logo2_round)
-                .setContentTitle("GenovaGreen")
-                .setContentText("La spedizione a cui vuoi partecipare sta per iniziare")
+                .setContentTitle("Hey, tra un'ora inizierà una nuova spedizione!")
+                .setContentText("Clicca su questa notifica e scopri quale.")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

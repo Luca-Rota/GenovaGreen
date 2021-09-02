@@ -72,6 +72,7 @@ public class Differenziata extends AppCompatActivity implements NavigationView.O
         items.add(new ItemPericolosi(getString(R.string.differenziata3_tit), getString(R.string.differenziata3_desc)));
         items.add(new ItemPericolosi(getString(R.string.differenziata4_tit), getString(R.string.differenziata4_desc)));
         items.add(new ItemPericolosi(getString(R.string.differenziata5_tit), getString(R.string.differenziata5_desc)));
+        items.add(new ItemPericolosi(getString(R.string.differenziata6_tit), getString(R.string.differenziata6_desc)));
     }
 
 

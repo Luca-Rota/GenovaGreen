@@ -94,7 +94,6 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         ref.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                     for(DataSnapshot ds: snapshot.getChildren()){
                         Calendar calendarSped=Calendar.getInstance();
                         String[] data=ds.getValue(Spedizione.class).getData().split("/");
@@ -114,7 +113,6 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                             ref1.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot1) {
-
                                         for(DataSnapshot ds1: snapshot1.getChildren()){
                                             if(ds1.getValue(MySped.class).getId().equals(key)){
                                                 String keyCr=ds1.getKey();
@@ -132,11 +130,10 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                             ref2.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot2) {
-
                                         for(DataSnapshot ds2: snapshot2.getChildren()){
                                             if(ds2.getValue(MySped.class).getId().equals(key)){
                                                 String keyPart=ds2.getKey();
-                                                ref.child(keyPart).removeValue();
+                                                ref2.child(keyPart).removeValue();
                                             }
                                         }
                                     }

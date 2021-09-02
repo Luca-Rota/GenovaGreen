@@ -217,6 +217,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          MySped users=new MySped(id,email);
                                          ref.setValue(users);
+                                         createNotificationChannel(idNotify);
                                          startAlarm(setAlarm());
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
                                      }
@@ -290,5 +291,15 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         CommonFunctions.closeDrawer(drawer);
     }
 
+    public void createNotificationChannel(int id){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            String idN=String.valueOf(id);
+            NotificationChannel channel = new NotificationChannel(idN, "Spedizioni", importance);
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+            Log.i("prova","Creato canale: "+channel);
+        }
+    }
 
 }
