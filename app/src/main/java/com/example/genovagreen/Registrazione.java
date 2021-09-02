@@ -81,6 +81,8 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Registrazione.this,Login.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
         button=findViewById(R.id.buttonMap);
@@ -125,6 +127,8 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                                                                     auth.signOut();
                                                                     Toast.makeText(Registrazione.this, R.string.registrazione_avvenuta,Toast.LENGTH_LONG).show();
                                                                     startActivity(new Intent(Registrazione.this,Login.class));
+                                                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                                                                 }else{
                                                                     Toast.makeText(Registrazione.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                                                                 }
@@ -193,6 +197,8 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     public void onBackPressed()
     {
         startActivity(new Intent(Registrazione.this,Spedizioni.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }
 

@@ -128,6 +128,7 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Pericolosi2.this, MapActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }
@@ -163,6 +164,7 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
     public void onBackPressed()
     {
         startActivity(new Intent(Pericolosi2.this, Pericolosi.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
 }

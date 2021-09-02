@@ -259,4 +259,11 @@ public class  MapActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void ClickLogo(View view){
         CommonFunctions.closeDrawer(drawer);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(MapActivity.this, Pericolosi2.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

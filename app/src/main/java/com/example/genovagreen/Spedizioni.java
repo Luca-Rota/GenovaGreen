@@ -59,6 +59,7 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Spedizioni.this,Login.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         registrati=findViewById(R.id.registratis);
@@ -66,6 +67,8 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Spedizioni.this, Registrazione.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
     }
@@ -85,5 +88,7 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
     public void onBackPressed()
     {
         startActivity(new Intent(Spedizioni.this,MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }

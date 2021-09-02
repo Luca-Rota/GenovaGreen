@@ -1,6 +1,7 @@
 package com.example.genovagreen;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -26,6 +28,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
     ArrayList<Oggetto> list;
     private TextView txt;
     Activity activity;
+
     public AdapterClass(ArrayList<Oggetto> list){
         this.list=list;
     }
@@ -102,7 +105,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                                 Intent intent=new Intent(v.getContext(), Differenziata.class);
                                 intent.putExtra("apri","carta");
                                 v.getContext().startActivity(intent);
-                            }
+                                }
+
                         });
                         break;
                     case "Cassonetto della plastica":

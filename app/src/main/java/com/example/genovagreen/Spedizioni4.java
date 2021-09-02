@@ -103,6 +103,8 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
             }
         });
         map = findViewById(R.id.buttonMap);
@@ -110,6 +112,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Spedizioni4.this, MapSpedizioni.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
         });
@@ -161,6 +164,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                                         sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())){
                                                                     if(ok==true){
                                                                         startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                                                         finish();
                                                                     }else {
                                                                         String id = ds.getKey();
@@ -169,6 +173,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                                         ref.setValue(mySped);
                                                                         ok = true;
                                                                         startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                                                     }
                                                                 }
                                                             }
@@ -261,4 +266,13 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         }
     }
 
+
+
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(Spedizioni4.this,Spedizioni3.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+    }
 }

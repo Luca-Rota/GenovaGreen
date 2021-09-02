@@ -65,6 +65,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
         NewPass.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class Password extends AppCompatActivity implements NavigationView.OnNavi
                             if (task.isSuccessful()) {
                                 Toast.makeText(Password.this, R.string.email_inviata, Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(Password.this, Login.class));
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                 finish();
                             } else {
                                 Toast.makeText(Password.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

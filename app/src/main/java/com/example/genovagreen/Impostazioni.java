@@ -66,11 +66,12 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             layoutProfile.setVisibility(View.INVISIBLE);
         }
 
-        modify=findViewById(R.id.modificaProfilo1);
+        modify=findViewById(R.id.modificaProfilo);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Impostazioni.this, ModifyProfile.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -81,7 +82,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             layout.setVisibility(View.INVISIBLE);
         }
 
-        logout=findViewById(R.id.LogoutImpostazioni1);
+        logout=findViewById(R.id.LogoutImpostazioni);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,13 +94,15 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
                                 auth.signOut();
                                 Toast.makeText(Impostazioni.this, R.string.logout_toast,Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(Impostazioni.this, MainActivity.class));
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                             }})
                         .setNegativeButton(R.string.no, null).show();
             }
         });
 
 
-        lingua=findViewById(R.id.linguaImpostazioni1);
+        lingua=findViewById(R.id.linguaImpostazioni);
         lingua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,5 +171,6 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
     public void onBackPressed()
     {
         startActivity(new Intent(Impostazioni.this,MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

@@ -87,7 +87,9 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Pericolosi3.this, Pericolosi.class));
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 
 }

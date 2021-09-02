@@ -118,6 +118,7 @@ public class Informazioni extends AppCompatActivity implements NavigationView.On
     public void onBackPressed()
     {
         startActivity(new Intent(Informazioni.this,MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
 

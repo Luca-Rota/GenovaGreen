@@ -79,6 +79,8 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                @Override
                public void onClick(View v) {
                    startActivity(new Intent(Spedizioni3.this, Spedizioni4.class));
+                   overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                }
         });
     }
@@ -188,5 +190,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
     public void onBackPressed()
     {
         startActivity(new Intent(Spedizioni3.this,Spedizioni2.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }

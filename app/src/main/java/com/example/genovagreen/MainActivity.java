@@ -121,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(MainActivity.this, Butto.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                     }
                 });
 
@@ -132,6 +134,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(MainActivity.this, Pericolosi.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                     }
                 });
 
@@ -144,8 +148,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onClick(View v) {
                         if (user != null && user.isEmailVerified()) {
                             startActivity(new Intent(MainActivity.this, Spedizioni2.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         } else {
                             startActivity(new Intent(MainActivity.this, Spedizioni.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                         }
                     }
                 });

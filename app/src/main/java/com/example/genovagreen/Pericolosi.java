@@ -65,6 +65,8 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Pericolosi.this,Pericolosi3.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 
@@ -73,6 +75,7 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Pericolosi.this,Pericolosi2.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -89,9 +92,11 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
     public void ClickLogo(View view){
         CommonFunctions.closeDrawer(drawer);
     }
+
     @Override
     public void onBackPressed()
     {
         startActivity(new Intent(Pericolosi.this,MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

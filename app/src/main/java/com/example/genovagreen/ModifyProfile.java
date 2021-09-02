@@ -2,6 +2,7 @@ package com.example.genovagreen;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.location.places.Place;
@@ -173,6 +174,12 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
         if (imm != null && activity.getCurrentFocus() != null) {
             imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
+    }
+
+    public void onBackPressed()
+    {
+        startActivity(new Intent(ModifyProfile.this, Impostazioni.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
 }

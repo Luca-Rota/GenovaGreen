@@ -302,6 +302,8 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
                                         Intent intent=new Intent(MapSpedizioni.this, Spedizioni4.class);
                                         intent.putExtra("luogo",feature.placeName());
                                         startActivity(intent);
+                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
                                     }
                                 }
                             });
@@ -346,4 +348,11 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
         }
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        startActivity(new Intent(MapSpedizioni.this,Spedizioni4.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+    }
 }

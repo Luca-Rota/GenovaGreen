@@ -203,6 +203,8 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     public void onBackPressed()
     {
         startActivity(new Intent(Butto.this,MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 
 }

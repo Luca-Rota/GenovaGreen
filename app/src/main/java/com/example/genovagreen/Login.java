@@ -84,6 +84,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this, Password.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         registrati=findViewById(R.id.registratil);
@@ -91,6 +92,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this, Registrazione.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -131,6 +133,7 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                                 if(auth.getCurrentUser().isEmailVerified()){
                                     Toast.makeText(Login.this, R.string.login_successo,Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(Login.this, Spedizioni2.class));
+                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                 }else{
                                     Toast.makeText(Login.this, R.string.verifica_email,Toast.LENGTH_SHORT).show();
                                 }
@@ -182,6 +185,8 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
     public void onBackPressed()
     {
         startActivity(new Intent(Login.this,Spedizioni.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }
 
