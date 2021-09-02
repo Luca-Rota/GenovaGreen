@@ -243,7 +243,7 @@
     <string name="inserire_pw">Inserire mail valida</string>
     <string name="title_activity_differenziata" translatable="false">Differe</string>
 
-    <string name="differenziata1_tit"> Carta e Cartone </string>
+    <string name="differenziata1_tit"> Carta e cartone </string>
     <string name="differenziata1_desc">
         <br> La carta è composta da fibre cellulosiche normalmente presenti in natura. Queste, attraverso processi chimici, una volta eliminate polveri, coloranti e collanti, possono essere riaggregate nuovamente e quindi riciclate. Riciclare correttamente la carta permette di recuperare materiali e trarre beneficio per l’ambiente. \n\n </br>
         <br> Per riciclare la carta: \n\n </br>
@@ -349,6 +349,14 @@
         <br> Nota bene: Non bisogna togliere le etichette, non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente e bisogna rimuovere i residui di cibo </br>
     </string>
     <string name="username_lenght">Lo username non può avere meno di 4 caratteri</string>
+
+    <string name="scopri_di_piu">SCOPRI DI PIU\'!</string>
+    <string name="sped_desc_intro">
+        Sul teritorio genovese operano diversi gruppi di volontariato che si occupano della bonifica di luoghi inquinati. \n \n
+        <br> Questa sezione è stata studiata per semplificare l\'organizzazione e informare dell\'esistenza di queste iniziative. \n\n </br>
+        <br> Anche se non sei in un gruppo di volontariato avrai la possibilità di creare una spedizione e trovare gente, che come te, ha a cuore la pulizia della nostra città.  \n\n </br>
+        <br> Accedi o registrati subito per vedere le spedizioni che sono già state programmate o programmarne una tu stesso! </br>
+    </string>
 
 </resources>
 
