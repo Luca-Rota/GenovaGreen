@@ -3,11 +3,13 @@ package com.example.genovagreen;
 import android.content.ClipData;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,9 +21,12 @@ import java.util.ArrayList;
 public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.ViewHolder>{
 
     private ArrayList<ItemPericolosi> items;
+    private String apri;
+    private String titles;
 
-    public AdapterPericolosi(ArrayList<ItemPericolosi> items){
+    public AdapterPericolosi(ArrayList<ItemPericolosi> items, String apri){
         this.items = items;
+        this.apri=apri;
     }
 
     @NonNull
@@ -35,8 +40,36 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
     public void onBindViewHolder(@NonNull AdapterPericolosi.ViewHolder holder, int position) {
         ItemPericolosi item = items.get(position);
         holder.title.setText(item.getTitles());
+        titles=item.getTitles().trim();
+        Log.i("prova", titles+" "+apri);
         holder.desc.setText(item.getDesc());
         boolean isExpanded =items.get(position).isExpanded();
+        switch(apri){
+            case "carta":
+                if(titles.equals("Carta e Cartone"))
+                    isExpanded=true;
+                break;
+            case "plastica":
+                if(titles.equals("Plastica")||titles.equals("Metalli"))
+                    isExpanded=true;
+                break;
+            case "umido":
+                if(titles.equals("Umido"))
+                    isExpanded=true;
+                break;
+            case "abiti":
+                if(titles.equals("Abiti usati"))
+                    isExpanded=true;
+                break;
+            case "vetro":
+                if(titles.equals("Vetro"))
+                    isExpanded=true;
+                break;
+            case "niente":
+                break;
+            default:
+                break;
+        }
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
     }
 
@@ -56,7 +89,6 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
             desc = itemView.findViewById(R.id.Descrizione);
             title = itemView.findViewById(R.id.title);
             expandableLayout=itemView.findViewById(R.id.expandableLayout);
-
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -45,6 +45,9 @@ public class Differenziata extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_pericolosi);
+        String apri = getIntent().getStringExtra("apri");
+        if(apri.equals(null))
+            apri="niente";
 
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -56,10 +59,11 @@ public class Differenziata extends AppCompatActivity implements NavigationView.O
         RecyclerView recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         SetDati();
-        AdapterPericolosi adapterPericolosi=new AdapterPericolosi(items);
+        AdapterPericolosi adapterPericolosi=new AdapterPericolosi(items, apri);
         recyclerView.setAdapter(adapterPericolosi);
 
     }
+
 
     private void SetDati(){
         items=new ArrayList<>();
@@ -68,7 +72,6 @@ public class Differenziata extends AppCompatActivity implements NavigationView.O
         items.add(new ItemPericolosi(getString(R.string.differenziata3_tit), getString(R.string.differenziata3_desc)));
         items.add(new ItemPericolosi(getString(R.string.differenziata4_tit), getString(R.string.differenziata4_desc)));
         items.add(new ItemPericolosi(getString(R.string.differenziata5_tit), getString(R.string.differenziata5_desc)));
-        items.add(new ItemPericolosi(getString(R.string.differenziata6_tit), getString(R.string.differenziata6_desc)));
     }
 
 

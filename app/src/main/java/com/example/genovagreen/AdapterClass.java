@@ -99,7 +99,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                intent.putExtra("apri","carta");
+                                v.getContext().startActivity(intent);
                             }
                         });
                         break;
@@ -108,7 +110,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                intent.putExtra("apri","plastica");
+                                v.getContext().startActivity(intent);
                             }
                         });
                         break;
@@ -117,16 +121,20 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                intent.putExtra("apri","vetro");
+                                v.getContext().startActivity(intent);
                             }
                         });
                         break;
-                    case "Cassonetto del umido":
+                    case "Cassonetto dell'umido":
                         imgpop.setImageResource(R.drawable.umido);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                intent.putExtra("apri","umido");
+                                v.getContext().startActivity(intent);
                             }
                         });
                         break;
@@ -135,7 +143,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                v.getContext().startActivity(new Intent(v.getContext(), Differenziata.class));
+                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                intent.putExtra("apri","abiti");
+                                v.getContext().startActivity(intent);
                             }
                         });
                         break;

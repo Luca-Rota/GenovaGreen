@@ -46,6 +46,8 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_pericolosi);
 
+        String apri="niente";
+
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
         View view=navigationView.getHeaderView(0);
@@ -56,7 +58,7 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
         RecyclerView recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         SetDati();
-        AdapterPericolosi adapterPericolosi=new AdapterPericolosi(items);
+        AdapterPericolosi adapterPericolosi=new AdapterPericolosi(items, apri);
         recyclerView.setAdapter(adapterPericolosi);
 
     }
