@@ -103,7 +103,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onClick(View v) {
                 finish();
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
         final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotify);
@@ -154,10 +153,8 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                          public void onCancelled(@NonNull DatabaseError error) {
                                                                          }
                                                                      });
-                                                                        startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
-                                                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                                                                     }})
+                                                                     startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                                 }})
                                                                  .setNegativeButton(R.string.no, null).show();
                                                              }
                                                          });
@@ -196,9 +193,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                          update2.child(id).setValue(sped);
                                                                          cancelAlarm();
                                                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
-                                                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                                                                         }})
+                                                                     }})
                                                                      .setNegativeButton(R.string.no, null).show();
                                                              }
                                                          });
@@ -222,12 +217,9 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
                                          MySped users=new MySped(id,email);
                                          ref.setValue(users);
+                                         createNotificationChannel(idNotify);
                                          startAlarm(setAlarm());
                                          startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
-                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-
-
                                      }
                                  });
                              }
@@ -245,8 +237,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("geo:0,0?q="+luogo));
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
             }
         });
     }
@@ -301,11 +291,15 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
         CommonFunctions.closeDrawer(drawer);
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        startActivity(new Intent(Spedizioni5.this,Spedizioni3.class));
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-
+    public void createNotificationChannel(int id){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            String idN=String.valueOf(id);
+            NotificationChannel channel = new NotificationChannel(idN, "Spedizioni", importance);
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+            Log.i("prova","Creato canale: "+channel);
+        }
     }
+
 }
