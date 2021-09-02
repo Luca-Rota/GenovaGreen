@@ -46,23 +46,23 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
         boolean isExpanded =items.get(position).isExpanded();
         switch(apri){
             case "carta":
-                if(titles.equals("Carta e Cartone"))
+                if(titles.equals("Carta e cartone")||titles.equals("Paper and cardboard"))
                     isExpanded=true;
                 break;
             case "plastica":
-                if(titles.equals("Plastica")||titles.equals("Metalli"))
+                if(titles.equals("Plastica")||titles.equals("Metalli")||titles.equals("Plastic")||titles.equals("Metals"))
                     isExpanded=true;
                 break;
             case "umido":
-                if(titles.equals("Umido"))
+                if(titles.equals("Umido")||titles.equals("Horganic wet"))
                     isExpanded=true;
                 break;
             case "abiti":
-                if(titles.equals("Abiti usati"))
+                if(titles.equals("Abiti usati")||titles.equals("Used clothes"))
                     isExpanded=true;
                 break;
             case "vetro":
-                if(titles.equals("Vetro"))
+                if(titles.equals("Vetro")||titles.equals("Glass"))
                     isExpanded=true;
                 break;
             case "niente":

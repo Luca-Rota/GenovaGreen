@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -41,6 +42,8 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
+    private boolean res;
+    private boolean stop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +72,13 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         String email = user.getEmail().trim();
-        NewPass=findViewById(R.id.invia);
-        Placeholder=findViewById(R.id.placeholder);
-        NewUser=findViewById(R.id.newuser);
+        NewPass = findViewById(R.id.invia);
+        Placeholder = findViewById(R.id.placeholder);
+        NewUser = findViewById(R.id.newuser);
 
-        Email_Utente=findViewById(R.id.email_utente);
+        Email_Utente = findViewById(R.id.email_utente);
         Email_Utente.setText(email);
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("Usernames");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
         if (ref != null) {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -91,73 +94,96 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
                         }
                     }
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
         }
         NewUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                                       @Override
+                                       public void onClick(View v) {
+                                           res = true;
+                                           String newusername = Placeholder.getText().toString().trim();
+                                               DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Usernames");
+                                               ref.addValueEventListener(new ValueEventListener() {
+                                                   @Override
+                                                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                       for (DataSnapshot ds : snapshot.getChildren()) {
+                                                           if (ds.getValue(User.class).getUsername().equals(newusername)) {
+                                                               res = false;
+                                                           }
+                                                       }
+                                                       if (!newusername.isEmpty()) {
+                                                           Log.i("prova", "" + res);
+                                                           if (res) {
+                                                                 if (newusername.length() > 4) {
+                                                                     ref.addValueEventListener(new ValueEventListener() {
+                                                                         @Override
+                                                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                             for (DataSnapshot ds : snapshot.getChildren()) {
+                                                                                 User ogg = ds.getValue(User.class);
+                                                                                 String email2 = ogg.getEmail().trim();
+                                                                                 String id = ds.getKey();
+                                                                                 if (email.equals(email2)) {
+                                                                                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
+                                                                                     User user = new User(newusername, email);
+                                                                                     ref.child(id).setValue(user);
+                                                                                     startActivity(new Intent(ModifyProfile.this, Impostazioni.class));
+                                                                                 }
+                                                                             }
+                                                                         }
 
-                if (Placeholder.getText().toString().matches(""))
-                    Toast.makeText(ModifyProfile.this, R.string.inserire_user, Toast.LENGTH_SHORT).show();
+                                                                         @Override
+                                                                         public void onCancelled(@NonNull DatabaseError error) {
+                                                                             Toast.makeText(ModifyProfile.this, R.string.errore_db, Toast.LENGTH_SHORT).show();
+                                                                         }
+                                                                     });
+                                                                 } else {
+                                                                     Toast.makeText(ModifyProfile.this, R.string.username_lenght, Toast.LENGTH_SHORT).show();
+                                                                 }
 
-                else {
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
-                    if (ref != null) {
-                        ref.addValueEventListener(new ValueEventListener() {
+                                                           } else {
+                                                               Toast.makeText(ModifyProfile.this, R.string.username_in_uso, Toast.LENGTH_SHORT).show();
+                                                           }
+                                                       } else {
+                                                           Toast.makeText(ModifyProfile.this, "Non può essere vuota", Toast.LENGTH_SHORT).show();
+                                                       }
+                                                   }
+                                                   @Override
+                                                   public void onCancelled(@NonNull DatabaseError error) {
+                                                       Toast.makeText(ModifyProfile.this, R.string.errore_db, Toast.LENGTH_SHORT).show();
+                                                   }
+                                               });
+                                           }
+                                   });
+
+                Annulla = findViewById(R.id.annulla);
+
+                Annulla.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+
+                NewPass.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.exists()) {
-                                    for (DataSnapshot ds : snapshot.getChildren()) {
-                                        User ogg = ds.getValue(User.class);
-                                        String email2 = ogg.getEmail().trim();
-                                        String nomeutente = ogg.getUsername();
-                                        String id = ds.getKey();
-                                        if (email.equals(email2)) {
-                                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
-                                            User user = new User(Placeholder.getText().toString(), email);
-                                            ref.child(id).setValue(user);
-                                            finish();
-                                        }
-                                    }
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(ModifyProfile.this, R.string.email_inviata, Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    Toast.makeText(ModifyProfile.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
                             }
                         });
                     }
-                }
-            }
-        });
-        Annulla = findViewById(R.id.annulla);
-
-        Annulla.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        NewPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(ModifyProfile.this, R.string.email_inviata, Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(ModifyProfile.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
                 });
-            }
-        });
-    }
+        }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
@@ -175,11 +201,10 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
             imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
     }
-
+    @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(ModifyProfile.this, Impostazioni.class));
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        startActivity(new Intent(ModifyProfile.this,Impostazioni.class));
     }
 
 }

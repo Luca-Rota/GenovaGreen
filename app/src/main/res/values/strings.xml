@@ -348,6 +348,7 @@
         <br> Contenitori per vernici, smalti, smacchiatori, solventi, acidi, colle e insetticidi \n\n</br>
         <br> Nota bene: Non bisogna togliere le etichette, non bisogna lavare gli imballaggi, per evitare cattivi odori basta sciacquarli velocemente e bisogna rimuovere i residui di cibo </br>
     </string>
+    <string name="username_lenght">Lo username non può avere meno di 4 caratteri</string>
 
 </resources>
 
