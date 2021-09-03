@@ -71,9 +71,7 @@
     <string name="infoCondividi">Condividi</string>
     <string name="infoSeguici">Seguici anche sui Social!</string>
     <string name="versione_app_alpha_1_0">Versione app: Beta 1.2</string>
-
-
-    <string name="email" translatable="false"> &#160;Email</string>
+    <string name="email" translatable="false"> Email</string>
     <string name="password_dimenticata">Password dimenticata?</string>
     <string name="accedi">Accedi</string>
     <string name="registrati_ora">Registrati ora!</string>
@@ -82,14 +80,14 @@
     <string name="invia">INVIA</string>
     <string name="visualizza_la_mappa_di_tutti_i_centri_di_raccolta_rifiuti_a_genova">Visualizza la mappa di tutti i centri di raccolta rifiuti a Genova:</string>
     <string name="o_cerca_il_centro_di_raccolta_in_base_al_prodotto_che_hai_da_smaltire">O cerca il centro di raccolta in base al prodotto che hai da smaltire:</string>
-    <string name="rifiuti_ingombranti">RIFIUTI INGOMBRANTI&#160;</string>
-    <string name="pile_e_batterie_esauste">PILE e BATTERIE ESAUSTE&#160;</string>
-    <string name="olio_esausto_e_filtri_olio">OLIO ESAUSTO e FILTRI OLIO&#160;</string>
-    <string name="farmaci_scaduti_e_contenitori">FARMACI SCADUTI e CONTENITORI&#160;</string>
-    <string name="vernici_solventi_e_insetticidi">VERNICI, SOLVENTI e INSETTICIDI&#160;</string>
-    <string name="registrazione">REGISTRAZIONE&#160;</string>
-    <string name="password" translatable="false">&#160;Password</string>
-    <string name="ripeti_password">&#160;Ripeti password</string>
+    <string name="rifiuti_ingombranti">RIFIUTI INGOMBRANTI</string>
+    <string name="pile_e_batterie_esauste">PILE e BATTERIE ESAUSTE</string>
+    <string name="olio_esausto_e_filtri_olio">OLIO ESAUSTO e FILTRI OLIO</string>
+    <string name="farmaci_scaduti_e_contenitori">FARMACI SCADUTI e CONTENITORI</string>
+    <string name="vernici_solventi_e_insetticidi">VERNICI, SOLVENTI e INSETTICIDI</string>
+    <string name="registrazione">REGISTRAZIONE</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="ripeti_password">Ripeti password</string>
     <string name="conferma">Conferma</string>
     <string name="hai_gi_un_account">Hai già un account?</string>
     <string name="accedi_subito">Accedi subito!</string>
@@ -359,7 +357,6 @@
         <br> Anche se non sei in un gruppo di volontariato avrai la possibilità di creare una spedizione e trovare gente, che come te, ha a cuore la pulizia della nostra città.  \n\n </br>
         <br> Accedi o registrati subito per vedere le spedizioni che sono già state programmate o programmarne una tu stesso! </br>
     </string>
-    <string name="username" translatable="false"> &#160;Username</string>
 
 </resources>
 

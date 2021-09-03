@@ -305,4 +305,6 @@
         <br> Even if you are not in a volunteer group you will have the opportunity to create an expedition and find people who, like you, care about the cleanliness of our city. \n </br>
         <br> Log in or register now to see shipments that have already been scheduled or schedule one yourself! </br>
     </string>
+    <string name="username_lenght">Username cannot be less than 4 characters</string>
+    <string name="username_mod">Username has been modified</string>
 </resources>
