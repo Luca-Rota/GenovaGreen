@@ -1,6 +1,8 @@
 package com.example.genovagreen;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,7 +45,7 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
     private NavigationView navigationView;
     private FirebaseUser user;
     private boolean res;
-    private boolean stop;
+    private boolean stop=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,35 +118,43 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
                                                        }
                                                        if (!newusername.isEmpty()) {
                                                            Log.i("prova", "" + res);
-                                                           if (res) {
-                                                                 if (newusername.length() > 4) {
-                                                                     ref.addValueEventListener(new ValueEventListener() {
-                                                                         @Override
-                                                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                                             for (DataSnapshot ds : snapshot.getChildren()) {
-                                                                                 User ogg = ds.getValue(User.class);
-                                                                                 String email2 = ogg.getEmail().trim();
-                                                                                 String id = ds.getKey();
-                                                                                 if (email.equals(email2)) {
-                                                                                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
-                                                                                     User user = new User(newusername, email);
-                                                                                     ref.child(id).setValue(user);
-                                                                                     startActivity(new Intent(ModifyProfile.this, Impostazioni.class));
-                                                                                 }
-                                                                             }
-                                                                         }
+                                                           if(!stop) {
+                                                               stop = true;
+                                                               if (res) {
+                                                                   if (newusername.length() > 4) {
+                                                                       ref.addValueEventListener(new ValueEventListener() {
+                                                                           @Override
+                                                                           public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                               for (DataSnapshot ds : snapshot.getChildren()) {
+                                                                                   User ogg = ds.getValue(User.class);
+                                                                                   String email2 = ogg.getEmail().trim();
+                                                                                   String id = ds.getKey();
+                                                                                   if (email.equals(email2)) {
+                                                                                       DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
+                                                                                       User user = new User(newusername, email);
+                                                                                       ref.child(id).setValue(user);
+                                                                                       Toast.makeText(ModifyProfile.this, R.string.username_mod, Toast.LENGTH_SHORT).show();
+                                                                                       startActivity((new Intent(ModifyProfile.this, Impostazioni.class)));
+                                                                                       System.exit(0);
+                                                                                   }
+                                                                               }
+                                                                           }
 
-                                                                         @Override
-                                                                         public void onCancelled(@NonNull DatabaseError error) {
-                                                                             Toast.makeText(ModifyProfile.this, R.string.errore_db, Toast.LENGTH_SHORT).show();
-                                                                         }
-                                                                     });
-                                                                 } else {
-                                                                     Toast.makeText(ModifyProfile.this, R.string.username_lenght, Toast.LENGTH_SHORT).show();
-                                                                 }
+                                                                           @Override
+                                                                           public void onCancelled(@NonNull DatabaseError error) {
+                                                                               Toast.makeText(ModifyProfile.this, R.string.errore_db, Toast.LENGTH_SHORT).show();
+                                                                           }
+                                                                       });
+                                                                   } else {
+                                                                       Toast.makeText(ModifyProfile.this, R.string.username_lenght, Toast.LENGTH_SHORT).show();
+                                                                   }
 
-                                                           } else {
-                                                               Toast.makeText(ModifyProfile.this, R.string.username_in_uso, Toast.LENGTH_SHORT).show();
+
+                                                               } else {
+                                                                   Toast.makeText(ModifyProfile.this, R.string.username_in_uso, Toast.LENGTH_SHORT).show();
+                                                               }
+                                                           }else{
+                                                               finish();
                                                            }
                                                        } else {
                                                            Toast.makeText(ModifyProfile.this, "Non può essere vuota", Toast.LENGTH_SHORT).show();
