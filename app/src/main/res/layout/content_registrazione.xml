@@ -30,7 +30,7 @@
         android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:ems="14"
         android:fontFamily="monospace"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="textEmailAddress"
         android:textColor="#000"
         android:textColorHint="#726a6a"
