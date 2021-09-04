@@ -29,7 +29,7 @@ public class AlertReceiver extends BroadcastReceiver {
         String channel_id2=Integer.toString(channel_id);
         Intent i = new Intent(context,Spedizioni3.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent=PendingIntent.getActivity(context,0,i,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent=PendingIntent.getActivity(context,channel_id,i,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder=new NotificationCompat.Builder(context,channel_id2)
                 .setSmallIcon(R.drawable.logo2_round)
                 .setContentTitle("Hey, tra un'ora inizierà una nuova spedizione!")
@@ -40,7 +40,6 @@ public class AlertReceiver extends BroadcastReceiver {
                 .setContentIntent(pendingIntent);
         NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(context);
         notificationManagerCompat.notify(channel_id,builder.build());
-        Log.i("prova","Ricevuto canale numero:"+channel_id);
     }
 }
 
