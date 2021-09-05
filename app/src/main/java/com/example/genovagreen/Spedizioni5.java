@@ -257,27 +257,21 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
     private void startAlarm(Calendar c) {
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
-        Toast.makeText(this, ""+idNotify, Toast.LENGTH_SHORT).show();
         intent.putExtra("idNotifica", idNotify);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, idNotify, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
         }
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-        Toast.makeText(this, "Notifica messa",Toast.LENGTH_SHORT).show();
     }
 
     private void cancelAlarm() {
-        /*
-        TODO
         Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, idNotify, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         if(alarmManager==null){
             alarmManager=(AlarmManager)getSystemService(Context.ALARM_SERVICE);
         }
         alarmManager.cancel(pendingIntent);
-        Toast.makeText(this, "Notifica tolta",Toast.LENGTH_SHORT).show();
-         */
     }
 
     @Override
@@ -298,7 +292,6 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
             NotificationChannel channel = new NotificationChannel(idN, "Spedizioni", importance);
             NotificationManager notificationManager=getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-            Log.i("prova","Creato canale: "+channel);
         }
     }
 
