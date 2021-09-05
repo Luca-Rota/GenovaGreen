@@ -358,7 +358,7 @@
         <br> Accedi o registrati subito per vedere le spedizioni che sono già state programmate o programmarne una tu stesso! </br>
     </string>
     <string name="username" translatable="false">&#160;Username</string>
-
+    <string name="username_mod"> username</string>
 </resources>
 
 

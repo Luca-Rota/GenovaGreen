@@ -304,7 +304,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+        finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
