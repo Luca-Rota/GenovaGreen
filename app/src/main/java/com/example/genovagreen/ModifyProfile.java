@@ -121,7 +121,7 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
                                                            if(!stop) {
                                                                stop = true;
                                                                if (res) {
-                                                                   if (newusername.length() > 4) {
+                                                                   if (newusername.length() >= 4) {
                                                                        ref.addValueEventListener(new ValueEventListener() {
                                                                            @Override
                                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
