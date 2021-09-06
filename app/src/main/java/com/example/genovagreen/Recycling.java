@@ -27,7 +27,7 @@ public class Recycling extends AppCompatActivity implements NavigationView.OnNav
     private NavigationView navigationView;
     private FirebaseUser user;
     private TextView username, id;
-    private ArrayList<ItemDangerous> items;
+    private ArrayList<ItemSpecials> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +58,20 @@ public class Recycling extends AppCompatActivity implements NavigationView.OnNav
         RecyclerView recyclerView = findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         SetDati();
-        AdapterPericolosi adapterPericolosi=new AdapterPericolosi(items, apri);
-        recyclerView.setAdapter(adapterPericolosi);
+        AdapterSpecials adapterSpecials =new AdapterSpecials(items, apri);
+        recyclerView.setAdapter(adapterSpecials);
 
     }
 
 
     private void SetDati(){
         items=new ArrayList<>();
-        items.add(new ItemDangerous(getString(R.string.differenziata1_tit), getString(R.string.differenziata1_desc)));
-        items.add(new ItemDangerous(getString(R.string.differenziata2_tit), getString(R.string.differenziata2_desc)));
-        items.add(new ItemDangerous(getString(R.string.differenziata3_tit), getString(R.string.differenziata3_desc)));
-        items.add(new ItemDangerous(getString(R.string.differenziata4_tit), getString(R.string.differenziata4_desc)));
-        items.add(new ItemDangerous(getString(R.string.differenziata5_tit), getString(R.string.differenziata5_desc)));
-        items.add(new ItemDangerous(getString(R.string.differenziata6_tit), getString(R.string.differenziata6_desc)));
+        items.add(new ItemSpecials(getString(R.string.differenziata1_tit), getString(R.string.differenziata1_desc)));
+        items.add(new ItemSpecials(getString(R.string.differenziata2_tit), getString(R.string.differenziata2_desc)));
+        items.add(new ItemSpecials(getString(R.string.differenziata3_tit), getString(R.string.differenziata3_desc)));
+        items.add(new ItemSpecials(getString(R.string.differenziata4_tit), getString(R.string.differenziata4_desc)));
+        items.add(new ItemSpecials(getString(R.string.differenziata5_tit), getString(R.string.differenziata5_desc)));
+        items.add(new ItemSpecials(getString(R.string.differenziata6_tit), getString(R.string.differenziata6_desc)));
     }
 
 

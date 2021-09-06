@@ -275,11 +275,11 @@
     </string>
     <string name="differenziata6_tit">Metals</string>
     <string name="scopri_di_piu">LEARN MORE!</string>
-    <string name="sped_desc_intro">
+    <string name="sped_desc_intro">ù
         Various volunteer groups operate in the Genoese territory that deal with the reclamation of polluted places. \n
-        <br> This section has been designed to simplify the organization and inform of the existence of these initiatives. \n \n </br>
-        <br> Even if you are not in a volunteer group you will have the opportunity to create an expedition and find people who, like you, care about the cleanliness of our city. \n </br>
-        <br> Log in or register now to see shipments that have already been scheduled or schedule one yourself! </br>
+        This section has been designed to simplify the organization and inform of the existence of these initiatives. \n
+        Even if you are not in a volunteer group you will have the opportunity to create an expedition and find people who, like you, care about the cleanliness of our city. \n
+        Log in or register now to see shipments that have already been scheduled or schedule one yourself!
     </string>
     <string name="username_lenght">Username cannot be less than 4 characters</string>
     <string name="username_mod">Username has been modified</string>

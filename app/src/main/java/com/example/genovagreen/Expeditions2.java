@@ -36,7 +36,7 @@ public class Expeditions2 extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private AdapterSpedizioni adapterSpedizioni;
+    private AdapterExpeditions adapterExpeditions;
     private ArrayList<Expedition> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
@@ -197,8 +197,8 @@ public class Expeditions2 extends AppCompatActivity implements NavigationView.On
                             recyclerView.setVisibility(View.INVISIBLE);
                             nosped.setVisibility(View.VISIBLE);
                         }else {
-                            adapterSpedizioni = new AdapterSpedizioni(list);
-                            recyclerView.setAdapter(adapterSpedizioni);
+                            adapterExpeditions = new AdapterExpeditions(list);
+                            recyclerView.setAdapter(adapterExpeditions);
                         }
                     }
                 @Override

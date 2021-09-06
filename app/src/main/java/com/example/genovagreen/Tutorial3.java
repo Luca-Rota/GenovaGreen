@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Tutorial3 extends AppCompatActivity {
 
-    private ImageView back;
+    private ImageView back, previous;
     private TextView start;
 
     @Override
@@ -36,6 +36,15 @@ public class Tutorial3 extends AppCompatActivity {
                 startActivity(new Intent(Tutorial3.this, MainActivity.class));
 
 
+            }
+        });
+
+        previous = findViewById(R.id.imageView16);
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Tutorial3.this,Tutorial2.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
 

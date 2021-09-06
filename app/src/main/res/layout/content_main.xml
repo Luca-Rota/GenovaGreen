@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back3"
+    android:background="@drawable/back"
     android:id="@+id/content_main">
 
 
@@ -21,7 +21,7 @@
         android:textStyle="bold"
         android:text="@string/slogan"
         android:textColor="#000000"
-        android:textSize="23sp"
+        android:textSize="23dp"
         app:layout_constraintBottom_toTopOf="@+id/DoveLoButtoMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
                 android:fontFamily="monospace"
                 android:text="@string/dove_lo_butto"
                 android:textColor="#FFFFFF"
-                android:textSize="26sp"
+                android:textSize="26dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +156,7 @@
                 android:fontFamily="monospace"
                 android:text="@string/rifiuti_pericolosi"
                 android:textColor="#FFFFFF"
-                android:textSize="26sp"
+                android:textSize="26dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

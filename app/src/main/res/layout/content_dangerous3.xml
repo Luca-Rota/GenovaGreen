@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/back3"
+    android:background="@drawable/back"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView

@@ -31,7 +31,7 @@ public class Expeditions3 extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
-    private AdapterSpedizioni adapterSpedizioni1,adapterSpedizioni2;
+    private AdapterExpeditions adapterExpeditions1, adapterExpeditions2;
     private ArrayList<Expedition> list1,list2;
     private ArrayList<MyExp> listemail1,listemail2;
     private DatabaseReference ref1,ref2,ref3;
@@ -112,8 +112,8 @@ public class Expeditions3 extends AppCompatActivity implements NavigationView.On
                                             recyclerView1.setVisibility(View.INVISIBLE);
                                             nosped1.setVisibility(View.VISIBLE);
                                         }else {
-                                            adapterSpedizioni1 = new AdapterSpedizioni(list1);
-                                            recyclerView1.setAdapter(adapterSpedizioni1);
+                                            adapterExpeditions1 = new AdapterExpeditions(list1);
+                                            recyclerView1.setAdapter(adapterExpeditions1);
                                         }
                                     }
 
@@ -154,8 +154,8 @@ public class Expeditions3 extends AppCompatActivity implements NavigationView.On
                                              recyclerView2.setVisibility(View.INVISIBLE);
                                              nosped2.setVisibility(View.VISIBLE);
                                         }else {
-                                            adapterSpedizioni2 = new AdapterSpedizioni(list2);
-                                            recyclerView2.setAdapter(adapterSpedizioni2);
+                                            adapterExpeditions2 = new AdapterExpeditions(list2);
+                                            recyclerView2.setAdapter(adapterExpeditions2);
                                         }
                                     }
 

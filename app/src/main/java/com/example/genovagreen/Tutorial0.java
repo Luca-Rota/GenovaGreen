@@ -12,7 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class Tutorial0 extends AppCompatActivity {
 
-    private ImageView front;
+    private ImageView front, next;
     private TextView jump;
 
     @Override
@@ -40,6 +40,15 @@ public class Tutorial0 extends AppCompatActivity {
         });
 
 
+        next = findViewById(R.id.imageView4);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Tutorial0.this, Tutorial1.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+            }
+        });
 
 
 

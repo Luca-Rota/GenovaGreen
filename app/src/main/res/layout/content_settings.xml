@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Settings"
-    android:background="@drawable/back3">
+    android:background="@drawable/back">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout10"
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:text="@string/notifiche"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
@@ -99,7 +99,7 @@
             android:gravity="start|center"
             android:text="@string/lingua"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -156,7 +156,7 @@
             android:gravity="start|center"
             android:text="@string/modifica_profilo"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView10"
@@ -212,7 +212,7 @@
             android:gravity="start|center"
             android:text="@string/logout"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView11"

@@ -12,27 +12,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 
-public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.ViewHolder>{
+public class AdapterSpecials extends RecyclerView.Adapter<AdapterSpecials.ViewHolder>{
 
-    private ArrayList<ItemDangerous> items;
+    private ArrayList<ItemSpecials> items;
     private String apri;
     private String titles;
 
-    public AdapterPericolosi(ArrayList<ItemDangerous> items, String apri){
+    public AdapterSpecials(ArrayList<ItemSpecials> items, String apri){
         this.items = items;
         this.apri=apri;
     }
 
     @NonNull
     @Override
-    public AdapterPericolosi.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_dangerous, parent, false);
+    public AdapterSpecials.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_specials, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterPericolosi.ViewHolder holder, int position) {
-        ItemDangerous item = items.get(position);
+    public void onBindViewHolder(@NonNull AdapterSpecials.ViewHolder holder, int position) {
+        ItemSpecials item = items.get(position);
         holder.title.setText(item.getTitles());
         titles=item.getTitles().trim();
         holder.desc.setText(item.getDesc());
@@ -87,8 +87,8 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
             constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ItemDangerous itemDangerous =items.get(getAdapterPosition());
-                    itemDangerous.setExpanded(!itemDangerous.isExpanded());
+                    ItemSpecials itemSpecials =items.get(getAdapterPosition());
+                    itemSpecials.setExpanded(!itemSpecials.isExpanded());
                     notifyItemChanged(getAdapterPosition());
                 }
             });

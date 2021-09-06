@@ -12,24 +12,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterSpedizioni extends RecyclerView.Adapter<AdapterSpedizioni.myviewholder> {
+public class AdapterExpeditions extends RecyclerView.Adapter<AdapterExpeditions.myviewholder> {
     ArrayList<Expedition> list;
     String key;
 
-    public AdapterSpedizioni(ArrayList<Expedition> list) {
+    public AdapterExpeditions(ArrayList<Expedition> list) {
         this.list = list;
     }
 
 
     @NonNull
     @Override
-    public AdapterSpedizioni.myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterExpeditions.myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_expeditions, parent, false);
         return new myviewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterSpedizioni.myviewholder holder, final int position) {
+    public void onBindViewHolder(@NonNull AdapterExpeditions.myviewholder holder, final int position) {
         holder.organizzatoretext.setText(list.get(position).getOrganizzatore());
         holder.datatext.setText(list.get(position).getData());
         holder.oratext.setText(list.get(position).getOra());

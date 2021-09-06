@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Tutorial1 extends AppCompatActivity {
 
-    private ImageView front;
+    private ImageView front, next, previous;
     private ImageView back;
 
     @Override
@@ -35,6 +35,25 @@ public class Tutorial1 extends AppCompatActivity {
                 startActivity(new Intent(Tutorial1.this, Tutorial0.class));
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
+            }
+        });
+
+        previous = findViewById(R.id.imageView);
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Tutorial1.this, Tutorial0.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+            }
+        });
+
+        next = findViewById(R.id.imageView16);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Tutorial1.this,Tutorial2.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

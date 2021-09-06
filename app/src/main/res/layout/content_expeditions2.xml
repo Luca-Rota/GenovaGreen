@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:background="@drawable/back3"
+    android:background="@drawable/back"
     android:layout_gravity="center">
 
     <TextView
@@ -19,7 +19,7 @@
         android:gravity="center"
         android:text="@string/partecipa_ad_una_delle_seguenti_spedizioni_di_volontariato"
         android:textColor="#000"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -67,7 +67,7 @@
             android:gravity="center"
             android:text="@string/nessuna_spedizione_trovata"
             android:textColor="#000"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold"
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
             android:paddingBottom="20dp"
             android:text="@string/le_mie_spedizioni"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

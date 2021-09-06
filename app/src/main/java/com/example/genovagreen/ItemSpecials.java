@@ -1,15 +1,15 @@
  package com.example.genovagreen;
 
-public class ItemDangerous {
+public class ItemSpecials {
 
     private String titles;
     private String desc;
     private boolean expanded;
 
-    public ItemDangerous(){
+    public ItemSpecials(){
     }
 
-    public ItemDangerous(String titles, String desc) {
+    public ItemSpecials(String titles, String desc) {
         this.titles = titles;
         this.desc = desc;
         this.expanded=false;
