@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/custom_popup"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:id="@+id/popup_butto">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <View
         android:layout_width="300dp"

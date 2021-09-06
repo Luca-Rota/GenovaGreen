@@ -23,7 +23,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.MenuItem;
@@ -33,8 +32,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Random;
 
 public class Registrazione extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private EditText emailAdd, password, password2, username;

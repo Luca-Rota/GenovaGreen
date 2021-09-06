@@ -1,15 +1,9 @@
 package com.example.genovagreen;
 
-import android.content.ClipData;
-import android.content.Context;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -41,7 +35,6 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
         ItemPericolosi item = items.get(position);
         holder.title.setText(item.getTitles());
         titles=item.getTitles().trim();
-        Log.i("prova", titles+" "+apri);
         holder.desc.setText(item.getDesc());
         boolean isExpanded =items.get(position).isExpanded();
         switch(apri){

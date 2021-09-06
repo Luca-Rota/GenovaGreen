@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@drawable/back3"
-    android:layout_gravity="center"
-    android:id="@+id/spedizioni">
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/textView1"
@@ -54,7 +53,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

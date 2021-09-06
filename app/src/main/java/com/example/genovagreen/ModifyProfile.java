@@ -1,13 +1,10 @@
 package com.example.genovagreen;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.gms.location.places.Place;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -25,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -117,7 +113,6 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
                                                            }
                                                        }
                                                        if (!newusername.isEmpty()) {
-                                                           Log.i("prova", "" + res);
                                                            if(!stop) {
                                                                stop = true;
                                                                if (res) {

@@ -34,11 +34,6 @@
     </style>
 
 
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">25sp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:fontFamily">monospace</item>
-    </style>
     da mettere in onCreate dall'activity
     Toolbar toolbar = findViewById(R.id.main_toolbar);
     TextView toolbarTitle = findViewById(R.id.titleText);

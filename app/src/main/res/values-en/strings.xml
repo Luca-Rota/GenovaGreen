@@ -2,42 +2,23 @@
 <resources>
     <string name="slogan">Help us make Genoa even more Green!</string>
     <string name="e_questo">Where do I throw this?</string>
-    <string name="lo_sapevi_che">Did you know that recycling varies according to the municipality in which you are located? Look for a product and find out in which bin to be disposed of.</string>
     <string name="dove_lo_butto">Where do I throw this?</string>
     <string name="scopri">DISCOVER</string>
     <string name="rifiuti_pericolosi">Dangerous waste</string>
     <string name="spedizioni">Expeditions</string>
     <string name="versione">Beta Version 1.0</string>
     <string name="impostazioni">Settings</string>
-    <string name="contatti">Contacts</string>
     <string name="lingua">Language</string>
     <string name="notifiche">Notifications</string>
     <string name="logout">Exit</string>
     <string name="RUP_tit">"Hazardous Municipal Waste and Bulky Waste "</string>
     <string name="rif_pericolisi_descrizione">Hazardous municipal waste (RUP) is the type of waste produced by domestic users which, by containing a high dose of substances dangerous to the environment and health, they must be collected separately in order to permit their regular treatment and disposal at the approved facilities.</string>
-    <string name="RUP_desc">All hazardous municipal waste must be delivered to city collection centres.</string>
-    <string name="RUP_desc_2">Here is a short list of the RUPs</string>
-    <string name="RUP_desc_3"> &#8226; Paint cans, varnishes, glues, solvents \n
-    <br>&#8226; Spent batteries (stylus, button) \n</br>
-    <br>&#8226; Spent car batteries \n</br>
-    <br>&#8226; Expired medicines and containers with medicinal residues \n</br>
-    <br>&#8226; Ink and toner cartridges \n</br>
-    <br>&#8226; Spray cans \n</br>
-    <br>&#8226; Chemical solvents for domestic use \n</br>
-    <br>&#8226; Pesticide, insecticide and topicoid products for domestic use \n</br>
-    <br>&#8226; Exhausted kitchen oil \n</br>
-    <br>&#8226; Exhausted engine oil \n</br>
-    <br>&#8226; Oil filters \n</br>
-    &#8226; Small battery-powered electronic equipment</string>
-    <string name="RUP_desc4">Instead, they are bulky waste:</string>
-    <string name="RUP_desc_5"> &#8226; Household appliances (washing machines, microwaves, refrigerators, etc.)<br>&#8226; Furniture (cabinets, bookcases, beds, etc.) </br>     <br>&#8226; Other bulky objects (e.g. bicycles)  </br> </string>
     <string name="RUP_but">FIND THE NEAREST COLLECTION CENTRE</string>
     <string name="log">Don’t you have an account yet?</string>
     <string name="SearchViewButtoHint">Looking for a product</string>
     <string name="infoAssistenza">Support</string>
     <string name="infoCondividi">Share</string>
     <string name="infoSeguici">Follow us on Social Media!</string>
-    <string name="versione_app_alpha_1_0">App version: Beta 1.0</string>
     <string name="password_dimenticata">Forgot password?</string>
     <string name="accedi">Log in</string>
     <string name="registrati_ora">Register now!</string>
@@ -50,7 +31,6 @@
     <string name="pile_e_batterie_esauste">SPENT BATTERIES</string>
     <string name="olio_esausto_e_filtri_olio">SPENT OIL AND OIL FILTERS</string>
     <string name="scegli_un_luogo_sulla_mappa">Choose a location on the map:</string>
-    <string name="crea_una_spedizione">CREATE A SHIPMENT</string>
     <string name="le_spedizioni_a_cui_parteciperai">The shipments in which you will participate:</string>
     <string name="aggiungi_una_nuova_spedizione">Add a new shipment</string>
     <string name="le_spedizioni_create_da_te">Shipments created by you:</string>
@@ -107,13 +87,11 @@
     <string name="location_picker_dropped_marker_snippet_no_results">No result</string>
     <string name="location_picker_select_location_button_cancel">Cancel</string>
     <string name="location_picker_select_location_button_select">Select a location</string>
-    <string name="location_picker_place_name_result">Place name: %1$s</string>
     <string name="popup_sped2">Are you sure you want to delete the expedition?</string>
     <string name="popup_sped1">Are you sure you don’t want to join in the expedition anymore?</string>
     <string name="informazioni">Informations</string>
     <string name="consulta_la_sezione_dedicata">Consult the relative section</string>
     <string name="inizia">START</string>
-    <string name="invia_mail">Send mail</string>
     <string name="modifica_profilo">Edit profile</string>
     <string name="modifica_password">Change password:</string>
     <string name="modifica_nome_utente">Change username:</string>
@@ -123,8 +101,6 @@
     <string name="trova_la_stazione_ecologica_pi_vicina_a_te_per_i_vari_rifiuti_speciali">Find the nearest ecological station to you for various special waste.</string>
     <string name="organizzati_con_vari_gruppi_di_volontariato_per_bonificare_il_verde_del_nostro_territorio">Organized with various voluntary groups to clean up the green of our territory.</string>
     <string name="richiedi">Request via email</string>
-    <string name="inserire_pw">Enter valid email</string>
-    <string name="inserire_user">Enter valid username</string>
     <string name="inserire_email">Enter valid email</string>
     <string name="pericolo1_tit">Dangerous waste</string>
     <string name="pericolo2_tit">Electronic devices</string>

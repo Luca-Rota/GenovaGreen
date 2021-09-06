@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@drawable/back3"
-    android:layout_gravity="center"
-    android:id="@+id/pericolosi">
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/textView1"
@@ -102,7 +101,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/newpass1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"

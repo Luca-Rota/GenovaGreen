@@ -2,7 +2,6 @@
     <string name="app_name" translatable="false">GenovaGreen</string>
     <string name="slogan">Aiutaci a rendere Genova ancora più Green!</string>
     <string name="e_questo">E questo dove lo butto? </string>
-    <string name="lo_sapevi_che">Lo sapevi che la raccolta differenziata varia in base al comune in cui ci si trova? Cerca un prodotto e scopri in quale bidone va smaltito.</string>
     <string name="genovagreen" translatable="false">GenovaGreen</string>
     <string name="dove_lo_butto">Dove lo Butto?</string>
     <string name="scopri">SCOPRI</string>
@@ -11,66 +10,28 @@
     <string name="versione">Versione 1.0</string>
     <string name="home" translatable="false">Home</string>
     <string name="impostazioni">Impostazioni</string>
-    <string name="contatti">Contatti</string>
     <string name="navigation_drawer_open" translatable="false"> Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false"> Close navigation drawer</string>
     <string name="lingua">Lingua</string>
     <string name="notifiche">Notifiche</string>
     <string name="logout">Esci</string>
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="button" translatable="false">Button</string>
     <string name="exit">Sei sicuro di voler uscire?</string>
     <string name="RUP_tit">Rifiuti Urbani Pericolosi e Rifiuti Ingombranti</string>
     <string name="rif_pericolisi_descrizione">I rifiuti urbani pericolosi (RUP) rappresentano quella tipologia di rifiuti prodotti dalle utenze domestiche che, contenendo al loro interno un’elevata dose di sostanze pericolose per l’ambiente e per la salute, devono essere raccolti separatamente per consentirne un regolare trattamento e smaltimento presso gli impianti convenzionati.</string>
-    <string name="RUP_desc">Tutti i rifiuti urbani pericolosi devono essere conferiti presso i centri di raccolta cittadini.</string>
-    <string name="RUP_desc_2">Ecco un breve elenco dei RUP:</string>
 
-    <string name="RUP_desc_3"> &#8226; Barattoli di colore, vernici, colle, solventi \n
-    <br>&#8226; Pile esauste (stilo, a bottone) \n</br>
-    <br>&#8226; Batterie auto esauste \n</br>
-    <br>&#8226; Farmaci scaduti e contenitori con residui di medicinali \n</br>
-    <br>&#8226; Cartucce d\'inchiostro e toner \n</br>
-    <br>&#8226; Bombolette spray \n</br>
-    <br>&#8226; Solventi chimici di uso domestico \n</br>
-    <br>&#8226; Antiparassitari, insetticidi, topicidi di uso domestico \n</br>
-    <br>&#8226; Olio esausto da cucina \n</br>
-    <br>&#8226; Olio esausto da motori \n</br>
-    <br>&#8226; Filtri olio \n</br>
-    &#8226; Apparecchi elettronici alimentati a batteria di piccole dimensioni </string>
-    <string name="RUP_desc4">Sono invece rifiuti ingombranti:</string>
-    <string name="RUP_desc_5">&#8226; Elettrodomestici (lavatrici, microonde, frigoriferi, ecc.)
-    <br>&#8226; Mobili (armadi, librerie, letti, ecc.) \n</br>
-    <br>&#8226; Altri oggetti voluminosi (es. biciclette) \n</br></string>
     <string name="RUP_but">TROVA IL CENTRO DI RACCOLTA
         <br> PI&#217; VICINO A TE </br></string>
     <string name="rec_pass">Inserisci qui la tua email e ti invieremo il link per cambiare la password del tuo account.</string>
     <string name="log">Non hai ancora un account?</string>
 
 
-    <string name="google_maps_API_key" translatable="false">AIzaSyA8doEtufu_Z52wT-IacLHvjJOOYrfTFrU</string>
     <string name="access_token" translatable="false">pk.eyJ1IjoiZ2Vub3ZhZ3JlZW4iLCJhIjoiY2tuY3kyNWoyMXEyMTJubXF3ZnV6OWRwZiJ9.RDHfP9Qt-y5YKf7QvtzAYA</string>
-    <string name="title_activity_pericolosi2" translatable="false">Pericolosi2</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label" translatable="false">First Fragment</string>
-    <string name="second_fragment_label" translatable="false">Second Fragment</string>
-    <string name="next" translatable="false">Next</string>
-    <string name="previous" translatable="false">Previous</string>
 
-    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
-    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_map" translatable="false">MapActivity</string>
-    <string name="title_activity_maps" translatable="false">Map</string>
-    <string name="title_activity_spedizioni2" translatable="false">Spedizioni2</string>
-    <string name="title_activity_spedizioni3" translatable="false">Spedizioni3</string>
-    <string name="title_activity_password" translatable="false">Password</string>
-    <string name="title_activity_password2" translatable="false">Password2</string>
-    <string name="title_activity_spedizioni4" translatable="false">Spedizioni4</string>
-    <string name="title_activity_spedizioni5" translatable="false">Spedizioni5</string>
     <string name="SearchViewButtoHint">Cerca un prodotto</string>
     <string name="infoAssistenza">Assistenza</string>
     <string name="infoCondividi">Condividi</string>
     <string name="infoSeguici">Seguici anche sui Social!</string>
-    <string name="versione_app_alpha_1_0">Versione app: Beta 1.2</string>
     <string name="email" translatable="false">&#160;Email</string>
     <string name="password_dimenticata">Password dimenticata?</string>
     <string name="accedi">Accedi</string>
@@ -96,21 +57,14 @@
     <string name="le_spedizioni_create_da_te">Le spedizioni create da te:</string>
     <string name="aggiungi_una_nuova_spedizione">Aggiungi una nuova spedizione</string>
     <string name="le_spedizioni_a_cui_parteciperai">Le spedizioni a cui parteciperai:</string>
-    <string name="crea_una_spedizione">CREA UNA SPEDIZIONE</string>
     <string name="scegli_un_luogo_sulla_mappa">Scegli un luogo sulla mappa:</string>
-    <string name="title_activity_place_selection_plugin" translatable="false">PlaceSelectionPluginActivity</string>
 
     <string name="title_activity_notify" translatable="false">notifyActivity</string>
-    <string name="title_activity_notify2" translatable="false">notifyActivity2</string>
-
-    <string name="channel_name" translatable="false">canale 1</string>
-    <string name="channel_description" translatable="false">descrizione canale 1</string>
 
     <string name="move_map_instruction">Muovi la mappa e seleziona il luogo desiderato</string>
     <string name="location_picker_select_location_button_cancel">Cancel</string>
     <string name="location_picker_select_location_button_select">Select a location</string>
     <string name="location_picker_dropped_marker_snippet_no_results">No results</string>
-    <string name="location_picker_place_name_result">Place name: %1$s</string>
 
     <string name="user_location_permission_explanation">Questa funzione necessita dei permessi di localizzazione per funzionare</string>
     <string name="user_location_permission_not_granted">Non hai i permessi per la localizzazione.</string>
@@ -154,11 +108,8 @@
     <string name="popup_sped2">Sei sicuro di voler eliminare la spedizione?</string>
     <string name="popup_sped1">Sei sicuro di non voler più partecipare alla spedizione?</string>
     <string name="informazioni">Informazioni</string>
-    <string name="title_activity_splash1" translatable="false">SplashActivity1</string>
     <string name="consulta_la_sezione_dedicata"><u>Consulta la sezione dedicata</u></string>
-    <string name="title_activity_modify_profile" translatable="false">ModifyProfile</string>
     <string name="modifica_profilo">Modifica profilo</string>
-    <string name="invia_mail">Invia mail</string>
     <string name="modifica_password">Modifica password:</string>
     <string name="modifica_nome_utente">Modifica nome utente:</string>
     <string name="salta">SALTA</string>
@@ -239,9 +190,6 @@
 
     <string name="richiedi">Richiedi modifica via email</string>
     <string name="inserire_email">Inserire email valida</string>
-    <string name="inserire_user">Inserire username valido</string>
-    <string name="inserire_pw">Inserire mail valida</string>
-    <string name="title_activity_differenziata" translatable="false">Differe</string>
 
     <string name="differenziata1_tit"> Carta e cartone </string>
     <string name="differenziata1_desc">
