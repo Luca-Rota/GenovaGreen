@@ -56,7 +56,7 @@
         android:layout_width="155dp"
         android:layout_height="267dp"
         android:background="#00000000"
-        android:src="@drawable/umido"
+        android:src="@drawable/wet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cassonettopop" />

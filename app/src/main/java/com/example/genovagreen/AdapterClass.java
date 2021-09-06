@@ -49,22 +49,22 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                 holder.imgrec.setImageResource(R.drawable.mixed);
                 break;
             case "Cassonetto della carta":
-                holder.imgrec.setImageResource(R.drawable.carta);
+                holder.imgrec.setImageResource(R.drawable.paper);
                 break;
             case "Cassonetto della plastica":
-                holder.imgrec.setImageResource(R.drawable.plastica);
+                holder.imgrec.setImageResource(R.drawable.plastic);
                 break;
             case "Cassonetto del vetro":
-                holder.imgrec.setImageResource(R.drawable.vetro);
+                holder.imgrec.setImageResource(R.drawable.glass);
                 break;
             case "Isola Ecologica":
-                holder.imgrec.setImageResource(R.drawable.isola);
+                holder.imgrec.setImageResource(R.drawable.eisland);
                 break;
             case "Cassonetto dell'umido":
-                holder.imgrec.setImageResource(R.drawable.umido);
+                holder.imgrec.setImageResource(R.drawable.wet);
                 break;
             case "Cassonetto degli abiti":
-                holder.imgrec.setImageResource(R.drawable.abiti);
+                holder.imgrec.setImageResource(R.drawable.dresses);
                 break;
             default:
                 break;
@@ -75,7 +75,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
             @Override
             public void onClick(View v) {
                 LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View popupView=inflater.inflate(R.layout.popup_butto, null);
+                View popupView=inflater.inflate(R.layout.popup_trash, null);
 
                 final PopupWindow popupWindow=new PopupWindow(popupView,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
                 popupWindow.setOutsideTouchable(true);
@@ -96,7 +96,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setVisibility(View.INVISIBLE);
                         break;
                     case "Cassonetto della carta":
-                        imgpop.setImageResource(R.drawable.carta);
+                        imgpop.setImageResource(R.drawable.paper);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -108,7 +108,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         });
                         break;
                     case "Cassonetto della plastica":
-                        imgpop.setImageResource(R.drawable.plastica);
+                        imgpop.setImageResource(R.drawable.plastic);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -119,7 +119,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         });
                         break;
                     case "Cassonetto del vetro":
-                        imgpop.setImageResource(R.drawable.vetro);
+                        imgpop.setImageResource(R.drawable.glass);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -130,7 +130,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         });
                         break;
                     case "Cassonetto dell'umido":
-                        imgpop.setImageResource(R.drawable.umido);
+                        imgpop.setImageResource(R.drawable.wet);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -141,7 +141,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         });
                         break;
                     case "Cassonetto degli abiti":
-                        imgpop.setImageResource(R.drawable.abiti);
+                        imgpop.setImageResource(R.drawable.dresses);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -152,7 +152,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         });
                         break;
                     case "Isola Ecologica":
-                        imgpop.setImageResource(R.drawable.isola);
+                        imgpop.setImageResource(R.drawable.eisland);
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

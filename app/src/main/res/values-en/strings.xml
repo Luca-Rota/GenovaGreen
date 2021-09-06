@@ -283,4 +283,6 @@
     </string>
     <string name="username_lenght">Username cannot be less than 4 characters</string>
     <string name="username_mod">Username has been modified</string>
+    <string name="dove_lo_butto2">Where do I throw it?</string>
+    <string name="registrati">Sign in</string>
 </resources>

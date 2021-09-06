@@ -26,9 +26,9 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SelectLanguage();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        loadLocale();
 
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
@@ -49,11 +49,15 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-    public void loadLocale(){
-        SharedPreferences prefs=getSharedPreferences("Settings", Context.MODE_PRIVATE);
-        String language=prefs.getString("My_Lang","");
-        setLocale(language);
+    private void SelectLanguage() {
+        String language=Locale.getDefault().getLanguage();
+        if(language.equals("it")){
+            setLocale("values");
+        }else{
+            setLocale("en");
+        }
     }
+
     private void setLocale(String lang) {
         Locale locale= new Locale(lang);
         Locale.setDefault(locale);

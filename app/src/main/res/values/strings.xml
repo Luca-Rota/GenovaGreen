@@ -305,6 +305,8 @@
     </string>
     <string name="username" translatable="false">&#160;Username</string>
     <string name="username_mod">Lo username è stato modificato</string>
+    <string name="dove_lo_butto2">Dove lo butto?</string>
+    <string name="registrati">REGISTRATI</string>
 
 </resources>
 

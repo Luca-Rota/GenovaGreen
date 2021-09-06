@@ -24,7 +24,7 @@ public class AdapterSpedizioni extends RecyclerView.Adapter<AdapterSpedizioni.my
     @NonNull
     @Override
     public AdapterSpedizioni.myviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_spedizioni, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_expeditions, parent, false);
         return new myviewholder(view);
     }
 

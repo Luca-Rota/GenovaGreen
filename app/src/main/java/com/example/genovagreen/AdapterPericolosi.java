@@ -26,7 +26,7 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
     @NonNull
     @Override
     public AdapterPericolosi.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_pericolosi, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_holder_dangerous, parent, false);
         return new ViewHolder(view);
     }
 

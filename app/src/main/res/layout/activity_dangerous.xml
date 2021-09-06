@@ -24,7 +24,7 @@
             android:minHeight="80dp"
             style="@style/ToolBarStyle.Event" />
 
-        <include layout="@layout/content_spedizioni3"/>
+        <include layout="@layout/content_dangerous"/>
 
 
     </LinearLayout>

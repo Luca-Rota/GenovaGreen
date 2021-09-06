@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/back3"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:id="@+id/tutorial1">
 
     <TextView
         android:id="@+id/logo"
@@ -53,7 +54,7 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="monospace"
         android:gravity="center"
-        android:text="Dove lo butto?"
+        android:text="@string/dove_lo_butto2"
         android:textColor="#000000"
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@+id/textView1"

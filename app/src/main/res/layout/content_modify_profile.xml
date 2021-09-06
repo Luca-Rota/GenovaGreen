@@ -269,7 +269,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="127dp"
             android:layout_marginEnd="127dp"
-            android:background="@drawable/custom_segnalazioni"
+            android:background="@drawable/custom_segnalations"
             android:fontFamily="monospace"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

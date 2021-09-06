@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class Tutorial0 extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class Tutorial0 extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+
 
         jump = findViewById(R.id.textView9);
         jump.setOnClickListener(new View.OnClickListener() {

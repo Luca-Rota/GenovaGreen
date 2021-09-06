@@ -34,7 +34,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/custom_spedizioni"
+        android:background="@drawable/custom_expeditions"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
