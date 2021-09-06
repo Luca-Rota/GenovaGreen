@@ -38,7 +38,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Expeditions5 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -104,32 +104,32 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                 finish();
             }
         });
-        final Spedizione sped=new Spedizione(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotify);
+        final Expedition sped=new Expedition(luogo, descrizione, organizzatore, data, ora, partecipanti, idNotify);
         partecipa = findViewById(R.id.partecipa);
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                             if(sped.getOrganizzatore().trim().equals(ds.getValue(Spedizione.class).getOrganizzatore().trim())&&
-                                     sped.getData().trim().equals(ds.getValue(Spedizione.class).getData().trim())&&
-                                             sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
-                                                     sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())) {
+                             if(sped.getOrganizzatore().trim().equals(ds.getValue(Expedition.class).getOrganizzatore().trim())&&
+                                     sped.getData().trim().equals(ds.getValue(Expedition.class).getData().trim())&&
+                                             sped.getLuogo().trim().equals(ds.getValue(Expedition.class).getLuogo().trim())&&
+                                                     sped.getOra().trim().equals(ds.getValue(Expedition.class).getOra().trim())) {
                                  id = ds.getKey();
                                  DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("SpedCreate");
                                      ref.addValueEventListener(new ValueEventListener() {
                                          @Override
                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                  for (DataSnapshot ds : snapshot.getChildren()) {
-                                                     id1 = ds.getValue(MySped.class).getId().trim();
-                                                     String email1 = ds.getValue(MySped.class).getEmail().trim();
+                                                     id1 = ds.getValue(MyExp.class).getId().trim();
+                                                     String email1 = ds.getValue(MyExp.class).getEmail().trim();
                                                      if (id.equals(id1) && email.equals(email1)) {
                                                          final String idCr=ds.getKey().trim();
                                                          partecipa.setText(R.string.elimina);
                                                          partecipa.setOnClickListener(new View.OnClickListener() {
                                                              @Override
                                                              public void onClick(View v) {
-                                                             AlertDialog mBuilder= new AlertDialog.Builder(Spedizioni5.this)
+                                                             AlertDialog mBuilder= new AlertDialog.Builder(Expeditions5.this)
                                                                  .setMessage(R.string.popup_sped2)
                                                                  .setIcon(android.R.drawable.ic_dialog_alert)
                                                                  .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
@@ -142,7 +142,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                          @Override
                                                                          public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                                                              for(DataSnapshot ds1:snapshot1.getChildren()){
-                                                                                 if(ds1.getValue(MySped.class).getId().equals(id)){
+                                                                                 if(ds1.getValue(MyExp.class).getId().equals(id)){
                                                                                      String idPart=ds1.getKey();
                                                                                      ref3.child(idPart).removeValue();
                                                                                  }
@@ -152,7 +152,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                          public void onCancelled(@NonNull DatabaseError error) {
                                                                          }
                                                                      });
-                                                                     startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                                     startActivity(new Intent(Expeditions5.this, Expeditions3.class));
                                                                  }})
                                                                  .setNegativeButton(R.string.no, null).show();
                                                              }
@@ -162,7 +162,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                              }
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError error) {
-                                             Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                                             Toast.makeText(Expeditions5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                          }
                                      });
                              }
@@ -172,15 +172,15 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          @Override
                                          public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                  for (DataSnapshot ds : snapshot.getChildren()) {
-                                                     id1=ds.getValue(MySped.class).getId().trim();
-                                                     String email1=ds.getValue(MySped.class).getEmail().trim();
+                                                     id1=ds.getValue(MyExp.class).getId().trim();
+                                                     String email1=ds.getValue(MyExp.class).getEmail().trim();
                                                      if(id.equals(id1)&&email.equals(email1)){
                                                          final String idPart=ds.getKey().trim();
                                                          partecipa.setText(R.string.non_partecipare);
                                                          partecipa.setOnClickListener(new View.OnClickListener() {
                                                              @Override
                                                              public void onClick(View v) {
-                                                                 AlertDialog mBuilder= new AlertDialog.Builder(Spedizioni5.this)
+                                                                 AlertDialog mBuilder= new AlertDialog.Builder(Expeditions5.this)
                                                                      .setMessage(R.string.popup_sped1)
                                                                      .setIcon(android.R.drawable.ic_dialog_alert)
                                                                      .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
@@ -191,7 +191,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                                                          DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                                                          update2.child(id).setValue(sped);
                                                                          cancelAlarm();
-                                                                         startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                                                         startActivity(new Intent(Expeditions5.this, Expeditions3.class));
                                                                      }})
                                                                      .setNegativeButton(R.string.no, null).show();
                                                              }
@@ -201,7 +201,7 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                              }
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError error) {
-                                             Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                                             Toast.makeText(Expeditions5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                          }
                                      });
                                  }
@@ -211,21 +211,21 @@ public class Spedizioni5 extends AppCompatActivity implements NavigationView.OnN
                                          DatabaseReference update2=FirebaseDatabase.getInstance().getReference().child("Spedizioni");
                                          int newPartecipanti=new Integer(partecipanti)+1;
                                          String part=String.valueOf(newPartecipanti);
-                                         Spedizione updateSped=new Spedizione(luogo,descrizione,organizzatore,data, ora, part, idNotify);
+                                         Expedition updateSped=new Expedition(luogo,descrizione,organizzatore,data, ora, part, idNotify);
                                          update2.child(id).setValue(updateSped);
                                          DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("SpedPart").push();
-                                         MySped users=new MySped(id,email);
+                                         MyExp users=new MyExp(id,email);
                                          ref.setValue(users);
                                          createNotificationChannel(idNotify);
                                          startAlarm(setAlarm());
-                                         startActivity(new Intent(Spedizioni5.this, Spedizioni3.class));
+                                         startActivity(new Intent(Expeditions5.this, Expeditions3.class));
                                      }
                                  });
                              }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Expeditions5.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
 

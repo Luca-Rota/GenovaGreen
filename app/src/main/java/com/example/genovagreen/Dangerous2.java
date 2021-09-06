@@ -23,7 +23,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Dangerous2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int ERROR_DIALOG_REQUEST = 9001;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
@@ -107,19 +107,19 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Pericolosi2.this, MapActivity.class));
+                startActivity(new Intent(Dangerous2.this, MapActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }
 
     public boolean isServicesOk(){
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(Pericolosi2.this);
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(Dangerous2.this);
         if (available == ConnectionResult.SUCCESS){
             return true;
         }
         else if (GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(Pericolosi2.this, available, ERROR_DIALOG_REQUEST);
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(Dangerous2.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
         }
         else{
@@ -143,7 +143,7 @@ public class Pericolosi2 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Pericolosi2.this, Pericolosi.class));
+        startActivity(new Intent(Dangerous2.this, Dangerous.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 

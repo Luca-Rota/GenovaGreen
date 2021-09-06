@@ -24,23 +24,23 @@ public class CommonFunctions {
                 v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
                 break;
             case R.id.content_butto:
-                v.getContext().startActivity(new Intent(v.getContext(), Butto.class));
+                v.getContext().startActivity(new Intent(v.getContext(), Trash.class));
                 break;
             case R.id.content_pericolosi:
-                v.getContext().startActivity(new Intent(v.getContext(), Pericolosi.class));
+                v.getContext().startActivity(new Intent(v.getContext(), Dangerous.class));
                 break;
             case R.id.content_spedizioni:
                 if(user!=null && user.isEmailVerified()) {
-                    v.getContext().startActivity(new Intent(v.getContext(), Spedizioni2.class));
+                    v.getContext().startActivity(new Intent(v.getContext(), Expeditions2.class));
                 }else{
-                    v.getContext().startActivity(new Intent(v.getContext(), Spedizioni.class));
+                    v.getContext().startActivity(new Intent(v.getContext(), Expeditions.class));
                 }
                 break;
             case R.id.content_impostazioni:
-                v.getContext().startActivity(new Intent(v.getContext(), Impostazioni.class));
+                v.getContext().startActivity(new Intent(v.getContext(), Settings.class));
                 break;
             case R.id.content_informazioni:
-                v.getContext().startActivity(new Intent(v.getContext(), Informazioni.class));
+                v.getContext().startActivity(new Intent(v.getContext(), Informations.class));
         }
         drawer.closeDrawer(GravityCompat.START);
     }

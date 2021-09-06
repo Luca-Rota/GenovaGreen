@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 DoveLoButto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, Butto.class));
+                        startActivity(new Intent(MainActivity.this, Trash.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Pericolosi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, Pericolosi.class));
+                        startActivity(new Intent(MainActivity.this, Dangerous.class));
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     }
@@ -103,11 +103,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onClick(View v) {
                         if (user != null && user.isEmailVerified()) {
-                            startActivity(new Intent(MainActivity.this, Spedizioni2.class));
+                            startActivity(new Intent(MainActivity.this, Expeditions2.class));
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                         } else {
-                            startActivity(new Intent(MainActivity.this, Spedizioni.class));
+                            startActivity(new Intent(MainActivity.this, Expeditions.class));
                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                         }

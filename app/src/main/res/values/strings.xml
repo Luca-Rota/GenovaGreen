@@ -59,8 +59,6 @@
     <string name="le_spedizioni_a_cui_parteciperai">Le spedizioni a cui parteciperai:</string>
     <string name="scegli_un_luogo_sulla_mappa">Scegli un luogo sulla mappa:</string>
 
-    <string name="title_activity_notify" translatable="false">notifyActivity</string>
-
     <string name="move_map_instruction">Muovi la mappa e seleziona il luogo desiderato</string>
     <string name="location_picker_select_location_button_cancel">Cancel</string>
     <string name="location_picker_select_location_button_select">Select a location</string>

@@ -180,7 +180,7 @@ public class  MapActivity extends AppCompatActivity implements OnMapReadyCallbac
                 })
                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        startActivity(new Intent(MapActivity.this,Pericolosi2.class));
+                        startActivity(new Intent(MapActivity.this, Dangerous2.class));
                     }
                 });
         final AlertDialog alert = builder.create();
@@ -241,7 +241,7 @@ public class  MapActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(MapActivity.this, Pericolosi2.class));
+        startActivity(new Intent(MapActivity.this, Dangerous2.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

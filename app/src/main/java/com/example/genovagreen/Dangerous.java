@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Pericolosi extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Dangerous extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Button button;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
@@ -55,7 +55,7 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
         scopri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Pericolosi.this,Pericolosi3.class));
+                startActivity(new Intent(Dangerous.this, Dangerous3.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
@@ -65,7 +65,7 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Pericolosi.this,Pericolosi2.class));
+                startActivity(new Intent(Dangerous.this, Dangerous2.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -87,7 +87,7 @@ public class Pericolosi extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Pericolosi.this,MainActivity.class));
+        startActivity(new Intent(Dangerous.this,MainActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

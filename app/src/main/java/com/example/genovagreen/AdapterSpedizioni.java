@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class AdapterSpedizioni extends RecyclerView.Adapter<AdapterSpedizioni.myviewholder> {
-    ArrayList<Spedizione> list;
+    ArrayList<Expedition> list;
     String key;
 
-    public AdapterSpedizioni(ArrayList<Spedizione> list) {
+    public AdapterSpedizioni(ArrayList<Expedition> list) {
         this.list = list;
     }
 
@@ -36,7 +36,7 @@ public class AdapterSpedizioni extends RecyclerView.Adapter<AdapterSpedizioni.my
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(v.getContext(), Spedizioni5.class);
+                Intent intent=new Intent(v.getContext(), Expeditions5.class);
                 intent.putExtra("luogo",list.get(position).getLuogo().trim());
                 intent.putExtra("data",list.get(position).getData().trim());
                 intent.putExtra("descrizione",list.get(position).getDescrizione().trim());

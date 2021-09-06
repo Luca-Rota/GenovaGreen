@@ -3,12 +3,12 @@ package com.example.genovagreen;
 
 import java.util.Comparator;
 
-public class Oggetto {
+public class Object {
     public String rifiuto,cassonetto;
 
-    public Oggetto(){}
+    public Object(){}
 
-    public Oggetto(String rifiuto, String cassonetto){
+    public Object(String rifiuto, String cassonetto){
         this.rifiuto=rifiuto;
         this.cassonetto=cassonetto;
     }
@@ -26,9 +26,9 @@ public class Oggetto {
         return cassonetto;
     }
 
-    public static Comparator<Oggetto> comparator = new Comparator<Oggetto>() {
+    public static Comparator<Object> comparator = new Comparator<Object>() {
         @Override
-        public int compare(Oggetto ogg1, Oggetto ogg2) {
+        public int compare(Object ogg1, Object ogg2) {
             return (int) (ogg1.getRifiuto().compareTo(ogg2.getRifiuto()));
         }
     };

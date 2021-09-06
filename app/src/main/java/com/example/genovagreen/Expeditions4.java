@@ -40,7 +40,7 @@ import java.util.Date;
 import java.util.Random;
 
 
-public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Expeditions4 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -68,7 +68,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset){
                 super.onDrawerSlide(drawerView, slideOffset);
-                hideKeyboard(Spedizioni4.this);
+                hideKeyboard(Expeditions4.this);
             }
         };
         drawer.addDrawerListener(toggle);
@@ -102,7 +102,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         annulla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                startActivity(new Intent(Expeditions4.this, Expeditions3.class));
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
             }
@@ -111,7 +111,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spedizioni4.this, MapSpedizioni.class));
+                startActivity(new Intent(Expeditions4.this, MapExpeditions.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
@@ -150,7 +150,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                 String partecipanti = "1";
                                                 Random myRandom=new Random();
                                                 int idNotifica=myRandom.nextInt(99999);
-                                                Spedizione sped = new Spedizione(posizione, descrizione, nomeutente, date, ora, partecipanti, idNotifica);
+                                                Expedition sped = new Expedition(posizione, descrizione, nomeutente, date, ora, partecipanti, idNotifica);
                                                 ref = FirebaseDatabase.getInstance().getReference("Spedizioni").push();
                                                 ref.setValue(sped);
                                                 ref = FirebaseDatabase.getInstance().getReference("Spedizioni");
@@ -158,21 +158,21 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                             for(DataSnapshot ds : snapshot.getChildren()){
-                                                                if(sped.getOrganizzatore().trim().equals(ds.getValue(Spedizione.class).getOrganizzatore().trim())&&
-                                                                        sped.getData().trim().equals(ds.getValue(Spedizione.class).getData().trim())&&
-                                                                        sped.getLuogo().trim().equals(ds.getValue(Spedizione.class).getLuogo().trim())&&
-                                                                        sped.getOra().trim().equals(ds.getValue(Spedizione.class).getOra().trim())){
+                                                                if(sped.getOrganizzatore().trim().equals(ds.getValue(Expedition.class).getOrganizzatore().trim())&&
+                                                                        sped.getData().trim().equals(ds.getValue(Expedition.class).getData().trim())&&
+                                                                        sped.getLuogo().trim().equals(ds.getValue(Expedition.class).getLuogo().trim())&&
+                                                                        sped.getOra().trim().equals(ds.getValue(Expedition.class).getOra().trim())){
                                                                     if(ok==true){
-                                                                        startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                        startActivity(new Intent(Expeditions4.this, Expeditions3.class));
                                                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                                                         finish();
                                                                     }else {
                                                                         String id = ds.getKey();
                                                                         ref = FirebaseDatabase.getInstance().getReference("SpedCreate").push();
-                                                                        MySped mySped = new MySped(id, email);
-                                                                        ref.setValue(mySped);
+                                                                        MyExp myExp = new MyExp(id, email);
+                                                                        ref.setValue(myExp);
                                                                         ok = true;
-                                                                        startActivity(new Intent(Spedizioni4.this, Spedizioni3.class));
+                                                                        startActivity(new Intent(Expeditions4.this, Expeditions3.class));
                                                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                                                     }
                                                                 }
@@ -184,14 +184,14 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                                                     }
                                                 });
                                             }else{
-                                                Toast.makeText(Spedizioni4.this, R.string.no_campi_vuoti, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Expeditions4.this, R.string.no_campi_vuoti, Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     }
                                 }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(Spedizioni4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                                Toast.makeText(Expeditions4.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -204,7 +204,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         final int year = c.get(Calendar.YEAR);
         final int month = c.get(Calendar.MONTH);
         final int day = c.get(Calendar.DAY_OF_MONTH);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(Spedizioni4.this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(Expeditions4.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month++;
@@ -224,7 +224,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
-        TimePickerDialog timePickerDialog = new TimePickerDialog(Spedizioni4.this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(Expeditions4.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -244,7 +244,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
                 else
                     timeButton.setText(timeText);
             }
-        }, hour, minute, android.text.format.DateFormat.is24HourFormat(Spedizioni4.this));
+        }, hour, minute, android.text.format.DateFormat.is24HourFormat(Expeditions4.this));
         timePickerDialog.show();
     }
 
@@ -271,7 +271,7 @@ public class Spedizioni4 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Spedizioni4.this,Spedizioni3.class));
+        startActivity(new Intent(Expeditions4.this, Expeditions3.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

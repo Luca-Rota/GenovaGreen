@@ -26,14 +26,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Expeditions3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
     private AdapterSpedizioni adapterSpedizioni1,adapterSpedizioni2;
-    private ArrayList<Spedizione> list1,list2;
-    private ArrayList<MySped> listemail1,listemail2;
+    private ArrayList<Expedition> list1,list2;
+    private ArrayList<MyExp> listemail1,listemail2;
     private DatabaseReference ref1,ref2,ref3;
     private RecyclerView recyclerView1,recyclerView2;
     private TextView button, username, nosped1, nosped2, id;
@@ -73,7 +73,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
         button.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   startActivity(new Intent(Spedizioni3.this, Spedizioni4.class));
+                   startActivity(new Intent(Expeditions3.this, Expeditions4.class));
                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                }
@@ -94,8 +94,8 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
 
                         listemail1= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            if(email.equals(ds.getValue(MySped.class).getEmail()))
-                            listemail1.add(ds.getValue(MySped.class));
+                            if(email.equals(ds.getValue(MyExp.class).getEmail()))
+                            listemail1.add(ds.getValue(MyExp.class));
                         }
                             ref3.addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -104,7 +104,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                         for(DataSnapshot ds : snapshot.getChildren()){
                                             for(int i=0;i<listemail1.size();i++){
                                                 if(listemail1.get(i).getId().equals(ds.getKey())){
-                                                    list1.add(ds.getValue(Spedizione.class));
+                                                    list1.add(ds.getValue(Expedition.class));
                                                 }
                                             }
                                         }
@@ -125,7 +125,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                     }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Expeditions3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -135,8 +135,8 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
 
                         listemail2= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            if(email.equals(ds.getValue(MySped.class).getEmail()))
-                                listemail2.add(ds.getValue(MySped.class));
+                            if(email.equals(ds.getValue(MyExp.class).getEmail()))
+                                listemail2.add(ds.getValue(MyExp.class));
                         }
                             ref3.addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -146,7 +146,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                                         for(DataSnapshot ds : snapshot.getChildren()){
                                             for(int i=0;i<listemail2.size();i++){
                                                 if(listemail2.get(i).getId().equals(ds.getKey())){
-                                                    list2.add(ds.getValue(Spedizione.class));
+                                                    list2.add(ds.getValue(Expedition.class));
                                                 }
                                             }
                                         }
@@ -166,7 +166,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
                     }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Expeditions3.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
     }
@@ -184,7 +184,7 @@ public class Spedizioni3 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Spedizioni3.this,Spedizioni2.class));
+        startActivity(new Intent(Expeditions3.this, Expeditions2.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

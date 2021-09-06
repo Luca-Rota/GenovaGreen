@@ -1,15 +1,15 @@
  package com.example.genovagreen;
 
-public class ItemPericolosi {
+public class ItemDangerous {
 
     private String titles;
     private String desc;
     private boolean expanded;
 
-    public ItemPericolosi(){
+    public ItemDangerous(){
     }
 
-    public ItemPericolosi(String titles, String desc) {
+    public ItemDangerous(String titles, String desc) {
         this.titles = titles;
         this.desc = desc;
         this.expanded=false;

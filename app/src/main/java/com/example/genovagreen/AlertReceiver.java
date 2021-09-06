@@ -14,7 +14,7 @@ public class AlertReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         int channel_id=intent.getExtras().getInt("idNotifica");
         String channel_id2=Integer.toString(channel_id);
-        Intent i = new Intent(context,Spedizioni3.class);
+        Intent i = new Intent(context, Expeditions3.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent=PendingIntent.getActivity(context,channel_id,i,PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder=new NotificationCompat.Builder(context,channel_id2)

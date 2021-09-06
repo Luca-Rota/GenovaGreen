@@ -21,7 +21,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -29,7 +28,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-public class Impostazioni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Settings extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private TextView logout,lingua, username, id, notify, modify;
     private DrawerLayout drawer;
     private FirebaseAuth auth;
@@ -70,7 +69,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Impostazioni.this, ModifyProfile.class));
+                startActivity(new Intent(Settings.this, ModifyProfile.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -86,14 +85,14 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog mBuilder= new AlertDialog.Builder(Impostazioni.this)
+                AlertDialog mBuilder= new AlertDialog.Builder(Settings.this)
                         .setMessage(R.string.popup_impostazioni)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 auth.signOut();
-                                Toast.makeText(Impostazioni.this, R.string.logout_toast,Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Impostazioni.this, MainActivity.class));
+                                Toast.makeText(Settings.this, R.string.logout_toast,Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Settings.this, MainActivity.class));
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                             }})
@@ -107,17 +106,17 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 final String[] listItems={"Italiano", "English"};
-                AlertDialog.Builder mBuilder= new AlertDialog.Builder(Impostazioni.this);
+                AlertDialog.Builder mBuilder= new AlertDialog.Builder(Settings.this);
                 mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         if(i==0){
                             setLocale("values");
-                            startActivity(new Intent(Impostazioni.this, Impostazioni.class));
+                            startActivity(new Intent(Settings.this, Settings.class));
                         }
                         if(i==1){
                             setLocale("en");
-                            startActivity(new Intent(Impostazioni.this, Impostazioni.class));
+                            startActivity(new Intent(Settings.this, Settings.class));
                         }
                         dialog.dismiss();
                     }
@@ -132,11 +131,11 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    Intent intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                    Intent intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, getPackageName());
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     intent.setData(Uri.parse("package:" + getPackageName()));
                     startActivity(intent);
                 }
@@ -170,7 +169,7 @@ public class Impostazioni extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Impostazioni.this,MainActivity.class));
+        startActivity(new Intent(Settings.this,MainActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

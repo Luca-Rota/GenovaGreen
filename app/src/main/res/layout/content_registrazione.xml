@@ -6,7 +6,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/back3"
-    tools:context=".Registrazione">
+    tools:context=".Registration">
 
     <TextView
         android:id="@+id/textView1"

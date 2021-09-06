@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Informazioni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Informations extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private FirebaseAuth auth;
     private NavigationView navigationView;
@@ -108,7 +108,7 @@ public class Informazioni extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Informazioni.this,MainActivity.class));
+        startActivity(new Intent(Informations.this,MainActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

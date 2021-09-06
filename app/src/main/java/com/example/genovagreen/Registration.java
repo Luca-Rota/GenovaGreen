@@ -33,7 +33,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Registrazione extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Registration extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private EditText emailAdd, password, password2, username;
     private Button button;
     private FirebaseAuth auth;
@@ -59,7 +59,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset){
                 super.onDrawerSlide(drawerView, slideOffset);
-                hideKeyboard(Registrazione.this);
+                hideKeyboard(Registration.this);
             }
         };
         drawer.addDrawerListener(toggle);
@@ -77,7 +77,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Registrazione.this,Login.class));
+                startActivity(new Intent(Registration.this,Login.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
@@ -122,49 +122,49 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
                                                                     users.setUsername(user);
                                                                     ref.setValue(users);
                                                                     auth.signOut();
-                                                                    Toast.makeText(Registrazione.this, R.string.registrazione_avvenuta,Toast.LENGTH_LONG).show();
-                                                                    startActivity(new Intent(Registrazione.this,Login.class));
+                                                                    Toast.makeText(Registration.this, R.string.registrazione_avvenuta,Toast.LENGTH_LONG).show();
+                                                                    startActivity(new Intent(Registration.this,Login.class));
                                                                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                                                                 }else{
-                                                                    Toast.makeText(Registrazione.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(Registration.this, task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }
                                                         });
                                                     }else{
-                                                        Toast.makeText(Registrazione.this, R.string.registrazione_storta,Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(Registration.this, R.string.registrazione_storta,Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(Registrazione.this, ""+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Registration.this, ""+e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
                                                 }
                                             }).addOnCanceledListener(new OnCanceledListener() {
                                                 @Override
                                                 public void onCanceled() {
-                                                    Toast.makeText(Registrazione.this, R.string.riprova,Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Registration.this, R.string.riprova,Toast.LENGTH_SHORT).show();
                                                 }
                                             });
                                         }else{
-                                            Toast.makeText(Registrazione.this, R.string.pass_min_6_caratteri,Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Registration.this, R.string.pass_min_6_caratteri,Toast.LENGTH_SHORT).show();
                                         }
 
                                     }else{
-                                        Toast.makeText(Registrazione.this, R.string.pass_confermapass_non_coincidono,Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Registration.this, R.string.pass_confermapass_non_coincidono,Toast.LENGTH_SHORT).show();
                                     }
                                 }else{
-                                    Toast.makeText(Registrazione.this, R.string.username_in_uso,Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registration.this, R.string.username_in_uso,Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                Toast.makeText(Registrazione.this, R.string.no_campi_vuoti,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Registration.this, R.string.no_campi_vuoti,Toast.LENGTH_SHORT).show();
                             }
                          }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Registrazione.this, R.string.errore_db,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Registration.this, R.string.errore_db,Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -193,7 +193,7 @@ public class Registrazione extends AppCompatActivity implements NavigationView.O
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Registrazione.this,Spedizioni.class));
+        startActivity(new Intent(Registration.this, Expeditions.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

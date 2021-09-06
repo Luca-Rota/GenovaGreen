@@ -34,7 +34,7 @@
         <receiver android:name=".AlertReceiver" />
 
         <activity
-            android:name=".Differenziata"
+            android:name=".Recycling"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
@@ -64,22 +64,22 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Butto"
+            android:name=".Trash"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Impostazioni"
+            android:name=".Settings"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Informazioni"
+            android:name=".Informations"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Spedizioni5"
+            android:name=".Expeditions5"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar"
@@ -90,7 +90,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Spedizioni4"
+            android:name=".Expeditions4"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar"
@@ -101,12 +101,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Spedizioni3"
+            android:name=".Expeditions3"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Spedizioni2"
+            android:name=".Expeditions2"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
@@ -116,32 +116,32 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".MapSpedizioni"
+            android:name=".MapExpeditions"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Pericolosi3"
+            android:name=".Dangerous3"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Pericolosi"
+            android:name=".Dangerous"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Pericolosi2"
+            android:name=".Dangerous2"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Registrazione"
+            android:name=".Registration"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />
         <activity
-            android:name=".Spedizioni"
+            android:name=".Expeditions"
             android:label="GenovaGreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.GenovaGreen.NoActionBar" />

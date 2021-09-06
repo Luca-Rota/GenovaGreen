@@ -48,12 +48,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.GenovaGreen.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-
-    </style>
-
-
-    <style name="Theme.GenovaGreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="ToolBarStyle" parent="">
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>

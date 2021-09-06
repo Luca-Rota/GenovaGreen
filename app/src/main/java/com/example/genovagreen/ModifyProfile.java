@@ -101,6 +101,7 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
         NewUser.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View v) {
+                                           hideKeyboard(ModifyProfile.this);
                                            res = true;
                                            String newusername = Placeholder.getText().toString().trim();
                                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Usernames");
@@ -128,8 +129,9 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
                                                                                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Usernames");
                                                                                        User user = new User(newusername, email);
                                                                                        ref.child(id).setValue(user);
+                                                                                       hideKeyboard(ModifyProfile.this);
                                                                                        Toast.makeText(ModifyProfile.this, R.string.username_mod, Toast.LENGTH_SHORT).show();
-                                                                                       startActivity((new Intent(ModifyProfile.this, Impostazioni.class)));
+                                                                                       startActivity((new Intent(ModifyProfile.this, Settings.class)));
                                                                                        System.exit(0);
                                                                                    }
                                                                                }
@@ -209,7 +211,7 @@ public class ModifyProfile extends AppCompatActivity implements NavigationView.O
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(ModifyProfile.this,Impostazioni.class));
+        startActivity(new Intent(ModifyProfile.this, Settings.class));
     }
 
 }

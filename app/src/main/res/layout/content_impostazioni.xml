@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Impostazioni"
+    tools:context=".Settings"
     android:background="@drawable/back3">
 
     <androidx.constraintlayout.widget.ConstraintLayout

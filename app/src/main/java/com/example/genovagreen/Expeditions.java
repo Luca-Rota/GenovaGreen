@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Spedizioni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Expeditions extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -49,7 +49,7 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spedizioni.this,Login.class));
+                startActivity(new Intent(Expeditions.this,Login.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -57,7 +57,7 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
         registrati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spedizioni.this, Registrazione.class));
+                startActivity(new Intent(Expeditions.this, Registration.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
@@ -78,7 +78,7 @@ public class Spedizioni extends AppCompatActivity implements NavigationView.OnNa
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Spedizioni.this,MainActivity.class));
+        startActivity(new Intent(Expeditions.this,MainActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

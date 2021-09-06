@@ -1,14 +1,14 @@
 package com.example.genovagreen;
 
-public class Spedizione {
+public class Expedition {
     public String luogo, descrizione, organizzatore, data, ora, partecipanti;
     int idNotifica;
 
 
 
-    public Spedizione(){}
+    public Expedition(){}
 
-    public Spedizione(String luogo,String descrizione, String organizzatore, String data, String ora, String partecipanti, int idNotifica){
+    public Expedition(String luogo, String descrizione, String organizzatore, String data, String ora, String partecipanti, int idNotifica){
         this.luogo=luogo;
         this.descrizione=descrizione;
         this.organizzatore=organizzatore;

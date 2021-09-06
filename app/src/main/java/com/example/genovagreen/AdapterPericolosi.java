@@ -14,11 +14,11 @@ import java.util.ArrayList;
 
 public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.ViewHolder>{
 
-    private ArrayList<ItemPericolosi> items;
+    private ArrayList<ItemDangerous> items;
     private String apri;
     private String titles;
 
-    public AdapterPericolosi(ArrayList<ItemPericolosi> items, String apri){
+    public AdapterPericolosi(ArrayList<ItemDangerous> items, String apri){
         this.items = items;
         this.apri=apri;
     }
@@ -32,7 +32,7 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
 
     @Override
     public void onBindViewHolder(@NonNull AdapterPericolosi.ViewHolder holder, int position) {
-        ItemPericolosi item = items.get(position);
+        ItemDangerous item = items.get(position);
         holder.title.setText(item.getTitles());
         titles=item.getTitles().trim();
         holder.desc.setText(item.getDesc());
@@ -87,8 +87,8 @@ public class AdapterPericolosi  extends RecyclerView.Adapter<AdapterPericolosi.V
             constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ItemPericolosi itemPericolosi=items.get(getAdapterPosition());
-                    itemPericolosi.setExpanded(!itemPericolosi.isExpanded());
+                    ItemDangerous itemDangerous =items.get(getAdapterPosition());
+                    itemDangerous.setExpanded(!itemDangerous.isExpanded());
                     notifyItemChanged(getAdapterPosition());
                 }
             });

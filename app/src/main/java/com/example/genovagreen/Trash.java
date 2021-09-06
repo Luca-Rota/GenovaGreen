@@ -34,13 +34,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Butto extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Trash extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
     private AdapterClass adapterClass;
-    private ArrayList<Oggetto> list;
+    private ArrayList<Object> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
     private SearchView searchView;
@@ -63,7 +63,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset){
                 super.onDrawerSlide(drawerView, slideOffset);
-                   hideKeyboard(Butto.this);
+                   hideKeyboard(Trash.this);
             }
         };
         drawer.addDrawerListener(toggle);
@@ -107,11 +107,11 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
                     if(snapshot.exists()){
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            list.add(ds.getValue(Oggetto.class));
+                            list.add(ds.getValue(Object.class));
                         }
-                        Collections.sort(list, new Comparator<Oggetto>() {
+                        Collections.sort(list, new Comparator<Object>() {
                             @Override
-                            public int compare(Oggetto o1, Oggetto o2) {
+                            public int compare(Object o1, Object o2) {
                                 return o1.getRifiuto().compareTo(o2.getRifiuto());
                             }
                         });
@@ -126,7 +126,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Butto.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Trash.this, R.string.errore_db, Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -151,10 +151,10 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
         recyclerView.setVisibility(View.VISIBLE);
         noprod.setVisibility(View.INVISIBLE);
         segnala.setVisibility(View.INVISIBLE);
-        ArrayList<Oggetto> myList = new ArrayList<Oggetto>();
-        for(Oggetto oggetto:list){
-            if(oggetto.getRifiuto().toLowerCase().contains(str.toLowerCase())){
-                myList.add(oggetto);
+        ArrayList<Object> myList = new ArrayList<Object>();
+        for(Object object :list){
+            if(object.getRifiuto().toLowerCase().contains(str.toLowerCase())){
+                myList.add(object);
             }
         }
         if(myList.isEmpty()){
@@ -188,7 +188,7 @@ public class Butto extends AppCompatActivity implements NavigationView.OnNavigat
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Butto.this,MainActivity.class));
+        startActivity(new Intent(Trash.this,MainActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

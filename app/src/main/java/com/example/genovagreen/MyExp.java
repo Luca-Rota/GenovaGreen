@@ -1,9 +1,9 @@
 package com.example.genovagreen;
 
-public class MySped {
+public class MyExp {
     public String id, email;
-    public MySped(){}
-    public MySped(String id, String email){
+    public MyExp(){}
+    public MyExp(String id, String email){
         this.id=id;
         this.email=email;
     }

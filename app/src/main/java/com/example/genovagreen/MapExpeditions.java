@@ -54,7 +54,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacem
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 
-public class MapSpedizioni extends AppCompatActivity implements PermissionsListener, OnMapReadyCallback{
+public class MapExpeditions extends AppCompatActivity implements PermissionsListener, OnMapReadyCallback{
 
     private static final String DROPPED_MARKER_LAYER_ID = "DROPPED_MARKER_LAYER_ID";
     private MapView mapView;
@@ -89,7 +89,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
 
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-        MapSpedizioni.this.mapboxMap = mapboxMap;
+        MapExpeditions.this.mapboxMap = mapboxMap;
         mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NonNull final Style style) {
@@ -97,13 +97,13 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
 
 // Toast instructing user to tap on the mapboxMap
                 Toast.makeText(
-                        MapSpedizioni.this,
+                        MapExpeditions.this,
                         getString(R.string.move_map_instruction), Toast.LENGTH_SHORT).show();
 
 // When user is still picking a location, we hover a marker above the mapboxMap in the center.
 // This is done by using an image view with the default marker found in the SDK. You can
 // swap out for your own marker image, just make sure it matches up with the dropped marker.
-                hoveringMarker = new ImageView(MapSpedizioni.this);
+                hoveringMarker = new ImageView(MapExpeditions.this);
                 hoveringMarker.setImageResource(R.drawable.red_marker);
                 FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -129,7 +129,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
 
 // Transform the appearance of the button to become the cancel button
                             selectLocationButton.setBackgroundColor(
-                                    ContextCompat.getColor(MapSpedizioni.this, R.color.colorAccent));
+                                    ContextCompat.getColor(MapExpeditions.this, R.color.colorAccent));
                             selectLocationButton.setText(getString(R.string.location_picker_select_location_button_cancel));
 
 // Show the SymbolLayer icon to represent the selected map location
@@ -151,7 +151,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
 
 // Switch the button appearance back to select a location.
                             selectLocationButton.setBackgroundColor(
-                                    ContextCompat.getColor(MapSpedizioni.this, R.color.colorPrimary));
+                                    ContextCompat.getColor(MapExpeditions.this, R.color.colorPrimary));
                             selectLocationButton.setText(getString(R.string.location_picker_select_location_button_select));
 
 // Show the red hovering ImageView marker
@@ -180,7 +180,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
                 })
                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        startActivity(new Intent(MapSpedizioni.this,Spedizioni4.class));
+                        startActivity(new Intent(MapExpeditions.this, Expeditions4.class));
                     }
                 });
         final AlertDialog alert = builder.create();
@@ -295,7 +295,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
                                 @Override
                                 public void onStyleLoaded(@NonNull Style style) {
                                     if (style.getLayer(DROPPED_MARKER_LAYER_ID) != null) {
-                                        Intent intent=new Intent(MapSpedizioni.this, Spedizioni4.class);
+                                        Intent intent=new Intent(MapExpeditions.this, Expeditions4.class);
                                         intent.putExtra("luogo",feature.placeName());
                                         startActivity(intent);
                                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -305,7 +305,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
                             });
 
                         } else {
-                            Toast.makeText(MapSpedizioni.this,
+                            Toast.makeText(MapExpeditions.this,
                                     getString(R.string.location_picker_dropped_marker_snippet_no_results), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -347,7 +347,7 @@ public class MapSpedizioni extends AppCompatActivity implements PermissionsListe
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(MapSpedizioni.this,Spedizioni4.class));
+        startActivity(new Intent(MapExpeditions.this, Expeditions4.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

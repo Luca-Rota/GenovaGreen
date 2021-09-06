@@ -30,14 +30,14 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Expeditions2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Button button;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
     private AdapterSpedizioni adapterSpedizioni;
-    private ArrayList<Spedizione> list;
+    private ArrayList<Expedition> list;
     private DatabaseReference ref;
     private RecyclerView recyclerView;
     private TextView username, id, nosped;
@@ -73,7 +73,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Spedizioni2.this, Spedizioni3.class));
+                startActivity(new Intent(Expeditions2.this, Expeditions3.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
@@ -93,8 +93,8 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                     for(DataSnapshot ds: snapshot.getChildren()){
                         Calendar calendarSped=Calendar.getInstance();
-                        String[] data=ds.getValue(Spedizione.class).getData().split("/");
-                        String[] tempo=ds.getValue(Spedizione.class).getOra().split(":");
+                        String[] data=ds.getValue(Expedition.class).getData().split("/");
+                        String[] tempo=ds.getValue(Expedition.class).getOra().split(":");
                         calendarSped.set(Calendar.YEAR, Integer.parseInt(data[2]));
                         calendarSped.set(Calendar.MONTH, Integer.parseInt(data[1]));
                         calendarSped.set(Calendar.DAY_OF_MONTH, Integer.parseInt(data[0]));
@@ -111,7 +111,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot1) {
                                         for(DataSnapshot ds1: snapshot1.getChildren()){
-                                            if(ds1.getValue(MySped.class).getId().equals(key)){
+                                            if(ds1.getValue(MyExp.class).getId().equals(key)){
                                                 String keyCr=ds1.getKey();
                                                 ref1.child(keyCr).removeValue();
                                             }
@@ -120,7 +120,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Expeditions2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                 }
                             });
                             DatabaseReference ref2= FirebaseDatabase.getInstance().getReference().child("SpedPart");
@@ -128,7 +128,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot2) {
                                         for(DataSnapshot ds2: snapshot2.getChildren()){
-                                            if(ds2.getValue(MySped.class).getId().equals(key)){
+                                            if(ds2.getValue(MyExp.class).getId().equals(key)){
                                                 String keyPart=ds2.getKey();
                                                 ref2.child(keyPart).removeValue();
                                             }
@@ -137,7 +137,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Expeditions2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                                 }
                             });
                         }
@@ -146,7 +146,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                Toast.makeText(Expeditions2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
             }
         }));
     }
@@ -159,13 +159,13 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                         list= new ArrayList<>();
                         for (DataSnapshot ds : snapshot.getChildren()) {
-                            if(!ds.getValue(Spedizione.class).getLuogo().equals("default")) {
-                                list.add(ds.getValue(Spedizione.class));
+                            if(!ds.getValue(Expedition.class).getLuogo().equals("default")) {
+                                list.add(ds.getValue(Expedition.class));
                             }
                         }
-                        Collections.sort(list, new Comparator<Spedizione>() {
+                        Collections.sort(list, new Comparator<Expedition>() {
                             @Override
-                            public int compare(Spedizione o1, Spedizione o2) {
+                            public int compare(Expedition o1, Expedition o2) {
                                 String[] data1=o1.getData().trim().split("/");
                                 String[] data2=o2.getData().trim().split("/");
                                 for(int i=2;i>-1;i--){
@@ -203,7 +203,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
                     }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Spedizioni2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Expeditions2.this, R.string.errore_db, Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -223,7 +223,7 @@ public class Spedizioni2 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onBackPressed()
     {
-        startActivity(new Intent(Spedizioni2.this,MainActivity.class));
+        startActivity(new Intent(Expeditions2.this,MainActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
     }

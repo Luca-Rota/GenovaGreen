@@ -23,11 +23,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder>  {
-    ArrayList<Oggetto> list;
+    ArrayList<Object> list;
     private TextView txt;
     Activity activity;
 
-    public AdapterClass(ArrayList<Oggetto> list){
+    public AdapterClass(ArrayList<Object> list){
         this.list=list;
     }
 
@@ -100,7 +100,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                Intent intent=new Intent(v.getContext(), Recycling.class);
                                 intent.putExtra("apri","carta");
                                 v.getContext().startActivity(intent);
                                 }
@@ -112,7 +112,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                Intent intent=new Intent(v.getContext(), Recycling.class);
                                 intent.putExtra("apri","plastica");
                                 v.getContext().startActivity(intent);
                             }
@@ -123,7 +123,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                Intent intent=new Intent(v.getContext(), Recycling.class);
                                 intent.putExtra("apri","vetro");
                                 v.getContext().startActivity(intent);
                             }
@@ -134,7 +134,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                Intent intent=new Intent(v.getContext(), Recycling.class);
                                 intent.putExtra("apri","umido");
                                 v.getContext().startActivity(intent);
                             }
@@ -145,7 +145,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent=new Intent(v.getContext(), Differenziata.class);
+                                Intent intent=new Intent(v.getContext(), Recycling.class);
                                 intent.putExtra("apri","abiti");
                                 v.getContext().startActivity(intent);
                             }
@@ -156,7 +156,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder
                         txt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                v.getContext().startActivity(new Intent(v.getContext(), Pericolosi3.class));
+                                v.getContext().startActivity(new Intent(v.getContext(), Dangerous3.class));
                             }
                         });
                     default:

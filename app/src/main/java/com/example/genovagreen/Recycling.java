@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,19 +20,19 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 
-public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Recycling extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FirebaseUser user;
     private TextView username, id;
-    private ArrayList<ItemPericolosi> items;
+    private ArrayList<ItemDangerous> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pericolosi3);
+        setContentView(R.layout.activity_differenziata);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -43,8 +44,9 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.content_pericolosi);
-
-        String apri="niente";
+        String apri = getIntent().getStringExtra("apri");
+        if(apri.equals(null))
+            apri="niente";
 
         auth= FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
@@ -61,13 +63,15 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
 
     }
 
+
     private void SetDati(){
         items=new ArrayList<>();
-        items.add(new ItemPericolosi(getString(R.string.pericolo1_tit), getString(R.string.pericolo1_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo2_tit), getString(R.string.pericolo2_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo3_tit), getString(R.string.pericolo3_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo4_tit), getString(R.string.pericolo4_desc)));
-        items.add(new ItemPericolosi(getString(R.string.pericolo5_tit), getString(R.string.pericolo5_desc)));
+        items.add(new ItemDangerous(getString(R.string.differenziata1_tit), getString(R.string.differenziata1_desc)));
+        items.add(new ItemDangerous(getString(R.string.differenziata2_tit), getString(R.string.differenziata2_desc)));
+        items.add(new ItemDangerous(getString(R.string.differenziata3_tit), getString(R.string.differenziata3_desc)));
+        items.add(new ItemDangerous(getString(R.string.differenziata4_tit), getString(R.string.differenziata4_desc)));
+        items.add(new ItemDangerous(getString(R.string.differenziata5_tit), getString(R.string.differenziata5_desc)));
+        items.add(new ItemDangerous(getString(R.string.differenziata6_tit), getString(R.string.differenziata6_desc)));
     }
 
 
@@ -85,9 +89,7 @@ public class Pericolosi3 extends AppCompatActivity implements NavigationView.OnN
     @Override
     public void onBackPressed()
     {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-
+        startActivity(new Intent(Recycling.this, Trash.class));
     }
 
 }
