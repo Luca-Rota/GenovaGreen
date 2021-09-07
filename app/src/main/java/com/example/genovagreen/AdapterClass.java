@@ -1,6 +1,5 @@
 package com.example.genovagreen;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.myviewholder>  {
     ArrayList<Object> list;
     private TextView txt;
-    Activity activity;
 
     public AdapterClass(ArrayList<Object> list){
         this.list=list;
