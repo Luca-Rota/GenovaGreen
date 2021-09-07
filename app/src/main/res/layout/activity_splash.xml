@@ -28,7 +28,7 @@
         android:layout_marginBottom="30dp"
         android:text="GenovaGreen"
         android:textColor="@color/colorPrimary"
-        android:textSize="40sp"
+        android:textSize="45dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

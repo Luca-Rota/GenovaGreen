@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="slogan">Help us make Genoa even more Green!</string>
     <string name="e_questo">Where do I throw this?</string>
     <string name="dove_lo_butto">Where do I throw this?</string>
     <string name="scopri">DISCOVER</string>
     <string name="rifiuti_pericolosi">Dangerous waste</string>
     <string name="spedizioni">Expeditions</string>
-    <string name="versione">Beta Version 1.0</string>
-    <string name="impostazioni">Settings</string>
+    <string name="versione">Version 1.0</string>
+    <string name="impostazioni"><font size="16">Settings</font></string>
     <string name="lingua">Language</string>
     <string name="notifiche">Notifications</string>
     <string name="logout">Exit</string>
@@ -27,9 +28,9 @@
     <string name="invia">SEND</string>
     <string name="visualizza_la_mappa_di_tutti_i_centri_di_raccolta_rifiuti_a_genova">See the map of all waste collection centers in Genoa:</string>
     <string name="o_cerca_il_centro_di_raccolta_in_base_al_prodotto_che_hai_da_smaltire">Or look for the collection center based on the product you have to dispose of:</string>
-    <string name="rifiuti_ingombranti">BULKY WASTE</string>
-    <string name="pile_e_batterie_esauste">SPENT BATTERIES</string>
-    <string name="olio_esausto_e_filtri_olio">SPENT OIL AND OIL FILTERS</string>
+    <string name="rifiuti_ingombranti">BULKY WASTE&#160;</string>
+    <string name="pile_e_batterie_esauste">SPENT BATTERIES&#160;</string>
+    <string name="olio_esausto_e_filtri_olio">SPENT OIL AND OIL FILTERS&#160;</string>
     <string name="scegli_un_luogo_sulla_mappa">Choose a location on the map:</string>
     <string name="le_spedizioni_a_cui_parteciperai">The shipments in which you will participate:</string>
     <string name="aggiungi_una_nuova_spedizione">Add a new shipment</string>
@@ -39,18 +40,18 @@
     <string name="accedi_subito">Log in now!</string>
     <string name="hai_gi_un_account">Do you already have an account?</string>
     <string name="conferma">Confirm</string>
-    <string name="farmaci_scaduti_e_contenitori">EXPIRED MEDICINES AND CONTAINERS</string>
-    <string name="vernici_solventi_e_insetticidi">PAINTS, SOLVENTS AND INSECTICIDES</string>
-    <string name="registrazione">REGISTRATION</string>
+    <string name="farmaci_scaduti_e_contenitori">EXPIRED MEDICINES AND CONTAINERS&#160;</string>
+    <string name="vernici_solventi_e_insetticidi">PAINTS, SOLVENTS AND INSECTICIDES&#160;</string>
+    <string name="registrazione">REGISTRATION&#160;</string>
     <string name="ripeti_password">Repeat password</string>
     <string name="rec_pass">Enter your email here and we’ll send you the link to change your account password</string>
     <string name="move_map_instruction">Move the map and select the desired location.</string>
     <string name="user_location_permission_explanation">This function requires location permissions to work</string>
     <string name="user_location_permission_not_granted">You don\'t have tracking permissions.</string>
-    <string name="exit">Are you sure you want to exit?</string>
+    <string name="exit"><font size="18">Are you sure you want to exit?</font></string>
     <string name="segnala">Report</string>
     <string name="nessun_prodotto_trovato">No product found.</string>
-    <string name="popup_impostazioni">Are you sure you want to log out?</string>
+    <string name="popup_impostazioni"><font size="18">Are you sure you want to log out?</font></string>
     <string name="logout_toast">Logout happened with success.</string>
     <string name="login_successo">Login happened with success.</string>
     <string name="verifica_email">Please check your email address.</string>
@@ -58,8 +59,8 @@
     <string name="login_storto">Something went wrong with the login.</string>
     <string name="no_campi_vuoti">There can be no empty fields.</string>
     <string name="errore_db">Database error.</string>
-    <string name="si">Yes</string>
-    <string name="gps_non_attivo">This function requires the use of GPS. Do you want to enable it?</string>
+    <string name="si"><font size="18">Yes</font></string>
+    <string name="gps_non_attivo"><font size="18">This function requires the use of GPS. Do you want to enable it?</font></string>
     <string name="seleziona_un_luogo">Select a location</string>
     <string name="email_inviata">Email sent</string>
     <string name="registrazione_avvenuta">Successful registration. Check your email for verification.</string>
@@ -89,7 +90,7 @@
     <string name="location_picker_select_location_button_select">Select a location</string>
     <string name="popup_sped2">Are you sure you want to delete the expedition?</string>
     <string name="popup_sped1">Are you sure you don’t want to join in the expedition anymore?</string>
-    <string name="informazioni">Informations</string>
+    <string name="informazioni"><font size="16">Informations</font></string>
     <string name="consulta_la_sezione_dedicata">Consult the relative section</string>
     <string name="inizia">START</string>
     <string name="modifica_profilo">Edit profile</string>
@@ -102,6 +103,14 @@
     <string name="organizzati_con_vari_gruppi_di_volontariato_per_bonificare_il_verde_del_nostro_territorio">Organized with various voluntary groups to clean up the green of our territory.</string>
     <string name="richiedi">Request via email</string>
     <string name="inserire_email">Enter valid email</string>
+    <string name="username_lenght">Username cannot be less than 4 characters</string>
+    <string name="username_mod">Username has been modified</string>
+    <string name="registrati">Sign in</string>
+    <string name="dove_lo_butto2"><font size="16">Where do I throw it?</font></string>
+    <string name="rifiuti_pericolosi2"><font size="16">Dangerous waste</font></string>
+    <string name="spedizioni2"><font size="16">Expeditions</font></string>
+    <string name="italiano"><font size="18">Italian</font></string>
+    <string name="inglese"><font size="18">English</font></string>
     <string name="pericolo1_tit">Dangerous waste</string>
     <string name="pericolo2_tit">Electronic devices</string>
     <string name="pericolo3_tit">Cooking oil</string>
@@ -275,14 +284,10 @@
     </string>
     <string name="differenziata6_tit">Metals</string>
     <string name="scopri_di_piu">LEARN MORE!</string>
-    <string name="sped_desc_intro">ù
-        Various volunteer groups operate in the Genoese territory that deal with the reclamation of polluted places. \n
+    <string name="sped_desc_intro">Various volunteer groups operate in the Genoese territory that deal with the reclamation of polluted places. \n
         This section has been designed to simplify the organization and inform of the existence of these initiatives. \n
         Even if you are not in a volunteer group you will have the opportunity to create an expedition and find people who, like you, care about the cleanliness of our city. \n
         Log in or register now to see shipments that have already been scheduled or schedule one yourself!
     </string>
-    <string name="username_lenght">Username cannot be less than 4 characters</string>
-    <string name="username_mod">Username has been modified</string>
-    <string name="dove_lo_butto2">Where do I throw it?</string>
-    <string name="registrati">Sign in</string>
+
 </resources>

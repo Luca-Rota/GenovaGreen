@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        AlertDialog mBuilder= new AlertDialog.Builder(MainActivity.this)
+        AlertDialog dialog= new AlertDialog.Builder(MainActivity.this)
                 .setMessage(R.string.exit)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
@@ -172,7 +172,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         startActivity(intent);
                     }})
                 .setNegativeButton(R.string.no, null).show();
-
 
     }
 }

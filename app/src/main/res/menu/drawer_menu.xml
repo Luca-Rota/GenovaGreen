@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/content_main"
@@ -14,25 +13,15 @@
         <item
             android:id="@+id/content_butto"
             android:icon="@drawable/ic_menu_trash2"
-            android:title="@string/dove_lo_butto" />
+            android:title="@string/dove_lo_butto2" />
         <item
             android:id="@+id/content_pericolosi"
             android:icon="@drawable/ic_menu_dangerous3"
-            android:title="@string/rifiuti_pericolosi" />
+            android:title="@string/rifiuti_pericolosi2" />
         <item
             android:id="@+id/content_spedizioni"
             android:icon="@drawable/ic_menu_expeditions3"
-            android:title="@string/spedizioni" />
-    </group>
-
-    <View
-    android:layout_width="match_parent"
-    android:layout_height="2dp"
-    android:background="#000"
-    tools:layout_editor_absoluteX="-25dp"
-    tools:layout_editor_absoluteY="502dp" />
-
-    <group android:checkableBehavior="single">
+            android:title="@string/spedizioni2" />
         <item
             android:id="@+id/content_impostazioni"
             android:icon="@drawable/ic_menu_settings2"
@@ -41,5 +30,6 @@
             android:id="@+id/content_informazioni"
             android:icon="@drawable/ic_iconmonstr_info_8"
             android:title="@string/informazioni" />
+
     </group>
 </menu>

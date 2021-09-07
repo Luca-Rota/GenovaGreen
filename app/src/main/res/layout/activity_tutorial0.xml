@@ -17,7 +17,7 @@
         android:layout_marginBottom="40dp"
         android:text="GenovaGreen"
         android:textColor="@color/colorPrimary"
-        android:textSize="40sp"
+        android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/image1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
         android:gravity="center"
         android:text="@string/slogan"
         android:textColor="#000000"
-        android:textSize="23sp"
+        android:textSize="23dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

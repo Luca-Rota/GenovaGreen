@@ -34,15 +34,6 @@
     </style>
 
 
-    da mettere in onCreate dall'activity
-    Toolbar toolbar = findViewById(R.id.main_toolbar);
-    TextView toolbarTitle = findViewById(R.id.titleText);
-    TextView toolbarCounter = findViewById(R.id.titleCounter);
-    toolbar.setTitle("");
-    toolbarTitle.setText("non funziona");
-    toolbarCounter.setText("666");
-    setSupportActionBar(toolbar);
-
     <style name="Theme.GenovaGreen.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -63,6 +54,10 @@
     <style name="TextAppearance.Widget.Event.Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <item name="android:textSize">16dp</item>
     </style>
 
 </resources>

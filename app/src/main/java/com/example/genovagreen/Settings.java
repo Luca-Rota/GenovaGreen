@@ -85,7 +85,7 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog mBuilder= new AlertDialog.Builder(Settings.this)
+                AlertDialog dialog= new AlertDialog.Builder(Settings.this)
                         .setMessage(R.string.popup_impostazioni)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
@@ -105,7 +105,7 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
         lingua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String[] listItems={"Italiano", "English"};
+                final String[] listItems={getString(R.string.italiano), getString(R.string.inglese)};
                 AlertDialog.Builder mBuilder= new AlertDialog.Builder(Settings.this);
                 mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
                     @Override
